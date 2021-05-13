@@ -1,0 +1,80 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: sharding-jdbc
+
+  main:
+    # \u540E\u5B9A\u4E49\u7684bean\u4F1A\u8986\u76D6\u4E4B\u524D\u5B9A\u4E49\u7684\u76F8\u540C\u540D\u79F0\u7684bean
+    allow-bean-definition-overriding: true
+
+  shardingsphere:
+    # \u53C2\u6570\u914D\u7F6E\uFF0C\u663E\u793Asql
+    props:
+      sql:
+        show: true
+
+    # \u914D\u7F6E\u6570\u636E\u6E90
+    datasource:
+      # \u7ED9\u6BCF\u4E2A\u6570\u636E\u6E90\u53D6\u522B\u540D\uFF0C\u4E0B\u9762\u7684ds1,ds2\u4EFB\u610F\u53D6\u540D\u5B57
+      names: ds1,ds2
+      # \u7ED9\u6BCF\u4E2A\u6570\u636E\u6E90\u914D\u7F6E\u6570\u636E\u5E93\u8FDE\u63A5\u4FE1\u606F
+      # \u914D\u7F6E master-ds1
+      ds1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://192.168.56.222:3306/sharding-db?useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&useSSL=false&serverTimezone=GMT
+        username: root
+        password: root
+        maxPoolSize: 100
+        minPoolSize: 5
+
+      # \u914D\u7F6Eslave-ds2
+      ds2:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://192.168.56.223:3306/sharding-db?useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&useSSL=false&serverTimezone=GMT
+        username: root
+        password: root
+        maxPoolSize: 100
+        minPoolSize: 5
+
+    # \u914D\u7F6E\u9ED8\u8BA4\u6570\u636E\u6E90
+    sharding:
+      # \u9ED8\u8BA4\u6570\u636E\u6E90\uFF0C\u4E3B\u8981\u7528\u4E8E\u5199\uFF0C\u6CE8\u610F\u4E00\u5B9A\u8981\u914D\u7F6E\u8BFB\u5199\u5206\u79BB ,\u6CE8\u610F\uFF1A\u5982\u679C\u4E0D\u914D\u7F6E\uFF0C\u90A3\u4E48\u5C31\u4F1A\u628A\u4E09\u4E2A\u8282\u70B9\u90FD\u5F53\u505A\u4ECEslave\u8282\u70B9\uFF0C\u65B0\u589E\uFF0C\u4FEE\u6539\u548C\u5220\u9664\u4F1A\u51FA\u9519\u3002
+      default-data-source-name: ds1
+      # \u903B\u8F91\u8868\u540D
+      tables:
+        jing_user:
+          # \u6570\u636E\u8282\u70B9\uFF1A\u591A\u6570\u636E\u6E90$->{0..N}.\u903B\u8F91\u8868\u540D$->{0..N} \u76F8\u540C\u8868
+          actual-data-nodes: ds$->{1..2}.jing_user$->{0..1}
+          # \u62C6\u5206\u5E93\u7B56\u7565\uFF0C\u4E5F\u5C31\u662F\u4EC0\u4E48\u6837\u5B50\u7684\u6570\u636E\u653E\u5165\u653E\u5230\u54EA\u4E2A\u6570\u636E\u5E93\u4E2D\u3002
+          database-strategy:
+            inline:
+              sharding-column: sex    # \u5206\u7247\u5B57\u6BB5\uFF08\u5206\u7247\u952E\uFF09
+              algorithm-expression: ds$->{(sex % 2) + 1} # \u5206\u7247\u7B97\u6CD5\u8868\u8FBE\u5F0F
+
+          # \u62C6\u5206\u8868\u7B56\u7565\uFF0C\u4E5F\u5C31\u662F\u4EC0\u4E48\u6837\u5B50\u7684\u6570\u636E\u653E\u5165\u653E\u5230\u54EA\u4E2A\u6570\u636E\u8868\u4E2D\u3002
+          table-strategy:
+            inline:
+              sharding-column: age    # \u5206\u7247\u5B57\u6BB5\uFF08\u5206\u7247\u952E\uFF09
+              algorithm-expression: jing_user$->{age % 2} # \u5206\u7247\u7B97\u6CD5\u8868\u8FBE\u5F0F
+
+# \u914D\u7F6E\u5206\u5E93\u5206\u8868\u7B56\u7565\u7684\u65F6\u5019\uFF0C\u6682\u4E0D\u9700\u8981\u914D\u7F6E\u4EE5\u4E0B\u5185\u5BB9
+#    masterslave:
+#      # \u914D\u7F6E\u4E3B\u4ECE\u540D\u79F0\uFF0C\u53EF\u4EE5\u4EFB\u610F\u53D6\u540D\u5B57
+#      name: ms
+#      # \u914D\u7F6E\u4E3B\u5E93master\uFF0C\u8D1F\u8D23\u6570\u636E\u7684\u5199\u5165
+#      master-data-source-name: ds1
+#      # \u914D\u7F6E\u4ECE\u5E93slave\u8282\u70B9
+#      slave-data-source-names: ds2
+#      # \u914D\u7F6Eslave\u8282\u70B9\u7684\u8D1F\u8F7D\u5747\u8861\u5747\u8861\u7B56\u7565\uFF0C\u91C7\u7528\u8F6E\u8BE2\u673A\u5236
+#      load-balance-algorithm-type: round_robin
+
+# \u6574\u5408mybatis
+mybatis:
+  # \u6620\u5C04\u6587\u4EF6\u5730\u5740
+  mapper-locations: classpath:mapper/**/*.xml
+  # \u914D\u7F6E\u522B\u540D
+  type-aliases-package: com.itjing.shardingjdbc.entity
