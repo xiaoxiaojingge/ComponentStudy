@@ -17,6 +17,7 @@
         <module>sharding-jdbc</module>
         <module>JUCStudy</module>
         <module>designPatterns</module>
+        <module>readcode</module>
     </modules>
 
 </project>

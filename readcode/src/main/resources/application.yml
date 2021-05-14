@@ -1,0 +1,6 @@
+server:
+  port: 5577
+
+spring:
+  application:
+    name: readcode
