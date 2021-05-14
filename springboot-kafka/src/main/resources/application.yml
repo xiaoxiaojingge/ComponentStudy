@@ -1,0 +1,19 @@
+server:
+  port: 5599
+
+# spring \u76F8\u5173\u914D\u7F6E
+spring:
+  application:
+    name: springboot-kafka
+  # kafka \u914D\u7F6E
+  kafka:
+    # \u670D\u52A1\u5668\u5730\u5740\u53CA\u5176 kafka \u7AEF\u53E3
+    bootstrap-servers: 192.168.56.111:9092
+    # \u6D88\u8D39\u8005\u914D\u7F6E
+    consumer:
+      # \u6D88\u8D39\u8005\u5206\u7EC4\u7684id,\u53EF\u4EE5\u5728 kafka \u7684 config \u76EE\u5F55\u4E0B\u7684 consumer.properties \u4E2D\u914D\u7F6E
+      group-id: test-consumer-group
+      # \u662F\u5426\u81EA\u52A8\u63D0\u4EA4\u6D88\u8D39\u8005\u7684\u504F\u79FB\u91CF
+      enable-auto-commit: true
+      # \u81EA\u52A8\u63D0\u4EA4\u7684\u9891\u7387 3s
+      auto-commit-interval: 3000

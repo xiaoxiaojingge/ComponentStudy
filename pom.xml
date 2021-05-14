@@ -18,6 +18,8 @@
         <module>JUCStudy</module>
         <module>designPatterns</module>
         <module>readcode</module>
+        <module>oss-upload</module>
+        <module>springboot-kafka</module>
     </modules>
 
 </project>
