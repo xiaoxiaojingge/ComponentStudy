@@ -20,6 +20,8 @@
         <module>readcode</module>
         <module>oss-upload</module>
         <module>springboot-kafka</module>
+        <module>ApiTest</module>
+        <module>springsecurity-study</module>
     </modules>
 
 </project>
