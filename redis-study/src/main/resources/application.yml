@@ -1,0 +1,9 @@
+server:
+  port: 5599
+
+spring:
+  application:
+    name: redis-study
+  redis:
+    host: 127.0.0.1
+    port: 6379
