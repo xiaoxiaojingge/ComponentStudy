@@ -1,4 +1,4 @@
-package com.itjing;
+package com.itjing.collect;
 
 import com.google.common.collect.Lists;
 

@@ -12,6 +12,7 @@
 
     <modules>
         <module>redissonStudy</module>
+        <module>redis-study</module>
         <module>generateDatabaseDoc</module>
         <module>utilstudy</module>
         <module>sharding-jdbc</module>
@@ -22,6 +23,8 @@
         <module>springboot-kafka</module>
         <module>ApiTest</module>
         <module>springsecurity-study</module>
+        <module>AlgorithmPractice</module>
+        <module>seckillsystem</module>
     </modules>
 
 </project>
