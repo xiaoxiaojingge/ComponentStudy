@@ -25,6 +25,7 @@
         <module>springsecurity-study</module>
         <module>AlgorithmPractice</module>
         <module>seckillsystem</module>
+        <module>spring-boot-seckill</module>
     </modules>
 
 </project>
