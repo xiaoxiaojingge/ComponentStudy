@@ -26,6 +26,7 @@
         <module>AlgorithmPractice</module>
         <module>seckillsystem</module>
         <module>spring-boot-seckill</module>
+        <module>springboot-quartz</module>
     </modules>
 
 </project>
