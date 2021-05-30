@@ -11,22 +11,44 @@
     <packaging>pom</packaging>
 
     <modules>
+        <!-- redis的框架redisson学习 -->
         <module>redissonStudy</module>
+        <!-- redis相关学习 -->
         <module>redis-study</module>
+        <!-- 生成数据库基本文档 -->
         <module>generateDatabaseDoc</module>
+        <!-- 各种工具类的学习 -->
         <module>utilstudy</module>
+        <!-- sharding-jdbc学习 -->
         <module>sharding-jdbc</module>
+        <!-- JUC学习 -->
         <module>JUCStudy</module>
+        <!-- 设计模式学习 -->
         <module>designPatterns</module>
+        <!-- 阅读源码相关 -->
         <module>readcode</module>
+        <!-- 阿里云对象存储 -->
         <module>oss-upload</module>
+        <!-- springboot集成kafka -->
         <module>springboot-kafka</module>
+        <!-- 测试各种API -->
         <module>ApiTest</module>
+        <!-- SpringSecurity学习 -->
         <module>springsecurity-study</module>
+        <!-- 算法练习 -->
         <module>AlgorithmPractice</module>
+        <!-- 秒杀系统简单设计 -->
         <module>seckillsystem</module>
+        <!-- 秒杀系统各种情况 -->
         <module>spring-boot-seckill</module>
+        <!-- springboot集成quartz实现定时任务 -->
         <module>springboot-quartz</module>
+        <!-- 十大经典排序算法大梳理 -->
+        <module>sort_algorithm</module>
+        <!-- redis lua脚本使用 -->
+        <module>redis-lua</module>
+        <!-- 分布式id生成 -->
+        <module>distributed-id-generation</module>
     </modules>
 
 </project>
