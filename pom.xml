@@ -49,6 +49,8 @@
         <module>redis-lua</module>
         <!-- 分布式id生成 -->
         <module>distributed-id-generation</module>
+        <!-- 手撸ORM框架（简单实现） -->
+        <module>orm-implement</module>
     </modules>
 
 </project>
