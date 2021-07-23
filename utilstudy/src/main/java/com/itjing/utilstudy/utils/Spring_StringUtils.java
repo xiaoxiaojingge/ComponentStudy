@@ -3,6 +3,7 @@ package com.itjing.utilstudy.utils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 
+
 /**
  * @author: lijing
  * @Date: 2021/04/29 13:44
@@ -11,7 +12,6 @@ import org.springframework.util.StringUtils;
 @Slf4j
 public class Spring_StringUtils {
     public static void main(String[] args) {
-
 
         // 判断类
         System.out.println("--------------判断类-------------");
@@ -73,7 +73,6 @@ public class Spring_StringUtils {
         // String trimTrailingCharacter(String str, char trailingCharacter) 去掉字符串结尾的指定字符
         // boolean startsWithIgnoreCase(String str, String prefix) 判断字符串是否以指定字符串开头，忽略大小写
         // boolean endsWithIgnoreCase(String str, String suffix) 判断字符串是否以指定字符串结尾，忽略大小写
-
 
         System.out.println("-------------文件路径名称相关操作--------------");
 
