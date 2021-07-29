@@ -51,6 +51,8 @@
         <module>distributed-id-generation</module>
         <!-- 手撸ORM框架（简单实现） -->
         <module>orm-implement</module>
+        <!-- netty学习 -->
+        <module>hello-netty</module>
     </modules>
 
 </project>
