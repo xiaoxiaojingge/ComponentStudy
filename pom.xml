@@ -53,6 +53,8 @@
         <module>orm-implement</module>
         <!-- netty学习 -->
         <module>hello-netty</module>
+        <!-- SpringSecurity demo -->
+        <module>springsecuritydemo</module>
     </modules>
 
 </project>
