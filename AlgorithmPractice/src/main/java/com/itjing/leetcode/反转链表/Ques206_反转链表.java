@@ -3,8 +3,7 @@ package com.itjing.leetcode.反转链表;
 /**
  * @author: lijing
  * @Date: 2021年09月08日 10:40
- * @Description:
- * 题目地址： https://leetcode-cn.com/problems/reverse-linked-list/
+ * @Description: 题目地址： https://leetcode-cn.com/problems/reverse-linked-list/
  * 参考： https://labuladong.gitee.io/algo/2/18/17/
  */
 public class Ques206_反转链表 {
@@ -28,6 +27,7 @@ public class Ques206_反转链表 {
 
     /**
      * 递归反转整个链表
+     *
      * @param head
      * @return
      */
@@ -37,6 +37,29 @@ public class Ques206_反转链表 {
         head.next.next = head;
         head.next = null;
         return last;
+    }
+
+    /**
+     * 反转以 a 为头结点的链表,循环实现
+     *
+     * @param a
+     * @return
+     */
+    ListNode reverse(ListNode a) {
+        ListNode pre, cur, nxt;
+        pre = null;
+        cur = a;
+        nxt = a;
+        while (cur != null) {
+            nxt = cur.next;
+            // 逐个结点反转
+            cur.next = pre;
+            // 更新指针位置
+            pre = cur;
+            cur = nxt;
+        }
+        // 返回反转后的头结点
+        return pre;
     }
 
     public static void main(String[] args) {
