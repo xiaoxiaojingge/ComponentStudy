@@ -6,23 +6,6 @@ package com.itjing.leetcode.反转链表;
  * @Description: 题目地址： https://leetcode-cn.com/problems/reverse-linked-list-ii/
  */
 public class Ques92_反转链表II {
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
-
 
     static ListNode successor = null; // 后驱节点
 
@@ -86,5 +69,22 @@ public class Ques92_反转链表II {
         for (ListNode p = revHead; p != null; p = p.next) {
             System.out.print(p.val + " ");
         }
+    }
+}
+
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode() {
+    }
+
+    ListNode(int val) {
+        this.val = val;
+    }
+
+    ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
     }
 }
