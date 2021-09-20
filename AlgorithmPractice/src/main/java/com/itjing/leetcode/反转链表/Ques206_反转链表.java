@@ -1,5 +1,7 @@
 package com.itjing.leetcode.反转链表;
 
+import com.itjing.leetcode.ListNode;
+
 /**
  * @author: lijing
  * @Date: 2021年09月08日 10:40
@@ -7,23 +9,6 @@ package com.itjing.leetcode.反转链表;
  * 参考： https://labuladong.gitee.io/algo/2/18/17/
  */
 public class Ques206_反转链表 {
-
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
 
     /**
      * 递归反转整个链表

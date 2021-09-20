@@ -3,7 +3,7 @@ package com.itjing.leetcode;
 /**
  * @author: lijing
  * @Date: 2021年09月18日 10:13
- * @Description: 删除链表的节点
+ * @Description: 删除链表的节点，题目保证链表中节点的值互不相同
  */
 public class 剑指Offer18_删除链表的节点 {
 
@@ -18,15 +18,6 @@ public class 剑指Offer18_删除链表的节点 {
         while (p != null) {
             System.out.print(p.val + "\t");
             p = p.next;
-        }
-    }
-
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
         }
     }
 

@@ -1,5 +1,7 @@
 package com.itjing.leetcode.反转链表;
 
+import com.itjing.leetcode.ListNode;
+
 /**
  * @author: lijing
  * @Date: 2021年09月08日 11:03
@@ -69,22 +71,5 @@ public class Ques92_反转链表II {
         for (ListNode p = revHead; p != null; p = p.next) {
             System.out.print(p.val + " ");
         }
-    }
-}
-
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
-        this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
     }
 }

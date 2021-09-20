@@ -1,5 +1,7 @@
 package com.itjing.nowcoder;
 
+import com.itjing.leetcode.ListNode;
+
 /**
  * @author: lijing
  * @Date: 2021年09月17日 16:07
@@ -21,14 +23,6 @@ public class NC69链表中倒数最后k个结点 {
 
     }
 
-    static class ListNode {
-        int val;
-        ListNode next = null;
-
-        ListNode(int val) {
-            this.val = val;
-        }
-    }
 
     public static ListNode FindKthToTail(ListNode pHead, int k) {
         int sum = 0;

@@ -1,5 +1,7 @@
 package com.itjing.nowcoder;
 
+import com.itjing.leetcode.ListNode;
+
 /**
  * @author: lijing
  * @Date: 2021年09月18日 18:16
@@ -7,14 +9,6 @@ package com.itjing.nowcoder;
  */
 public class NC25删除有序链表中重复的元素I {
 
-    static class ListNode {
-        int val;
-        ListNode next = null;
-
-        public ListNode(int val) {
-            this.val = val;
-        }
-    }
 
     public static void main(String[] args) {
 

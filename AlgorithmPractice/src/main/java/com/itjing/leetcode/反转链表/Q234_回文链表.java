@@ -1,28 +1,13 @@
 package com.itjing.leetcode.反转链表;
 
+import com.itjing.leetcode.ListNode;
+
 /**
  * @author: lijing
  * @Date: 2021年09月18日 9:46
  * @Description:
  */
 public class Q234_回文链表 {
-    class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
-
     /**
      * 判断是否为回文链表
      *

@@ -11,24 +11,6 @@ public class Q25_K个一组翻转链表 {
 
     }
 
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
-
-
     /**
      * 反转以 a 为头结点的链表,循环实现
      *

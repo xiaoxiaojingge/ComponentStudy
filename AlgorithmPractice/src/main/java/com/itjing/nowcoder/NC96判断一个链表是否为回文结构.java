@@ -1,19 +1,13 @@
 package com.itjing.nowcoder;
 
+import com.itjing.leetcode.ListNode;
+
 /**
  * @author: lijing
  * @Date: 2021年09月18日 18:40
  * @Description: 判断一个链表是否为回文结构
  */
 public class NC96判断一个链表是否为回文结构 {
-    static class ListNode {
-        int val;
-        ListNode next = null;
-
-        public ListNode(int val) {
-            this.val = val;
-        }
-    }
 
     public static void main(String[] args) {
         ListNode head = new ListNode(1);

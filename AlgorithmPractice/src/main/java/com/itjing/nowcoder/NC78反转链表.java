@@ -1,5 +1,7 @@
 package com.itjing.nowcoder;
 
+import com.itjing.leetcode.ListNode;
+
 /**
  * @author: lijing
  * @Date: 2021年09月17日 15:00
@@ -64,14 +66,5 @@ public class NC78反转链表 {
             cur = next;
         }
         return reverseHead.next;
-    }
-}
-
-class ListNode {
-    int val;
-    ListNode next = null;
-
-    ListNode(int val) {
-        this.val = val;
     }
 }

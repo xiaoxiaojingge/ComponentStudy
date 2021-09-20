@@ -1,20 +1,13 @@
 package com.itjing.nowcoder;
 
+import com.itjing.leetcode.ListNode;
+
 /**
  * @author: lijing
  * @Date: 2021年09月17日 15:50
  * @Description:
  */
 public class NC21链表内指定区间反转 {
-    static class ListNode {
-        int val;
-        ListNode next = null;
-
-        ListNode(int val) {
-            this.val = val;
-        }
-    }
-
 
     static ListNode successor = null; // 后驱节点
 

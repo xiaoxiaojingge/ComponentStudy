@@ -7,15 +7,6 @@ package com.itjing.leetcode;
  */
 public class 剑指Offer06_从尾到头打印链表 {
 
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
-
     /**
      * 反转链表
      *

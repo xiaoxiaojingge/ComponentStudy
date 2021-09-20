@@ -1,19 +1,14 @@
 package com.itjing.nowcoder;
 
+import com.itjing.leetcode.ListNode;
+
 /**
  * @author: lijing
  * @Date: 2021年09月18日 18:02
  * @Description: 删除链表的倒数第n个节点
  */
 public class NC53删除链表的倒数第n个节点 {
-    static class ListNode {
-        int val;
-        ListNode next = null;
 
-        public ListNode(int val) {
-            this.val = val;
-        }
-    }
 
     public static void main(String[] args) {
 
