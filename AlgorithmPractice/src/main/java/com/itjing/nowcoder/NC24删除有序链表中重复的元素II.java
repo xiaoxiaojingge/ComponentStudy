@@ -1,6 +1,7 @@
 package com.itjing.nowcoder;
 
 import com.itjing.leetcode.ListNode;
+import com.itjing.util.ListNodeUtil;
 
 /**
  * @author: lijing
@@ -12,11 +13,7 @@ public class NC24删除有序链表中重复的元素II {
 
     public static void main(String[] args) {
 
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(1);
-        head.next.next = new ListNode(2);
-        head.next.next.next = new ListNode(3);
-        head.next.next.next.next = new ListNode(3);
+        ListNode head = ListNodeUtil.generateListNode();
 
 
         ListNode p = deleteDuplicates(head);

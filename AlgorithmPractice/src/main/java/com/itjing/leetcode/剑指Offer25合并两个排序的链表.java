@@ -1,5 +1,7 @@
 package com.itjing.leetcode;
 
+import com.itjing.util.ListNodeUtil;
+
 /**
  * @author: lijing
  * @Date: 2021年09月20日 11:30
@@ -8,13 +10,9 @@ package com.itjing.leetcode;
 public class 剑指Offer25合并两个排序的链表 {
 
     public static void main(String[] args) {
-        ListNode l1 = new ListNode(1);
-        l1.next = new ListNode(2);
-        l1.next.next = new ListNode(4);
+        ListNode l1 = ListNodeUtil.generateListNode();
 
-        ListNode l2 = new ListNode(1);
-        l2.next = new ListNode(3);
-        l2.next.next = new ListNode(4);
+        ListNode l2 = ListNodeUtil.generateListNode();
 
         ListNode p = mergeTwoLists(l1, l2);
         while (p != null) {

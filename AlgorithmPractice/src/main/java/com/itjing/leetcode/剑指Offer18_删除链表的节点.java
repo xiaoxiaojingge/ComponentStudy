@@ -1,5 +1,7 @@
 package com.itjing.leetcode;
 
+import com.itjing.util.ListNodeUtil;
+
 /**
  * @author: lijing
  * @Date: 2021年09月18日 10:13
@@ -8,11 +10,7 @@ package com.itjing.leetcode;
 public class 剑指Offer18_删除链表的节点 {
 
     public static void main(String[] args) {
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        head.next.next.next = new ListNode(4);
-        head.next.next.next.next = new ListNode(5);
+        ListNode head = ListNodeUtil.generateListNode();
 
         ListNode p = deleteNode(head, 3);
         while (p != null) {

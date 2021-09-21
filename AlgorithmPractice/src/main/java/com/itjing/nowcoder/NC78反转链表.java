@@ -1,6 +1,7 @@
 package com.itjing.nowcoder;
 
 import com.itjing.leetcode.ListNode;
+import com.itjing.util.ListNodeUtil;
 
 /**
  * @author: lijing
@@ -9,10 +10,7 @@ import com.itjing.leetcode.ListNode;
  */
 public class NC78反转链表 {
     public static void main(String[] args) {
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-
+        ListNode head = ListNodeUtil.generateListNode();
         ListNode p = head;
         System.out.println("反转前：");
         while (p != null) {

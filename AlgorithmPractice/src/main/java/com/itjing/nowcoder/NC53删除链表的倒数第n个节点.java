@@ -1,6 +1,7 @@
 package com.itjing.nowcoder;
 
 import com.itjing.leetcode.ListNode;
+import com.itjing.util.ListNodeUtil;
 
 /**
  * @author: lijing
@@ -12,11 +13,7 @@ public class NC53删除链表的倒数第n个节点 {
 
     public static void main(String[] args) {
 
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        head.next.next.next = new ListNode(4);
-        head.next.next.next.next = new ListNode(5);
+        ListNode head = ListNodeUtil.generateListNode();
 
         ListNode p = removeNthFromEnd(head, 2);
         while (p != null) {

@@ -17,6 +17,7 @@ public class NC4判断链表中是否有环 {
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
+            // 快慢指针相遇
             if (slow == fast) {
                 flag = true;
                 break;

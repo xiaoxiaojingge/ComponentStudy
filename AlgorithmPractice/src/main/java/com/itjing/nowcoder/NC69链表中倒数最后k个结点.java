@@ -1,6 +1,7 @@
 package com.itjing.nowcoder;
 
 import com.itjing.leetcode.ListNode;
+import com.itjing.util.ListNodeUtil;
 
 /**
  * @author: lijing
@@ -10,11 +11,7 @@ import com.itjing.leetcode.ListNode;
 public class NC69链表中倒数最后k个结点 {
 
     public static void main(String[] args) {
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        head.next.next.next = new ListNode(99);
-
+        ListNode head = ListNodeUtil.generateListNode();
         ListNode pHead = FindKthToTail(head, 2);
         while (pHead != null) {
             System.out.println(pHead.val + "\t");

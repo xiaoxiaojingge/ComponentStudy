@@ -1,5 +1,7 @@
 package com.itjing.leetcode;
 
+import com.itjing.util.ListNodeUtil;
+
 /**
  * @author: lijing
  * @Date: 2021年09月20日 19:12
@@ -47,13 +49,7 @@ public class Q203_移除链表元素 {
     }
 
     public static void main(String[] args) {
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(6);
-        head.next.next.next = new ListNode(3);
-        head.next.next.next.next = new ListNode(4);
-        head.next.next.next.next.next = new ListNode(5);
-        head.next.next.next.next.next.next = new ListNode(6);
+        ListNode head = ListNodeUtil.generateListNode();
 
         ListNode p = removeElements(head, 6);
         while (p != null) {

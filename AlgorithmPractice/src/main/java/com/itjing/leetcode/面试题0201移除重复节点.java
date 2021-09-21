@@ -1,5 +1,7 @@
 package com.itjing.leetcode;
 
+import com.itjing.util.ListNodeUtil;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,14 +13,9 @@ import java.util.Set;
 public class 面试题0201移除重复节点 {
 
     public static void main(String[] args) {
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(1);
-        head.next.next = new ListNode(1);
-        head.next.next.next = new ListNode(1);
-        head.next.next.next.next = new ListNode(2);
-        head.next.next.next.next.next = new ListNode(2);
+        ListNode head = ListNodeUtil.generateListNode();
 
-        ListNode p = removeDuplicateNodes(null);
+        ListNode p = removeDuplicateNodes(head);
         while (p != null) {
             System.out.print(p.val + "\t");
             p = p.next;

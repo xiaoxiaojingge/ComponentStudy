@@ -1,5 +1,7 @@
 package com.itjing.leetcode;
 
+import com.itjing.util.ListNodeUtil;
+
 /**
  * @author: lijing
  * @Date: 2021年09月20日 18:41
@@ -65,7 +67,7 @@ public class Q1290_二进制链表转整数 {
     }
 
     public static void main(String[] args) {
-        ListNode head = new ListNode(1);
+        ListNode head = ListNodeUtil.generateListNode();
 
         System.out.println(getDecimalValue(head));
     }
