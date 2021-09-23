@@ -1,4 +1,4 @@
-package com.itjing.sort;
+package com.itjing.dataStructureStudy.sort;
 
 import lombok.extern.slf4j.Slf4j;
 

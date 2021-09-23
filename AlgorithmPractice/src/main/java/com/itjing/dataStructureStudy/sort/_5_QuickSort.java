@@ -1,4 +1,4 @@
-package com.itjing.sort;
+package com.itjing.dataStructureStudy.sort;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,7 +29,7 @@ public class _5_QuickSort {
 
         Date date2 = new Date();
         String date2Str = simpleDateFormat.format(date2);
-        System.out.println("排序前的时间是=" + date2Str);
+        System.out.println("排序后的时间是=" + date2Str);
         //System.out.println("arr=" + Arrays.toString(arr));
     }
 
@@ -37,12 +37,11 @@ public class _5_QuickSort {
         int l = left; //左下标
         int r = right; //右下标
         //pivot 中轴值
-
         //left + (right - left) / 2 防止溢出
+        //取中间值作为基准值
         int pivot = arr[left + (right - left) / 2];
         int temp = 0; //临时变量，作为交换时使用
-        //while循环的目的是让比pivot 值小放到左边
-        //比pivot 值大放到右边
+        //while循环的目的是让比pivot值小放到左边，比pivot值大放到右边
         while (l < r) {
             //在pivot的左边一直找,找到大于等于pivot值,才退出
             while (arr[l] < pivot) {
@@ -52,9 +51,9 @@ public class _5_QuickSort {
             while (arr[r] > pivot) {
                 r -= 1;
             }
-            //如果l >= r说明pivot 的左右两的值，
+            //如果l == r说明pivot 的左右两的值，
             // 已经按照左边全部是小于等于pivot值，右边全部是大于等于pivot值
-            if (l >= r) {
+            if (l == r) {
                 break;
             }
 
@@ -63,11 +62,14 @@ public class _5_QuickSort {
             arr[l] = arr[r];
             arr[r] = temp;
 
-            //如果交换完后，发现这个arr[l] == pivot值 相等 r--， 前移
+            //这两个if是不让基准值pivot参与交换，不让pivot移动
+            //如果不加判断的话，可能由于和中间值相同，arr[l] 和 arr[r] 位置不动，一直交换，出现死循环
+            //可以自己debug看看
+            //如果交换完后，发现这个arr[l] == pivot值 相等 r--，前移
             if (arr[l] == pivot) {
                 r -= 1;
             }
-            //如果交换完后，发现这个arr[r] == pivot值 相等 l++， 后移
+            //如果交换完后，发现这个arr[r] == pivot值 相等 l++，后移
             if (arr[r] == pivot) {
                 l += 1;
             }

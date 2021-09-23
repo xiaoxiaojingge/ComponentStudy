@@ -1,4 +1,4 @@
-package com.itjing.recursion;
+package com.itjing.dataStructureStudy.recursion;
 
 /**
  * @author: lijing

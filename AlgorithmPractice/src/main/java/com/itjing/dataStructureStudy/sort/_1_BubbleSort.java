@@ -1,4 +1,4 @@
-package com.itjing.sort;
+package com.itjing.dataStructureStudy.sort;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

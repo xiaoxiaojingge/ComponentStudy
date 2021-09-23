@@ -1,4 +1,4 @@
-package com.itjing.sort;
+package com.itjing.dataStructureStudy.sort;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -31,7 +31,7 @@ public class _2_SelectSort {
 
         Date date2 = new Date();
         String date2Str = simpleDateFormat.format(date2);
-        System.out.println("排序前的时间是=" + date2Str);
+        System.out.println("排序后的时间是=" + date2Str);
 
         //System.out.println("排序后");
         //System.out.println(Arrays.toString(arr));
