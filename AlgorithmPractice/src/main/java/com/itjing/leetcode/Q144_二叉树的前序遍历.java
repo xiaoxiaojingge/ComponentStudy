@@ -39,7 +39,6 @@ public class Q144_二叉树的前序遍历 {
         if (root == null) {
             return;
         }
-
         res.add(root.val);
         inorder(root.left, res);
         inorder(root.right, res);
