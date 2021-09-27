@@ -1,0 +1,24 @@
+server:
+  port: 5588
+
+spring:
+  application:
+    name: oss-upload
+  servlet:
+      multipart:
+        max-file-size: 100MB
+        max-request-size: 1000MB
+
+aliyun:
+
+  end-point: # your end-point
+
+  url-prefix: # your url-prefix
+
+  access-key-id: # your access-key-id
+
+  access-key-secret: # your access-key-secret
+
+  bucket-name: # your bucket-name
+
+  file-host: files
