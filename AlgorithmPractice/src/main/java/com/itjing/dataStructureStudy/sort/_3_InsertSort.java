@@ -95,7 +95,7 @@ public class _3_InsertSort {
         for (int i = 1; i < arr.length; i++) {
             //定义待插入的数
             insertVal = arr[i];
-            insertIndex = i - 1; // 即arr[1]的前面这个数的下标
+            insertIndex = i - 1; // 即arr[i]的前面这个数的下标
 
             // 给insertVal 找到插入的位置
             // 说明
