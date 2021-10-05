@@ -30,6 +30,13 @@ public class ListNodeUtil {
         return head.next;
     }
 
+    public static void print(ListNode p) {
+        while (p != null) {
+            System.out.print(p.val + "\t");
+            p = p.next;
+        }
+    }
+
     public static void main(String[] args) {
         ListNode p = generateListNode();
         while (p != null) {
