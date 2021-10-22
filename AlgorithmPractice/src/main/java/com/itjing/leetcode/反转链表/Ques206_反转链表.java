@@ -28,34 +28,29 @@ public class Ques206_反转链表 {
     /**
      * 反转以 a 为头结点的链表,循环实现
      *
-     * @param a
+     * @param head
      * @return
      */
-    ListNode reverse(ListNode a) {
-        ListNode pre, cur, nxt;
-        pre = null;
-        cur = a;
-        nxt = a;
+    ListNode reverseList2(ListNode head) {
+        // 当前节点的前驱节点
+        ListNode pre = null;
+        // 当前节点
+        ListNode cur = head;
+        // 当前节点的后继节点
+        ListNode next = null;
         while (cur != null) {
-            nxt = cur.next;
-            // 逐个结点反转
+            // 首先保存当前节点的后继节点
+            next = cur.next;
+            // 将当前节点指向它的前驱节点
             cur.next = pre;
-            // 更新指针位置
+            // 节点后移
             pre = cur;
-            cur = nxt;
+            cur = next;
         }
-        // 返回反转后的头结点
         return pre;
     }
 
     public static void main(String[] args) {
-        /*ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        head.next.next.next = new ListNode(4);
-        head.next.next.next.next = new ListNode(5);*/
-
-//        ListNode head = null;
         ListNode head = ListNodeUtil.generateListNode();
 
         ListNode revHead = reverseList(head);
