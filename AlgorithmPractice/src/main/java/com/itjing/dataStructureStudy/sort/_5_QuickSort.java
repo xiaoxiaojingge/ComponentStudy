@@ -62,10 +62,11 @@ public class _5_QuickSort {
             arr[l] = arr[r];
             arr[r] = temp;
 
-            //这两个if是不让基准值pivot参与交换，不让pivot移动
-            //如果不加判断的话，可能由于和中间值相同，arr[l] 和 arr[r] 位置不动，一直交换，出现死循环
-            //可以自己debug看看
-            //如果交换完后，发现这个arr[l] == pivot值 相等 r--，前移
+            // 如果不加这两个if判断的话，可能由于两者同时和基准相同，并且，l和r不相等
+            // 造成 arr[l] 和 arr[r] 位置不动，一直交换，出现死循环
+            // 所以要让它们位置动，为的就是当两者同时和基准值相同时，不一直交换
+            // 可以自己debug看看
+            // 如果交换完后，发现这个arr[l] == pivot值 相等 r--，前移
             if (arr[l] == pivot) {
                 r -= 1;
             }
@@ -80,6 +81,7 @@ public class _5_QuickSort {
             l += 1;
             r -= 1;
         }
+
         //向左递归
         if (left < r) {
             quickSort(arr, left, r);
