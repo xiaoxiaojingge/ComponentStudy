@@ -2,9 +2,7 @@ package com.itjing.leetcode;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author: lijing
@@ -35,9 +33,12 @@ import java.util.Map;
 @Slf4j
 public class Q1_两数之和 {
     public static void main(String[] args) {
-        int[] nums = new int[]{2, 7, 11, 15};
+       /* int[] nums = new int[]{2, 7, 11, 15};
         int target = 9;
-        log.info(Arrays.toString(twoSum(nums, target)));
+        log.info(Arrays.toString(twoSum(nums, target)));*/
+
+        int[] nums = new int[]{1, 3, 1, 2, 2, 3};
+        System.out.println(twoSumTarget(nums, 4));
     }
 
     public static int[] twoSum(int[] nums, int target) {
@@ -54,5 +55,37 @@ public class Q1_两数之和 {
             map.put(nums[i], i);
         }
         throw new IllegalArgumentException("No two sum solution");
+    }
+
+
+    public static List<List<Integer>> twoSumTarget(int[] nums, int target) {
+        // 先对数组排序
+        Arrays.sort(nums);
+        List<List<Integer>> res = new ArrayList<>();
+        int left = 0, right = nums.length - 1;
+        while (left < right) {
+            int sum = nums[left] + nums[right];
+            // 记录索引 left 和 right 的最初值
+            int leftNum = nums[left], rightNum = nums[right];
+            // 根据 sum 和 target 的比较，移动左右指针
+            if (sum < target) {
+                while (left < right && nums[left] == leftNum)
+                    left++; // 让 sum 大一点
+            } else if (sum > target) {
+                while (left < right && nums[right] == rightNum)
+                    right--; // 让 sum 小一点
+            } else {
+                List<Integer> twoNum = new ArrayList<>();
+                twoNum.add(nums[left]);
+                twoNum.add(nums[right]);
+                res.add(twoNum);
+                // 跳过所有重复的元素
+                while (left < right && nums[left] == leftNum)
+                    left++;
+                while (left < right && nums[right] == rightNum)
+                    right--;
+            }
+        }
+        return res;
     }
 }
