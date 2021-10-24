@@ -16,7 +16,7 @@ public class Q21_合并两个有序链表 {
      */
     public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         // 创建一个临时头节点，连接合并的两个链表
-        ListNode tempHead = new ListNode(0);
+        ListNode tempHead = new ListNode(-1);
         // 当前结点初始指向临时头节点
         ListNode cur = tempHead;
         // 同时遍历两个链表
@@ -34,15 +34,17 @@ public class Q21_合并两个有序链表 {
             // cur 指向新的下一节点
             cur = cur.next;
         }
-        // 如果 l1 不为 null，则 l2 先遍历完成，将 l1 剩余加到 cur 后
+        //  合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可
         if (l1 != null) {
             cur.next = l1;
         }
-
-        // 同上
         if (l2 != null) {
             cur.next = l2;
         }
+
+        // 或者
+        // cur.next = l1 == null ? l2 : l1;
+
         return tempHead.next;
     }
 }

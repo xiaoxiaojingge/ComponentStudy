@@ -19,15 +19,19 @@ public class Q160_相交链表 {
      * 2、当pA遍历完链表A后，令pA = headB；当pB遍历完链表B后，令pB = headA
      * 3、当较长链表的指针指向较短链表的head时，两链表长度差已消除
      * 4、继续遍历，当pA==pB时，找到了相交节点
-     *
+     * <p>
      * 题解：
      * https://leetcode-cn.com/problems/intersection-of-two-linked-lists/solution/xiang-jiao-lian-biao-by-leetcode-solutio-a8jn/
      * https://leetcode-cn.com/problems/intersection-of-two-linked-lists/solution/tu-jie-xiang-jiao-lian-biao-by-user7208t/
+     *
      * @param headA
      * @param headB
      * @return
      */
     public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null) {
+            return null;
+        }
         ListNode pA = headA, pB = headB;
         while (pA != pB) {
             pA = pA != null ? pA.next : headB;
