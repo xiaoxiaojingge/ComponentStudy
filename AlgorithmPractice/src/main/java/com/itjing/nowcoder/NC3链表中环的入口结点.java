@@ -56,7 +56,7 @@ public class NC3链表中环的入口结点 {
                 break;
             }
         }
-        // 其中一种为null，则说明没有环
+        // fast 遇到空指针说明没有环
         /*if(fast==null||fast.next==null)
             return null;*/
         if (!hasCycle) {

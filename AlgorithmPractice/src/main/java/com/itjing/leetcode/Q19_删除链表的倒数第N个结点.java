@@ -35,7 +35,6 @@ public class Q19_删除链表的倒数第N个结点 {
         if (head == null) {
             return head;
         }
-
         // 定义双指针
         ListNode slow, fast;
         slow = fast = head;
@@ -47,6 +46,10 @@ public class Q19_删除链表的倒数第N个结点 {
         for (int i = 0; i < n; i++) {
             fast = fast.next;
         }
+        // fast 为 null，说明待删除节点为头结点
+        if(fast==null){
+            return head.next;
+        }
         // 双指针同时走
         while (fast != null) {
             pre = slow;
@@ -56,12 +59,6 @@ public class Q19_删除链表的倒数第N个结点 {
         // 快指针走到头了，则慢指针位置即为倒数第n个节点
         // 连接待删除的节点前驱和后继节点
         pre.next = slow.next;
-
-        // 待删除节点为头结点
-        if (slow == head) {
-            return head.next;
-        }
-
         return head;
     }
 }
