@@ -312,6 +312,13 @@
             <version>2.12.1</version>
         </dependency>
 
+        <!-- java faker 用于制造假数据 -->
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+
 
         <!-- spring retry -->
         <dependency>

@@ -25,10 +25,12 @@ public class Generation {
 
     public static void main(String[] args) {
 
+
+
         //数据源
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setDriverClassName("com.mysql.jdbc.Driver");
-        hikariConfig.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/xxl_job?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8");
+        hikariConfig.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/jnbdc?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8");
         hikariConfig.setUsername("root");
         hikariConfig.setPassword("root");
 
@@ -41,12 +43,13 @@ public class Generation {
         hikariConfig.addDataSourceProperty("cachePrepStmts", "true");
         hikariConfig.addDataSourceProperty("prepStmtCacheSize", "250");
         hikariConfig.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+        hikariConfig.addDataSourceProperty("useInformationSchema", "true");
 
         DataSource dataSource = new HikariDataSource(hikariConfig);
 
         EngineConfig engineConfig = EngineConfig.builder()
                 //导出文件地址
-                .fileOutputDir("E:\\workspace_idea\\ComponentStudy")
+                .fileOutputDir("E:\\workspace_idea\\ComponentStudy\\generateDatabaseDoc\\src\\main\\resources")
                 //是否打开文件夹
                 .openOutputDir(true)
                 //文件类型:html、doc、mockdown
@@ -89,7 +92,7 @@ public class Generation {
                 //根据名称指定表生成
 //                .designatedTableName(Arrays.asList("user"))
                 //根据表前缀生成("a")
-                .designatedTablePrefix(new ArrayList<>())
+                .designatedTablePrefix(Arrays.asList("bdc_"))
                 //根据表后缀生成("_user")
                 .designatedTableSuffix(new ArrayList<>())
                 //忽略表名

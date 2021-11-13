@@ -57,6 +57,8 @@
         <module>hello-netty</module>
         <!-- SpringSecurity demo -->
         <module>springsecuritydemo</module>
+        <!-- mybatis-generator -->
+        <module>mybatis-generator</module>
 
     </modules>
 

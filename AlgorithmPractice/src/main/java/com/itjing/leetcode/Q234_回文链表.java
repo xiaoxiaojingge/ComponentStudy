@@ -1,6 +1,4 @@
-package com.itjing.leetcode.反转链表;
-
-import com.itjing.leetcode.ListNode;
+package com.itjing.leetcode;
 
 /**
  * @author: lijing
