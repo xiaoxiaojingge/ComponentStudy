@@ -6,14 +6,45 @@ spring:
     name: mybatis-generator
 
   datasource:
+    name: mysql
+    type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/springboot?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-    username: root
-    password: root
+    username: lFXOP0dSdk+6j0rj60HZhg==
+    password: lFXOP0dSdk+6j0rj60HZhg==
+    initialSize: 10
+    maxActive: 100
+    minIdle: 10
+    maxWait: 6000
+
+    druid:
+      filters: stat
+      maxActive: 20
+      initialSize: 1
+      maxWait: 60000
+      minIdle: 10
+      maxIdle: 15
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      maxOpenPreparedStatements: 20
+      removeAbandoned: true
+      removeAbandonedTimeout: 1800
+      logAbandoned: true
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      stat-view-servlet:
+        enabled: false
 
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml
 
 logging:
   level:
-    com.itjing: debug
+    com.itjing.mapper: debug
+
+# 数据源用户名和密码加解密使用的密码
+key-code: eiruewifmskru3
