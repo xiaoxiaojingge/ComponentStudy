@@ -1,16 +1,9 @@
 package com.itjing.controller;
 
+import com.alibaba.excel.EasyExcelFactory;
 import com.itjing.entity.Article;
 import com.itjing.service.ArticleService;
 import com.itjing.utils.DateUtils;
-import com.itjing.utils.DownloadUtil;
-import com.itjing.utils.ExcelExportUtil;
-import net.sf.jxls.transformer.XLSTransformer;
-import org.apache.poi.hssf.usermodel.HSSFCellStyle;
-import org.apache.poi.hssf.usermodel.HSSFRichTextString;
-import org.apache.poi.hssf.util.HSSFColor;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author lijing
@@ -42,19 +36,19 @@ public class ExcelController {
 
     /**
      * exportExcel by xyhj
-     *
+     * 原生写法
      * @param request
      * @param response
      * @throws IOException
      */
-    @GetMapping("/exportExcelOne")
+    /*@GetMapping("/exportExcelOne")
     public void exportExcelOne(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        /*----------数据区域----------*/
+
         List<Article> articles = aricleService.selectAll(null);
         List<Article> dataList1 = articles;
         List<Article> dataList2 = articles;
-        /*----------数据区域----------*/
+
 
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
@@ -139,15 +133,16 @@ public class ExcelController {
         workbook.write(baos);
         baos.close();
         downUtil.download(baos, request, response, "exportExcel.xlsx");
-    }
+    }*/
 
 
     /**
-     * xportExcel by rx
+     * exportExcel by rx
      *
      * @param request
      * @param response
      */
+/*
     @GetMapping("/exportExcelTwo")
     public void exportExcelTwo(HttpServletRequest request, HttpServletResponse response) {
         Map map = new HashMap<>();
@@ -166,14 +161,14 @@ public class ExcelController {
             );
             // 此方法第一个参数是传入读取的模板输入流，第二个为hashMap
             // hashMap的 key 为你在excel 表格中输入的 key 值，value 为你要传入参数的值
-            /**
-             *  在 模板 excel 中添加以下模板
-             *            A                    B                 C
-             *    1      标题	             作者	           内容
-             *    2  <jx:forEach items="${data}" var="article">
-             *    3  ${article.title}	${article.author}   ${article.content}
-             *    4  </jx:forEach>
-             */
+            //
+//               在 模板 excel 中添加以下模板
+//                         A                    B                 C
+//                 1      标题	             作者	           内容
+//                 2  <jx:forEach items="${data}" var="article">
+//                 3  ${article.title}	${article.author}   ${article.content}
+//                 4  </jx:forEach>
+//
             Workbook workbook = xlsTransformer.transformXLS(is, map);
             Sheet sheet = workbook.getSheet("Sheet1");
             Row row = sheet.getRow(0);
@@ -203,6 +198,7 @@ public class ExcelController {
             }
         }
     }
+*/
 
     /**
      * 发送响应流方法
@@ -224,5 +220,47 @@ public class ExcelController {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    /**
+     * easyexcel by alibaba
+     * 目前感觉这个挺好用，之前两个也还行
+     * 文档： https://www.yuque.com/easyexcel/doc/easyexcel
+     * @param request
+     * @param response
+     */
+    @GetMapping("/exportExcelThree")
+    public void exportExcelThree(HttpServletRequest request, HttpServletResponse response) {
+
+        // 表示要导出的数据
+        List<Article> articles = aricleService.selectAll(null);
+
+        // 定义输出文件名称
+        String excelName = "信息导出-" + DateUtils.formatDate(new Date(), "yyyy-MM-dd") + ".xlsx";
+
+        // 导出本地文件
+       /* File file = File.c("E:\\workspace_idea\\ComponentStudy\\mybatis-generator\\src\\main\\resources\\download\\" + excelName);
+        // 写入本地文件中
+        EasyExcel.write(file, Article.class)
+                .sheet("文章信息")
+                .doWrite(articles);
+        */
+
+        // web页面导出下载
+        ServletOutputStream out = null;
+        try {
+            response.setContentType("application/octet-stream;charset=ISO8859-1");
+            response.addHeader("Content-Disposition","attachment;filename=" + URLEncoder.encode(excelName, "utf-8"));
+            response.addHeader("Pargam", "no-cache");
+            response.addHeader("Cache-Control", "no-cache");
+            out = response.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // 写入到浏览器
+        EasyExcelFactory.write(out, Article.class)
+                .sheet("文章导出")
+                .doWrite(articles);
+
     }
 }

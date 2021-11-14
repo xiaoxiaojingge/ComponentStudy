@@ -64,24 +64,34 @@
         </dependency>
         <!-- excel by xyhj -->
         <!-- xls(03) -->
-        <dependency>
+       <!-- <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
             <version>3.9</version>
-        </dependency>
+        </dependency>-->
         <!-- xlsx(07) -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>3.9</version>
-        </dependency>
+        </dependency>-->
 
         <!-- excel by rx -->
-        <dependency>
+        <!--<dependency>
             <groupId>net.sf.jxls</groupId>
             <artifactId>jxls-core</artifactId>
             <version>1.0.5</version>
+        </dependency>-->
+
+        <!-- easyexcel by alibaba -->
+        <!-- 我把上面两种相关代码和依赖注释掉了，因为和这个easyexcel版本冲突 -->
+        <!-- 以后使用的时候选择一种使用就行了 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <version>3.0.5</version>
         </dependency>
+
 
 
     </dependencies>

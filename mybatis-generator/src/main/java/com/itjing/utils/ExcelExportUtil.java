@@ -1,14 +1,6 @@
 package com.itjing.utils;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import org.apache.poi.hssf.usermodel.HSSFCellStyle;
-import org.apache.poi.hssf.usermodel.HSSFFont;
-import org.apache.poi.hssf.util.HSSFColor;
-import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
-import org.apache.poi.xssf.usermodel.XSSFCellStyle;
-import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +10,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.List;
 
 /**
  * @author lijing
@@ -43,7 +34,7 @@ public class ExcelExportUtil {
      * @param fieldNames     查询出的字段list
      * @return
      */
-    public static <T, S> SXSSFWorkbook export(String messageService,
+   /* public static <T, S> SXSSFWorkbook export(String messageService,
                                               String keyName,
                                               List<T> list,
                                               List<String> fieldNames) {
@@ -83,16 +74,9 @@ public class ExcelExportUtil {
             }
 
         }
-
-        /*
-         * for (int k = 0; k < fieldNames.size(); k++ ) {
-         * // poi提供的自动调整每列的宽度,但是不兼容中文调整
-         * sheet.autoSizeColumn(k);
-         * }
-         */
         setSizeColumn(sheet, fieldNames.size(), 20000);
         return wb;
-    }
+    }*/
 
     /**
      * 调整列宽,兼容中文
@@ -100,7 +84,7 @@ public class ExcelExportUtil {
      * @param sheet
      * @param size
      */
-    public static void setSizeColumn(Sheet sheet, int size, int maxWidth) {
+   /* public static void setSizeColumn(Sheet sheet, int size, int maxWidth) {
         for (int columnNum = 0; columnNum < size; columnNum++) {
             int columnWidth = sheet.getColumnWidth(columnNum) / 256;
             for (int rowNum = 0; rowNum < sheet.getLastRowNum(); rowNum++) {
@@ -133,7 +117,7 @@ public class ExcelExportUtil {
             //设置每列长度
             sheet.setColumnWidth(columnNum, columnWidth);
         }
-    }
+    }*/
 
     /**
      * 通过浏览器workbook以流的形式输出
@@ -193,7 +177,7 @@ public class ExcelExportUtil {
      * @param workbook
      * @return
      */
-    public static CellStyle getColumnTopStyle(SXSSFWorkbook workbook) {
+    /*public static CellStyle getColumnTopStyle(SXSSFWorkbook workbook) {
         // 设置字体
         Font font = workbook.createFont();
         // 设置字体大小
@@ -229,7 +213,7 @@ public class ExcelExportUtil {
         // 设置垂直对齐的样式为居中对齐;
         style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
         return style;
-    }
+    }*/
 
     /**
      * 设置表体的单元格样式
@@ -237,7 +221,7 @@ public class ExcelExportUtil {
      * @param workbook
      * @return
      */
-    public static CellStyle getBodyStyle(SXSSFWorkbook workbook) {
+   /* public static CellStyle getBodyStyle(SXSSFWorkbook workbook) {
         // 创建单元格样式
         CellStyle cellStyle = workbook.createCellStyle();
         // 设置单元格居中对齐
@@ -260,5 +244,5 @@ public class ExcelExportUtil {
         cellStyle.setBorderRight(XSSFCellStyle.BORDER_THIN);
         cellStyle.setBorderTop(XSSFCellStyle.BORDER_THIN);
         return cellStyle;
-    }
+    }*/
 }
