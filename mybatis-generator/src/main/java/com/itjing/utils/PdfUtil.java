@@ -1,4 +1,4 @@
-package com.itjing.utils;
+package com.spdb.speed4j.modules.jnbdc.util;
 
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
@@ -29,9 +29,8 @@ public class PdfUtil {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PdfUtil.class);
 
-
     /**
-     * 生成字节数组，可以导出到浏览器等
+     * 使用map中的参数填充pdf，map中的key和pdf表单中的field对应，导出到Web浏览器
      * @param fieldValueMap
      * @param file
      * @return
@@ -51,7 +50,7 @@ public class PdfUtil {
                 AcroFields acroFields = stamper.getAcroFields();
                 for (String key : acroFields.getFields().keySet()) {
                     acroFields.setFieldProperty(key, "textfont", base, null);
-                    acroFields.setFieldProperty(key, "textsize", new Float(9), null);
+                    acroFields.setFieldProperty(key, "textsize", new Float(10), null);
                 }
                 if (fieldValueMap != null) {
                     // 表单处理
@@ -63,6 +62,72 @@ public class PdfUtil {
                             }
                         }
                     }
+
+                    // 二维码处理
+                    Map<String, Object> qrcodeFields = fieldValueMap.get("qrcodeFields");
+                    if (qrcodeFields != null) {
+                        //遍历二维码字段
+                        for (Map.Entry<String, Object> entry : qrcodeFields.entrySet()) {
+                            String key = entry.getKey();
+                            Object value = entry.getValue();
+                            // 获取属性的类型
+                            if (value != null && acroFields.getField(key) != null) {
+                                //获取位置(左上右下)
+                                AcroFields.FieldPosition fieldPosition = acroFields.getFieldPositions(key).get(0);
+                                //绘制二维码
+                                float width = fieldPosition.position.getRight() - fieldPosition.position.getLeft();
+                                BarcodeQRCode pdf417 = new BarcodeQRCode(value.toString(), (int) width, (int) width, null);
+                                //生成二维码图像
+                                Image image128 = pdf417.getImage();
+                                //绘制在第一页
+                                PdfContentByte cb = stamper.getOverContent(1);
+                                //左边距(居中处理)
+                                float marginLeft = (fieldPosition.position.getRight() - fieldPosition.position.getLeft() - image128.getWidth()) / 2;
+                                //二维码位置
+                                image128.setAbsolutePosition(fieldPosition.position.getLeft() + marginLeft, fieldPosition.position.getBottom());
+                                //加入二维码
+                                cb.addImage(image128);
+                            }
+                        }
+                    }
+
+                    // 条形码处理
+                    Map<String, Object> barcodeFields = fieldValueMap.get("barcodeFields");
+                    if (barcodeFields != null) {
+                        // 遍历条码字段
+                        for (Map.Entry<String, Object> entry : barcodeFields.entrySet()) {
+                            String key = entry.getKey();
+                            Object value = entry.getValue();
+                            // 获取属性的类型
+                            if (value != null && acroFields.getField(key) != null) {
+                                //获取位置(左上右下)
+                                AcroFields.FieldPosition fieldPosition = acroFields.getFieldPositions(key).get(0);
+                                //绘制条码
+                                Barcode128 barcode128 = new Barcode128();
+                                //字号
+                                barcode128.setSize(10);
+                                //条码高度
+                                barcode128.setBarHeight(35);
+                                //条码与数字间距
+                                barcode128.setBaseline(10);
+                                //条码值
+                                barcode128.setCode(value.toString());
+                                barcode128.setStartStopText(false);
+                                barcode128.setExtended(true);
+                                //绘制在第一页
+                                PdfContentByte cb = stamper.getOverContent(1);
+                                //生成条码图片
+                                Image image128 = barcode128.createImageWithBarcode(cb, null, null);
+                                //左边距(居中处理)
+                                float marginLeft = (fieldPosition.position.getRight() - fieldPosition.position.getLeft() - image128.getWidth()) / 2;
+                                //条码位置
+                                image128.setAbsolutePosition(fieldPosition.position.getLeft() + marginLeft, fieldPosition.position.getBottom());
+                                //加入条码
+                                cb.addImage(image128);
+                            }
+                        }
+                    }
+
                     // 图片处理
                     Map<String, Object> imgmap = fieldValueMap.get("imageMap");
                     if (imgmap != null) {
@@ -143,6 +208,72 @@ public class PdfUtil {
                             }
                         }
                     }
+
+                    // 二维码处理
+                    Map<String, Object> qrcodeFields = fieldValueMap.get("qrcodeFields");
+                    if (qrcodeFields != null) {
+                        //遍历二维码字段
+                        for (Map.Entry<String, Object> entry : qrcodeFields.entrySet()) {
+                            String key = entry.getKey();
+                            Object value = entry.getValue();
+                            // 获取属性的类型
+                            if (value != null && acroFields.getField(key) != null) {
+                                //获取位置(左上右下)
+                                AcroFields.FieldPosition fieldPosition = acroFields.getFieldPositions(key).get(0);
+                                //绘制二维码
+                                float width = fieldPosition.position.getRight() - fieldPosition.position.getLeft();
+                                BarcodeQRCode pdf417 = new BarcodeQRCode(value.toString(), (int) width, (int) width, null);
+                                //生成二维码图像
+                                Image image128 = pdf417.getImage();
+                                //绘制在第一页
+                                PdfContentByte cb = stamper.getOverContent(1);
+                                //左边距(居中处理)
+                                float marginLeft = (fieldPosition.position.getRight() - fieldPosition.position.getLeft() - image128.getWidth()) / 2;
+                                //二维码位置
+                                image128.setAbsolutePosition(fieldPosition.position.getLeft() + marginLeft, fieldPosition.position.getBottom());
+                                //加入二维码
+                                cb.addImage(image128);
+                            }
+                        }
+                    }
+
+                    // 条形码处理
+                    Map<String, Object> barcodeFields = fieldValueMap.get("barcodeFields");
+                    if (barcodeFields != null) {
+                        // 遍历条码字段
+                        for (Map.Entry<String, Object> entry : barcodeFields.entrySet()) {
+                            String key = entry.getKey();
+                            Object value = entry.getValue();
+                            // 获取属性的类型
+                            if (value != null && acroFields.getField(key) != null) {
+                                //获取位置(左上右下)
+                                AcroFields.FieldPosition fieldPosition = acroFields.getFieldPositions(key).get(0);
+                                //绘制条码
+                                Barcode128 barcode128 = new Barcode128();
+                                //字号
+                                barcode128.setSize(10);
+                                //条码高度
+                                barcode128.setBarHeight(35);
+                                //条码与数字间距
+                                barcode128.setBaseline(10);
+                                //条码值
+                                barcode128.setCode(value.toString());
+                                barcode128.setStartStopText(false);
+                                barcode128.setExtended(true);
+                                //绘制在第一页
+                                PdfContentByte cb = stamper.getOverContent(1);
+                                //生成条码图片
+                                Image image128 = barcode128.createImageWithBarcode(cb, null, null);
+                                //左边距(居中处理)
+                                float marginLeft = (fieldPosition.position.getRight() - fieldPosition.position.getLeft() - image128.getWidth()) / 2;
+                                //条码位置
+                                image128.setAbsolutePosition(fieldPosition.position.getLeft() + marginLeft, fieldPosition.position.getBottom());
+                                //加入条码
+                                cb.addImage(image128);
+                            }
+                        }
+                    }
+
                     // 图片处理
                     Map<String, Object> imgmap = fieldValueMap.get("imageMap");
                     if (imgmap != null) {
@@ -197,11 +328,10 @@ public class PdfUtil {
     }
 
     /**
-     * 微软宋体字体
+     * 微软宋体字体，设定字体
      *
      * @return
      */
-    //设定字体
     private static BaseFont getMsyhBaseFont() throws IOException, DocumentException {
         try {
             // windows里的字体资源路径
