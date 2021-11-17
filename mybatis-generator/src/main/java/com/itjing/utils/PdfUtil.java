@@ -1,4 +1,4 @@
-package com.spdb.speed4j.modules.jnbdc.util;
+package com.itjing.utils;
 
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
@@ -104,6 +104,9 @@ public class PdfUtil {
                                 AcroFields.FieldPosition fieldPosition = acroFields.getFieldPositions(key).get(0);
                                 //绘制条码
                                 Barcode128 barcode128 = new Barcode128();
+                                //设置font为null即可
+                                //不要显示文字或者数字
+                                barcode128.setFont(null);
                                 //字号
                                 barcode128.setSize(10);
                                 //条码高度
@@ -250,6 +253,9 @@ public class PdfUtil {
                                 AcroFields.FieldPosition fieldPosition = acroFields.getFieldPositions(key).get(0);
                                 //绘制条码
                                 Barcode128 barcode128 = new Barcode128();
+                                //设置font为null即可
+                                //不要显示文字或者数字
+                                barcode128.setFont(null);
                                 //字号
                                 barcode128.setSize(10);
                                 //条码高度
