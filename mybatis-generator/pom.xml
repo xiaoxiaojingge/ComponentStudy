@@ -104,6 +104,12 @@
             <version>5.2.0</version>
         </dependency>
 
+        <!-- 定时任务 -->
+        <!-- 使用 Springboot整合的quartz建议直接去主配置yaml文件中配置相关信息 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
+        </dependency>
 
     </dependencies>
 

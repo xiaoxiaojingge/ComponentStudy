@@ -1,4 +1,4 @@
-package com.itjing;
+package com.itjing.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.itjing.utils.AESUtil;
