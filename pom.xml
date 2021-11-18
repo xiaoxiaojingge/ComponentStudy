@@ -41,8 +41,6 @@
         <module>seckillsystem</module>
         <!-- 秒杀系统各种情况 -->
         <module>spring-boot-seckill</module>
-        <!-- springboot集成quartz实现定时任务 -->
-        <module>springboot-quartz</module>
         <!-- 十大经典排序算法大梳理 -->
         <module>sort_algorithm</module>
         <!-- redis lua脚本使用 -->
@@ -59,7 +57,12 @@
         <module>springsecuritydemo</module>
         <!-- mybatis-generator -->
         <module>mybatis-generator</module>
-
+        <!-- 算法练习 -->
+        <module>AlgorithmPractice</module>
+        <!-- springboot集成quartz实现定时任务，使用 starter -->
+        <module>springboot-quartz</module>
+        <!-- 测试使用docker，编写dockerfile部署项目 -->
+        <module>docker-image</module>
     </modules>
 
 </project>

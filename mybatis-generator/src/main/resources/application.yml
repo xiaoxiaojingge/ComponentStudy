@@ -51,7 +51,6 @@ spring:
         quartz:
           # JobStore 相关配置
           jobStore:
-            dataSource: mysql # 使用的数据源
             class: org.quartz.impl.jdbcjobstore.JobStoreTX # JobStore 实现类
             driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
             tablePrefix: QRTZ_ # Quartz 表前缀

@@ -1,0 +1,5 @@
+server:
+  port: 8888 #
+
+hello:
+  msg: hello, i'm default msg!
