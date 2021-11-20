@@ -63,6 +63,8 @@
         <module>springboot-quartz</module>
         <!-- 测试使用docker，编写dockerfile部署项目 -->
         <module>docker-image</module>
+        <!-- Spring Boot 使用 Servlet/Filter/Listener -->
+        <module>springboot-servlet</module>
     </modules>
 
 </project>
