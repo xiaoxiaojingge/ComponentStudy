@@ -1,0 +1,1573 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.dy.reiss.wiztek.cn/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://jaxb.dev.java.net/array" name="IDyWsServiceService" targetNamespace="http://service.dy.reiss.wiztek.cn/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.dy.reiss.wiztek.cn/" targetNamespace="http://service.dy.reiss.wiztek.cn/" version="1.0">
+
+  <xs:complexType name="jgxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bj" type="xs:string"/>
+      <xs:element minOccurs="0" name="jg" type="xs:string"/>
+      <xs:element minOccurs="0" name="sm" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ywcsjg">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="csjg" type="xs:string"/>
+      <xs:element minOccurs="0" name="dylx" type="xs:string"/>
+      <xs:element minOccurs="0" name="dyqrmc" type="xs:string"/>
+      <xs:element minOccurs="0" name="dyrmc" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="fwzl" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="slsj" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="tjyy" type="xs:string"/>
+      <xs:element minOccurs="0" name="ywh" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="htxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bj" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="fwzl" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dzqz">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="lx" type="xs:string"/>
+      <xs:element minOccurs="0" name="qz" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="sm" type="xs:string"/>
+      <xs:element minOccurs="0" name="ywh" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="qtjk">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bsm" type="xs:long"/>
+      <xs:element minOccurs="0" name="bz" type="xs:string"/>
+      <xs:element minOccurs="0" name="dysj" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="gxsj" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="jkff" type="xs:string"/>
+      <xs:element minOccurs="0" name="jkfhzt" type="xs:string"/>
+      <xs:element minOccurs="0" name="jklx" type="xs:string"/>
+      <xs:element minOccurs="0" name="sm" type="xs:string"/>
+      <xs:element minOccurs="0" name="yj" type="xs:string"/>
+      <xs:element minOccurs="0" name="ywbsm" type="xs:long"/>
+      <xs:element minOccurs="0" name="ywh" type="xs:string"/>
+      <xs:element minOccurs="0" name="zt" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="zzxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bj" type="xs:string"/>
+      <xs:element minOccurs="0" name="sm" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="bjxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bj" type="xs:string"/>
+      <xs:element minOccurs="0" name="sm" type="xs:string"/>
+      <xs:element minOccurs="0" name="ywh" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cxSqrxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="lxdh" type="xs:string"/>
+      <xs:element minOccurs="0" name="xm" type="xs:string"/>
+      <xs:element minOccurs="0" name="zjhm" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="zmxx">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="cxSqrList" nillable="true" type="tns:cxSqrxx"/>
+      <xs:element minOccurs="0" name="cxsj" type="xs:dateTime"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="zmFwxxList" nillable="true" type="tns:zmFwxx"/>
+      <xs:element minOccurs="0" name="zmh" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="zmFwxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cqrxm" type="xs:string"/>
+      <xs:element minOccurs="0" name="djsj" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="fwzl" type="xs:string"/>
+      <xs:element minOccurs="0" name="mj" type="xs:double"/>
+      <xs:element minOccurs="0" name="qsqdfs" type="xs:string"/>
+      <xs:element minOccurs="0" name="qszt" type="xs:string"/>
+      <xs:element minOccurs="0" name="qtxz" type="xs:string"/>
+      <xs:element minOccurs="0" name="qzh" type="xs:string"/>
+      <xs:element minOccurs="0" name="yt" type="xs:string"/>
+      <xs:element minOccurs="0" name="ywcf" type="xs:string"/>
+      <xs:element minOccurs="0" name="ywdy" type="xs:string"/>
+      <xs:element minOccurs="0" name="ywyy" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xzxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bj" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="xzsmList" nillable="true" type="tns:xzsm"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xzsm">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="lx" type="xs:string"/>
+      <xs:element minOccurs="0" name="sm" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="bjgyw">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bj" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="bjgywList" nillable="true" type="tns:bjgYwxx"/>
+      <xs:element minOccurs="0" name="by" type="xs:string"/>
+      <xs:element minOccurs="0" name="bz" type="xs:string"/>
+      <xs:element minOccurs="0" name="sm" type="xs:string"/>
+      <xs:element name="ywCount" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="bjgYwxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dbsj" type="xs:string"/>
+      <xs:element minOccurs="0" name="djdl" type="xs:string"/>
+      <xs:element minOccurs="0" name="djxl" type="xs:string"/>
+      <xs:element minOccurs="0" name="djzl" type="xs:string"/>
+      <xs:element minOccurs="0" name="fwzl" type="xs:string"/>
+      <xs:element minOccurs="0" name="qlrmc" type="xs:string"/>
+      <xs:element minOccurs="0" name="sm" type="xs:string"/>
+      <xs:element minOccurs="0" name="ywh" type="xs:string"/>
+      <xs:element minOccurs="0" name="zjhm" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ywxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dylb" type="xs:string"/>
+      <xs:element minOccurs="0" name="dyxx" type="tns:dyxx"/>
+      <xs:element minOccurs="0" name="dyzl" type="xs:string"/>
+      <xs:element minOccurs="0" name="fj" type="xs:string"/>
+      <xs:element minOccurs="0" name="fjsxtywh" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="hbsmList" nillable="true" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="htwbList" nillable="true" type="tns:htwb"/>
+      <xs:element minOccurs="0" name="qzh" type="xs:string"/>
+      <xs:element minOccurs="0" name="slsj" type="xs:dateTime"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="sqrxxList" nillable="true" type="tns:sqrxx"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="szdaList" nillable="true" type="tns:szdaxx"/>
+      <xs:element minOccurs="0" name="xzq" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dyxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bdbzzqse" type="xs:double"/>
+      <xs:element minOccurs="0" name="cszwzqyy" type="xs:string"/>
+      <xs:element minOccurs="0" name="dkyt" type="xs:string"/>
+      <xs:element minOccurs="0" name="dyfw" type="xs:string"/>
+      <xs:element minOccurs="0" name="dyhtbh" type="xs:string"/>
+      <xs:element minOccurs="0" name="dyjz" type="xs:double"/>
+      <xs:element minOccurs="0" name="gtdbsx" type="xs:string"/>
+      <xs:element minOccurs="0" name="jkhth" type="xs:string"/>
+      <xs:element minOccurs="0" name="qtydsx" type="xs:string"/>
+      <xs:element minOccurs="0" name="zgzqse" type="xs:double"/>
+      <xs:element minOccurs="0" name="zwlxjssj" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="zwlxqssj" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="zxyy" type="xs:string"/>
+      <xs:element minOccurs="0" name="zzqhtbh" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="htwb">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="htlx" type="xs:string"/>
+      <xs:element minOccurs="0" name="wb" type="xs:string"/>
+      <xs:element minOccurs="0" name="wblx" type="xs:string"/>
+      <xs:element minOccurs="0" name="wzht" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="wzhtlx" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sqrxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="lxdh" type="xs:string"/>
+      <xs:element minOccurs="0" name="sfhtjc" type="xs:string"/>
+      <xs:element minOccurs="0" name="sqrlx" type="xs:string"/>
+      <xs:element minOccurs="0" name="sqrmc" type="xs:string"/>
+      <xs:element minOccurs="0" name="tp" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="tpdz" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="xgrxxList" nillable="true" type="tns:sqrxx"/>
+      <xs:element minOccurs="0" name="xsd" type="xs:string"/>
+      <xs:element minOccurs="0" name="zjhm" type="xs:string"/>
+      <xs:element minOccurs="0" name="zjlx" type="xs:string"/>
+      <xs:element minOccurs="0" name="ztlx" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="szdaxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fileid" type="xs:string"/>
+      <xs:element minOccurs="0" name="lx" type="xs:string"/>
+      <xs:element minOccurs="0" name="tjclmc" type="xs:string"/>
+      <xs:element minOccurs="0" name="tp" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="tpdz" type="xs:string"/>
+      <xs:element minOccurs="0" name="ym" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dyzmxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bdczmh" type="xs:string"/>
+      <xs:element minOccurs="0" name="bz" type="xs:string"/>
+      <xs:element minOccurs="0" name="dyqrmc" type="xs:string"/>
+      <xs:element minOccurs="0" name="dyrmc" type="xs:string"/>
+      <xs:element minOccurs="0" name="fzdd" type="xs:string"/>
+      <xs:element minOccurs="0" name="sfylz" type="xs:string"/>
+      <xs:element minOccurs="0" name="zjhm" type="xs:string"/>
+      <xs:element minOccurs="0" name="zl" type="xs:string"/>
+      <xs:element minOccurs="0" name="zt" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="bjxx2">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bj" type="xs:string"/>
+      <xs:element minOccurs="0" name="sm" type="xs:string"/>
+      <xs:element minOccurs="0" name="ywh" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="lsyw">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bz" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="dbywList" nillable="true" type="tns:dbyw"/>
+      <xs:element name="pagecount" type="xs:int"/>
+      <xs:element minOccurs="0" name="sm" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dbyw">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bdbzqse" type="xs:double"/>
+      <xs:element minOccurs="0" name="djlb" type="xs:string"/>
+      <xs:element minOccurs="0" name="dyjz" type="xs:double"/>
+      <xs:element minOccurs="0" name="qlrmc" type="xs:string"/>
+      <xs:element minOccurs="0" name="ywh" type="xs:string"/>
+      <xs:element minOccurs="0" name="ywrmc" type="xs:string"/>
+      <xs:element minOccurs="0" name="zwrmc" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tempYwxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dyrmc" type="xs:string"/>
+      <xs:element minOccurs="0" name="fjsxtywh" type="xs:string"/>
+      <xs:element minOccurs="0" name="hbsm" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="bdcxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cxsj" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="djsj" type="xs:dateTime"/>
+      <xs:element name="dyqsw" type="xs:int"/>
+      <xs:element minOccurs="0" name="dyxx" type="tns:dyxx"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="fwxxList" nillable="true" type="tns:fwxx"/>
+      <xs:element minOccurs="0" name="fwxz" type="xs:string"/>
+      <xs:element minOccurs="0" name="gyqk" type="xs:string"/>
+      <xs:element minOccurs="0" name="jznd" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="qlrxxList" nillable="true" type="tns:qlrxx"/>
+      <xs:element minOccurs="0" name="qsqdfs" type="xs:string"/>
+      <xs:element minOccurs="0" name="qszt" type="xs:string"/>
+      <xs:element minOccurs="0" name="qzh" type="xs:string"/>
+      <xs:element minOccurs="0" name="sfyg" type="xs:string"/>
+      <xs:element minOccurs="0" name="sm" type="xs:string"/>
+      <xs:element minOccurs="0" name="szlc" type="xs:string"/>
+      <xs:element minOccurs="0" name="xzq" type="xs:string"/>
+      <xs:element minOccurs="0" name="zcs" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="fwxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bdcdyh" type="xs:string"/>
+      <xs:element minOccurs="0" name="cfqk" type="xs:string"/>
+      <xs:element minOccurs="0" name="dyqk" type="xs:string"/>
+      <xs:element minOccurs="0" name="fwyt" type="xs:string"/>
+      <xs:element minOccurs="0" name="fwzl" type="xs:string"/>
+      <xs:element minOccurs="0" name="hbsm" type="xs:int"/>
+      <xs:element minOccurs="0" name="jzmj" type="xs:double"/>
+      <xs:element minOccurs="0" name="jzqqk" type="xs:string"/>
+      <xs:element minOccurs="0" name="tdsynx" type="xs:string"/>
+      <xs:element minOccurs="0" name="tdyt" type="xs:string"/>
+      <xs:element minOccurs="0" name="ygqk" type="xs:string"/>
+      <xs:element minOccurs="0" name="yyqk" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="qlrxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="lx" type="xs:string"/>
+      <xs:element minOccurs="0" name="qlrmc" type="xs:string"/>
+      <xs:element minOccurs="0" name="zjhm" type="xs:string"/>
+      <xs:element minOccurs="0" name="zjlx" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ywfzxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bdczryd" type="xs:string"/>
+      <xs:element minOccurs="0" name="djbj" type="xs:string"/>
+      <xs:element minOccurs="0" name="dkfs" type="xs:string"/>
+      <xs:element minOccurs="0" name="dyyy" type="xs:string"/>
+      <xs:element minOccurs="0" name="lcmc" type="xs:string"/>
+      <xs:element minOccurs="0" name="qrfs" type="xs:string"/>
+      <xs:element minOccurs="0" name="sfdzzs" type="xs:string"/>
+      <xs:element minOccurs="0" name="sfsysbb" type="xs:string"/>
+      <xs:element minOccurs="0" name="sfzryd" type="xs:string"/>
+      <xs:element minOccurs="0" name="sfzytssldy" type="xs:string"/>
+      <xs:element minOccurs="0" name="yd1" type="xs:string"/>
+      <xs:element minOccurs="0" name="yd2" type="xs:string"/>
+      <xs:element minOccurs="0" name="ywh" type="xs:string"/>
+      <xs:element minOccurs="0" name="zdyzx" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="qzqks">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="qzqkList" nillable="true" type="tns:qzqk"/>
+      <xs:element minOccurs="0" name="sm" type="xs:string"/>
+      <xs:element minOccurs="0" name="zt" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="qzqk">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="dzzzList" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="jzmj" type="xs:string"/>
+      <xs:element minOccurs="0" name="qlrmc" type="xs:string"/>
+      <xs:element minOccurs="0" name="qzh" type="xs:string"/>
+      <xs:element minOccurs="0" name="zl" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="qsqk">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="qsxxList" nillable="true" type="tns:qsxx"/>
+      <xs:element minOccurs="0" name="sm" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="qsxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cxsj" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="djsj" type="xs:dateTime"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="fwxxList" nillable="true" type="tns:fwxx"/>
+      <xs:element minOccurs="0" name="gyqk" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="qlrxxList" nillable="true" type="tns:qlrxx"/>
+      <xs:element minOccurs="0" name="qsqdfs" type="xs:string"/>
+      <xs:element minOccurs="0" name="qszt" type="xs:string"/>
+      <xs:element minOccurs="0" name="qzh" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xzqks">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bj" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="xzqkList" nillable="true" type="tns:xzqk"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xzqk">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="cfqkList" nillable="true" type="tns:cfqk"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="dyqkList" nillable="true" type="tns:dyqk"/>
+      <xs:element minOccurs="0" name="fwzl" type="xs:string"/>
+      <xs:element minOccurs="0" name="hbsm" type="xs:long"/>
+      <xs:element minOccurs="0" name="lx" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="yyqkList" nillable="true" type="tns:yyqk"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cfqk">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cfdw" type="xs:string"/>
+      <xs:element minOccurs="0" name="cfjssj" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="cfkssj" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="djsj" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dyqk">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bdbzqse" type="xs:double"/>
+      <xs:element minOccurs="0" name="djsj" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="dyqr" type="xs:string"/>
+      <xs:element minOccurs="0" name="zwlxjssj" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="zwlxqssj" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="yyqk">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="djsj" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="yysx" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="bdcqzs">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bj" type="xs:string"/>
+      <xs:element minOccurs="0" name="sm" type="xs:string"/>
+      <xs:element minOccurs="0" name="zslx" type="xs:string"/>
+      <xs:element minOccurs="0" name="zsnr" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ywdbjg">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="djbxxList" nillable="true" type="tns:djbxx"/>
+      <xs:element minOccurs="0" name="dylx" type="xs:string"/>
+      <xs:element minOccurs="0" name="shjg" type="xs:string"/>
+      <xs:element minOccurs="0" name="tjyy" type="xs:string"/>
+      <xs:element minOccurs="0" name="ywh" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="djbxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bdbzzqse" type="xs:double"/>
+      <xs:element minOccurs="0" name="bdcdyh" type="xs:string"/>
+      <xs:element minOccurs="0" name="bdczmh" type="xs:string"/>
+      <xs:element minOccurs="0" name="dyqx" type="xs:string"/>
+      <xs:element minOccurs="0" name="fwzl" type="xs:string"/>
+      <xs:element minOccurs="0" name="qlr" type="xs:string"/>
+      <xs:element minOccurs="0" name="ywr" type="xs:string"/>
+      <xs:element minOccurs="0" name="zmqlhsx" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="progressRegBean">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="chargeSign" type="xs:string"/>
+      <xs:element minOccurs="0" name="currentTaskcode" type="xs:string"/>
+      <xs:element minOccurs="0" name="day" type="xs:string"/>
+      <xs:element name="fee" type="xs:double"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="progressFlowBeanList" nillable="true" type="tns:progressFlowBean"/>
+      <xs:element minOccurs="0" name="regStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="regid" type="xs:int"/>
+      <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="returnMind" type="xs:string"/>
+      <xs:element minOccurs="0" name="takeCertPlace" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="progressFlowBean">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="flowCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="flowId" type="xs:int"/>
+      <xs:element minOccurs="0" name="flowMind" type="xs:string"/>
+      <xs:element minOccurs="0" name="operDate" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="fwzzxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bj" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="fwList" nillable="true" type="tns:fw"/>
+      <xs:element minOccurs="0" name="sm" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="zzxxList" nillable="true" type="tns:dzzz"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="fw">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fczqdsj" type="xs:string"/>
+      <xs:element minOccurs="0" name="fwzl" type="xs:string"/>
+      <xs:element minOccurs="0" name="qzh" type="xs:string"/>
+      <xs:element minOccurs="0" name="txqzh" type="xs:string"/>
+      <xs:element minOccurs="0" name="tzType" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dzzz">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="file" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="qzxx">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="dzzsList" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="sm" type="xs:string"/>
+      <xs:element minOccurs="0" name="zt" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ywsljg">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dylx" type="xs:string"/>
+      <xs:element minOccurs="0" name="dyqrmc" type="xs:string"/>
+      <xs:element minOccurs="0" name="dyrmc" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="fwzl" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="sljg" type="xs:string"/>
+      <xs:element minOccurs="0" name="slsj" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="tjyy" type="xs:string"/>
+      <xs:element minOccurs="0" name="ywh" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dzzzBean">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="dzzzList" nillable="true" type="tns:dzzz"/>
+      <xs:element minOccurs="0" name="sm" type="xs:string"/>
+      <xs:element minOccurs="0" name="zt" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="wqht">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bj" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="wqhtxxList" nillable="true" type="tns:wqhtxx"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="wqhtxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="htbh" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="htfwxxList" nillable="true" type="tns:htfwxx"/>
+      <xs:element minOccurs="0" name="qlrmc" type="xs:string"/>
+      <xs:element minOccurs="0" name="qlrzjhm" type="xs:string"/>
+      <xs:element minOccurs="0" name="qyje" type="xs:double"/>
+      <xs:element minOccurs="0" name="qysj" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="ywrmc" type="xs:string"/>
+      <xs:element minOccurs="0" name="ywrzjhm" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="htfwxx">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="jzmj" type="xs:double"/>
+      <xs:element minOccurs="0" name="yt" type="xs:string"/>
+      <xs:element minOccurs="0" name="zl" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="#all" name="qtjkArray">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:qtjk"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="#all" name="cxSqrxxArray">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:cxSqrxx"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="#all" name="dyzmxxArray">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:dyzmxx"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="#all" name="ywxxArray">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:ywxx"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="#all" name="progressRegBeanArray">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:progressRegBean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="#all" name="dbywArray">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:dbyw"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://jaxb.dev.java.net/array" version="1.0">
+
+  <xs:complexType final="#all" name="stringArray">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="reCallTempYwxxResponse">
+    <wsdl:part name="return" type="tns:bjxx2">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryXzqkResponse">
+    <wsdl:part name="return" type="tns:xzqks">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveFlowEndResponse">
+    <wsdl:part name="return" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryHtxxResponse">
+    <wsdl:part name="return" type="tns:htxx">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProgressInfoByDept">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg2" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg3" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryYwsljg">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitYwIntoFlowResponse">
+    <wsdl:part name="return" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryPdfByQzhResponse">
+    <wsdl:part name="return" type="tns:qzxx">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryPdfByYwh">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryYwdbjg">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryPdfByYwhResponse">
+    <wsdl:part name="return" type="tns:qzqks">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryYwfj">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="arg2" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryDyfz">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryYwdbjgResponse">
+    <wsdl:part name="return" type="tns:ywdbjg">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryYwcsjgResponse">
+    <wsdl:part name="return" type="tns:ywcsjg">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveFlowEnd">
+    <wsdl:part name="arg0" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:boolean">
+    </wsdl:part>
+    <wsdl:part name="arg2" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg3" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg4" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryZmBySxResponse">
+    <wsdl:part name="return" type="tns:zmxx">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitTempYwxxResponse">
+    <wsdl:part name="return" type="tns:bjxx2">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryBdcxx">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg2" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg3" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryDyYwByOrgDbsjResponse">
+    <wsdl:part name="return" type="tns:bjgyw">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryBdcqzsResponse">
+    <wsdl:part name="return" type="tns:bdcqzs">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitYwxxSome">
+    <wsdl:part name="arg0" type="tns:ywxxArray">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="testOfdZzResponse">
+    <wsdl:part name="return" type="tns:zzxx">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryBdcxxResponse">
+    <wsdl:part name="return" type="tns:bdcxx">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryDyfzResponse">
+    <wsdl:part name="return" type="tns:dyzmxxArray">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="testOfdZz">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryQsqkResponse">
+    <wsdl:part name="return" type="tns:qsqk">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitYwxx">
+    <wsdl:part name="arg0" type="tns:ywxx">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryDyYwByOrgDbsj">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg2" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg3" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg4" type="xsd:int">
+    </wsdl:part>
+    <wsdl:part name="arg5" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryBdcxxByTxqzh">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryXzqk">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryWqht">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryDzqzResponse">
+    <wsdl:part name="return" type="tns:dzqz">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitYwxxResponse">
+    <wsdl:part name="return" type="tns:bjxx">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryYwsljgResponse">
+    <wsdl:part name="return" type="tns:ywsljg">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryXzxxResponse">
+    <wsdl:part name="return" type="tns:xzxx">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryYwcsjg">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryPdfByQzh">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg2" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryZmResponse">
+    <wsdl:part name="return" type="tns:zmxx">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryQsqk">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryYwfjResponse">
+    <wsdl:part name="return" type="tns:jgxx">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitTempYwxx">
+    <wsdl:part name="arg0" type="tns:ywxx">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitYwfzxxResponse">
+    <wsdl:part name="return" type="tns:bjxx">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryBackTask">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryFwzzxxResponse">
+    <wsdl:part name="return" type="tns:fwzzxx">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryZmBySx">
+    <wsdl:part name="arg0" type="tns:cxSqrxxArray">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg2" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryYwh">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryBdcqzs">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg2" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryLsyw">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:int">
+    </wsdl:part>
+    <wsdl:part name="arg2" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryDbYw">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitYwIntoFlow">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryDzzz">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryQyQsqkResponse">
+    <wsdl:part name="return" type="tns:qsqk">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryBdcxxByTxqzhResponse">
+    <wsdl:part name="return" type="tns:bdcxx">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProgressInfoByDeptResponse">
+    <wsdl:part name="return" type="tns:progressRegBeanArray">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryQyQsqk">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg2" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryDbrResponse">
+    <wsdl:part name="return" type="tns:cxSqrxxArray">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryWqhtResponse">
+    <wsdl:part name="return" type="tns:wqht">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitYwfzxx">
+    <wsdl:part name="arg0" type="tns:ywfzxx">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryDbr">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryDzzzResponse">
+    <wsdl:part name="return" type="tns:dzzzBean">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryDzqz">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryBackTaskResponse">
+    <wsdl:part name="return" type="tns:qtjkArray">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryHtxx">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg2" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitYwxxSomeResponse">
+    <wsdl:part name="return" type="tns:bjxx">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryLsdyResponse">
+    <wsdl:part name="return" type="ns1:stringArray">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryFwzzxx">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="reCallTempYwxx">
+    <wsdl:part name="arg0" type="tns:tempYwxx">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryLsdy">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryYwhResponse">
+    <wsdl:part name="return" type="tns:bjxx">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryDbYwResponse">
+    <wsdl:part name="return" type="tns:dbywArray">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryZm">
+    <wsdl:part name="arg0" type="tns:cxSqrxxArray">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryXzxx">
+    <wsdl:part name="arg0" type="xsd:int">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryLsywResponse">
+    <wsdl:part name="return" type="tns:lsyw">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="IDyWsService">
+    <wsdl:operation name="queryYwfj">
+      <wsdl:input message="tns:queryYwfj" name="queryYwfj">
+    </wsdl:input>
+      <wsdl:output message="tns:queryYwfjResponse" name="queryYwfjResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryYwcsjg">
+      <wsdl:input message="tns:queryYwcsjg" name="queryYwcsjg">
+    </wsdl:input>
+      <wsdl:output message="tns:queryYwcsjgResponse" name="queryYwcsjgResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryHtxx">
+      <wsdl:input message="tns:queryHtxx" name="queryHtxx">
+    </wsdl:input>
+      <wsdl:output message="tns:queryHtxxResponse" name="queryHtxxResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryDzqz">
+      <wsdl:input message="tns:queryDzqz" name="queryDzqz">
+    </wsdl:input>
+      <wsdl:output message="tns:queryDzqzResponse" name="queryDzqzResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryBackTask">
+      <wsdl:input message="tns:queryBackTask" name="queryBackTask">
+    </wsdl:input>
+      <wsdl:output message="tns:queryBackTaskResponse" name="queryBackTaskResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="testOfdZz">
+      <wsdl:input message="tns:testOfdZz" name="testOfdZz">
+    </wsdl:input>
+      <wsdl:output message="tns:testOfdZzResponse" name="testOfdZzResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryYwh">
+      <wsdl:input message="tns:queryYwh" name="queryYwh">
+    </wsdl:input>
+      <wsdl:output message="tns:queryYwhResponse" name="queryYwhResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryZmBySx">
+      <wsdl:input message="tns:queryZmBySx" name="queryZmBySx">
+    </wsdl:input>
+      <wsdl:output message="tns:queryZmBySxResponse" name="queryZmBySxResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryXzxx">
+      <wsdl:input message="tns:queryXzxx" name="queryXzxx">
+    </wsdl:input>
+      <wsdl:output message="tns:queryXzxxResponse" name="queryXzxxResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryDyYwByOrgDbsj">
+      <wsdl:input message="tns:queryDyYwByOrgDbsj" name="queryDyYwByOrgDbsj">
+    </wsdl:input>
+      <wsdl:output message="tns:queryDyYwByOrgDbsjResponse" name="queryDyYwByOrgDbsjResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitYwxx">
+      <wsdl:input message="tns:submitYwxx" name="submitYwxx">
+    </wsdl:input>
+      <wsdl:output message="tns:submitYwxxResponse" name="submitYwxxResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryDyfz">
+      <wsdl:input message="tns:queryDyfz" name="queryDyfz">
+    </wsdl:input>
+      <wsdl:output message="tns:queryDyfzResponse" name="queryDyfzResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryLsdy">
+      <wsdl:input message="tns:queryLsdy" name="queryLsdy">
+    </wsdl:input>
+      <wsdl:output message="tns:queryLsdyResponse" name="queryLsdyResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitTempYwxx">
+      <wsdl:input message="tns:submitTempYwxx" name="submitTempYwxx">
+    </wsdl:input>
+      <wsdl:output message="tns:submitTempYwxxResponse" name="submitTempYwxxResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryLsyw">
+      <wsdl:input message="tns:queryLsyw" name="queryLsyw">
+    </wsdl:input>
+      <wsdl:output message="tns:queryLsywResponse" name="queryLsywResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="reCallTempYwxx">
+      <wsdl:input message="tns:reCallTempYwxx" name="reCallTempYwxx">
+    </wsdl:input>
+      <wsdl:output message="tns:reCallTempYwxxResponse" name="reCallTempYwxxResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryBdcxx">
+      <wsdl:input message="tns:queryBdcxx" name="queryBdcxx">
+    </wsdl:input>
+      <wsdl:output message="tns:queryBdcxxResponse" name="queryBdcxxResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitYwfzxx">
+      <wsdl:input message="tns:submitYwfzxx" name="submitYwfzxx">
+    </wsdl:input>
+      <wsdl:output message="tns:submitYwfzxxResponse" name="submitYwfzxxResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryPdfByYwh">
+      <wsdl:input message="tns:queryPdfByYwh" name="queryPdfByYwh">
+    </wsdl:input>
+      <wsdl:output message="tns:queryPdfByYwhResponse" name="queryPdfByYwhResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryQsqk">
+      <wsdl:input message="tns:queryQsqk" name="queryQsqk">
+    </wsdl:input>
+      <wsdl:output message="tns:queryQsqkResponse" name="queryQsqkResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryXzqk">
+      <wsdl:input message="tns:queryXzqk" name="queryXzqk">
+    </wsdl:input>
+      <wsdl:output message="tns:queryXzqkResponse" name="queryXzqkResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryBdcxxByTxqzh">
+      <wsdl:input message="tns:queryBdcxxByTxqzh" name="queryBdcxxByTxqzh">
+    </wsdl:input>
+      <wsdl:output message="tns:queryBdcxxByTxqzhResponse" name="queryBdcxxByTxqzhResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryBdcqzs">
+      <wsdl:input message="tns:queryBdcqzs" name="queryBdcqzs">
+    </wsdl:input>
+      <wsdl:output message="tns:queryBdcqzsResponse" name="queryBdcqzsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitYwxxSome">
+      <wsdl:input message="tns:submitYwxxSome" name="submitYwxxSome">
+    </wsdl:input>
+      <wsdl:output message="tns:submitYwxxSomeResponse" name="submitYwxxSomeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryYwdbjg">
+      <wsdl:input message="tns:queryYwdbjg" name="queryYwdbjg">
+    </wsdl:input>
+      <wsdl:output message="tns:queryYwdbjgResponse" name="queryYwdbjgResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitYwIntoFlow">
+      <wsdl:input message="tns:submitYwIntoFlow" name="submitYwIntoFlow">
+    </wsdl:input>
+      <wsdl:output message="tns:submitYwIntoFlowResponse" name="submitYwIntoFlowResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryQyQsqk">
+      <wsdl:input message="tns:queryQyQsqk" name="queryQyQsqk">
+    </wsdl:input>
+      <wsdl:output message="tns:queryQyQsqkResponse" name="queryQyQsqkResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProgressInfoByDept">
+      <wsdl:input message="tns:getProgressInfoByDept" name="getProgressInfoByDept">
+    </wsdl:input>
+      <wsdl:output message="tns:getProgressInfoByDeptResponse" name="getProgressInfoByDeptResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryFwzzxx">
+      <wsdl:input message="tns:queryFwzzxx" name="queryFwzzxx">
+    </wsdl:input>
+      <wsdl:output message="tns:queryFwzzxxResponse" name="queryFwzzxxResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveFlowEnd">
+      <wsdl:input message="tns:saveFlowEnd" name="saveFlowEnd">
+    </wsdl:input>
+      <wsdl:output message="tns:saveFlowEndResponse" name="saveFlowEndResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryDbYw">
+      <wsdl:input message="tns:queryDbYw" name="queryDbYw">
+    </wsdl:input>
+      <wsdl:output message="tns:queryDbYwResponse" name="queryDbYwResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryPdfByQzh">
+      <wsdl:input message="tns:queryPdfByQzh" name="queryPdfByQzh">
+    </wsdl:input>
+      <wsdl:output message="tns:queryPdfByQzhResponse" name="queryPdfByQzhResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryDbr">
+      <wsdl:input message="tns:queryDbr" name="queryDbr">
+    </wsdl:input>
+      <wsdl:output message="tns:queryDbrResponse" name="queryDbrResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryYwsljg">
+      <wsdl:input message="tns:queryYwsljg" name="queryYwsljg">
+    </wsdl:input>
+      <wsdl:output message="tns:queryYwsljgResponse" name="queryYwsljgResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryDzzz">
+      <wsdl:input message="tns:queryDzzz" name="queryDzzz">
+    </wsdl:input>
+      <wsdl:output message="tns:queryDzzzResponse" name="queryDzzzResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryZm">
+      <wsdl:input message="tns:queryZm" name="queryZm">
+    </wsdl:input>
+      <wsdl:output message="tns:queryZmResponse" name="queryZmResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryWqht">
+      <wsdl:input message="tns:queryWqht" name="queryWqht">
+    </wsdl:input>
+      <wsdl:output message="tns:queryWqhtResponse" name="queryWqhtResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IDyWsServiceServiceSoapBinding" type="tns:IDyWsService">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="queryYwfj">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryYwfj">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryYwfjResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryYwcsjg">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryYwcsjg">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryYwcsjgResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryHtxx">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryHtxx">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryHtxxResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryDzqz">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryDzqz">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryDzqzResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryBackTask">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryBackTask">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryBackTaskResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="testOfdZz">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="testOfdZz">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="testOfdZzResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryYwh">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryYwh">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryYwhResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryZmBySx">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryZmBySx">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryZmBySxResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryDyYwByOrgDbsj">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryDyYwByOrgDbsj">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryDyYwByOrgDbsjResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryXzxx">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryXzxx">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryXzxxResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitYwxx">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="submitYwxx">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="submitYwxxResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryDyfz">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryDyfz">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryDyfzResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryLsdy">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryLsdy">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryLsdyResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryLsyw">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryLsyw">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryLsywResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitTempYwxx">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="submitTempYwxx">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="submitTempYwxxResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryBdcxx">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryBdcxx">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryBdcxxResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="reCallTempYwxx">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="reCallTempYwxx">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="reCallTempYwxxResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryPdfByYwh">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryPdfByYwh">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryPdfByYwhResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitYwfzxx">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="submitYwfzxx">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="submitYwfzxxResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryQsqk">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryQsqk">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryQsqkResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryXzqk">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryXzqk">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryXzqkResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryBdcxxByTxqzh">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryBdcxxByTxqzh">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryBdcxxByTxqzhResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryBdcqzs">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryBdcqzs">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryBdcqzsResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitYwxxSome">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="submitYwxxSome">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="submitYwxxSomeResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryYwdbjg">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryYwdbjg">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryYwdbjgResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitYwIntoFlow">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="submitYwIntoFlow">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="submitYwIntoFlowResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProgressInfoByDept">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="getProgressInfoByDept">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getProgressInfoByDeptResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryQyQsqk">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryQyQsqk">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryQyQsqkResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryFwzzxx">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryFwzzxx">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryFwzzxxResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveFlowEnd">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="saveFlowEnd">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveFlowEndResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryDbYw">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryDbYw">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryDbYwResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryDbr">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryDbr">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryDbrResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryPdfByQzh">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryPdfByQzh">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryPdfByQzhResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryDzzz">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryDzzz">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryDzzzResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryYwsljg">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryYwsljg">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryYwsljgResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryWqht">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryWqht">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryWqhtResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryZm">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryZm">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryZmResponse">
+        <soap:body namespace="http://service.dy.reiss.wiztek.cn/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IDyWsServiceService">
+    <wsdl:port binding="tns:IDyWsServiceServiceSoapBinding" name="IDyWsServicePort">
+      <soap:address location="http://10.191.14.133:8002/reiss/services/dyWsService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

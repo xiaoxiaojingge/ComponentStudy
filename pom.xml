@@ -65,6 +65,8 @@
         <module>docker-image</module>
         <!-- Spring Boot 使用 Servlet/Filter/Listener -->
         <module>springboot-servlet</module>
+        <!-- springboot使用webservice，使用axis生成客户端 -->
+        <module>springboot-webservice</module>
     </modules>
 
 </project>
