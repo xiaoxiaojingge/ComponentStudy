@@ -11,6 +11,8 @@
     <packaging>pom</packaging>
 
     <modules>
+        <!-- springboot开篇 -->
+        <module>springboot-demo</module>
         <!-- redis的框架redisson学习 -->
         <module>redissonStudy</module>
         <!-- redis相关学习 -->

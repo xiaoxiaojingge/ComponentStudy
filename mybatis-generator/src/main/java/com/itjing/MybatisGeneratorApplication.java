@@ -1,6 +1,12 @@
 package com.itjing;
 
 import com.itjing.base.listener.ContextRefreshedListener;
+import com.itjing.mapstruct.RoomConverter;
+import com.itjing.mapstruct.StudentConverter;
+import com.itjing.pojo.Room;
+import com.itjing.pojo.Student;
+import com.itjing.vo.RoomVo;
+import com.itjing.vo.StudentVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationArguments;
@@ -8,6 +14,8 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.Date;
 
 @SpringBootApplication
 public class MybatisGeneratorApplication implements ApplicationRunner, CommandLineRunner {
@@ -19,6 +27,19 @@ public class MybatisGeneratorApplication implements ApplicationRunner, CommandLi
         /* 添加监听，这里写的监听类主要是spring初始化完毕后，将对应的mapper注入给通用Service */
         springApplication.addListeners(new ContextRefreshedListener());
         springApplication.run(args);
+
+
+        // mapstruct
+        Student student = new Student();
+        student.setId(1).setName("张三").setGender(1).setBirthday(new Date()).setHome("bj");
+        StudentVo vo = StudentConverter.INSTANCE.student2Vo(student);
+        System.out.println(vo);
+        System.out.println("===========================");
+        Room room = new Room();
+        room.setId(100).setStudent(student).setTime(new Date());
+        RoomVo roomVo = RoomConverter.INSTANCE.building2Vo(room);
+        System.out.println(roomVo);
+
     }
 
 
