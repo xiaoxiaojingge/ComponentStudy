@@ -20,7 +20,9 @@ public class ExecutorConfig {
      */
     @Bean(name = "taskExector")
     public ThreadPoolTaskExecutor taskExecutor() {
+        // ThreadPoolTaskExecutor 是 spring 对 JUC 下的 ThreadPoolExecutor 的封装
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        int i = Runtime.getRuntime().availableProcessors();//获取到服务器的cpu内核
         executor.setCorePoolSize(5);//核心池大小
         executor.setMaxPoolSize(100);//最大线程数
         executor.setQueueCapacity(1000);//队列程度
