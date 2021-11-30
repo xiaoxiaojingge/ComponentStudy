@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map和Set</title>
+    <script>
+        "use strict";
+        var map = new Map([["tom", 100], ["jack", 90], ["haha", 80]]);//多维数组
+        var name = map.get("tom");//通过key获得value
+        map.set("admin",123456);//新增或者修改
+        console.log(name);
+        console.log(map);
+        map.delete("tom");//删除
+
+        var set = new Set([1,2,3,3,3,3,3])//set可以去重
+        console.log(set)
+        set.add(4) //添加
+        set.delete(2)//删除
+        set.has(3)//是否包含某个元素
+
+        for (let x of map){
+            console.log(x)
+        }
+
+        for (let x of set){
+            console.log(x)
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

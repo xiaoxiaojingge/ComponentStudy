@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>方法</title>
+</head>
+<body>
+
+<script>
+    function getAge() {
+        var now = new Date().getFullYear();
+        return now - this.birth;
+    }
+
+    var jingge = {
+        name: 'jingge',
+        birth: 1997,
+        age: getAge
+    }
+
+    //getAge.apply(jingge,[]) //this，指向了jingge，参数为空
+
+</script>
+</body>
+</html>

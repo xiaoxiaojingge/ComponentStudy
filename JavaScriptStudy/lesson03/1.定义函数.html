@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定义函数</title>
+    <script>
+        "use strict"
+       /* function abs(x) {
+            if (x >= 0) {
+                return x;
+            } else {
+                return -x;
+            }
+        }*/
+
+        let abs = function (x) {
+            for(let t of arguments){
+                console.log(t)
+            }
+            //手动抛出异常
+            if(typeof x !== 'number'){
+                throw 'Not a Number'
+            }
+            if (x >= 0) {
+                return x;
+            } else {
+                return -x;
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

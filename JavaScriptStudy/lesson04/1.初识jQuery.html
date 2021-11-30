@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>初识jQuery</title>
+    <!--cdn引入-->
+<!--    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+    <script src="js/jquery-3.4.1.js"></script>
+</head>
+<body>
+<!-- 公式：$(selector).action() -->
+<a href="" id="test_jquery">点我</a>
+<script>
+    //选择器就是css的选择器
+    $('#test_jquery').click(function () {
+        alert('hello,jquery')
+    })
+</script>
+</body>
+</html>

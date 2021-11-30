@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插入节点</title>
+</head>
+<body>
+<p id="js">javascript</p>
+<div id="list">
+    <p id="se">javase</p>
+    <p id="ee">javaee</p>
+    <p id="me">javame</p>
+</div>
+
+<script>
+    var js = document.getElementById("js");
+    var ee = document.getElementById("ee");
+    var list = document.getElementById("list");
+    //将js插入到ee前面   insertBefore(newNode,targetNode)
+    list.insertBefore(js,ee)
+  /*  // list.appendChild(js) //追加到后面
+    //通过js创建一个新的节点
+    var newP = document.createElement('p');//创建一个p标签
+    newP.id = 'newP';
+    newP.innerText = 'hello,jinggege';
+    list.appendChild(newP)
+
+    //创建一个标签节点，通过这个属性，可以设置任意的值
+    var myScript = document.createElement('script');
+    myScript.setAttribute('type', 'text/javascript');
+    list.appendChild(myScript)
+
+    //返回值是个集合
+    var body = document.getElementsByTagName('body')
+    body[0].style.backgroundColor = 'red'*/
+
+
+
+
+</script>
+</body>
+</html>

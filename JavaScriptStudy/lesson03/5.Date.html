@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date</title>
+</head>
+<body>
+
+<script>
+    var now = new Date() //Sun Dec 13 2020 13:32:16 GMT+0800 (中国标准时间)
+    now.getFullYear() //年
+    now.getMonth() //月  0~11代表月份
+    now.getDate() //日
+    now.getDay() //星期几
+    now.getHours() //时
+    now.getMinutes() //分
+    now.getSeconds() //秒
+    now.getTime() //时间戳 全世界统一  1970 1.1 0:00:00
+    console.log(new Date(1607837769376)) //时间戳转为时间
+    console.log(now.toLocaleString()) //2020/12/13 下午1:39:55
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量作用域</title>
+</head>
+<body>
+
+<script>
+    'use strict'
+    /*  function xxx() {
+          let x = 1;
+          x = x + 1;
+      }
+      x = x + 2; //Uncaught ReferenceError: x is not defined*/
+
+
+    /*function f1() {
+        var x = 1;
+        //内部函数可以访问外部函数的成员，反之则不行
+        function f2() {
+            var y = x + 1 // 2
+        }
+        var z =  y + 1; //Uncaught ReferenceError: y is not defined
+    }*/
+
+
+    /*function f1() {
+        var x = 1;
+
+        function f2() {
+            var x = 'A'
+            console.log('inner' + x)  //innerA
+        }
+
+        console.log('outer' + x)  //outer1
+        f2()
+    }
+    f1()*/
+
+    /*    function qj() {
+            var x = 'x' + y;
+            console.log(x)
+            var y = 'y'
+        }
+
+        function f() {
+            var x = 1,
+                y = x + 1,
+                z, i;
+            //之后随意用
+        }*/
+
+    /* //全局变量
+     var x = 1;
+     function f() {
+         console.log(x)
+     }
+     f()
+     console.log(x)*/
+
+    /*    var x = 'xxx';
+        alert(x)
+        alert(window.x)//默认所有的全局变量，都会自动绑定在window对象下*/
+
+    /*  var x = 'xxx';
+      window.alert(x)
+      var old_alert = window.alert;
+      // old_alert(x);
+      window.alert = function () {
+
+      };
+      //发现alert() 失效了
+      window.alert(123)
+
+      //恢复
+      window.alert = old_alert;
+      window.alert(456)*/
+
+    /*   //唯一全局变量
+       var jingApp = {}
+
+       //定义全局变量
+       jingApp.name = 'jingge'
+       jingApp.add = function (a, b) {
+           return a + b
+       }*/
+
+    /*function f() {
+        for (let i = 0; i < 100; i++) {
+            console.log(i)
+        }
+        console.log(i + 1) //问题？ i出了这个作用域还可以使用
+    }
+    f()*/
+
+   /* const PI = 3.14;//只读变量
+    console.log(PI)
+    PI = 123;//报错 Uncaught TypeError: invalid assignment to const 'PI'
+    console.log(PI)*/
+
+</script>
+</body>
+</html>

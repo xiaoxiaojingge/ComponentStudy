@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象编程</title>
+</head>
+<body>
+
+<script>
+    /* var user = {
+         name: 'user',
+         age: 23,
+         run: function () {
+             console.log(this.name + ' run...')
+         }
+     }*/
+
+    // var jinggege = {
+    //     name: 'jinggege'
+    // }
+
+    //jinggege.run()//Uncaught TypeError: jinggege.run is not a function
+
+    //原型对象，相当是个父类
+    // jinggege.__proto__ = user
+    // jinggege.run() //jinggege run...
+
+    /* function Student(name) {
+         this.name = name;
+     }
+
+     //给Student新增一个方法
+     Student.prototype.hello = function () {
+         alert("hello")
+     }
+     new Student().hello()*/
+
+    //ES6之后
+    //定义一个学生的类
+    class Student {
+        constructor(name) {
+            this.name = name
+        }
+
+        hello() {
+            alert(this.name + ",hello")
+        }
+    }
+
+    class XiaoStudent extends Student {
+        constructor(name, grade) {
+            super()
+            this.grade = grade
+        }
+
+        myGrade() {
+            alert("我是一名小学生")
+        }
+    }
+
+    var lijing = new Student('lijing')
+    var lihui = new Student('lihui');
+    lijing.hello()
+    lihui.hello()
+    var xiaohong = new XiaoStudent('xiaohong', 1);
+    xiaohong.myGrade()
+
+</script>
+</body>
+</html>
