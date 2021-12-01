@@ -86,7 +86,7 @@ public class ArticleController {
                 future1,
                 future2,
                 future3,
-                future4);
+                future4).get();
     }
 
     public class ArticleRunnable implements Runnable {
