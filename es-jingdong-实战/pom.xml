@@ -59,7 +59,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.73</version>
+            <version>1.2.76</version>
         </dependency>
 
         <!--解析网页jsoup-->
