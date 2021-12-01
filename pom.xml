@@ -69,6 +69,8 @@
         <module>springboot-servlet</module>
         <!-- springboot使用webservice，使用axis生成客户端 -->
         <module>springboot-webservice</module>
+        <!-- Spring Boot 全局异常处理 -->
+        <module>springboot-global-exception-handler</module>
     </modules>
 
 </project>
