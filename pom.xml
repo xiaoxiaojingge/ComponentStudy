@@ -59,8 +59,6 @@
         <module>springsecuritydemo</module>
         <!-- mybatis-generator -->
         <module>mybatis-generator</module>
-        <!-- 算法练习 -->
-        <module>AlgorithmPractice</module>
         <!-- springboot集成quartz实现定时任务，使用 starter -->
         <module>springboot-quartz</module>
         <!-- 测试使用docker，编写dockerfile部署项目 -->
@@ -71,6 +69,8 @@
         <module>springboot-webservice</module>
         <!-- Spring Boot 全局异常处理 -->
         <module>springboot-global-exception-handler</module>
+        <!-- SpringBoot集成canal解析binlog日志 -->
+        <module>springboot-canal</module>
     </modules>
 
 </project>
