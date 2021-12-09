@@ -71,6 +71,9 @@
         <module>springboot-global-exception-handler</module>
         <!-- SpringBoot集成canal解析binlog日志 -->
         <module>springboot-canal</module>
+        <!-- es -->
+        <module>es-api-study</module>
+        <module>es-jingdong-实战</module>
     </modules>
 
 </project>

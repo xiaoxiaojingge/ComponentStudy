@@ -51,4 +51,14 @@ public class BizException extends RuntimeException {
         this.errorCode = errorCode;
         this.errorMsg = errorMsg;
     }
+
+    /**
+     * 自定义异常如何不打印异常堆栈
+     * 重写以下方法
+     * @return
+     */
+    @Override
+    public synchronized Throwable fillInStackTrace() {
+        return this;
+    }
 }

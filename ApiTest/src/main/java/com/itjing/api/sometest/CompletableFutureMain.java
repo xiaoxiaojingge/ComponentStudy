@@ -3,6 +3,7 @@ package com.itjing.api.sometest;
 import org.junit.Test;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 public class CompletableFutureMain {
 
@@ -11,7 +12,7 @@ public class CompletableFutureMain {
      * A 任务 和 B 任务同时完成 , 才可以执行 C
      */
     @Test
-    public void testTaskArrange(){
+    public void testTaskArrange() throws ExecutionException, InterruptedException {
         CompletableFuture<Void> taskA = CompletableFuture.runAsync(() -> {
             System.out.println("taskA");
         });
@@ -21,6 +22,7 @@ public class CompletableFutureMain {
         CompletableFuture<Void> task = CompletableFuture.allOf(taskA, taskB).thenRun(() -> {
             System.out.println("taskC");
         });
+        CompletableFuture.allOf(taskA, taskB,task).get();
     }
 
     /**

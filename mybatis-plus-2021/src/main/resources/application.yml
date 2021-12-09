@@ -1,0 +1,56 @@
+# 服务器配置
+server:
+  # 端口
+  port: 9999
+  servlet:
+    # 项目名称
+    context-path: /mp
+  # tomcat的配置
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # tomcat的最大线程数，默认为200
+    max-threads: 800
+    # Tomcat启动初始化的线程数，默认为25
+    min-spare-threads: 30
+  max-http-header-size: 65536
+
+spring:
+  # 配置数据源
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/mybatis_plus?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true
+    username: root
+    password: root
+    # Hikari 连接池配置
+    hikari:
+      # 最小空闲连接数量
+      minimum-idle: 5
+      # 空间连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 180000
+      # 连接池最大连接数，默认是10
+      maximum-pool-size: 1000
+      # 此属性控制从池返回的连接的默认自动提交行为，默认值为true
+      auto-commit: true
+      # 连接池名称
+      pool-name: MPHikariCP
+      # 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000，即30分钟
+      max-lifetime: 1800000
+      # 数据库连接超时时间，默认30000，即30秒
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+      data-source-properties:
+        useInformationSchema: true
+
+# MybatisPlus 配置
+mybatis-plus:
+  global-config:
+    db-config:
+      table-prefix: tb_
+      logic-delete-field: deleted #全局逻辑删除的实体字段名
+      logic-delete-value: 1 # 逻辑已删除值
+      logic-not-delete-value: 0 # 逻辑未删除值
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-enums-package: com.itjing.enu # 配置枚举包扫描

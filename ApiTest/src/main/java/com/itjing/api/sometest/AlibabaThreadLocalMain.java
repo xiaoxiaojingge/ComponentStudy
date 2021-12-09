@@ -6,6 +6,13 @@ import com.alibaba.ttl.threadpool.TtlExecutors;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * TransmittableThreadLocal 是Alibaba开源的
+ * 用于解决 “在使用线程池等会缓存线程的组件情况下传递ThreadLocal” 问题的 InheritableThreadLocal 扩展。
+ * ThreadLocal只在当前线程中能访问到，其他线程隔离。
+ * InheritableThreadLocal能够传递给子线程。
+ * 对于线程池中的线程复用，将当前线程中的ThreadLocal传递给线程池中的其他线程，TransmittableThreadLocal提供了解决方案。
+ */
 public class AlibabaThreadLocalMain {
     // 需要注意的是，使用TTL的时候，要想传递的值不出问题，线程池必须得用TTL加一层代理（下面会讲这样做的目的）
     private static ExecutorService executorService = TtlExecutors.getTtlExecutorService(Executors.newFixedThreadPool(2));
