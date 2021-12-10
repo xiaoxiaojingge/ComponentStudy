@@ -74,6 +74,11 @@
         <!-- es -->
         <module>es-api-study</module>
         <module>es-jingdong-实战</module>
+        <!-- mybatis-plus -->
+        <module>mybatis_plus</module>
+        <module>mybatis-plus-2021</module>
+        <!-- 学习jdk8新特性 -->
+        <module>jdk8-study</module>
     </modules>
 
 </project>
