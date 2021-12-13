@@ -12,20 +12,20 @@ import lombok.Setter;
 @Setter
 public class GeneralResult<T> {
 
-    private boolean success;
-    private String errorCode;
+    private Boolean success;
+    private Integer errorCode;
     private String message;
     private T data;
     private String traceId;
 
-    private GeneralResult(boolean success, T data, String message, String errorCode) {
+    public GeneralResult(Boolean success, Integer errorCode, String message, T data) {
         this.success = success;
-        this.data = data;
-        this.message = message;
         this.errorCode = errorCode;
+        this.message = message;
+        this.data = data;
     }
 
-    public static <T> GeneralResult<T> genResult(boolean success, T data, String message) {
+    public static <T> GeneralResult<T> genResult(Boolean success, T data, String message) {
         return genResult(success, data, message, null);
     }
 
@@ -41,17 +41,15 @@ public class GeneralResult<T> {
         return genResult(true, null, null, null);
     }
 
-    public static <T> GeneralResult<T> genErrorResult(String message, String errorCode) {
+    public static <T> GeneralResult<T> genErrorResult(String message, Integer errorCode) {
         return genResult(false, null, message, errorCode);
     }
 
-    public static <T> GeneralResult<T> genResult(boolean success, T data, String message,
-                                                 String errorCode) {
-        return new GeneralResult<>(success, data, message, errorCode);
+    public static <T> GeneralResult<T> genResult(Boolean success, T data, String message, Integer errorCode) {
+        return new GeneralResult<>(success, errorCode, message, data);
     }
 
-    public static <T> GeneralResult<T> genErrorResult(String message, String errorCode,
-                                                      String traceId) {
+    public static <T> GeneralResult<T> genErrorResult(String message, Integer errorCode, String traceId) {
         GeneralResult<T> result = genResult(false, null, message, errorCode);
         result.setTraceId(traceId);
         return result;

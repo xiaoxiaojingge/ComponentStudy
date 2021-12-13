@@ -1,37 +1,25 @@
-package com.itjing.exception;
+package com.itjing.exception.staffjoy;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author lijing
- * @date 2021年12月01日 16:38
- * @description 自定义通用异常枚举类
+ * Result Code Enum
+ *
+ * @author william
  */
 @Getter
-public enum CommonErrorEnum implements BaseErrorInfo {
-
-    /**
-     * 操作成功
-     */
+@AllArgsConstructor
+public enum ResultCode {
     SUCCESS(HttpServletResponse.SC_OK, "Operation is Successful"),
 
-    /**
-     * 业务异常
-     */
     FAILURE(HttpServletResponse.SC_BAD_REQUEST, "Biz Exception"),
 
-    /**
-     * 未认证
-     */
     UN_AUTHORIZED(HttpServletResponse.SC_UNAUTHORIZED, "Request Unauthorized"),
 
-    /**
-     * 未找到该资源
-     */
     NOT_FOUND(HttpServletResponse.SC_NOT_FOUND, "404 Not Found"),
-
 
     MSG_NOT_READABLE(HttpServletResponse.SC_BAD_REQUEST, "Message Can't be Read"),
 
@@ -41,9 +29,6 @@ public enum CommonErrorEnum implements BaseErrorInfo {
 
     REQ_REJECT(HttpServletResponse.SC_FORBIDDEN, "Request Rejected"),
 
-    /**
-     * 服务器内部错误!
-     */
     INTERNAL_SERVER_ERROR(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal Server Error"),
 
     PARAM_MISS(HttpServletResponse.SC_BAD_REQUEST, "Missing Required Parameter"),
@@ -52,23 +37,9 @@ public enum CommonErrorEnum implements BaseErrorInfo {
 
     PARAM_BIND_ERROR(HttpServletResponse.SC_BAD_REQUEST, "Parameter Binding Error"),
 
-    PARAM_VALID_ERROR(HttpServletResponse.SC_BAD_REQUEST, "Parameter Validation Error"),
+    PARAM_VALID_ERROR(HttpServletResponse.SC_BAD_REQUEST, "Parameter Validation Error");
 
-    /**
-     * 请求的数据格式不符!
-     */
-    BODY_NOT_MATCH(HttpServletResponse.SC_BAD_REQUEST, "请求的数据格式不符!"),
+    final int code;
 
-    /**
-     * 服务器正忙，请稍后再试!
-     */
-    SERVER_BUSY(HttpServletResponse.SC_SERVICE_UNAVAILABLE, "服务器正忙，请稍后再试!");
-
-    private Integer errorCode;
-    private String errorMsg;
-
-    CommonErrorEnum(Integer errorCode, String errorMsg) {
-        this.errorCode = errorCode;
-        this.errorMsg = errorMsg;
-    }
+    final String msg;
 }

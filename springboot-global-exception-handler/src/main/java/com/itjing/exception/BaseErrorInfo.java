@@ -12,7 +12,7 @@ public interface BaseErrorInfo {
      *
      * @return 错误码
      */
-    String getErrorCode();
+    Integer getErrorCode();
 
     /**
      * 获取错误信息
