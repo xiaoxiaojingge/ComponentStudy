@@ -273,7 +273,12 @@ public class ExcelController {
     public RestResult<T> importByExcel() {
         String filePath = "E:\\workspace_idea\\ComponentStudy\\mybatis-generator\\src\\main\\resources\\import\\文章信息.xlsx";
         // 这里 需要指定读用哪个class去读，然后读取第一个sheet 文件流会自动关闭
-        EasyExcelFactory.read(filePath, Article.class, new ArticleListener(aricleService)).sheet().doRead();
+        EasyExcelFactory.read(filePath, Article.class, new ArticleListener(aricleService))
+                .sheet()
+                // 这里可以设置行头，如果行头不止一行，可以设置最后一行行头所在位置。
+                // 不写 .headRowNumber(位置) 也可以，因为默认会根据 DemoData 来解析，他没有指定头，也就是默认行头是第1行
+                .headRowNumber(5)
+                .doRead();
         return RestResultUtils.success();
     }
 }
