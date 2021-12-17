@@ -25,7 +25,7 @@ public class Article implements Serializable {
 
     @ExcelIgnore
     private Integer id;
-
+    // 读取的时候不建议 index 和 value 同时用，要么一个对象只用index，要么一个对象只用 value 去匹配
     @ExcelProperty(value = "作者", index = 0)
     private String author;
 

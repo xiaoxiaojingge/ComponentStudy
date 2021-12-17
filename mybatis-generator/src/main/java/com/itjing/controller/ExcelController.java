@@ -2,8 +2,12 @@ package com.itjing.controller;
 
 import com.alibaba.excel.EasyExcelFactory;
 import com.itjing.entity.Article;
+import com.itjing.listener.ArticleListener;
+import com.itjing.response.RestResult;
+import com.itjing.response.RestResultUtils;
 import com.itjing.service.ArticleService;
 import com.itjing.utils.DateUtils;
+import org.apache.poi.ss.formula.functions.T;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -226,6 +230,7 @@ public class ExcelController {
      * easyexcel by alibaba
      * 目前感觉这个挺好用，之前两个也还行
      * 文档： https://www.yuque.com/easyexcel/doc/easyexcel
+     *
      * @param request
      * @param response
      */
@@ -250,7 +255,7 @@ public class ExcelController {
         ServletOutputStream out = null;
         try {
             response.setContentType("application/octet-stream;charset=ISO8859-1");
-            response.addHeader("Content-Disposition","attachment;filename=" + URLEncoder.encode(excelName, "utf-8"));
+            response.addHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(excelName, "utf-8"));
             response.addHeader("Pargam", "no-cache");
             response.addHeader("Cache-Control", "no-cache");
             out = response.getOutputStream();
@@ -262,5 +267,13 @@ public class ExcelController {
                 .sheet("文章导出")
                 .doWrite(articles);
 
+    }
+
+    @GetMapping("/import")
+    public RestResult<T> importByExcel() {
+        String filePath = "E:\\workspace_idea\\ComponentStudy\\mybatis-generator\\src\\main\\resources\\import\\文章信息.xlsx";
+        // 这里 需要指定读用哪个class去读，然后读取第一个sheet 文件流会自动关闭
+        EasyExcelFactory.read(filePath, Article.class, new ArticleListener(aricleService)).sheet().doRead();
+        return RestResultUtils.success();
     }
 }
