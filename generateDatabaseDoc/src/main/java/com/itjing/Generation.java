@@ -24,13 +24,10 @@ import java.util.List;
 public class Generation {
 
     public static void main(String[] args) {
-
-
-
         //数据源
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setDriverClassName("com.mysql.jdbc.Driver");
-        hikariConfig.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/jnbdc?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8");
+        hikariConfig.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/demo?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8");
         hikariConfig.setUsername("root");
         hikariConfig.setPassword("root");
 
@@ -59,7 +56,7 @@ public class Generation {
 
         //设置生成pojo相关配置
         Configuration config = Configuration.builder()
-                .version("2.0.0")
+                .version("1.0.0")
                 .description("数据库设计文档")
                 .dataSource(dataSource)
                 .engineConfig(engineConfig)
@@ -92,7 +89,7 @@ public class Generation {
                 //根据名称指定表生成
 //                .designatedTableName(Arrays.asList("user"))
                 //根据表前缀生成("a")
-                .designatedTablePrefix(Arrays.asList("bdc_"))
+                .designatedTablePrefix(Arrays.asList("db_"))
                 //根据表后缀生成("_user")
                 .designatedTableSuffix(new ArrayList<>())
                 //忽略表名

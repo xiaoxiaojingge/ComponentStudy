@@ -103,9 +103,4 @@ public class AESUtil {
 
         return null;
     }
-
-    public static void main(String[] args) {
-        String keyCode = "123456";
-        System.out.println(encrypt("root", keyCode));
-    }
 }
