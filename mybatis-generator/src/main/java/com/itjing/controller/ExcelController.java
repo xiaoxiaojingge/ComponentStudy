@@ -27,6 +27,8 @@ import java.io.*;
 import java.net.URLEncoder;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author lijing
@@ -317,16 +319,28 @@ public class ExcelController {
         }
         Document doc = Jsoup.parse(sb.toString());
         Elements rows = doc.select("table").get(0).select("tr");
-        if (rows.size() == 1) {
+        if (rows.size() <= 1) {
             System.out.println("没有结果");
         } else {
-            for (int i = 1; i < rows.size(); i++) {
-                Element row = rows.get(i);
-                System.out.println("title1:" + row.select("td").get(0).text());
-                System.out.println("title2:" + row.select("td").get(1).text());
-                /*...*/
-                System.out.println("-----------------------------------------------------------------");
-            }
+            // 一次插入的条数
+            int batchSize = 100;
+            int limit = (rows.size() - 1 + batchSize - 1) / batchSize;
+            // 分成limit次发请求到数据库
+            // 这里的skip(1)是跳过标题
+            List<Element> rowList = rows.stream().skip(1).collect(Collectors.toList());
+            Stream.iterate(0, n -> n + 1)
+                    .limit(limit)
+                    .forEach(a -> {
+                        rowList.stream()
+                                .skip(a * batchSize)
+                                .limit(batchSize)
+                                .forEach(row -> {
+                                    System.out.println("title1:" + row.select("td").get(0).text());
+                                    System.out.println("title2:" + row.select("td").get(1).text());
+                                    /*...*/
+                                    System.out.println("-----------------------------------------------------------------");
+                                });
+                    });
         }
         return RestResultUtils.success();
     }
