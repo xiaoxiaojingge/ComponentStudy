@@ -7,11 +7,15 @@ import com.itjing.response.RestResult;
 import com.itjing.response.RestResultUtils;
 import com.itjing.service.ArticleService;
 import com.itjing.utils.DateUtils;
-import org.apache.poi.ss.formula.functions.T;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,8 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.net.URLEncoder;
 import java.util.Date;
 import java.util.List;
@@ -271,7 +274,7 @@ public class ExcelController {
     }
 
     @GetMapping("/import")
-    public RestResult<T> importByExcel() {
+    public RestResult<?> importByExcel() {
         String filePath = "E:\\workspace_idea\\ComponentStudy\\mybatis-generator\\src\\main\\resources\\import\\文章信息.xlsx";
         // 这里 需要指定读用哪个class去读，然后读取第一个sheet 文件流会自动关闭
         EasyExcelFactory.read(filePath, Article.class, new ArticleListener(aricleService))
@@ -284,7 +287,7 @@ public class ExcelController {
     }
 
     @GetMapping("/importByInputStream")
-    public RestResult<T> importByExcel(MultipartFile file) throws IOException {
+    public RestResult<?> importByExcel(MultipartFile file) throws IOException {
         // 这里 需要指定读用哪个class去读，然后读取第一个sheet 文件流会自动关闭
         EasyExcelFactory.read(file.getInputStream(), Article.class, new ArticleListener(aricleService))
                 .sheet()
@@ -292,6 +295,39 @@ public class ExcelController {
                 // 不写 .headRowNumber(位置) 也可以，因为默认会根据 DemoData 来解析，他没有指定头，也就是默认行头是第1行
                 .headRowNumber(1)
                 .doRead();
+        return RestResultUtils.success();
+    }
+
+    /**
+     * 解析html文件中table
+     *
+     * @param file
+     * @return
+     * @throws IOException
+     */
+    @PostMapping("/analysisHtml")
+    public RestResult<?> analysisHtml(MultipartFile file) throws IOException {
+        InputStream is = file.getInputStream();
+        Reader reader = new InputStreamReader(is);
+        BufferedReader htmlReader = new BufferedReader(reader);
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = htmlReader.readLine()) != null) {
+            sb.append(line);
+        }
+        Document doc = Jsoup.parse(sb.toString());
+        Elements rows = doc.select("table").get(0).select("tr");
+        if (rows.size() == 1) {
+            System.out.println("没有结果");
+        } else {
+            for (int i = 1; i < rows.size(); i++) {
+                Element row = rows.get(i);
+                System.out.println("title1:" + row.select("td").get(0).text());
+                System.out.println("title2:" + row.select("td").get(1).text());
+                /*...*/
+                System.out.println("-----------------------------------------------------------------");
+            }
+        }
         return RestResultUtils.success();
     }
 }

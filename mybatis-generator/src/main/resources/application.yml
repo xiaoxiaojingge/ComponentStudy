@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: mybatis-generator
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
 
   datasource:
     name: mysql
@@ -44,6 +48,8 @@ spring:
     scheduler-name: QuartzScheduler
     job-store-type: jdbc # 使用数据库存储
     wait-for-jobs-to-complete-on-shutdown: true # 应用关闭时，是否等待定时任务执行完成。默认为 false ，建议设置为 true
+    # 覆盖已存在job，这样代码修改cron表达式时，数据库就会相应改变
+    overwrite-existing-jobs: true
     jdbc:
       initialize-schema: never # 是否自动使用 SQL 初始化 Quartz 表结构。这里设置成 never ，我们手动创建表结构。
     properties:
