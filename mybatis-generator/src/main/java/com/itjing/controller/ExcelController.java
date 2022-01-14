@@ -1,12 +1,29 @@
 package com.itjing.controller;
 
+import cn.hutool.core.io.resource.ResourceUtil;
+import cn.hutool.core.text.csv.CsvReader;
+import cn.hutool.core.text.csv.CsvUtil;
+import cn.hutool.core.text.csv.CsvWriter;
+import cn.hutool.core.util.CharsetUtil;
 import com.alibaba.excel.EasyExcelFactory;
+import com.alibaba.fastjson.JSON;
 import com.itjing.entity.Article;
 import com.itjing.listener.ArticleListener;
+import com.itjing.pojo.CsvDTO;
 import com.itjing.response.RestResult;
 import com.itjing.response.RestResultUtils;
 import com.itjing.service.ArticleService;
 import com.itjing.utils.DateUtils;
+import com.itjing.utils.ExcelOfCsvUtil;
+import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
+import com.opencsv.CSVWriter;
+import com.opencsv.bean.CsvToBean;
+import com.opencsv.bean.CsvToBeanBuilder;
+import com.opencsv.enums.CSVReaderNullFieldIndicator;
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
+import org.apache.commons.io.input.BOMInputStream;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -25,6 +42,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -343,5 +361,108 @@ public class ExcelController {
                     });
         }
         return RestResultUtils.success();
+    }
+
+    /**
+     * 使用OpenCsv解析Csv文件
+     * 参考文档：https://blog.csdn.net/qq_41609208/article/details/111461171
+     *
+     * @param file
+     * @return
+     */
+    @PostMapping("/ImportCsvByOpenCsv")
+    public RestResult<?> analysisCsv(MultipartFile file) {
+
+        try (BOMInputStream bomInputStream = new BOMInputStream(file.getInputStream());
+             InputStreamReader inputStreamReader = new InputStreamReader(bomInputStream, "UTF-8");
+             CSVReader csvReader = new CSVReaderBuilder(inputStreamReader).build()) {
+            CsvToBean<CsvDTO> csvToBean = new CsvToBeanBuilder<CsvDTO>(csvReader)
+                    .withType(CsvDTO.class)
+                    .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
+                    .withIgnoreLeadingWhiteSpace(true)
+                    .withFieldAsNull(CSVReaderNullFieldIndicator.EMPTY_SEPARATORS)
+                    .withSkipLines(1)
+                    .build();
+            List<CsvDTO> mappings = csvToBean.parse();
+            LOGGER.info(JSON.toJSONString(mappings));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return RestResultUtils.success();
+    }
+
+    /**
+     * 通过OpenCsv导出Csv
+     *
+     * @param response
+     * @return
+     */
+    @GetMapping("/exportCsvByOpenCsv")
+    public void exportCsvByOpenCsv(HttpServletResponse response) {
+        // 导出数据
+        List<CsvDTO> exportResults = new ArrayList<>();
+        CsvDTO dto1 = new CsvDTO();
+        dto1.setName("zs");
+        dto1.setAge("18");
+        CsvDTO dto2 = new CsvDTO();
+        dto2.setName("ls");
+        dto2.setAge("20");
+        exportResults.add(dto1);
+        exportResults.add(dto2);
+        // 头部
+        String[] HEADER = new String[]{"姓名", "年龄"};
+        try {
+
+            ExcelOfCsvUtil.generateCsvFile(exportResults, "exportResultsByOpenCsv.csv", HEADER);
+            ExcelOfCsvUtil.readCsvFileStream("exportResultsByOpenCsv.csv", response);
+        } catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e) {
+            LOGGER.error("EXPORT ERROR", e);
+        }
+    }
+
+    /**
+     * 通过 Hutool 方式读取Csv
+     *
+     * @return
+     */
+    @GetMapping("/importCsvByHutool")
+    public void importByHutool() {
+        try {
+            CsvReader csvReader = CsvUtil.getReader();
+            // 使用GBK编码，否则中文出现乱码，
+            // 若使用utf-8 可以直接使用ResourceUtil.getUtf8Reader("")
+            // 这里我测试了下，我用上面的 OpenCsv 导出的文件，导入的时候，使用GBK，导入字段值都为null，然后换成UTF-8成功了。
+            // List<CsvDTO> list = csvReader.read(ResourceUtil.getReader("E:\\workspace_idea\\ComponentStudy\\exportResults.csv", CharsetUtil.CHARSET_GBK), CsvDTO.class);
+            List<CsvDTO> list = csvReader.read(ResourceUtil.getUtf8Reader("E:\\workspace_idea\\ComponentStudy\\exportResultsByHutool.csv"), CsvDTO.class);
+            LOGGER.info(JSON.toJSONString(list));
+        } catch (Exception e) {
+            LOGGER.error("IMPORT ERROR", e);
+        }
+    }
+
+    /**
+     * 通过 Hutool 方式导出Csv
+     *
+     * @return
+     */
+    @GetMapping("/exportCsvByHutool")
+    public void exportCsvByHutool(HttpServletResponse response) {
+        try {
+            // 导出数据
+            List<CsvDTO> exportResults = new ArrayList<>();
+            CsvDTO dto1 = new CsvDTO();
+            dto1.setName("zs");
+            dto1.setAge("18");
+            CsvDTO dto2 = new CsvDTO();
+            dto2.setName("ls");
+            dto2.setAge("20");
+            exportResults.add(dto1);
+            exportResults.add(dto2);
+            // 指定路径和编码
+            CsvWriter writer = CsvUtil.getWriter("E:\\workspace_idea\\ComponentStudy\\exportResultsByHutool.csv", CharsetUtil.CHARSET_UTF_8);
+            writer.writeBeans(exportResults);
+        } catch (Exception e) {
+            LOGGER.error("EXPORT ERROR", e);
+        }
     }
 }

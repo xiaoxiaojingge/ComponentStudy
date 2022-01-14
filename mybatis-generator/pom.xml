@@ -165,6 +165,13 @@
             <version>1.10.2</version>
         </dependency>
 
+        <!-- opencsv -->
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>5.5</version>
+        </dependency>
+
         <!-- test -->
         <dependency>
             <groupId>junit</groupId>
