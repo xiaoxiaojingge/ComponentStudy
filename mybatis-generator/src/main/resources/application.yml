@@ -1,0 +1,82 @@
+server:
+  port: 9999
+
+spring:
+  application:
+    name: mybatis-generator
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+  datasource:
+    name: mysql
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/springboot?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: lFXOP0dSdk+6j0rj60HZhg==
+    password: lFXOP0dSdk+6j0rj60HZhg==
+    initialSize: 10
+    maxActive: 100
+    minIdle: 10
+    maxWait: 6000
+
+    druid:
+      filters: stat
+      maxActive: 20
+      initialSize: 1
+      maxWait: 60000
+      minIdle: 10
+      maxIdle: 15
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      maxOpenPreparedStatements: 20
+      removeAbandoned: true
+      removeAbandonedTimeout: 1800
+      logAbandoned: true
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      stat-view-servlet:
+        enabled: false
+
+  # 定时任务配置
+  quartz:
+    scheduler-name: QuartzScheduler
+    job-store-type: jdbc # 使用数据库存储
+    wait-for-jobs-to-complete-on-shutdown: true # 应用关闭时，是否等待定时任务执行完成。默认为 false ，建议设置为 true
+    # 覆盖已存在job，这样代码修改cron表达式时，数据库就会相应改变
+    overwrite-existing-jobs: true
+    jdbc:
+      initialize-schema: never # 是否自动使用 SQL 初始化 Quartz 表结构。这里设置成 never ，我们手动创建表结构。
+    properties:
+      org:
+        quartz:
+          # JobStore 相关配置
+          jobStore:
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX # JobStore 实现类
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            tablePrefix: QRTZ_ # Quartz 表前缀
+            isClustered: false # 是集群模式
+            clusterCheckinInterval: 1000
+            useProperties: false
+          # 线程池相关配置
+          threadPool:
+            threadCount: 25 # 线程池大小。默认为 10 。
+            threadPriority: 5 # 线程优先级
+            class: org.quartz.simpl.SimpleThreadPool # 线程池类型
+
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+
+logging:
+  level:
+    com.itjing.mapper: debug
+
+# 数据源用户名和密码加解密使用的密码
+key-code: eiruewifmskru3
+
+
