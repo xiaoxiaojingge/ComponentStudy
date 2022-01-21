@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- *
+ * 其中，@CsvBindByPosition是OpenCsv的注解，@Alias是Hutool的注解
  */
 @Getter
 @Setter
