@@ -385,4 +385,35 @@ public class RegUtil {
         }
         return stringBuffer.toString();
     }
+
+    /**
+     * 校验日期
+     *
+     * @param str
+     * @return
+     */
+    public static boolean checkDate(String str) {
+        if (org.apache.commons.lang3.StringUtils.isEmpty(str)) {
+            return false;
+        }
+        // 4种分隔符
+        String sep = "[-\\./_]";
+        // 年份
+        String strPattern = "^(19[4-9]\\d|20\\d{2})" + sep;
+        strPattern += "(";
+        // 月（1,3,5,7,8,10,12)
+        strPattern += "((0?[13578]|1[02])" + sep + "(0?[1-9]|[12][0-9]|3[01]))|";
+        // 月(4,6,9,11)
+        strPattern += "((0?[469]|11)" + sep + "(0?[1-9]|[12][0-9]|30))|";
+        // 月（2）
+        strPattern += "((2)" + sep + "(0?[1-9]|[12]\\d))";
+        strPattern += ")$";
+        Pattern pattern = Pattern.compile(strPattern);
+        Matcher isDate = pattern.matcher(str);
+        if (!isDate.matches()) {
+            return false;
+        }
+        return true;
+    }
+
 }
