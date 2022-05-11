@@ -15,3 +15,6 @@ buildNumber.properties
 **/target/
 .idea
 **/.gitignore
+/mybatis-generator/src/main/java/com/spdb/speed4j/modules/
+/generateDatabaseDoc/src/main/resources/
+/mybatis-generator/src/main/resources/mapperxml/

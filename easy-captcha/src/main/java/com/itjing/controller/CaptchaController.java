@@ -38,13 +38,15 @@ public class CaptchaController {
 
     @ResponseBody
     @PostMapping("/vaild")
-    public JsonResult login(String verCode, String verKey) {
+    public JsonResult login(String userName, String password, String verCode, String verKey) {
         // 获取redis中的验证码
         String redisCode = RedisUtil.StringOps.get(verKey);
         // 判断验证码
         if (verCode == null || !redisCode.equals(verCode.trim().toLowerCase())) {
             return JsonResult.fail("验证码不正确");
         }
+        // 判断用户名和密码
+        // ...
         return JsonResult.success();
     }
 }
