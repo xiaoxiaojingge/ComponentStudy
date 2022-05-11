@@ -1,3 +1,6 @@
 spring:
   datasource:
     password: cipher@wVWI5YjcdWzRXkSkVSwgUA==
+server:
+  servlet:
+    context-path: /zhzlgl

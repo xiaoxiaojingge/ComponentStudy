@@ -79,6 +79,8 @@
         <module>mybatis-plus-2021</module>
         <!-- 学习jdk8新特性 -->
         <module>jdk8-study</module>
+        <!-- Java实现图形验证码 -->
+        <module>easy-captcha</module>
     </modules>
 
 </project>

@@ -41,6 +41,7 @@ public class DateUtil {
 
     /**
      * 判断当前时间是否在[startTime, endTime]区间，注意时间格式要一致
+     *
      * @param nowTimeStr
      * @param startTimeStr
      * @param endTimeStr
@@ -76,16 +77,16 @@ public class DateUtil {
 
     /**
      * 计算两个时间段之间的日期列表，比如20211114至20211231之间的时间
+     *
      * @param startTime
      * @param endTime
      * @return
      */
     public static List<String> getBetweenTime(String startTime, String endTime) {
         List<String> betweenTime = new ArrayList<String>();
-        try
-        {
-            Date sdate= new SimpleDateFormat(PATTERN4).parse(startTime);
-            Date edate= new SimpleDateFormat(PATTERN4).parse(endTime);
+        try {
+            Date sdate = new SimpleDateFormat(PATTERN4).parse(startTime);
+            Date edate = new SimpleDateFormat(PATTERN4).parse(endTime);
 
             SimpleDateFormat outformat = new SimpleDateFormat(PATTERN4);
 
@@ -103,15 +104,12 @@ public class DateUtil {
             day = eCalendar.get(Calendar.DATE);
             eCalendar.set(year, month, day, 0, 0, 0);
 
-            while (sCalendar.before(eCalendar))
-            {
+            while (sCalendar.before(eCalendar)) {
                 betweenTime.add(outformat.format(sCalendar.getTime()));
                 sCalendar.add(Calendar.DAY_OF_YEAR, 1);
             }
             betweenTime.add(outformat.format(eCalendar.getTime()));
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return betweenTime;
@@ -119,6 +117,7 @@ public class DateUtil {
 
     /**
      * 将时间戳 1613705920407转换成 1613705880000
+     *
      * @param seconds
      * @return
      * @throws ParseException
@@ -465,6 +464,7 @@ public class DateUtil {
 
     /**
      * 获取季度日期起始时间
+     *
      * @param date
      * @return
      */
@@ -497,6 +497,7 @@ public class DateUtil {
 
     /**
      * 获取当前天是这个月的第几天
+     *
      * @return
      */
     public static int getDayOfMonth() {
@@ -539,6 +540,7 @@ public class DateUtil {
 
     /**
      * 根据身份证获取年龄
+     *
      * @param idCard
      * @return
      */
@@ -571,6 +573,7 @@ public class DateUtil {
 
     /**
      * 根据身份证获取性别
+     *
      * @param idCard
      * @return
      */
@@ -593,6 +596,7 @@ public class DateUtil {
 
     /**
      * 根据身份证获取生日
+     *
      * @param idCard
      * @return
      */
@@ -616,6 +620,7 @@ public class DateUtil {
 
     /**
      * 今天是这周第几天
+     *
      * @return
      * @throws Exception
      */
@@ -651,6 +656,7 @@ public class DateUtil {
 
     /**
      * 两个日期差了多少月
+     *
      * @param start
      * @param end
      * @return
@@ -685,6 +691,7 @@ public class DateUtil {
 
     /**
      * 下个月开始时间
+     *
      * @param end
      * @return
      * @throws Exception
@@ -711,6 +718,7 @@ public class DateUtil {
 
     /**
      * 获取下个月开始时间
+     *
      * @return
      * @throws Exception
      */
@@ -731,9 +739,9 @@ public class DateUtil {
     }
 
 
-
     /**
      * 获取两个日期的时间戳差
+     *
      * @param startDate
      * @param endDate
      * @return
@@ -818,8 +826,10 @@ public class DateUtil {
         }
         return null;
     }
+
     /**
      * 将时间戳转化为ms的日期
+     *
      * @param time
      * @return java.lang.String
      */
@@ -830,6 +840,7 @@ public class DateUtil {
 
     /**
      * 将时间戳转化为ms的日期
+     *
      * @param time
      * @return java.lang.String
      */
@@ -837,9 +848,9 @@ public class DateUtil {
         SimpleDateFormat sdf = new SimpleDateFormat(PATTERN1);
         Date ret = null;
         try {
-            ret =  sdf.parse(time);
+            ret = sdf.parse(time);
         } catch (ParseException e) {
-            logger.error("日期转换错误"+e.getMessage());
+            logger.error("日期转换错误" + e.getMessage());
         }
         return ret.getTime();
     }
@@ -896,15 +907,16 @@ public class DateUtil {
 
     /**
      * 格式化日期
+     *
      * @param seconds
      * @return
      */
     public static String timeStampGangDate(String seconds) {
         String format = PATTERN4;
-        if(seconds == null || seconds.isEmpty() || "null".equals(seconds)){
+        if (seconds == null || seconds.isEmpty() || "null".equals(seconds)) {
             return "";
         }
-        if(format == null || format.isEmpty()){
+        if (format == null || format.isEmpty()) {
             format = "yyyy-MM-dd";
         }
         SimpleDateFormat sdf = new SimpleDateFormat(format);
@@ -1108,8 +1120,8 @@ public class DateUtil {
      */
     public static String getYesterdayTime() {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)-1,
-                0,0,0);
+        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH) - 1,
+                0, 0, 0);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String createTime = dateFormat.format(calendar.getTime());
         return createTime;
@@ -1140,10 +1152,10 @@ public class DateUtil {
      */
     public static String getPreHourTime() {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH),
-                calendar.get(Calendar.HOUR_OF_DAY) - 1,0,0);
+        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
+                calendar.get(Calendar.HOUR_OF_DAY) - 1, 0, 0);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date dateTime=calendar.getTime();
+        Date dateTime = calendar.getTime();
         String createTime = dateFormat.format(dateTime);
         return createTime;
     }
@@ -1166,6 +1178,7 @@ public class DateUtil {
 
     /**
      * 获取一个月前的时间
+     *
      * @return
      */
     public static StringBuffer getOneMonthTime() {
@@ -1184,6 +1197,7 @@ public class DateUtil {
 
     /**
      * 时间戳-->yyyyMMdd
+     *
      * @param seconds
      * @return
      */
@@ -1214,17 +1228,37 @@ public class DateUtil {
     /**
      * java时间字符串去空格、冒号和横杠
      * 将 1609139732636 转换成  20201228151532636
+     *
      * @param seconds
      * @return
      */
     public static String timeStampReplace(String seconds) {
         String format = PATTERN1;
-        if(seconds == null || seconds.isEmpty() || "null".equals(seconds)){
+        if (seconds == null || seconds.isEmpty() || "null".equals(seconds)) {
             return "";
         }
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         String date = sdf.format(new Date(Long.parseLong(seconds)));
         String result = date.replaceAll("[[\\s-:.punct:]]", "");
         return result;
+    }
+
+    /**
+     * 获取上年末日期
+     *
+     * @param date
+     * @return
+     */
+    public static String getMonthOfEndLastYear(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.YEAR, -1);
+        calendar.set(Calendar.MONTH, 11);
+        calendar.set(Calendar.DAY_OF_MONTH, 31);
+        return new SimpleDateFormat("yyyy-MM-dd").format(calendar.getTime());
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getMonthOfEndLastYear(new Date()));
     }
 }

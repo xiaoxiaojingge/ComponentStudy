@@ -16,10 +16,10 @@ public class User {
     private String name;
     private Integer age;
     private String email;
-    @Version //乐观锁Version注解
+    @Version // 乐观锁Version注解，每次更新时，自动+1
     private Integer version;
 
-    @TableLogic //逻辑删除
+    @TableLogic // 逻辑删除，逻辑删除值的参数可以在配置文件中配置
     private Integer deleted;
 
     // 字段添加填充内容
