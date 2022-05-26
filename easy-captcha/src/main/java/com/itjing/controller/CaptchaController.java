@@ -16,7 +16,6 @@ import java.util.concurrent.TimeUnit;
  * @author lijing
  * @date 2022年05月11日 11:22
  * @description SpringBoot项目创建图形验证码
- * <p>
  * 前后端分离项目中建议不要存储在session中；
  * 而使用分布式session，存储在redis中，redis存储需要一个key，key一同返回给前端用于验证输入。
  */
