@@ -22,7 +22,7 @@ public class GlobalException {
     @ExceptionHandler(ServiceException.class)
     public Map<String, Object> serviceException(ServiceException e) {
         HashMap<String, Object> map = new HashMap<>();
-        map.put("status", 500);
+        map.put("status", e.getCode());
         map.put("message", e.getMessage());
         return map;
     }
