@@ -1,0 +1,14 @@
+server:
+  port: 6677
+
+spring:
+  application:
+    name: spring-boot-rabbitmq-example
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    virtual-host: /
+    # \u624B\u52A8ack\u6D88\u606F
+    listener:
+      simple:
+        acknowledge-mode: manual

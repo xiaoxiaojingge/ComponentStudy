@@ -23,7 +23,7 @@ public class EncryptionPropertyConfig {
         public static final String ENCODED_PASSWORD_HINT = "cipher@";
         protected static final String DECODEKEY = "123456";
 
-        //自定义解密方法
+        // 自定义解密方法
         @Override
         public String resolvePropertyValue(String property) {
             try {

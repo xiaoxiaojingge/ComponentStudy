@@ -14,6 +14,7 @@ import org.mapstruct.factory.Mappers;
  */
 @Mapper
 public interface RoomConverter {
+
     RoomConverter INSTANCE = Mappers.getMapper(RoomConverter.class);
 
     @Mappings({

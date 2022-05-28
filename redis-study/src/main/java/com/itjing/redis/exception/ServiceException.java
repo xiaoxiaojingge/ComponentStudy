@@ -3,7 +3,7 @@ package com.itjing.redis.exception;
 /**
  * @author lijing
  * @date 2022年05月26日 9:44
- * @description
+ * @description 自定义业务异常
  */
 public class ServiceException extends Exception {
 

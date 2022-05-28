@@ -28,7 +28,6 @@ public class MybatisGeneratorApplication implements ApplicationRunner, CommandLi
         springApplication.addListeners(new ContextRefreshedListener());
         springApplication.run(args);
 
-
         // mapstruct
         Student student = new Student();
         student.setId(1).setName("张三").setGender(1).setBirthday(new Date()).setHome("bj");
@@ -39,7 +38,6 @@ public class MybatisGeneratorApplication implements ApplicationRunner, CommandLi
         room.setId(100).setStudent(student).setTime(new Date());
         RoomVo roomVo = RoomConverter.INSTANCE.building2Vo(room);
         System.out.println(roomVo);
-
     }
 
 
