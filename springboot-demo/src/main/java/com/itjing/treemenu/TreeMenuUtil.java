@@ -1,7 +1,9 @@
-package com.itjing.utils.treemenu;
+package com.itjing.treemenu;
 
-import org.apache.commons.lang3.StringUtils;
+import com.alibaba.fastjson.JSON;
+import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
@@ -9,44 +11,10 @@ import java.util.stream.Collectors;
 
 /**
  * @author lijing
- * @date 2021年12月21日 14:05
+ * @date 2022年05月31日 20:30
  * @description 树形菜单工具类
  */
 public class TreeMenuUtil {
-
-    /**
-     * 缓存
-     */
-    private static LRUCache<String, List<MenuNode>> menuCache = new LRUCache();
-
-    /**
-     * 清除菜单缓存
-     */
-    public static void clearMenuCache() {
-        menuCache.clear();
-    }
-
-    /**
-     * 获取菜单树，并将其放入缓存中
-     *
-     * @param nodeList
-     * @return
-     */
-    public static List<MenuNode> getMenuTree(List<MenuNode> nodeList) {
-        if (nodeList != null && nodeList.size() != 0) {
-            // 如果缓存中有，证明没有添加新的菜单，直接从缓存中获取
-            if (menuCache.containsKey("treeMenu")) {
-                return menuCache.get("treeMenu");
-            } else {
-                // 否则重新生成菜单树，并添加到缓存中
-                List<MenuNode> result = listWithTree(nodeList);
-                menuCache.put("treeMenu", result);
-                return result;
-            }
-        } else {
-            return nodeList;
-        }
-    }
 
     /**
      * 生成菜单树
@@ -55,8 +23,6 @@ public class TreeMenuUtil {
      * @return
      */
     private static List<MenuNode> listWithTree(List<MenuNode> menuNodes) {
-        // 进入了本方法，证明有新菜单加入，需要重新生成菜单树，需要清空缓存
-        TreeMenuUtil.clearMenuCache();
         // 组装成父子的树形结构
         List<MenuNode> level1Menus = menuNodes.stream()
                 // 找到一级菜单
@@ -93,5 +59,25 @@ public class TreeMenuUtil {
                 .sorted(Comparator.comparing(MenuNode::getMenuCode, Comparator.nullsLast(String::compareTo)))
                 .collect(Collectors.toList());
         return childrens;
+    }
+
+    public static void main(String[] args) {
+        MenuNode node1 = new MenuNode("1", "1", "江苏省", "");
+        MenuNode node2 = new MenuNode("2", "3", "连云港市", "1");
+        MenuNode node3 = new MenuNode("3", "1", "灌云县", "2");
+        MenuNode node4 = new MenuNode("4", "2", "苏州市", "1");
+        MenuNode node5 = new MenuNode("5", "4", "无锡市", "1");
+        MenuNode node6 = new MenuNode("6", "5", "盐城市", "1");
+        MenuNode node7 = new MenuNode("7", "6", "淮安市", "1");
+        List<MenuNode> list = new ArrayList<>();
+        list.add(node1);
+        list.add(node2);
+        list.add(node3);
+        list.add(node4);
+        list.add(node5);
+        list.add(node6);
+        list.add(node7);
+        List<MenuNode> menu = listWithTree(list);
+        System.out.println(JSON.toJSONString(menu));
     }
 }
