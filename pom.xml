@@ -87,6 +87,8 @@
         <module>rabbitmq-study</module>
         <!-- springboot-netty -->
         <module>springboot-netty</module>
+        <!-- ThreadLocal -->
+        <module>springboot-threadlocal</module>
     </modules>
 
 </project>
