@@ -138,8 +138,9 @@ public abstract class ContinuousDelayBaseService<T> {
 
         @Override
         public boolean equals(Object obj) {
-            if (obj == null)
+            if (obj == null) {
                 return false;
+            }
             if (!(obj instanceof DelayBean)) {
                 return false;
             }
