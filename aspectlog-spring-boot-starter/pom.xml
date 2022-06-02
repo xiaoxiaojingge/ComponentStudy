@@ -33,7 +33,7 @@
         <!--
             关于spring-boot-configuration-processor的说明：
             写starter时，在pom中配置spring-boot-autoconfigure-processor，
-            在编译时会自动收集配置类的条件，写到一个META-INF/spring-autoconfigure-metadata.properties中
+            在编译时会自动收集配置类的条件，写到一个META-INF/spring-configuration-metadata.json中
         -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
