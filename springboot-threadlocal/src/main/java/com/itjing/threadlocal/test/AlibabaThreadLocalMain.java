@@ -42,7 +42,7 @@ public class AlibabaThreadLocalMain {
                 System.out.println(String.format("本地变量改变之前(1), 父线程名称-%s, 子线程名称-%s, 变量值=%s", mainThreadName, Thread.currentThread().getName(), tl.get()));
             });
 
-            sleep(1L); //确保上面的会在tl.set执行之前执行
+            sleep(1L); // 确保上面的会在tl.set执行之前执行
             tl.set(2); // 等上面的线程池第一次启用完了，父线程再给自己赋值
 
             executorService.execute(() -> {
