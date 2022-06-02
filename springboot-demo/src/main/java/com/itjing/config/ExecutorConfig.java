@@ -12,9 +12,9 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
- * @author lijing
- * @date 2022年05月30日 19:37
- * @description 线程池配置类
+ * @program: 线程池配置类
+ * @author: zhanling.li
+ * @create: 2022-06-02 10:26
  */
 @Configuration
 @EnableAsync

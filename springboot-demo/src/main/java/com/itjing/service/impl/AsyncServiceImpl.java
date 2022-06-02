@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author lijing
- * @date 2022年05月30日 19:53
- * @description
+ * @program: 线程池配置类
+ * @author: zhanling.li
+ * @create: 2022-06-02 10:26
  */
 @Service
 @Slf4j
@@ -20,8 +20,9 @@ public class AsyncServiceImpl implements AsyncService {
     @Async("asyncServiceExecutor")
     public void executeAsync() {
         log.info("start executeAsync");
-        // 异步线程要做的事情 TODO
-        // 可以在这里执行操作比较耗时的事情
+        // 异步线程可以在这里执行操作比较耗时的事情 TODO
+        //
+
         log.info("do something......");
         try {
             TimeUnit.SECONDS.sleep(5);
