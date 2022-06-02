@@ -1,4 +1,4 @@
-package com.itjing.service;
+package com.itjing.util;
 
 import java.util.Iterator;
 import java.util.Objects;
@@ -7,9 +7,9 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
- * @author lijing
- * @date 2022年05月30日 9:08
- * @description 延迟业务数据的类型
+ * 延迟业务数据的类型
+ *
+ * @param <T>
  */
 public abstract class ContinuousDelayBaseService<T> {
 

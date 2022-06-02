@@ -11,16 +11,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan(basePackages = "com.itjing.webmagic.mapper")
 public class WebMagicDemoApplication implements CommandLineRunner {
 
-	@Autowired
-	private ZhihuTask zhihuTask;
+    @Autowired
+    private ZhihuTask zhihuTask;
 
-	public static void main(String[] args) {
-		SpringApplication.run(WebMagicDemoApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(WebMagicDemoApplication.class, args);
+    }
 
-	@Override
-	public void run(String... args) throws Exception {
-		// 爬取知乎数据
-		zhihuTask.crawl();
-	}
+    @Override
+    public void run(String... args) throws Exception {
+        // 爬取知乎数据
+        zhihuTask.crawl();
+    }
 }
