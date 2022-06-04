@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  * @author lijing
- * @date 2022年06月02日 16:12
+ * @date 2022年06月02日 19:12
  * @description 延迟队列配置
  * 去官网下载延时队列插件：https://www.rabbitmq.com/community-plugins.html
  * 使用命令启用插件：
