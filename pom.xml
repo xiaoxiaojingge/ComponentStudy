@@ -91,6 +91,8 @@
         <module>springboot-threadlocal</module>
         <!-- 自定义starter -->
         <module>aspectlog-spring-boot-starter</module>
+        <!-- spring-security 整合 jwt -->
+        <module>spring-security-jwt</module>
     </modules>
 
 </project>
