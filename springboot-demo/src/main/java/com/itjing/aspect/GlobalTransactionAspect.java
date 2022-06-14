@@ -24,7 +24,7 @@ import java.util.Map;
 @Configuration
 public class GlobalTransactionAspect {
 
-    private static final String AOP_POINTCUT_EXPRESSION = "execution(* com.itjing.serivce..*.*(..)))";
+    private static final String AOP_POINTCUT_EXPRESSION = "execution(* com.itjing.service..*.*(..)))";
 
     private static final int TX_METHOD_TIMEOUT = 5000;
 

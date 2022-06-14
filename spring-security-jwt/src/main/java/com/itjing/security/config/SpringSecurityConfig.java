@@ -88,6 +88,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.formLogin()
                 // 自定义登录拦截URI
+                // loginProcessingUrl和loginPage好像要同时配置
+                // 否则会出现问题，具体原因debug源码可得知
                 .loginProcessingUrl("/loginReq")
                 .loginPage("/loginPage")
                 .usernameParameter("userName")
@@ -145,6 +147,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // 配置自己的jwt验证过滤器
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        
+
 
         // disable page caching
         http.headers().cacheControl();

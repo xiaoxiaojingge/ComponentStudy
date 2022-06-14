@@ -93,6 +93,8 @@
         <module>aspectlog-spring-boot-starter</module>
         <!-- spring-security 整合 jwt -->
         <module>spring-security-jwt</module>
+        <!-- springboot + minio 实现文件上传 -->
+        <module>springboot-minio</module>
     </modules>
 
 </project>
