@@ -95,6 +95,12 @@
         <module>spring-security-jwt</module>
         <!-- springboot + minio 实现文件上传 -->
         <module>springboot-minio</module>
+        <!-- springboot 多数据源配置使用 -->
+        <!-- 其下讲述了3种方式 -->
+        <module>springboot-multi-datasource</module>
+        <!-- springboot + sharding-jdbc -->
+        <module>springboot-sharding-jdbc</module>
+
     </modules>
 
 </project>
