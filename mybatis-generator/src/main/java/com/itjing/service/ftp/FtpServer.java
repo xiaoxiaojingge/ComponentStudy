@@ -1,7 +1,7 @@
 package com.itjing.service.ftp;
 
-import org.apache.commons.net.ftp.FTPClient;
-import org.apache.commons.net.ftp.FTPFile;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.net.ftp.*;
 
 import java.io.*;
 import java.nio.charset.Charset;
@@ -13,6 +13,7 @@ import java.util.List;
  * @date 2022年06月25日 10:00
  * @description
  */
+@Slf4j
 public class FtpServer {
 
     // ftp对象
@@ -22,7 +23,7 @@ public class FtpServer {
     private String ip;
 
     // 连接端口，默认21
-    private int port = 21;
+    private Integer port = 21;
 
     // 要连接到的ftp端的名字
     private String name;
@@ -30,29 +31,90 @@ public class FtpServer {
     // 要连接到的ftp端的对应得密码
     private String pwd;
 
-    public FtpServer(String ip, String name, String pwd) {
-        this(ip, 21, name, pwd);
+    // 是否使用SSL连接
+    private boolean isSftp;
+
+    private boolean isTextMode = false;
+
+    private String tranEncoding = "GB2312";
+
+    // 秒数
+    private int defaultTimeoutSecond = 60;
+    private int connectTimeoutSecond = 30;
+    private int dataTimeoutSecond = 30;
+    // 秒
+    private int controlKeepAliveTimeout = 120;
+    private int controlKeepAliveReplyTimeout = -1;
+
+
+    public FtpServer(String ip, String name, String pwd, boolean isSftp) throws Exception {
+        this(ip, 21, name, pwd, isSftp);
     }
 
-    public FtpServer(String ip, int port, String name, String pwd) {
+    public FtpServer(String ip, int port, String name, String pwd, boolean isSftp) throws Exception {
         this.ip = ip;
         this.port = port;
         this.name = name;
         this.pwd = pwd;
+        this.isSftp = isSftp;
         this.init();
     }
 
-    private void init() {
-        ftp = new FTPClient();
-        //验证登录
-        try {
-            ftp.connect(ip, port);
-            ftp.login(name, pwd);
-            ftp.setCharset(Charset.forName("UTF-8"));
-            ftp.setControlEncoding("UTF-8");
-        } catch (IOException e) {
-            throw new RuntimeException("连接失败");
+    private void init() throws Exception {
+        if (isSftp) {
+            ftp = new FTPSClient(false);
+        } else {
+            ftp = new FTPClient();
         }
+        // 每大约2分钟发一次noop，防止大文件传输导致的控制连接中断
+        ftp.setControlKeepAliveTimeout(controlKeepAliveTimeout);
+        // 设置默认超时
+        ftp.setDefaultTimeout(defaultTimeoutSecond * 1000);
+        // 验证登录
+        // 连接到远程的FTP服务器.
+        try {
+            if (port != null) {
+                ftp.connect(ip, port);
+            } else {
+                ftp.connect(ip);
+            }
+        } catch (Exception e) {
+            this.destory();
+            log.error("连接服务器失败,host:{}, port:{}", ip, port);
+            throw e;
+        }
+        int reply = ftp.getReplyCode(); // 获得返回的代码，来判断连接状态
+        if (!FTPReply.isPositiveCompletion(reply)) {
+            this.destory();
+            // 连接错误[拒绝连接]
+            throw new Exception("FTP server refused connection. " + ip);
+        }
+        ///// 开始进行登录/////
+        boolean flag = ftp.login(name, pwd);
+        if (flag == false) {
+            this.destory();
+            throw new Exception("Invalid user/password");
+        }
+
+        try {
+            if (FTPReply.isPositiveCompletion(ftp.sendCommand("OPTS UTF8", "ON"))) {
+                // 开启服务器对UTF-8的支持，如果服务器支持就用UTF-8编码，否则就使用本地编码
+                tranEncoding = "UTF-8";
+                log.debug("FTP Server allow UTF8 encoding");
+            }
+        } catch (Exception e) {
+            log.error("ftp server opts utf8 error,{}", e.getMessage());
+        }
+        log.info("use encoding {}", tranEncoding);
+        ftp.setControlEncoding(tranEncoding); // 中文支持
+        ftp.setCharset(Charset.forName("UTF-8"));
+        // 设置传送模式
+        if (isTextMode) {
+            ftp.setFileType(FTP.ASCII_FILE_TYPE);
+        } else {
+            ftp.setFileType(FTP.BINARY_FILE_TYPE);
+        }
+        ftp.enterLocalPassiveMode();
     }
 
     /**
@@ -63,7 +125,6 @@ public class FtpServer {
      */
     public void UploadFile(String SourcePath, String TargetPath) {
         try {
-
             OutputStream os = ftp.storeFileStream(TargetPath);
             FileInputStream fis = new FileInputStream(SourcePath);
             byte[] b = new byte[1024];
@@ -183,19 +244,8 @@ public class FtpServer {
         }
     }
 
-    public static void main(String args[]) {
-        String ip = "192.168.56.111"; // 临时域名
-        String username = "test"; // 用户名
-        String password = "test"; // 密码
-        int port = 21;
-        FtpServer ftpServer = new FtpServer(ip, port, username, password);
-//        ftpServer.DownloadFile("E:\\workspace_idea\\ComponentStudy\\mybatis-generator\\src\\main\\java\\com\\itjing\\service\\ftp\\2.del","1.del");
-        InputStream inputStream = ftpServer.getInputStream("1.del");
-        List<String> strs = readDel(inputStream);
-        System.out.println(strs);
-    }
 
-    private static List<String> readDel(InputStream inputStream) {
+    private static List<String> readDel(InputStream inputStream) throws IOException {
         List<String> allString = new ArrayList<>();
         try (DataInputStream dis = new DataInputStream(inputStream);
              BufferedReader br = new BufferedReader(new InputStreamReader(dis, "UTF-8"))) {
@@ -211,7 +261,26 @@ public class FtpServer {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        ftp.completePendingCommand();
         return allString;
+    }
+
+
+    private void destory() {
+        if (ftp == null) {
+            return;
+        }
+        try {
+            ftp.logout();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            ftp.disconnect();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ftp = null;
     }
 
 }

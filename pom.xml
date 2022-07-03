@@ -100,7 +100,8 @@
         <module>springboot-multi-datasource</module>
         <!-- springboot + sharding-jdbc -->
         <module>springboot-sharding-jdbc</module>
-
+        <!-- 杂用 -->
+        <module>springboot-test</module>
     </modules>
 
 </project>
