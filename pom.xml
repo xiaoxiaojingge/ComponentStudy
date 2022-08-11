@@ -102,6 +102,8 @@
         <module>springboot-sharding-jdbc</module>
         <!-- 杂用 -->
         <module>springboot-test</module>
+        <!-- springboot + swagger3 -->
+        <module>springboot-swagger3</module>
     </modules>
 
 </project>
