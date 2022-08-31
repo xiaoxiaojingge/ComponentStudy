@@ -33,7 +33,7 @@ public class JwtAccessDeniedHandler implements AccessDeniedHandler {
             out.write(JsonUtil.obj2String(result));
             out.flush();
         } catch (IOException exception) {
-
+            log.error(exception.getMessage());
         }
     }
 }
