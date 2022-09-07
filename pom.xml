@@ -104,6 +104,8 @@
         <module>springboot-test</module>
         <!-- springboot + swagger3 -->
         <module>springboot-swagger3</module>
+        <!-- springboot + easyexcel -->
+        <module>springboot-easyexcel</module>
     </modules>
 
 </project>
