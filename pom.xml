@@ -106,6 +106,8 @@
         <module>springboot-swagger3</module>
         <!-- springboot + easyexcel -->
         <module>springboot-easyexcel</module>
+        <!-- springboot + flowable -->
+        <module>springboot-flowable</module>
     </modules>
 
 </project>
