@@ -108,6 +108,8 @@
         <module>springboot-easyexcel</module>
         <!-- springboot + flowable -->
         <module>springboot-flowable</module>
+        <!-- springboot-mysql -->
+        <module>springboot-mysql</module>
     </modules>
 
 </project>
