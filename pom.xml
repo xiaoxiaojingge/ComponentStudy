@@ -110,6 +110,8 @@
         <module>springboot-flowable</module>
         <!-- springboot-mysql -->
         <module>springboot-mysql</module>
+        <!-- springboot-thread -->
+        <module>springboot-thread</module>
     </modules>
 
 </project>
