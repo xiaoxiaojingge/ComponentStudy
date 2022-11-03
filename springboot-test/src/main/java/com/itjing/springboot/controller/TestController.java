@@ -28,4 +28,9 @@ public class TestController {
         System.out.println(userMapper.getUserCount(user));
         return user;
     }
+
+    @GetMapping("/testIdeaShortcuts")
+    public String testIdeaShortcuts() {
+        return "success";
+    }
 }

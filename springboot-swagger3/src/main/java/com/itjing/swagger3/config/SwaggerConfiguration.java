@@ -63,7 +63,7 @@ public class SwaggerConfiguration implements WebMvcConfigurer {
                 .host(swaggerProperties.getTryHost())
                 // 选择哪些接口作为swagger的doc发布
                 .select()
-                // 去配置扫描接口，RequestHandlerSelectors 配置如何扫描接口
+                // 去配置扫描接口，RequestHandlerSelectors 配置如何扫描接口，如果有多个包的话，用自定义的分隔符进行分隔
                 .apis(basePackage("com.itjing.swagger3.controller"))
                 //加了ApiOperation注解的类，才生成接口文档
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))

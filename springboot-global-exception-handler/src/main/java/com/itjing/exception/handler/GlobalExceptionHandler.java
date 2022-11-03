@@ -1,5 +1,7 @@
-package com.itjing.exception;
+package com.itjing.exception.handler;
 
+import com.itjing.exception.BizException;
+import com.itjing.exception.CommonErrorEnum;
 import com.itjing.response.GeneralResult;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;

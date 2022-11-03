@@ -42,6 +42,7 @@ public class TaskProcessUtil {
     public static ExecutorService getOrInitExecutors(String poolName, int poolSize) {
         ExecutorService executorService = executors.get(poolName);
         // 获取线程池可能会存在并发情况，所以需要加一个 synchronized 锁，然后锁住后，需要对 executorService 进行二次判空校验。
+        // 即双重检测锁
         if (null == executorService) {
             synchronized (TaskProcessUtil.class) {
                 executorService = executors.get(poolName);

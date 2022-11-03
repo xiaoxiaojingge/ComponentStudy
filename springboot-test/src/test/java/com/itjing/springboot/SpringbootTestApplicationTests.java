@@ -10,4 +10,11 @@ class SpringbootTestApplicationTests {
     void contextLoads() {
     }
 
+    @Test
+    public void testDebug() {
+        for (int i = 0; i < 1000; i++) {
+            System.out.print(i + " ");
+        }
+    }
+
 }
