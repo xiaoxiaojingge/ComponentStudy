@@ -46,6 +46,7 @@ public class CaptchaController {
         }
         // 判断用户名和密码
         // ...
+        // 这里的逻辑需要自己去实现
         return JsonResult.success();
     }
 }

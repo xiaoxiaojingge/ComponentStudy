@@ -36,7 +36,7 @@ public class Swagger2Config {
                 .title("SpringBoot整合OSS-API文档")
                 .description("阿里云OSS-文件上传下载测试")
                 .version("1.0")
-                .contact(new Contact("lijing", "http://www.xiaojingge.com", "2427259171@qq.com"))
+                .contact(new Contact("lijing", "https://www.xiaojingge.com", "2427259171@qq.com"))
                 .build();
     }
 }
