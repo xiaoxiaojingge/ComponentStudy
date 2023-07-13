@@ -55,7 +55,7 @@
         </dependency>
 
         <!-- 百度 uid 生成器 -->
-        <dependency>
+        <!--<dependency>
             <groupId>com.baidu.fsg</groupId>
             <artifactId>uid-generator</artifactId>
             <version>1.0.0-SNAPSHOT</version>
@@ -69,7 +69,7 @@
                     <artifactId>mybatis</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
+        </dependency>-->
 
         <!-- test -->
         <dependency>
