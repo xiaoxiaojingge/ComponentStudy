@@ -125,6 +125,8 @@
         <module>springboot-api</module>
         <!-- springboot-sensitive -->
         <module>springboot-sensitive</module>
+        <!-- springboot-dynamic-schedule-task -->
+        <module>springboot-dynamic-schedule-task</module>
     </modules>
 
 </project>

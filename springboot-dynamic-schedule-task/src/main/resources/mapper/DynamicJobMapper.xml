@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itjing.task.mapper.DynamicJobMapper">
+  <resultMap id="BaseResultMap" type="com.itjing.task.domain.DynamicJob">
+    <!--@mbg.generated-->
+    <!--@Table dynamic_job-->
+    <id column="job_id" jdbcType="INTEGER" property="jobId" />
+    <result column="business_id" jdbcType="INTEGER" property="businessId" />
+    <result column="bean_name" jdbcType="VARCHAR" property="beanName" />
+    <result column="method_name" jdbcType="VARCHAR" property="methodName" />
+    <result column="method_params" jdbcType="VARCHAR" property="methodParams" />
+    <result column="cron_expression" jdbcType="VARCHAR" property="cronExpression" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="job_status" jdbcType="TINYINT" property="jobStatus" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    job_id, business_id, bean_name, method_name, method_params, cron_expression, remark, 
+    job_status, create_user
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from dynamic_job
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from dynamic_job
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="job_id" keyProperty="jobId" parameterType="com.itjing.task.domain.DynamicJob" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into dynamic_job (business_id, bean_name, method_name, 
+      method_params, cron_expression, remark, 
+      job_status, create_user)
+    values (#{businessId,jdbcType=INTEGER}, #{beanName,jdbcType=VARCHAR}, #{methodName,jdbcType=VARCHAR}, 
+      #{methodParams,jdbcType=VARCHAR}, #{cronExpression,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{jobStatus,jdbcType=TINYINT}, #{createUser,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="job_id" keyProperty="jobId" parameterType="com.itjing.task.domain.DynamicJob" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into dynamic_job
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="businessId != null">
+        business_id,
+      </if>
+      <if test="beanName != null">
+        bean_name,
+      </if>
+      <if test="methodName != null">
+        method_name,
+      </if>
+      <if test="methodParams != null">
+        method_params,
+      </if>
+      <if test="cronExpression != null">
+        cron_expression,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="jobStatus != null">
+        job_status,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="businessId != null">
+        #{businessId,jdbcType=INTEGER},
+      </if>
+      <if test="beanName != null">
+        #{beanName,jdbcType=VARCHAR},
+      </if>
+      <if test="methodName != null">
+        #{methodName,jdbcType=VARCHAR},
+      </if>
+      <if test="methodParams != null">
+        #{methodParams,jdbcType=VARCHAR},
+      </if>
+      <if test="cronExpression != null">
+        #{cronExpression,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="jobStatus != null">
+        #{jobStatus,jdbcType=TINYINT},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itjing.task.domain.DynamicJob">
+    <!--@mbg.generated-->
+    update dynamic_job
+    <set>
+      <if test="businessId != null">
+        business_id = #{businessId,jdbcType=INTEGER},
+      </if>
+      <if test="beanName != null">
+        bean_name = #{beanName,jdbcType=VARCHAR},
+      </if>
+      <if test="methodName != null">
+        method_name = #{methodName,jdbcType=VARCHAR},
+      </if>
+      <if test="methodParams != null">
+        method_params = #{methodParams,jdbcType=VARCHAR},
+      </if>
+      <if test="cronExpression != null">
+        cron_expression = #{cronExpression,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="jobStatus != null">
+        job_status = #{jobStatus,jdbcType=TINYINT},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itjing.task.domain.DynamicJob">
+    <!--@mbg.generated-->
+    update dynamic_job
+    set business_id = #{businessId,jdbcType=INTEGER},
+      bean_name = #{beanName,jdbcType=VARCHAR},
+      method_name = #{methodName,jdbcType=VARCHAR},
+      method_params = #{methodParams,jdbcType=VARCHAR},
+      cron_expression = #{cronExpression,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      job_status = #{jobStatus,jdbcType=TINYINT},
+      create_user = #{createUser,jdbcType=VARCHAR}
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByBusinessId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from dynamic_job
+    where business_id = #{businessId}
+    limit 1
+  </select>
+
+  <select id="listJobsByStatus" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from dynamic_job
+    where job_status = #{status}
+  </select>
+</mapper>
