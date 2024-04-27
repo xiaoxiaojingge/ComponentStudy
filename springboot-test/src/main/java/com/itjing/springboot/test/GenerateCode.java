@@ -12,7 +12,7 @@ import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
- * 生成MyBatis批量插入时，无数据插入，有数据更新的on duplicate key update语句
+ * 生成MyBatis批量插入时，无数据插入，有数据更新的on duplicate key update语句。
  *
  * @author lijing
  * @date 2024-04-04
