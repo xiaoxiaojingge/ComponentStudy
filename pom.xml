@@ -127,6 +127,8 @@
         <module>springboot-sensitive</module>
         <!-- springboot-dynamic-schedule-task -->
         <module>springboot-dynamic-schedule-task</module>
+        <!-- springboot-tess4j -->
+        <module>springboot-tess4j</module>
     </modules>
 
 </project>

@@ -1,0 +1,7 @@
+server:
+  port: 9876
+
+tess4j:
+  train-data:
+    path: D:/workspace_other/tess4j/traindata
+
