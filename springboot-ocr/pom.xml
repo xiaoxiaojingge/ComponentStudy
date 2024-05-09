@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.itjing</groupId>
-    <artifactId>springboot-tess4j</artifactId>
+    <artifactId>springboot-ocr</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-tess4j</name>
+    <name>springboot-ocr</name>
     <properties>
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -13,6 +13,18 @@
         <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
     </properties>
     <dependencies>
+        <!-- rapidocr -->
+        <!-- https://gitcode.com/MyMonsterCat/RapidOcr-Java/overview -->
+        <dependency>
+            <groupId>io.github.mymonstercat</groupId>
+            <artifactId>rapidocr</artifactId>
+            <version>0.0.7</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.mymonstercat</groupId>
+            <artifactId>rapidocr-onnx-platform</artifactId>
+            <version>0.0.7</version>
+        </dependency>
         <!-- tess4j -->
         <dependency>
             <groupId>net.sourceforge.tess4j</groupId>
@@ -72,7 +84,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>com.itjing.tess4j.SpringbootTess4jApplication</mainClass>
+                    <mainClass>com.itjing.ocr.SpringbootOCRApplication</mainClass>
                     <skip>true</skip>
                 </configuration>
                 <executions>

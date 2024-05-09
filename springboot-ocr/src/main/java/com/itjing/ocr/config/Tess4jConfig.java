@@ -1,4 +1,4 @@
-package com.itjing.tess4j.config;
+package com.itjing.ocr.config;
 
 import net.sourceforge.tess4j.ITessAPI;
 import net.sourceforge.tess4j.Tesseract;
