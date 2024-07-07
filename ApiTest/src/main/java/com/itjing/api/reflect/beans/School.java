@@ -3,9 +3,10 @@ package com.itjing.api.reflect.beans;
 import java.util.Map;
 
 public class School {
+
 	private String name;
-	
-	private Map<String,String> onlineYear;
+
+	private Map<String, String> onlineYear;
 
 	public String getName() {
 		return name;
@@ -22,4 +23,5 @@ public class School {
 	public void setOnlineYear(Map<String, String> onlineYear) {
 		this.onlineYear = onlineYear;
 	}
+
 }

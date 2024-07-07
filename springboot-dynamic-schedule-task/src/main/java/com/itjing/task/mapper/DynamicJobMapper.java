@@ -8,19 +8,21 @@ import java.util.List;
 
 @Mapper
 public interface DynamicJobMapper {
-    int deleteByPrimaryKey(Integer jobId);
 
-    int insert(DynamicJob record);
+	int deleteByPrimaryKey(Integer jobId);
 
-    int insertSelective(DynamicJob record);
+	int insert(DynamicJob record);
 
-    DynamicJob selectByPrimaryKey(Integer jobId);
+	int insertSelective(DynamicJob record);
 
-    int updateByPrimaryKeySelective(DynamicJob record);
+	DynamicJob selectByPrimaryKey(Integer jobId);
 
-    int updateByPrimaryKey(DynamicJob record);
+	int updateByPrimaryKeySelective(DynamicJob record);
 
-    DynamicJob selectByBusinessId(@Param("businessId") Integer businessId);
+	int updateByPrimaryKey(DynamicJob record);
 
-    List<DynamicJob> listJobsByStatus(Byte status);
+	DynamicJob selectByBusinessId(@Param("businessId") Integer businessId);
+
+	List<DynamicJob> listJobsByStatus(Byte status);
+
 }

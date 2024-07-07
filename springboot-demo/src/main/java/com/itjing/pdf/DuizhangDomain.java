@@ -8,8 +8,13 @@ import java.math.BigDecimal;
 @Data
 @Accessors(chain = true)
 public class DuizhangDomain {
-    private String jg;
-    private Integer ydz;
-    private Integer wdz;
-    private BigDecimal dzl;
+
+	private String jg;
+
+	private Integer ydz;
+
+	private Integer wdz;
+
+	private BigDecimal dzl;
+
 }

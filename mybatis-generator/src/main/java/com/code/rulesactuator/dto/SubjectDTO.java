@@ -13,6 +13,6 @@ import lombok.*;
 @ToString
 public class SubjectDTO extends RuleDTO {
 
-    private String sort;
+	private String sort;
 
 }

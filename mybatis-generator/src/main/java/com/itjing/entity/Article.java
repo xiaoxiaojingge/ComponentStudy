@@ -9,7 +9,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 import java.io.Serializable;
 
 @Data
@@ -23,20 +22,24 @@ import java.io.Serializable;
 @ContentFontStyle(fontHeightInPoints = 16) // 内容字体
 public class Article implements Serializable {
 
-    @ExcelIgnore
-    private Integer id;
-    // 读取的时候不建议 index 和 value 同时用，要么一个对象只用index，要么一个对象只用 value 去匹配
-    @ExcelProperty(value = "作者", index = 0)
-    private String author;
+	@ExcelIgnore
+	private Integer id;
 
-    @ExcelProperty(value = "标题", index = 1)
-    private String title;
+	// 读取的时候不建议 index 和 value 同时用，要么一个对象只用index，要么一个对象只用 value 去匹配
+	@ExcelProperty(value = "作者", index = 0)
+	private String author;
 
-    @ColumnWidth(50)
-    @ExcelProperty(value = "内容", index = 2)
-    private String content;
+	@ExcelProperty(value = "标题", index = 1)
+	private String title;
 
-   /* @DateTimeFormat("yyyy-MM-dd HH:mm:ss") // 格式化日期
-    @ExcelProperty(value = "创建时间", index = 3)
-    private Date createTime;*/
+	@ColumnWidth(50)
+	@ExcelProperty(value = "内容", index = 2)
+	private String content;
+
+	/*
+	 * @DateTimeFormat("yyyy-MM-dd HH:mm:ss") // 格式化日期
+	 *
+	 * @ExcelProperty(value = "创建时间", index = 3) private Date createTime;
+	 */
+
 }

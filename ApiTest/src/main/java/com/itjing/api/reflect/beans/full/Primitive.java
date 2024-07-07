@@ -8,14 +8,21 @@ import org.springframework.util.ClassUtils;
  */
 @Data
 public class Primitive {
-    private byte a;
-    private short b;
-    private int c;
-    private long d;
 
-    private float e;
-    private double f;
+	private byte a;
 
-    private char g;
-    private boolean h;
+	private short b;
+
+	private int c;
+
+	private long d;
+
+	private float e;
+
+	private double f;
+
+	private char g;
+
+	private boolean h;
+
 }

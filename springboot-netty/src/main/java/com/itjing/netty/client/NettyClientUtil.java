@@ -22,36 +22,38 @@ import java.util.Map;
 @Slf4j
 public class NettyClientUtil {
 
-    public static Map<String, Object> helloNetty(String msg) {
-        NettyClientHandler nettyClientHandler = new NettyClientHandler();
-        EventLoopGroup group = new NioEventLoopGroup();
-        Bootstrap bootstrap = new Bootstrap()
-                .group(group)
-                // 该参数的作用就是禁止使用Nagle算法，使用于小数据即时传输
-                .option(ChannelOption.TCP_NODELAY, true)
-                .channel(NioSocketChannel.class)
-                .handler(new ChannelInitializer<SocketChannel>() {
-                    @Override
-                    protected void initChannel(SocketChannel socketChannel) throws Exception {
-                        socketChannel.pipeline().addLast("decoder", new StringDecoder());
-                        socketChannel.pipeline().addLast("encoder", new StringEncoder());
-                        socketChannel.pipeline().addLast(nettyClientHandler);
-                    }
-                });
-        try {
-            ChannelFuture future = bootstrap.connect("127.0.0.1", 8082).sync();
-            log.info("客户端发送成功....");
-            // 发送消息
-            future.channel().writeAndFlush(msg);
-            // 等待连接被关闭
-            future.channel().closeFuture().sync();
-            return nettyClientHandler.getResponse();
-        } catch (Exception e) {
-            log.error("客户端Netty失败", e);
-            throw new RuntimeException(e);
-        } finally {
-            // 以一种优雅的方式进行线程退出
-            group.shutdownGracefully();
-        }
-    }
+	public static Map<String, Object> helloNetty(String msg) {
+		NettyClientHandler nettyClientHandler = new NettyClientHandler();
+		EventLoopGroup group = new NioEventLoopGroup();
+		Bootstrap bootstrap = new Bootstrap().group(group)
+			// 该参数的作用就是禁止使用Nagle算法，使用于小数据即时传输
+			.option(ChannelOption.TCP_NODELAY, true)
+			.channel(NioSocketChannel.class)
+			.handler(new ChannelInitializer<SocketChannel>() {
+				@Override
+				protected void initChannel(SocketChannel socketChannel) throws Exception {
+					socketChannel.pipeline().addLast("decoder", new StringDecoder());
+					socketChannel.pipeline().addLast("encoder", new StringEncoder());
+					socketChannel.pipeline().addLast(nettyClientHandler);
+				}
+			});
+		try {
+			ChannelFuture future = bootstrap.connect("127.0.0.1", 8082).sync();
+			log.info("客户端发送成功....");
+			// 发送消息
+			future.channel().writeAndFlush(msg);
+			// 等待连接被关闭
+			future.channel().closeFuture().sync();
+			return nettyClientHandler.getResponse();
+		}
+		catch (Exception e) {
+			log.error("客户端Netty失败", e);
+			throw new RuntimeException(e);
+		}
+		finally {
+			// 以一种优雅的方式进行线程退出
+			group.shutdownGracefully();
+		}
+	}
+
 }

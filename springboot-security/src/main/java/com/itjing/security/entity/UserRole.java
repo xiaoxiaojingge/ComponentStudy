@@ -12,7 +12,7 @@ import lombok.Setter;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author lijing
@@ -23,19 +23,18 @@ import lombok.Setter;
 @TableName("t_user_role")
 public class UserRole implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
+	@TableId(value = "id", type = IdType.AUTO)
+	private Long id;
 
-    private Long userId;
+	private Long userId;
 
-    private Long roleId;
+	private Long roleId;
 
-    @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+	@TableField(fill = FieldFill.INSERT)
+	private LocalDateTime createTime;
 
-    private LocalDateTime updateTime;
-
+	private LocalDateTime updateTime;
 
 }

@@ -6,5 +6,7 @@ package com.itjing.designpatterns.proxy;
  * @Description: 要有一个代理接口让实现类和代理实现类来实现
  */
 public interface FoodService {
-    Food makeChicken();
+
+	Food makeChicken();
+
 }

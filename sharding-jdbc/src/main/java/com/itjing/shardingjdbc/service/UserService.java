@@ -10,15 +10,17 @@ import java.util.List;
  * @Description:
  */
 public interface UserService {
-    /**
-     * 添加操作
-     * @param user
-     */
-    void addUser(User user);
 
-    /**
-     * 查询全部
-     * @return
-     */
-    List<User> findUsers();
+	/**
+	 * 添加操作
+	 * @param user
+	 */
+	void addUser(User user);
+
+	/**
+	 * 查询全部
+	 * @return
+	 */
+	List<User> findUsers();
+
 }

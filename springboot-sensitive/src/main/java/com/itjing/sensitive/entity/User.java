@@ -18,26 +18,26 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class User implements Serializable {
 
-    /**
-     * 主键ID
-     */
-    private Long id;
+	/**
+	 * 主键ID
+	 */
+	private Long id;
 
-    /**
-     * 姓名
-     */
-    @Sensitive(mask = SensitiveEnum.ALL_MASK)
-    private String name;
+	/**
+	 * 姓名
+	 */
+	@Sensitive(mask = SensitiveEnum.ALL_MASK)
+	private String name;
 
-    /**
-     * 年龄
-     */
-    private Integer age;
+	/**
+	 * 年龄
+	 */
+	private Integer age;
 
-    /**
-     * 邮箱
-     */
-    @Sensitive(mask = SensitiveEnum.ALL_MASK, maskChar = "*")
-    private String email;
+	/**
+	 * 邮箱
+	 */
+	@Sensitive(mask = SensitiveEnum.ALL_MASK, maskChar = "*")
+	private String email;
 
 }

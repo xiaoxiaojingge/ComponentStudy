@@ -6,8 +6,10 @@ package com.itjing.designpatterns.abstractfactory;
  * @Description:
  */
 public class Square implements Shape {
-    @Override
-    public void draw() {
-        System.out.println("The shape is square");
-    }
+
+	@Override
+	public void draw() {
+		System.out.println("The shape is square");
+	}
+
 }

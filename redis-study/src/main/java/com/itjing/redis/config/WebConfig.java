@@ -14,19 +14,19 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-    /**
-     * 添加拦截器
-     *
-     * @param registry
-     */
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        // 接口幂等性拦截器
-        registry.addInterceptor(autoIdempotentInterceptor());
-    }
+	/**
+	 * 添加拦截器
+	 * @param registry
+	 */
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		// 接口幂等性拦截器
+		registry.addInterceptor(autoIdempotentInterceptor());
+	}
 
-    @Bean
-    public AutoIdempotentInterceptor autoIdempotentInterceptor() {
-        return new AutoIdempotentInterceptor();
-    }
+	@Bean
+	public AutoIdempotentInterceptor autoIdempotentInterceptor() {
+		return new AutoIdempotentInterceptor();
+	}
+
 }

@@ -16,12 +16,10 @@ import java.util.List;
  */
 @Repository
 public interface RelationRepository extends Neo4jRepository<Relation, Long> {
-    @Query("MATCH p=(n:Person)-[r:Relation]->(m:Person) " +
-            "WHERE id(n)={startNode} and id(m)={endNode} and r.relation={relation}" +
-            "RETURN p")
-    List<Relation> findRelation(
-            @Param("startNode") Node startNode,
-            @Param("endNode") Node endNode,
-            @Param("relation") String relation
-    );
+
+	@Query("MATCH p=(n:Person)-[r:Relation]->(m:Person) "
+			+ "WHERE id(n)={startNode} and id(m)={endNode} and r.relation={relation}" + "RETURN p")
+	List<Relation> findRelation(@Param("startNode") Node startNode, @Param("endNode") Node endNode,
+			@Param("relation") String relation);
+
 }

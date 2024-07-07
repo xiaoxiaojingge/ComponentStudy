@@ -12,14 +12,15 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
  */
 @Configuration
 public class SchedulingConfig {
-    
-    @Bean
-    public TaskScheduler taskScheduler() {
-        ThreadPoolTaskScheduler taskScheduler = new ThreadPoolTaskScheduler();
-        // 定时任务执行线程池核心线程数
-        taskScheduler.setPoolSize(10);
-        taskScheduler.setRemoveOnCancelPolicy(true);
-        taskScheduler.setThreadNamePrefix("TaskSchedulerThreadPool-");
-        return taskScheduler;
-    }
+
+	@Bean
+	public TaskScheduler taskScheduler() {
+		ThreadPoolTaskScheduler taskScheduler = new ThreadPoolTaskScheduler();
+		// 定时任务执行线程池核心线程数
+		taskScheduler.setPoolSize(10);
+		taskScheduler.setRemoveOnCancelPolicy(true);
+		taskScheduler.setThreadNamePrefix("TaskSchedulerThreadPool-");
+		return taskScheduler;
+	}
+
 }

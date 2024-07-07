@@ -14,7 +14,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UploadResponse {
 
-    private String minIoUrl;
+	private String minIoUrl;
 
-    private String nginxUrl;
+	private String nginxUrl;
+
 }

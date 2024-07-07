@@ -7,12 +7,13 @@ package com.itjing.leetcode;
  */
 public class ListNode {
 
-    public int val;
+	public int val;
 
-    public ListNode next;
+	public ListNode next;
 
-    public ListNode(int x) {
-        val = x;
-        next = null;
-    }
+	public ListNode(int x) {
+		val = x;
+		next = null;
+	}
+
 }

@@ -3,7 +3,9 @@ package com.itjing.api.reflect.beans;
 import java.util.List;
 
 public class MiddleStudent extends Student {
+
 	private List<School> schools;
+
 	private List<Float> maxFen;
 
 	public List<School> getSchools() {
@@ -21,4 +23,5 @@ public class MiddleStudent extends Student {
 	public void setMaxFen(List<Float> maxFen) {
 		this.maxFen = maxFen;
 	}
+
 }

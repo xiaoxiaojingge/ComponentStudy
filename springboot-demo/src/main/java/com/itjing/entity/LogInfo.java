@@ -14,28 +14,28 @@ import lombok.*;
 @ToString
 public class LogInfo {
 
-    private String id;
+	private String id;
 
-    private String logType;
+	private String logType;
 
-    private String logContent;
+	private String logContent;
 
-    private String username;
+	private String username;
 
-    private String ipAddr;
+	private String ipAddr;
 
-    private String method;
+	private String method;
 
-    private String requestUrl;
+	private String requestUrl;
 
-    private String requestType;
+	private String requestType;
 
-    private Long costTime;
+	private Long costTime;
 
-    private String createUser;
+	private String createUser;
 
-    private String createTime;
+	private String createTime;
 
-    private String requestParam;
+	private String requestParam;
 
 }

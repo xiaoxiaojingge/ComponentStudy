@@ -15,9 +15,15 @@ import lombok.experimental.Accessors;
 @ToString
 @Accessors(chain = true)
 public class RoomVo {
-    private Integer id;
-    private String createTime;
-    private Integer studentId;
-    private String studentName;
-    private String ext;
+
+	private Integer id;
+
+	private String createTime;
+
+	private Integer studentId;
+
+	private String studentName;
+
+	private String ext;
+
 }

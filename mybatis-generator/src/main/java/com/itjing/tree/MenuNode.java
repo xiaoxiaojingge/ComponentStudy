@@ -12,21 +12,20 @@ import java.util.List;
 @Data
 public class MenuNode {
 
-    private Integer id;
+	private Integer id;
 
-    private String name;
+	private String name;
 
-    private Integer parentId;
+	private Integer parentId;
 
-    private Integer weight;
+	private Integer weight;
 
-    private List<MenuNode> children;
+	private List<MenuNode> children;
 
-    public MenuNode(Integer id, String name, Integer parentId) {
-        this.id = id;
-        this.name = name;
-        this.parentId = parentId;
-    }
-
+	public MenuNode(Integer id, String name, Integer parentId) {
+		this.id = id;
+		this.name = name;
+		this.parentId = parentId;
+	}
 
 }

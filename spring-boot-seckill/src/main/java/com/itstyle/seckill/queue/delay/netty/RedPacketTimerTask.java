@@ -13,26 +13,28 @@ import java.time.format.DateTimeFormatter;
  */
 public class RedPacketTimerTask implements TimerTask {
 
-    private static final DateTimeFormatter F = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+	private static final DateTimeFormatter F = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
 
-    /**
-     * 红包 ID
-     */
-    private final long redPacketId;
+	/**
+	 * 红包 ID
+	 */
+	private final long redPacketId;
 
-    /**
-     * 创建时间戳
-     */
-    private final long timestamp;
+	/**
+	 * 创建时间戳
+	 */
+	private final long timestamp;
 
-    public RedPacketTimerTask(long redPacketId) {
-        this.redPacketId = redPacketId;
-        this.timestamp = System.currentTimeMillis();
-    }
+	public RedPacketTimerTask(long redPacketId) {
+		this.redPacketId = redPacketId;
+		this.timestamp = System.currentTimeMillis();
+	}
 
-    @Override
-    public void run(Timeout timeout) {
-        System.out.println(String.format("任务执行时间:%s,红包创建时间:%s,红包ID:%s",
-                LocalDateTime.now().format(F), LocalDateTime.ofInstant(Instant.ofEpochMilli(timestamp), ZoneId.systemDefault()).format(F), redPacketId));
-    }
+	@Override
+	public void run(Timeout timeout) {
+		System.out.println(String.format("任务执行时间:%s,红包创建时间:%s,红包ID:%s", LocalDateTime.now().format(F),
+				LocalDateTime.ofInstant(Instant.ofEpochMilli(timestamp), ZoneId.systemDefault()).format(F),
+				redPacketId));
+	}
+
 }

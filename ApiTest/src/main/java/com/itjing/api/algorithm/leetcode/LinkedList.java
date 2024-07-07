@@ -1,77 +1,83 @@
 package com.itjing.api.algorithm.leetcode;
 
 public class LinkedList {
-    private Node first,last;
 
-    class Node{
-        private int data;
-        private Node next;
+	private Node first, last;
 
-        public int getData() {
-            return data;
-        }
+	class Node {
 
-        public void setData(int data) {
-            this.data = data;
-        }
+		private int data;
 
-        public Node getNext() {
-            return next;
-        }
+		private Node next;
 
-        public void setNext(Node next) {
-            this.next = next;
-        }
-    }
+		public int getData() {
+			return data;
+		}
 
-    public LinkedList(){
-        first = new Node();
-        last = first;
+		public void setData(int data) {
+			this.data = data;
+		}
 
-        first.next = null;
-        first.data = -1;
-    }
+		public Node getNext() {
+			return next;
+		}
 
-    public void insertHeader(int data){
-        Node current = new Node();
-        current.data = data;
+		public void setNext(Node next) {
+			this.next = next;
+		}
 
-        current.next = first.next;
-        first.next = current;
+	}
 
-        last = current;
-    }
+	public LinkedList() {
+		first = new Node();
+		last = first;
 
-    public void insertFoot(int data){
-        Node current = new Node();
-        current.data = data;
+		first.next = null;
+		first.data = -1;
+	}
 
-        current.next = last.next;
-        last = current;
-    }
+	public void insertHeader(int data) {
+		Node current = new Node();
+		current.data = data;
 
-    @Override
-    public String toString() {
-        Node current = first.next;
-        if(current == null)return "";
+		current.next = first.next;
+		first.next = current;
 
-        StringBuffer datas = new StringBuffer();
-        while (current != null){
-            datas.append(current.data+" ");
-            current = current.next;
-        }
-        return datas.toString();
-    }
+		last = current;
+	}
 
-    public static void main(String[] args) {
-        LinkedList linkedList = new LinkedList();
-//        linkedList.insertHeader(1);
-//        linkedList.insertHeader(5);
-//        linkedList.insertHeader(10);
+	public void insertFoot(int data) {
+		Node current = new Node();
+		current.data = data;
 
-        linkedList.insertFoot(1);
-        linkedList.insertFoot(5);
-        linkedList.insertFoot(10);
-        System.out.println(linkedList);
-    }
+		current.next = last.next;
+		last = current;
+	}
+
+	@Override
+	public String toString() {
+		Node current = first.next;
+		if (current == null)
+			return "";
+
+		StringBuffer datas = new StringBuffer();
+		while (current != null) {
+			datas.append(current.data + " ");
+			current = current.next;
+		}
+		return datas.toString();
+	}
+
+	public static void main(String[] args) {
+		LinkedList linkedList = new LinkedList();
+		// linkedList.insertHeader(1);
+		// linkedList.insertHeader(5);
+		// linkedList.insertHeader(10);
+
+		linkedList.insertFoot(1);
+		linkedList.insertFoot(5);
+		linkedList.insertFoot(10);
+		System.out.println(linkedList);
+	}
+
 }

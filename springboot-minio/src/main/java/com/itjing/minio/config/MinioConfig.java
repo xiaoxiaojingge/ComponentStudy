@@ -14,48 +14,45 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MinioConfig {
 
-    /**
-     * 连接地址
-     */
-    @Value("${minio.endpoint}")
-    @Getter
-    private String endpoint;
+	/**
+	 * 连接地址
+	 */
+	@Value("${minio.endpoint}")
+	@Getter
+	private String endpoint;
 
-    /**
-     * 用户名
-     */
-    @Value("${minio.accessKey}")
-    @Getter
-    private String accessKey;
+	/**
+	 * 用户名
+	 */
+	@Value("${minio.accessKey}")
+	@Getter
+	private String accessKey;
 
-    /**
-     * 密码
-     */
-    @Value("${minio.secretKey}")
-    @Getter
-    private String secretKey;
+	/**
+	 * 密码
+	 */
+	@Value("${minio.secretKey}")
+	@Getter
+	private String secretKey;
 
-    /**
-     * 域名
-     */
-    @Value("${minio.nginxHost}")
-    @Getter
-    private String nginxHost;
+	/**
+	 * 域名
+	 */
+	@Value("${minio.nginxHost}")
+	@Getter
+	private String nginxHost;
 
-    /**
-     * 存储空间名称
-     * @return
-     */
-    @Value("${minio.bucketName}")
-    @Getter
-    private String bucketName;
+	/**
+	 * 存储空间名称
+	 * @return
+	 */
+	@Value("${minio.bucketName}")
+	@Getter
+	private String bucketName;
 
-    @Bean
-    public MinioClient minioClient() {
-        return MinioClient.builder()
-                .endpoint(endpoint)
-                .credentials(accessKey, secretKey)
-                .build();
-    }
+	@Bean
+	public MinioClient minioClient() {
+		return MinioClient.builder().endpoint(endpoint).credentials(accessKey, secretKey).build();
+	}
 
 }

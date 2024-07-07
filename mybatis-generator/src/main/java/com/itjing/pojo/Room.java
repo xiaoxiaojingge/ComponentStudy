@@ -17,7 +17,11 @@ import java.util.Date;
 @ToString
 @Accessors(chain = true)
 public class Room {
-    private Integer id;
-    private Date time;
-    private Student student;
+
+	private Integer id;
+
+	private Date time;
+
+	private Student student;
+
 }

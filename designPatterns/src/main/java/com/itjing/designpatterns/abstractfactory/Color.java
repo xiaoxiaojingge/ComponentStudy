@@ -6,5 +6,7 @@ package com.itjing.designpatterns.abstractfactory;
  * @Description: 抽象产品
  */
 public interface Color {
-        void fill();
+
+	void fill();
+
 }

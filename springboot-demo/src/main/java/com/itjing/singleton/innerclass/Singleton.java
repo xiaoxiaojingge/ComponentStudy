@@ -7,14 +7,17 @@ package com.itjing.singleton.innerclass;
  */
 public class Singleton {
 
-    private Singleton() {
-    }
+	private Singleton() {
+	}
 
-    private static class SingletonInstance {
-        private static Singleton singleton = new Singleton();
-    }
+	private static class SingletonInstance {
 
-    public static Singleton getInstance() {
-        return SingletonInstance.singleton;
-    }
+		private static Singleton singleton = new Singleton();
+
+	}
+
+	public static Singleton getInstance() {
+		return SingletonInstance.singleton;
+	}
+
 }

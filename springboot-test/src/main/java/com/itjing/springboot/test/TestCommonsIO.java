@@ -16,17 +16,20 @@ import java.io.IOException;
 @Slf4j
 public class TestCommonsIO {
 
-    @Test
-    public void testFileUtils() throws IOException {
-        LineIterator it = FileUtils.lineIterator(new File("D:\\学习重要文件\\工作\\睿希信息科技\\徐州农商行账户资料管理\\档案系统供数\\CBOD_SAACNACN.del"), "GBK");
-        try {
-            String splitStr = new String(new char[]{0x1D});
-            while (it.hasNext()) {
-                String line = it.nextLine();
+	@Test
+	public void testFileUtils() throws IOException {
+		LineIterator it = FileUtils
+			.lineIterator(new File("D:\\学习重要文件\\工作\\睿希信息科技\\徐州农商行账户资料管理\\档案系统供数\\CBOD_SAACNACN.del"), "GBK");
+		try {
+			String splitStr = new String(new char[] { 0x1D });
+			while (it.hasNext()) {
+				String line = it.nextLine();
 
-            }
-        } finally {
-            LineIterator.closeQuietly(it);
-        }
-    }
+			}
+		}
+		finally {
+			LineIterator.closeQuietly(it);
+		}
+	}
+
 }

@@ -20,18 +20,17 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
-    @GetMapping("/findUsers")
-    public List<User> findUsers() {
-        List<User> list = new ArrayList<>();
-        list.add(new User(1L, "lijing", 18, "2427259171@qq.com"));
-        return list;
-    }
+	@GetMapping("/findUsers")
+	public List<User> findUsers() {
+		List<User> list = new ArrayList<>();
+		list.add(new User(1L, "lijing", 18, "2427259171@qq.com"));
+		return list;
+	}
 
-    @PostMapping("/login")
-    public String login(String username, String password) {
-        log.info(username + "," + password);
-        return "success";
-    }
-
+	@PostMapping("/login")
+	public String login(String username, String password) {
+		log.info(username + "," + password);
+		return "success";
+	}
 
 }

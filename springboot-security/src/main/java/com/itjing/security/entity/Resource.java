@@ -12,7 +12,7 @@ import lombok.Setter;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author lijing
@@ -23,36 +23,35 @@ import lombok.Setter;
 @TableName("t_resource")
 public class Resource implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
+	@TableId(value = "id", type = IdType.AUTO)
+	private Long id;
 
-    /**
-     * 权限字段
-     */
-    private String value;
+	/**
+	 * 权限字段
+	 */
+	private String value;
 
-    /**
-     * 资源路径
-     */
-    private String uri;
+	/**
+	 * 资源路径
+	 */
+	private String uri;
 
-    /**
-     * 资源描述
-     */
-    private String description;
+	/**
+	 * 资源描述
+	 */
+	private String description;
 
-    /**
-     * 创建时间
-     */
-    @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+	/**
+	 * 创建时间
+	 */
+	@TableField(fill = FieldFill.INSERT)
+	private LocalDateTime createTime;
 
-    /**
-     * 修改时间
-     */
-    private LocalDateTime updateTime;
-
+	/**
+	 * 修改时间
+	 */
+	private LocalDateTime updateTime;
 
 }

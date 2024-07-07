@@ -5,20 +5,24 @@ import org.apache.commons.lang3.time.DateFormatUtils;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class OrderServiceWithLock implements OrderService{
-    private Lock lock = new ReentrantLock();
+public class OrderServiceWithLock implements OrderService {
 
-    OrderCodeGenerator orderCodeGenerator = new OrderCodeGenerator();
+	private Lock lock = new ReentrantLock();
 
-    @Override
-    public void createOrder() {
-        lock.lock();
+	OrderCodeGenerator orderCodeGenerator = new OrderCodeGenerator();
 
-        try{
-            int orderCode = orderCodeGenerator.getOrderCode();
-            System.out.println(Thread.currentThread().getName() +" "+ DateFormatUtils.ISO_DATETIME_FORMAT.format(System.currentTimeMillis()) + " ------->"+orderCode);
-        }finally {
-            lock.unlock();
-        }
-    }
+	@Override
+	public void createOrder() {
+		lock.lock();
+
+		try {
+			int orderCode = orderCodeGenerator.getOrderCode();
+			System.out.println(Thread.currentThread().getName() + " "
+					+ DateFormatUtils.ISO_DATETIME_FORMAT.format(System.currentTimeMillis()) + " ------->" + orderCode);
+		}
+		finally {
+			lock.unlock();
+		}
+	}
+
 }

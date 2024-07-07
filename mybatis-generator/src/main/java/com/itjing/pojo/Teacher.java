@@ -21,22 +21,24 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XStreamAlias("Teacher")
 @XmlRootElement(name = "Teacher")
 public class Teacher {
-    @XStreamAlias("id")
-    @XStreamAsAttribute
-    private Integer id;
 
-    @XStreamAlias("name")
-    private String name;
+	@XStreamAlias("id")
+	@XStreamAsAttribute
+	private Integer id;
 
-    @XStreamAlias("gender")
-    private String gender;
+	@XStreamAlias("name")
+	private String name;
 
-    @XStreamAlias("age")
-    private Integer age;
+	@XStreamAlias("gender")
+	private String gender;
 
-    @XStreamAlias("homeAddress")
-    private String home;
+	@XStreamAlias("age")
+	private Integer age;
 
-    @XStreamAlias("major")
-    private String major;
+	@XStreamAlias("homeAddress")
+	private String home;
+
+	@XStreamAlias("major")
+	private String major;
+
 }

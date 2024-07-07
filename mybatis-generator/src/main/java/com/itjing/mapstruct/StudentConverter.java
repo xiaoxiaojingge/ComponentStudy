@@ -16,22 +16,21 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface StudentConverter {
 
-    StudentConverter INSTANCE = Mappers.getMapper(StudentConverter.class);
+	StudentConverter INSTANCE = Mappers.getMapper(StudentConverter.class);
 
-    // source是转换的源对象, target要转成的对象
-    @Mappings({
-            @Mapping(source = "id", target = "studentId"),
-            @Mapping(source = "gender", target = "gender", qualifiedByName = "convertGender"),
-            @Mapping(source = "birthday", target = "birthday", dateFormat = "yyyy-MM-dd HH:mm:ss"),
-            @Mapping(source = "home", target = "homeLocation"),
-    })
-    StudentVo student2Vo(Student student);
+	// source是转换的源对象, target要转成的对象
+	@Mappings({ @Mapping(source = "id", target = "studentId"),
+			@Mapping(source = "gender", target = "gender", qualifiedByName = "convertGender"),
+			@Mapping(source = "birthday", target = "birthday", dateFormat = "yyyy-MM-dd HH:mm:ss"),
+			@Mapping(source = "home", target = "homeLocation"), })
+	StudentVo student2Vo(Student student);
 
-    @Named("convertGender")
-    default String convertGender(Integer gender) {
-        if (gender == 0) {
-            return "女";
-        }
-        return "男";
-    }
+	@Named("convertGender")
+	default String convertGender(Integer gender) {
+		if (gender == 0) {
+			return "女";
+		}
+		return "男";
+	}
+
 }

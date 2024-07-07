@@ -22,19 +22,20 @@ import java.io.InputStream;
 @Configuration
 public class MyTikaConfig {
 
-    @Autowired
-    private ResourceLoader resourceLoader;
+	@Autowired
+	private ResourceLoader resourceLoader;
 
-    @Bean
-    public Tika tika() throws TikaException, IOException, SAXException {
+	@Bean
+	public Tika tika() throws TikaException, IOException, SAXException {
 
-        Resource resource = resourceLoader.getResource("classpath:tika-config.xml");
-        InputStream inputStream = resource.getInputStream();
+		Resource resource = resourceLoader.getResource("classpath:tika-config.xml");
+		InputStream inputStream = resource.getInputStream();
 
-        TikaConfig config = new TikaConfig(inputStream);
-        Detector detector = config.getDetector();
-        Parser autoDetectParser = new AutoDetectParser(config);
+		TikaConfig config = new TikaConfig(inputStream);
+		Detector detector = config.getDetector();
+		Parser autoDetectParser = new AutoDetectParser(config);
 
-        return new Tika(detector, autoDetectParser);
-    }
+		return new Tika(detector, autoDetectParser);
+	}
+
 }

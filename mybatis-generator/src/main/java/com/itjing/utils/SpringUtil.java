@@ -13,37 +13,36 @@ import org.springframework.stereotype.Component;
 @Component
 public class SpringUtil implements ApplicationContextAware {
 
-    private static ApplicationContext applicationContext;
+	private static ApplicationContext applicationContext;
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        SpringUtil.applicationContext = applicationContext;
-    }
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		SpringUtil.applicationContext = applicationContext;
+	}
 
-    public static ApplicationContext getApplicationContext() {
-        return applicationContext;
-    }
+	public static ApplicationContext getApplicationContext() {
+		return applicationContext;
+	}
 
-    /**
-     * 根据Bean名称获取实例
-     *
-     * @param name Bean注册名称
-     * @return bean实例
-     * @throws BeansException
-     */
-    public static Object getBean(String name) throws BeansException {
-        return applicationContext.getBean(name);
-    }
+	/**
+	 * 根据Bean名称获取实例
+	 * @param name Bean注册名称
+	 * @return bean实例
+	 * @throws BeansException
+	 */
+	public static Object getBean(String name) throws BeansException {
+		return applicationContext.getBean(name);
+	}
 
-    /**
-     * 根据Class获取实例
-     *
-     * @param clazz
-     * @param <T>
-     * @return
-     * @throws BeansException
-     */
-    public static <T> T getBean(Class<T> clazz) throws BeansException {
-        return applicationContext.getBean(clazz);
-    }
+	/**
+	 * 根据Class获取实例
+	 * @param clazz
+	 * @param <T>
+	 * @return
+	 * @throws BeansException
+	 */
+	public static <T> T getBean(Class<T> clazz) throws BeansException {
+		return applicationContext.getBean(clazz);
+	}
+
 }

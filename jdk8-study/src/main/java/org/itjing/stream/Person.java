@@ -1,66 +1,66 @@
 package org.itjing.stream;
 
 public class Person {
-    private String name;
-    private Integer age;
-    private Integer score;
-    private String sex;
 
-    public Person() {
-    }
+	private String name;
 
-    public Person(String name, Integer age, Integer score) {
-        this.name = name;
-        this.age = age;
-        this.score = score;
-    }
+	private Integer age;
 
-    public Person(String name, Integer age, Integer score, String sex) {
-        this.name = name;
-        this.age = age;
-        this.score = score;
-        this.sex = sex;
-    }
+	private Integer score;
 
-    public String getSex() {
-        return sex;
-    }
+	private String sex;
 
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
+	public Person() {
+	}
 
-    public String getName() {
-        return name;
-    }
+	public Person(String name, Integer age, Integer score) {
+		this.name = name;
+		this.age = age;
+		this.score = score;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public Person(String name, Integer age, Integer score, String sex) {
+		this.name = name;
+		this.age = age;
+		this.score = score;
+		this.sex = sex;
+	}
 
-    public Integer getAge() {
-        return age;
-    }
+	public String getSex() {
+		return sex;
+	}
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
 
-    public Integer getScore() {
-        return score;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setScore(Integer score) {
-        this.score = score;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    @Override
-    public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", score=" + score +
-                ", sex='" + sex + '\'' +
-                '}';
-    }
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public Integer getScore() {
+		return score;
+	}
+
+	public void setScore(Integer score) {
+		this.score = score;
+	}
+
+	@Override
+	public String toString() {
+		return "Person{" + "name='" + name + '\'' + ", age=" + age + ", score=" + score + ", sex='" + sex + '\'' + '}';
+	}
+
 }

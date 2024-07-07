@@ -6,5 +6,7 @@ package com.itjing.designpatterns.factorymethod;
  * @Description: 抽象工厂 Factory
  */
 public abstract class AbstractFactory {
-    public abstract Bus create();
+
+	public abstract Bus create();
+
 }

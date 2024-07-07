@@ -10,114 +10,126 @@ import java.util.Date;
  */
 public class CheckBatch implements Serializable {
 
-    public static final long serialVersionUID = 1L;
+	public static final long serialVersionUID = 1L;
 
-    private String id;
-    private String taskName;
-    private int checkScope;
-    private String startTime;
-    private String endTime;
-    private String orgCode;
-    private int taskState;
-    private String readyCount;
-    private String alreadyCount;
-    private String failCount;
-    private String createUser;
-    private Date createTime;
+	private String id;
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	private String taskName;
 
-    public String getId() {
-        return id;
-    }
+	private int checkScope;
 
-    public void setTaskName(String taskName) {
-        this.taskName = taskName;
-    }
+	private String startTime;
 
-    public String getTaskName() {
-        return taskName;
-    }
+	private String endTime;
 
-    public void setCheckScope(int checkScope) {
-        this.checkScope = checkScope;
-    }
+	private String orgCode;
 
-    public int getCheckScope() {
-        return checkScope;
-    }
+	private int taskState;
 
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
-    }
+	private String readyCount;
 
-    public String getStartTime() {
-        return startTime;
-    }
+	private String alreadyCount;
 
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
-    }
+	private String failCount;
 
-    public String getEndTime() {
-        return endTime;
-    }
+	private String createUser;
 
-    public void setOrgCode(String orgCode) {
-        this.orgCode = orgCode;
-    }
+	private Date createTime;
 
-    public String getOrgCode() {
-        return orgCode;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public void setTaskState(int taskState) {
-        this.taskState = taskState;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public int getTaskState() {
-        return taskState;
-    }
+	public void setTaskName(String taskName) {
+		this.taskName = taskName;
+	}
 
-    public void setReadyCount(String readyCount) {
-        this.readyCount = readyCount;
-    }
+	public String getTaskName() {
+		return taskName;
+	}
 
-    public String getReadyCount() {
-        return readyCount;
-    }
+	public void setCheckScope(int checkScope) {
+		this.checkScope = checkScope;
+	}
 
-    public void setAlreadyCount(String alreadyCount) {
-        this.alreadyCount = alreadyCount;
-    }
+	public int getCheckScope() {
+		return checkScope;
+	}
 
-    public String getAlreadyCount() {
-        return alreadyCount;
-    }
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
 
-    public void setFailCount(String failCount) {
-        this.failCount = failCount;
-    }
+	public String getStartTime() {
+		return startTime;
+	}
 
-    public String getFailCount() {
-        return failCount;
-    }
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}
 
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser;
-    }
+	public String getEndTime() {
+		return endTime;
+	}
 
-    public String getCreateUser() {
-        return createUser;
-    }
+	public void setOrgCode(String orgCode) {
+		this.orgCode = orgCode;
+	}
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
+	public String getOrgCode() {
+		return orgCode;
+	}
 
-    public Date getCreateTime() {
-        return createTime;
-    }
+	public void setTaskState(int taskState) {
+		this.taskState = taskState;
+	}
+
+	public int getTaskState() {
+		return taskState;
+	}
+
+	public void setReadyCount(String readyCount) {
+		this.readyCount = readyCount;
+	}
+
+	public String getReadyCount() {
+		return readyCount;
+	}
+
+	public void setAlreadyCount(String alreadyCount) {
+		this.alreadyCount = alreadyCount;
+	}
+
+	public String getAlreadyCount() {
+		return alreadyCount;
+	}
+
+	public void setFailCount(String failCount) {
+		this.failCount = failCount;
+	}
+
+	public String getFailCount() {
+		return failCount;
+	}
+
+	public void setCreateUser(String createUser) {
+		this.createUser = createUser;
+	}
+
+	public String getCreateUser() {
+		return createUser;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
 }

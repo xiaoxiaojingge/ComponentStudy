@@ -8,9 +8,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * 来自贴子  https://bbs.csdn.net/topics/390820778
- * 循环栅栏控制例子
- * 体现为什么是循环使用的 barrier.reset(); 可以重置栅栏
+ * 来自贴子 https://bbs.csdn.net/topics/390820778 循环栅栏控制例子 体现为什么是循环使用的 barrier.reset(); 可以重置栅栏
  */
 public class CyclicBarrierTest3 {
 
@@ -37,10 +35,8 @@ public class CyclicBarrierTest3 {
 			barrier.await();
 		}
 
-
 		exec.shutdown();
 	}
-
 
 	static String now() {
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
@@ -50,6 +46,7 @@ public class CyclicBarrierTest3 {
 	static class Task implements Runnable {
 
 		private int threadNo = -1;
+
 		private int time = 0;
 
 		private CyclicBarrier barrier;
@@ -66,7 +63,8 @@ public class CyclicBarrierTest3 {
 				Thread.sleep(time);
 				System.out.println(now() + "第" + threadNo + "号线程执行完毕!!!  花费" + (time / 1000) + "秒");
 				barrier.await();
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
@@ -74,5 +72,7 @@ public class CyclicBarrierTest3 {
 		public static void main(String[] args) throws BrokenBarrierException, InterruptedException {
 			new CyclicBarrierTest3();
 		}
+
 	}
+
 }

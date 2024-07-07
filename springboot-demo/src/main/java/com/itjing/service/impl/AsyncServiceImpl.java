@@ -16,18 +16,20 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class AsyncServiceImpl implements AsyncService {
 
-    @Override
-    @Async("asyncServiceExecutor")
-    public void executeAsync() {
-        log.info("start executeAsync");
-        // 异步线程要做的事情 TODO
-        // 可以在这里执行操作比较耗时的事情
-        log.info("do something......");
-        try {
-            TimeUnit.SECONDS.sleep(5);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        log.info("end executeAsync");
-    }
+	@Override
+	@Async("asyncServiceExecutor")
+	public void executeAsync() {
+		log.info("start executeAsync");
+		// 异步线程要做的事情 TODO
+		// 可以在这里执行操作比较耗时的事情
+		log.info("do something......");
+		try {
+			TimeUnit.SECONDS.sleep(5);
+		}
+		catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		log.info("end executeAsync");
+	}
+
 }

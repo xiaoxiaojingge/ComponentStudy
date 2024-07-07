@@ -12,13 +12,14 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties("aspectlog")
 public class AspectLogProperties {
 
-    private boolean enable;
+	private boolean enable;
 
-    public boolean isEnable() {
-        return enable;
-    }
+	public boolean isEnable() {
+		return enable;
+	}
 
-    public void setEnable(boolean enable) {
-        this.enable = enable;
-    }
+	public void setEnable(boolean enable) {
+		this.enable = enable;
+	}
+
 }

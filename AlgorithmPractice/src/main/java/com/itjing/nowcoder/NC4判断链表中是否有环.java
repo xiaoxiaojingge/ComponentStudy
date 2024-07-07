@@ -9,24 +9,24 @@ import com.itjing.leetcode.ListNode;
  */
 public class NC4判断链表中是否有环 {
 
+	public boolean hasCycle(ListNode head) {
+		// 定义快慢指针，有环二者必会重合
+		ListNode slow = head, fast = head;
+		boolean flag = false;
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+			// 快慢指针相遇
+			if (slow == fast) {
+				flag = true;
+				break;
+			}
+		}
+		return flag;
+	}
 
-    public boolean hasCycle(ListNode head) {
-        // 定义快慢指针，有环二者必会重合
-        ListNode slow = head, fast = head;
-        boolean flag = false;
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-            // 快慢指针相遇
-            if (slow == fast) {
-                flag = true;
-                break;
-            }
-        }
-        return flag;
-    }
+	public static void main(String[] args) {
 
-    public static void main(String[] args) {
+	}
 
-    }
 }

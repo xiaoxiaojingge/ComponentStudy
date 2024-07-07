@@ -23,31 +23,32 @@ import javax.validation.Valid;
 @Validated
 public class ValidController {
 
-    @Autowired
-    private UserRepository userRepository;
+	@Autowired
+	private UserRepository userRepository;
 
-    /**
-     * 创建用户
-     * @param user
-     * @return
-     */
-    @PostMapping
-    public User createUser(@UniqueUser @Valid User user) {
-        User savedUser = userRepository.save(user);
-        log.info("save user id is {}", savedUser.getId());
-        return savedUser;
-    }
+	/**
+	 * 创建用户
+	 * @param user
+	 * @return
+	 */
+	@PostMapping
+	public User createUser(@UniqueUser @Valid User user) {
+		User savedUser = userRepository.save(user);
+		log.info("save user id is {}", savedUser.getId());
+		return savedUser;
+	}
 
-    /**
-     * 更新用户
-     * @param user
-     * @return
-     */
-    @SneakyThrows
-    @PutMapping
-    public User updateUser(@NotConflictUser @Valid @RequestBody User user) {
-        User editUser = userRepository.save(user);
-        log.info("update user is {}", editUser);
-        return editUser;
-    }
+	/**
+	 * 更新用户
+	 * @param user
+	 * @return
+	 */
+	@SneakyThrows
+	@PutMapping
+	public User updateUser(@NotConflictUser @Valid @RequestBody User user) {
+		User editUser = userRepository.save(user);
+		log.info("update user is {}", editUser);
+		return editUser;
+	}
+
 }

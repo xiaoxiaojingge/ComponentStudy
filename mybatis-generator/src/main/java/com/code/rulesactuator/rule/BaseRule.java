@@ -9,6 +9,6 @@ import com.code.rulesactuator.dto.RuleDTO;
  */
 public interface BaseRule {
 
-    boolean execute(RuleDTO dto);
+	boolean execute(RuleDTO dto);
 
 }

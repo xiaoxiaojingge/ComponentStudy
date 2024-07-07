@@ -11,74 +11,82 @@ import java.sql.Timestamp;
 @Table(name = "red_racket")
 public class RedPacket implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private long id;
-    private long redPacketId;//红包id
-    private int totalAmount;//红包总金额，单位分
-    private int totalPacket;//红包总个数
-    private int type;//类型
-    private int uid;//创建用户
-    private Timestamp createTime;//创建时间
-    @Version
-    private int version;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", nullable = false)
+	private long id;
 
-    public long getId() {
-        return id;
-    }
+	private long redPacketId;// 红包id
 
-    public void setId(long id) {
-        this.id = id;
-    }
+	private int totalAmount;// 红包总金额，单位分
 
-    public long getRedPacketId() {
-        return redPacketId;
-    }
+	private int totalPacket;// 红包总个数
 
-    public void setRedPacketId(long redPacketId) {
-        this.redPacketId = redPacketId;
-    }
+	private int type;// 类型
 
-    public int getTotalAmount() {
-        return totalAmount;
-    }
+	private int uid;// 创建用户
 
-    public void setTotalAmount(int totalAmount) {
-        this.totalAmount = totalAmount;
-    }
+	private Timestamp createTime;// 创建时间
 
-    public int getTotalPacket() {
-        return totalPacket;
-    }
+	@Version
+	private int version;
 
-    public void setTotalPacket(int totalPacket) {
-        this.totalPacket = totalPacket;
-    }
+	public long getId() {
+		return id;
+	}
 
-    public int getType() {
-        return type;
-    }
+	public void setId(long id) {
+		this.id = id;
+	}
 
-    public void setType(int type) {
-        this.type = type;
-    }
+	public long getRedPacketId() {
+		return redPacketId;
+	}
 
-    public Timestamp getCreateTime() {
-        return createTime;
-    }
+	public void setRedPacketId(long redPacketId) {
+		this.redPacketId = redPacketId;
+	}
 
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
-    }
+	public int getTotalAmount() {
+		return totalAmount;
+	}
 
-    public int getUid() {
-        return uid;
-    }
+	public void setTotalAmount(int totalAmount) {
+		this.totalAmount = totalAmount;
+	}
 
-    public void setUid(int uid) {
-        this.uid = uid;
-    }
+	public int getTotalPacket() {
+		return totalPacket;
+	}
+
+	public void setTotalPacket(int totalPacket) {
+		this.totalPacket = totalPacket;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	public Timestamp getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
+	}
+
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
+
 }

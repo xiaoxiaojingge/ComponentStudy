@@ -15,29 +15,26 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
  * @Author: lijing
  * @CreateTime: 2022-11-03 11:13
  */
-@Configuration(
-        proxyBeanMethods = false
-)
+@Configuration(proxyBeanMethods = false)
 public class SensitiveConfig {
 
-    @Configuration(
-            proxyBeanMethods = false
-    )
-    @ConditionalOnClass({Jackson2ObjectMapperBuilder.class})
-    static class JacksonObjectMapperConfiguration {
+	@Configuration(proxyBeanMethods = false)
+	@ConditionalOnClass({ Jackson2ObjectMapperBuilder.class })
+	static class JacksonObjectMapperConfiguration {
 
-        JacksonObjectMapperConfiguration() {
-        }
+		JacksonObjectMapperConfiguration() {
+		}
 
-        @Bean
-        @Primary
-        ObjectMapper jacksonObjectMapper(Jackson2ObjectMapperBuilder builder) {
-            ObjectMapper objectMapper = builder.createXmlMapper(false).build();
-            AnnotationIntrospector ai = objectMapper.getSerializationConfig().getAnnotationIntrospector();
-            AnnotationIntrospector newAi = AnnotationIntrospectorPair.pair(ai, new SensitiveAnnotationIntrospector());
-            objectMapper.setAnnotationIntrospector(newAi);
-            return objectMapper;
-        }
-    }
+		@Bean
+		@Primary
+		ObjectMapper jacksonObjectMapper(Jackson2ObjectMapperBuilder builder) {
+			ObjectMapper objectMapper = builder.createXmlMapper(false).build();
+			AnnotationIntrospector ai = objectMapper.getSerializationConfig().getAnnotationIntrospector();
+			AnnotationIntrospector newAi = AnnotationIntrospectorPair.pair(ai, new SensitiveAnnotationIntrospector());
+			objectMapper.setAnnotationIntrospector(newAi);
+			return objectMapper;
+		}
+
+	}
 
 }

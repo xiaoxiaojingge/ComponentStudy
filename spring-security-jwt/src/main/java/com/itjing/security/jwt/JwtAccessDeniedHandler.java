@@ -23,17 +23,20 @@ import java.io.PrintWriter;
 @Component
 public class JwtAccessDeniedHandler implements AccessDeniedHandler {
 
-    @Override
-    public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException e) throws ServletException {
-        log.info("用户访问没有授权资源: {}", e.getMessage());
-        response.setContentType("application/json;charset=utf-8");
-        response.setCharacterEncoding("utf-8");
-        try (PrintWriter out = response.getWriter();) {
-            Result result = ResultUtil.fail("抱歉，用户暂无权限访问该资源！").setCode(HttpServletResponse.SC_UNAUTHORIZED);
-            out.write(JsonUtil.obj2String(result));
-            out.flush();
-        } catch (IOException exception) {
-            log.error(exception.getMessage());
-        }
-    }
+	@Override
+	public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException e)
+			throws ServletException {
+		log.info("用户访问没有授权资源: {}", e.getMessage());
+		response.setContentType("application/json;charset=utf-8");
+		response.setCharacterEncoding("utf-8");
+		try (PrintWriter out = response.getWriter();) {
+			Result result = ResultUtil.fail("抱歉，用户暂无权限访问该资源！").setCode(HttpServletResponse.SC_UNAUTHORIZED);
+			out.write(JsonUtil.obj2String(result));
+			out.flush();
+		}
+		catch (IOException exception) {
+			log.error(exception.getMessage());
+		}
+	}
+
 }

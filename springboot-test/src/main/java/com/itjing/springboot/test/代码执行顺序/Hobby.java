@@ -7,12 +7,12 @@ package com.itjing.springboot.test.代码执行顺序;
  */
 public class Hobby {
 
-    static{
-        System.out.println("Hobby static initial block");
-    }
+	static {
+		System.out.println("Hobby static initial block");
+	}
 
-    public Hobby() {
-        System.out.println("hobby constructor block");
-    }
+	public Hobby() {
+		System.out.println("hobby constructor block");
+	}
 
 }

@@ -7,8 +7,10 @@ package org.itjing.lambda;
  */
 @FunctionalInterface
 public interface Swimmable {
-    /**
-     * 游泳
-     */
-    void swimming();
+
+	/**
+	 * 游泳
+	 */
+	void swimming();
+
 }

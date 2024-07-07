@@ -8,6 +8,9 @@ import java.io.Serializable;
 @Data
 @Accessors(chain = true)
 public class YqTable implements Serializable {
-    private String jg;
-    private Integer yqs;
+
+	private String jg;
+
+	private Integer yqs;
+
 }

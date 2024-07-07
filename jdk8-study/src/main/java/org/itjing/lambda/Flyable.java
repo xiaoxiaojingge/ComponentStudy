@@ -8,5 +8,6 @@ package org.itjing.lambda;
 @FunctionalInterface // 注解用来检测这个接口是不是只有一个抽象方法，即函数式接口
 public interface Flyable {
 
-    void fly();
+	void fly();
+
 }

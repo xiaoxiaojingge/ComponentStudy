@@ -11,8 +11,10 @@ import org.flowable.engine.delegate.JavaDelegate;
  */
 @Slf4j
 public class AskForLeaveFail implements JavaDelegate {
-    @Override
-    public void execute(DelegateExecution delegateExecution) {
-        log.info("请假失败...............");
-    }
+
+	@Override
+	public void execute(DelegateExecution delegateExecution) {
+		log.info("请假失败...............");
+	}
+
 }

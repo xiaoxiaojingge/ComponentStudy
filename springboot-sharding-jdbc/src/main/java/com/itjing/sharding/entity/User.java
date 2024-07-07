@@ -9,13 +9,15 @@ import lombok.Data;
  */
 @Data
 public class User {
-    private Integer id;
 
-    private String nickname;
+	private Integer id;
 
-    private String password;
+	private String nickname;
 
-    private Integer sex;
+	private String password;
 
-    private String birthday;
+	private Integer sex;
+
+	private String birthday;
+
 }

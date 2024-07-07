@@ -9,39 +9,44 @@ import java.util.List;
  * @Description:
  */
 public class Q145_二叉树的后序遍历 {
-    class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
 
-        TreeNode() {
-        }
+	class TreeNode {
 
-        TreeNode(int val) {
-            this.val = val;
-        }
+		int val;
 
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
+		TreeNode left;
 
-    public  List<Integer> postorderTraversal(TreeNode root) {
-        List<Integer> res = new ArrayList<Integer>();
-        inorder(root, res);
-        return res;
-    }
+		TreeNode right;
 
-   
-    public  void inorder(TreeNode root, List<Integer> res) {
-        if (root == null) {
-            return;
-        }
+		TreeNode() {
+		}
 
-        inorder(root.left, res);
-        inorder(root.right, res);
-        res.add(root.val); // 后序遍历根结点在最后取值
-    }
+		TreeNode(int val) {
+			this.val = val;
+		}
+
+		TreeNode(int val, TreeNode left, TreeNode right) {
+			this.val = val;
+			this.left = left;
+			this.right = right;
+		}
+
+	}
+
+	public List<Integer> postorderTraversal(TreeNode root) {
+		List<Integer> res = new ArrayList<Integer>();
+		inorder(root, res);
+		return res;
+	}
+
+	public void inorder(TreeNode root, List<Integer> res) {
+		if (root == null) {
+			return;
+		}
+
+		inorder(root.left, res);
+		inorder(root.right, res);
+		res.add(root.val); // 后序遍历根结点在最后取值
+	}
+
 }

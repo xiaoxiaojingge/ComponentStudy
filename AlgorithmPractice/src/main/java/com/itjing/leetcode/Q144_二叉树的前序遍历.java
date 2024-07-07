@@ -9,38 +9,43 @@ import java.util.List;
  * @Description:
  */
 public class Q144_二叉树的前序遍历 {
-    class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
 
-        TreeNode() {
-        }
+	class TreeNode {
 
-        TreeNode(int val) {
-            this.val = val;
-        }
+		int val;
 
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
+		TreeNode left;
 
-    public  List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> res = new ArrayList<Integer>();
-        inorder(root, res);
-        return res;
-    }
+		TreeNode right;
 
-   
-    public  void inorder(TreeNode root, List<Integer> res) {
-        if (root == null) {
-            return;
-        }
-        res.add(root.val);
-        inorder(root.left, res);
-        inorder(root.right, res);
-    }
+		TreeNode() {
+		}
+
+		TreeNode(int val) {
+			this.val = val;
+		}
+
+		TreeNode(int val, TreeNode left, TreeNode right) {
+			this.val = val;
+			this.left = left;
+			this.right = right;
+		}
+
+	}
+
+	public List<Integer> preorderTraversal(TreeNode root) {
+		List<Integer> res = new ArrayList<Integer>();
+		inorder(root, res);
+		return res;
+	}
+
+	public void inorder(TreeNode root, List<Integer> res) {
+		if (root == null) {
+			return;
+		}
+		res.add(root.val);
+		inorder(root.left, res);
+		inorder(root.right, res);
+	}
+
 }

@@ -15,16 +15,15 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface RoomConverter {
 
-    RoomConverter INSTANCE = Mappers.getMapper(RoomConverter.class);
+	RoomConverter INSTANCE = Mappers.getMapper(RoomConverter.class);
 
-    @Mappings({
-            @Mapping(source = "id", target = "id"),
-            @Mapping(source = "time", target = "createTime", dateFormat = "yyyy-MM-dd HH:mm:ss"),
-            // 对象的层级映射
-            @Mapping(source = "student.id", target = "studentId", dateFormat = "yyyy-MM-dd HH:mm:ss"),
-            @Mapping(source = "student.name", target = "studentName", dateFormat = "yyyy-MM-dd HH:mm:ss"),
-            // 忽略这个字段, vo里面有, pojo里面没有
-            @Mapping(target = "ext", ignore = true)
-    })
-    RoomVo building2Vo(Room room);
+	@Mappings({ @Mapping(source = "id", target = "id"),
+			@Mapping(source = "time", target = "createTime", dateFormat = "yyyy-MM-dd HH:mm:ss"),
+			// 对象的层级映射
+			@Mapping(source = "student.id", target = "studentId", dateFormat = "yyyy-MM-dd HH:mm:ss"),
+			@Mapping(source = "student.name", target = "studentName", dateFormat = "yyyy-MM-dd HH:mm:ss"),
+			// 忽略这个字段, vo里面有, pojo里面没有
+			@Mapping(target = "ext", ignore = true) })
+	RoomVo building2Vo(Room room);
+
 }

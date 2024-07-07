@@ -13,24 +13,30 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserInfo {
-    /**
-     * 真实姓名
-     */
-    private String realName;
-    /**
-     * 手机
-     */
-    private String cellPhone;
-    /**
-     * 大学
-     */
-    private String universityName;
-    /**
-     * 城市
-     */
-    private String city;
-    /**
-     * 地址
-     */
-    private String street;
+
+	/**
+	 * 真实姓名
+	 */
+	private String realName;
+
+	/**
+	 * 手机
+	 */
+	private String cellPhone;
+
+	/**
+	 * 大学
+	 */
+	private String universityName;
+
+	/**
+	 * 城市
+	 */
+	private String city;
+
+	/**
+	 * 地址
+	 */
+	private String street;
+
 }

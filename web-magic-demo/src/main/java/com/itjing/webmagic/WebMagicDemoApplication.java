@@ -23,4 +23,5 @@ public class WebMagicDemoApplication implements CommandLineRunner {
 		// 爬取知乎数据
 		zhihuTask.crawl();
 	}
+
 }

@@ -19,30 +19,30 @@ import java.util.List;
 @AllArgsConstructor
 public class NodeServiceImpl implements NodeService {
 
-    private final NodeRepository nodeRepository;
+	private final NodeRepository nodeRepository;
 
-    private final RelationRepository relationRepository;
+	private final RelationRepository relationRepository;
 
-    @Override
-    public Node save(Node node) {
-        Node saveNode = nodeRepository.save(node);
-        return saveNode;
-    }
+	@Override
+	public Node save(Node node) {
+		Node saveNode = nodeRepository.save(node);
+		return saveNode;
+	}
 
-    @Override
-    public List<Node> getAll() {
-        return nodeRepository.selectAll();
-    }
+	@Override
+	public List<Node> getAll() {
+		return nodeRepository.selectAll();
+	}
 
-    @Override
-    public void bind(String name1, String name2, String relationName) {
-        Node start = nodeRepository.findByName(name1);
-        Node end = nodeRepository.findByName(name2);
-        Relation relation = new Relation();
-        relation.setStartNode(start);
-        relation.setEndNode(end);
-        relation.setRelation(relationName);
-        relationRepository.save(relation);
-    }
+	@Override
+	public void bind(String name1, String name2, String relationName) {
+		Node start = nodeRepository.findByName(name1);
+		Node end = nodeRepository.findByName(name2);
+		Relation relation = new Relation();
+		relation.setStartNode(start);
+		relation.setEndNode(end);
+		relation.setRelation(relationName);
+		relationRepository.save(relation);
+	}
 
 }

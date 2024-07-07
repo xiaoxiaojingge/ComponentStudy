@@ -26,61 +26,57 @@ import org.springframework.web.context.WebApplicationContext;
 @SpringBootTest
 public class HelloControllerTest {
 
-    /**
-     * 注入web环境的ApplicationContext容器
-     */
-    @Autowired
-    private WebApplicationContext context;
+	/**
+	 * 注入web环境的ApplicationContext容器
+	 */
+	@Autowired
+	private WebApplicationContext context;
 
-    /**
-     * 模拟mvc测试对象
-     */
-    private MockMvc mockMvc;
+	/**
+	 * 模拟mvc测试对象
+	 */
+	private MockMvc mockMvc;
 
+	/**
+	 * 所有测试方法执行之前执行该方法，这个注解的作用,在每个方法之前都会执行一遍
+	 */
+	@Before
+	public void before() throws Exception {
+		// 获取mockmvc对象实例
+		mockMvc = MockMvcBuilders.webAppContextSetup(this.context).build();
+	}
 
-    /**
-     * 所有测试方法执行之前执行该方法，这个注解的作用,在每个方法之前都会执行一遍
-     */
-    @Before
-    public void before() throws Exception {
-        // 获取mockmvc对象实例
-        mockMvc = MockMvcBuilders.webAppContextSetup(this.context).build();
-    }
+	/**
+	 * 传递 get 参数
+	 * @throws Exception
+	 */
+	@Test
+	public void hello() throws Exception {
+		MvcResult mvcResult = mockMvc
+			.perform(MockMvcRequestBuilders.get("/hello/hello").param("name", "Lijing").param("sex", "男"))
+			.andExpect(MockMvcResultMatchers.status().isOk())
+			.andDo(MockMvcResultHandlers.print())
+			.andReturn();
+		System.out.println("输出 " + mvcResult.getResponse().getContentAsString());
+	}
 
-    /**
-     * 传递 get 参数
-     *
-     * @throws Exception
-     */
-    @Test
-    public void hello() throws Exception {
-        MvcResult mvcResult = mockMvc.perform(
-                MockMvcRequestBuilders.get("/hello/hello")
-                        .param("name", "Lijing")
-                        .param("sex", "男")
-        )
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andDo(MockMvcResultHandlers.print()).andReturn();
-        System.out.println("输出 " + mvcResult.getResponse().getContentAsString());
-    }
+	/**
+	 * 测试传递 @RequestBody ，传递对象
+	 * @throws Exception
+	 */
+	@Test
+	public void add() throws Exception {
+		Person person = new Person();
+		person.setName("张三");
+		person.setSex("male");
+		String paraJson = JSONObject.toJSONString(person);
+		MvcResult mvcResult = mockMvc
+			.perform(
+					MockMvcRequestBuilders.post("/hello/add").contentType(MediaType.APPLICATION_JSON).content(paraJson))
+			.andExpect(MockMvcResultMatchers.status().isOk())
+			.andDo(MockMvcResultHandlers.print())
+			.andReturn();
+		System.out.println("输出 " + mvcResult.getResponse().getContentAsString());
+	}
 
-    /**
-     * 测试传递 @RequestBody ，传递对象
-     *
-     * @throws Exception
-     */
-    @Test
-    public void add() throws Exception {
-        Person person = new Person();
-        person.setName("张三");
-        person.setSex("male");
-        String paraJson = JSONObject.toJSONString(person);
-        MvcResult mvcResult = mockMvc.perform(
-                MockMvcRequestBuilders.post("/hello/add")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(paraJson))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andDo(MockMvcResultHandlers.print()).andReturn();
-        System.out.println("输出 " + mvcResult.getResponse().getContentAsString());
-    }
 }

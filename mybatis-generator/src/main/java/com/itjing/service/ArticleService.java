@@ -19,10 +19,11 @@ import java.util.List;
 @Service
 public class ArticleService extends BaseServiceImpl<ArticleMapper, Article, ArticleExample> {
 
-    @Autowired
-    private ArticleMapper mapper;
+	@Autowired
+	private ArticleMapper mapper;
 
-    public List<Article> selectAll(Article article){
-        return mapper.selectAll(article);
-    }
+	public List<Article> selectAll(Article article) {
+		return mapper.selectAll(article);
+	}
+
 }

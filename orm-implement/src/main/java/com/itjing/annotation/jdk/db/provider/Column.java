@@ -8,9 +8,11 @@ import java.lang.annotation.*;
  * @Description: 第二步：创建一个@Column注解，@Column注解标注在类中的字段上，表示当前类中的字段映射到数据表中的哪个字段上
  */
 @Inherited
-@Target({ElementType.FIELD})
+@Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface Column {
-    String value() default "";
+
+	String value() default "";
+
 }

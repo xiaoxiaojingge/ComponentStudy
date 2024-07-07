@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableRabbit
 public class RabbitmqStudyApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(RabbitmqStudyApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(RabbitmqStudyApplication.class, args);
+	}
 
 }

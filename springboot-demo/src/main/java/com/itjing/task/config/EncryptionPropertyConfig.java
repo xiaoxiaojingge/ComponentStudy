@@ -13,29 +13,32 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class EncryptionPropertyConfig {
 
-    @Bean(name = "encryptablePropertyResolver")
-    public EncryptablePropertyResolver encryptablePropertyResolver() {
-        return new EncryptionPropertyResolver();
-    }
+	@Bean(name = "encryptablePropertyResolver")
+	public EncryptablePropertyResolver encryptablePropertyResolver() {
+		return new EncryptionPropertyResolver();
+	}
 
-    class EncryptionPropertyResolver implements EncryptablePropertyResolver {
+	class EncryptionPropertyResolver implements EncryptablePropertyResolver {
 
-        public static final String ENCODED_PASSWORD_HINT = "cipher@";
-        protected static final String DECODEKEY = "123456";
+		public static final String ENCODED_PASSWORD_HINT = "cipher@";
 
-        // 自定义解密方法
-        @Override
-        public String resolvePropertyValue(String property) {
-            try {
-                if (property.startsWith(ENCODED_PASSWORD_HINT)) {
-                    return AESUtil.decrypt(property.substring(ENCODED_PASSWORD_HINT.length()), DECODEKEY);
-                }
-                return property;
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-    }
+		protected static final String DECODEKEY = "123456";
+
+		// 自定义解密方法
+		@Override
+		public String resolvePropertyValue(String property) {
+			try {
+				if (property.startsWith(ENCODED_PASSWORD_HINT)) {
+					return AESUtil.decrypt(property.substring(ENCODED_PASSWORD_HINT.length()), DECODEKEY);
+				}
+				return property;
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+		}
+
+	}
+
 }
-

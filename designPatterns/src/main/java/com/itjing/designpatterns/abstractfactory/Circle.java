@@ -6,8 +6,10 @@ package com.itjing.designpatterns.abstractfactory;
  * @Description:
  */
 public class Circle implements Shape {
-    @Override
-    public void draw() {
-        System.out.println("The shape is circle");
-    }
+
+	@Override
+	public void draw() {
+		System.out.println("The shape is circle");
+	}
+
 }

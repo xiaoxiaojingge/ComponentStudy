@@ -16,13 +16,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class User {
 
-    private Long id;
+	private Long id;
 
-    @ExcelProperty(value = "用户名")
-    @ExcelValid(message = "用户名称必填！")
-    private String username;
+	@ExcelProperty(value = "用户名")
+	@ExcelValid(message = "用户名称必填！")
+	private String username;
 
-    @ExcelProperty(value = "手机号码")
-    @ExcelValid(message = "手机号码必填！")
-    private String phone;
+	@ExcelProperty(value = "手机号码")
+	@ExcelValid(message = "手机号码必填！")
+	private String phone;
+
 }

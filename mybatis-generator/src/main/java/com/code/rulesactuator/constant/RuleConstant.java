@@ -7,11 +7,12 @@ package com.code.rulesactuator.constant;
  */
 public class RuleConstant {
 
-    public static final String MATCH_ADDRESS_START = "北京";
+	public static final String MATCH_ADDRESS_START = "北京";
 
-    public static final String MATCH_NATIONALITY_START = "中国";
+	public static final String MATCH_NATIONALITY_START = "中国";
 
-    public static final String MATCH_SUBJECT_MATH = "数学";
+	public static final String MATCH_SUBJECT_MATH = "数学";
 
-    public static final String MATCH_SUBJECT_SCIENCE = "理科";
+	public static final String MATCH_SUBJECT_SCIENCE = "理科";
+
 }

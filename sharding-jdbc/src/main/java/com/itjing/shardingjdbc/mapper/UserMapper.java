@@ -17,17 +17,18 @@ import java.util.List;
 @Repository
 public interface UserMapper {
 
-    /**
-     * 添加操作
-     * @param user
-     */
-    @Insert("insert into jing_user(nickname,password,sex,birthday) values(#{nickname},#{password},#{sex},#{birthday})")
-    void addUser(User user);
+	/**
+	 * 添加操作
+	 * @param user
+	 */
+	@Insert("insert into jing_user(nickname,password,sex,birthday) values(#{nickname},#{password},#{sex},#{birthday})")
+	void addUser(User user);
 
-    /**
-     * 查询全部
-     * @return
-     */
-    @Select("select id,nickname,password,sex,birthday from jing_user")
-    List<User> findUsers();
+	/**
+	 * 查询全部
+	 * @return
+	 */
+	@Select("select id,nickname,password,sex,birthday from jing_user")
+	List<User> findUsers();
+
 }

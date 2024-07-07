@@ -8,12 +8,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class RedisUtil {
-    @Bean
-    public DefaultRedisScript<Boolean> redisScript() {
-        DefaultRedisScript<Boolean> redisScript = new DefaultRedisScript<>();
-        redisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("lua/checkandset.lua")));
-        redisScript.setResultType(Boolean.class);
-        return redisScript;
-    }
+
+	@Bean
+	public DefaultRedisScript<Boolean> redisScript() {
+		DefaultRedisScript<Boolean> redisScript = new DefaultRedisScript<>();
+		redisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("lua/checkandset.lua")));
+		redisScript.setResultType(Boolean.class);
+		return redisScript;
+	}
 
 }

@@ -6,53 +6,53 @@ package com.itjing.designpatterns.proxy;
  * @Description:
  */
 public class Food {
-    private String chicken;
-    private String spicy;
-    private String salt;
 
-    public Food() {
-    }
+	private String chicken;
 
-    public void addCondiment(String condiment) {
-        System.out.println("addCondiment---------" + condiment);
-    }
+	private String spicy;
 
-    public Food(String chicken, String spicy, String salt) {
-        this.chicken = chicken;
-        this.spicy = spicy;
-        this.salt = salt;
-    }
+	private String salt;
 
-    public String getChicken() {
-        return chicken;
-    }
+	public Food() {
+	}
 
-    public void setChicken(String chicken) {
-        this.chicken = chicken;
-    }
+	public void addCondiment(String condiment) {
+		System.out.println("addCondiment---------" + condiment);
+	}
 
-    public String getSpicy() {
-        return spicy;
-    }
+	public Food(String chicken, String spicy, String salt) {
+		this.chicken = chicken;
+		this.spicy = spicy;
+		this.salt = salt;
+	}
 
-    public void setSpicy(String spicy) {
-        this.spicy = spicy;
-    }
+	public String getChicken() {
+		return chicken;
+	}
 
-    public String getSalt() {
-        return salt;
-    }
+	public void setChicken(String chicken) {
+		this.chicken = chicken;
+	}
 
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
+	public String getSpicy() {
+		return spicy;
+	}
 
-    @Override
-    public String toString() {
-        return "Food{" +
-                "chicken='" + chicken + '\'' +
-                ", spicy='" + spicy + '\'' +
-                ", salt='" + salt + '\'' +
-                '}';
-    }
+	public void setSpicy(String spicy) {
+		this.spicy = spicy;
+	}
+
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+
+	@Override
+	public String toString() {
+		return "Food{" + "chicken='" + chicken + '\'' + ", spicy='" + spicy + '\'' + ", salt='" + salt + '\'' + '}';
+	}
+
 }

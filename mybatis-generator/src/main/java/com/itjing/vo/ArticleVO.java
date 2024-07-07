@@ -14,7 +14,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ArticleVO {
 
-    private Integer id;
+	private Integer id;
 
-    private String author;
+	private String author;
+
 }

@@ -1,6 +1,6 @@
 package com.itjing.api.deginmodel.abstractFactory;
 
-public class DefaultFactory extends AbstractFactory{
+public class DefaultFactory extends AbstractFactory {
 
 	@Override
 	public Food createFood() {
@@ -16,5 +16,5 @@ public class DefaultFactory extends AbstractFactory{
 	public Weapon createWeapon() {
 		return new AK47();
 	}
-	
+
 }

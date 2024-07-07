@@ -6,13 +6,15 @@ package com.itjing.designpatterns.abstractfactory;
  * @Description:
  */
 public class ConcreteFactory2 extends AbstractFactory {
-    @Override
-    public Color createColor() {
-        return new Blue();
-    }
 
-    @Override
-    public Shape createShape() {
-        return new Circle();
-    }
+	@Override
+	public Color createColor() {
+		return new Blue();
+	}
+
+	@Override
+	public Shape createShape() {
+		return new Circle();
+	}
+
 }

@@ -6,13 +6,15 @@ package com.itjing.designpatterns.factorymethod;
  * @Description: 具体产品 ConcreteProduct
  */
 public class BusImpl1 implements Bus {
-    @Override
-    public void run() {
-        System.out.println("BusImpl1 is running");
-    }
 
-    @Override
-    public void stop() {
-        System.out.println("BusImpl1 stop running");
-    }
+	@Override
+	public void run() {
+		System.out.println("BusImpl1 is running");
+	}
+
+	@Override
+	public void stop() {
+		System.out.println("BusImpl1 stop running");
+	}
+
 }

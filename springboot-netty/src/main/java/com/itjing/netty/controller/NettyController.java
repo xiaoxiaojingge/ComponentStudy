@@ -16,8 +16,9 @@ import java.util.Map;
 @Slf4j
 public class NettyController {
 
-    @GetMapping("/helloNetty")
-    public Map<String, Object> helloNetty(String msg) {
-        return NettyClientUtil.helloNetty(msg);
-    }
+	@GetMapping("/helloNetty")
+	public Map<String, Object> helloNetty(String msg) {
+		return NettyClientUtil.helloNetty(msg);
+	}
+
 }

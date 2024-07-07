@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author 李晶
@@ -17,48 +17,47 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class TbUser implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * 用户名
-     */
-    private String userName;
+	/**
+	 * 用户名
+	 */
+	private String userName;
 
-    /**
-     * 密码
-     */
-    private String password;
+	/**
+	 * 密码
+	 */
+	private String password;
 
-    /**
-     * 姓名
-     */
-    private String name;
+	/**
+	 * 姓名
+	 */
+	private String name;
 
-    /**
-     * 年龄
-     */
-    private Integer age;
+	/**
+	 * 年龄
+	 */
+	private Integer age;
 
-    /**
-     * 邮箱
-     */
-    private String email;
+	/**
+	 * 邮箱
+	 */
+	private String email;
 
-    private Integer version;
+	private Integer version;
 
-    /**
-     * 1代表删除，0代表未删除
-     */
-    private Integer deleted;
+	/**
+	 * 1代表删除，0代表未删除
+	 */
+	private Integer deleted;
 
-    /**
-     * 1-男，2-女
-     */
-    private Integer sex;
+	/**
+	 * 1-男，2-女
+	 */
+	private Integer sex;
 
-    private LocalDateTime createTime;
+	private LocalDateTime createTime;
 
-    private LocalDateTime updateTime;
-
+	private LocalDateTime updateTime;
 
 }

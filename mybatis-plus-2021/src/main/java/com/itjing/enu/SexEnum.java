@@ -9,25 +9,26 @@ import com.baomidou.mybatisplus.annotation.IEnum;
  */
 public enum SexEnum implements IEnum<Integer> {
 
-    MAN(1, "男"),
+	MAN(1, "男"),
 
-    WOMAN(2, "女");
+	WOMAN(2, "女");
 
-    private int value;
+	private int value;
 
-    private String desc;
+	private String desc;
 
-    SexEnum(int value, String desc) {
-        this.value = value;
-        this.desc = desc;
-    }
+	SexEnum(int value, String desc) {
+		this.value = value;
+		this.desc = desc;
+	}
 
-    @Override
-    public Integer getValue() {
-        return value;
-    }
+	@Override
+	public Integer getValue() {
+		return value;
+	}
 
-    public String getDesc(){
-        return desc;
-    }
+	public String getDesc() {
+		return desc;
+	}
+
 }

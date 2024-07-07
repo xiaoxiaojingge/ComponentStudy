@@ -13,15 +13,15 @@ import java.io.InputStream;
 
 public class StreamReponseHandler implements ResponseHandler<InputStream> {
 
-    @Override
-    public InputStream handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
-        final StatusLine statusLine = response.getStatusLine();
-        final HttpEntity entity = response.getEntity();
-        if (statusLine.getStatusCode() >= 300) {
-            EntityUtils.consume(entity);
-            throw new HttpResponseException(statusLine.getStatusCode(),
-                    statusLine.getReasonPhrase());
-        }
-        return entity.getContent();
-    }
+	@Override
+	public InputStream handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
+		final StatusLine statusLine = response.getStatusLine();
+		final HttpEntity entity = response.getEntity();
+		if (statusLine.getStatusCode() >= 300) {
+			EntityUtils.consume(entity);
+			throw new HttpResponseException(statusLine.getStatusCode(), statusLine.getReasonPhrase());
+		}
+		return entity.getContent();
+	}
+
 }

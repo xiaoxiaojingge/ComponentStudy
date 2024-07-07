@@ -20,44 +20,43 @@ import java.util.Map;
 @RequestMapping("/api/order")
 public class OrderController {
 
-    @Autowired
-    private OrderMapper orderMapper;
+	@Autowired
+	private OrderMapper orderMapper;
 
-    @PostMapping("/save")
-    public String testInsertOrder() {
-        for (int i = 0; i < 10; i++) {
-            orderMapper.insertOrder(100 + i, "空调" + i, 10);
-        }
-        return "success";
-    }
+	@PostMapping("/save")
+	public String testInsertOrder() {
+		for (int i = 0; i < 10; i++) {
+			orderMapper.insertOrder(100 + i, "空调" + i, 10);
+		}
+		return "success";
+	}
 
-    @GetMapping("find")
-    public void testFindOrderByIds() {
-        List<Long> ids = new ArrayList<>();
-        ids.add(745241267423674369L);
-        ids.add(745241268338032640L);
+	@GetMapping("find")
+	public void testFindOrderByIds() {
+		List<Long> ids = new ArrayList<>();
+		ids.add(745241267423674369L);
+		ids.add(745241268338032640L);
 
-        List<Map> list = orderMapper.findOrderByIds(ids);
-        System.out.println(list);
-    }
+		List<Map> list = orderMapper.findOrderByIds(ids);
+		System.out.println(list);
+	}
 
+	@PostMapping("/saveFk")
+	public String saveFk() {
+		for (int i = 0; i < 10; i++) {
+			orderMapper.insertOrderFk(i, "空调" + i, 1);
+		}
+		return "success";
+	}
 
-    @PostMapping("/saveFk")
-    public String saveFk() {
-        for (int i = 0; i < 10; i++) {
-            orderMapper.insertOrderFk(i, "空调" + i, 1);
-        }
-        return "success";
-    }
+	@GetMapping("findFk")
+	public void testFindOrderByIdsFk() {
+		List<Long> ids = new ArrayList<>();
+		ids.add(745252093001990145L);
+		ids.add(745252094096703488L);
 
+		List<Map> list = orderMapper.findOrderByIdsFk(ids);
+		System.out.println(list);
+	}
 
-    @GetMapping("findFk")
-    public void testFindOrderByIdsFk() {
-        List<Long> ids = new ArrayList<>();
-        ids.add(745252093001990145L);
-        ids.add(745252094096703488L);
-
-        List<Map> list = orderMapper.findOrderByIdsFk(ids);
-        System.out.println(list);
-    }
 }

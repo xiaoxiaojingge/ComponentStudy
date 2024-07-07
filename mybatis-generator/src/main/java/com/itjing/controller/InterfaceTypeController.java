@@ -20,9 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class InterfaceTypeController {
 
-    @PostMapping("/test")
-    public RestResult<?> testInterfaceType(@InterfaceType Article article) {
-        log.info(JSON.toJSONString(article));
-        return RestResultUtils.success(article);
-    }
+	@PostMapping("/test")
+	public RestResult<?> testInterfaceType(@InterfaceType Article article) {
+		log.info(JSON.toJSONString(article));
+		return RestResultUtils.success(article);
+	}
+
 }

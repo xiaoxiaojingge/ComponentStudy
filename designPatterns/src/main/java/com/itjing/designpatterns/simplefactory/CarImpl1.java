@@ -6,13 +6,15 @@ package com.itjing.designpatterns.simplefactory;
  * @Description: ConcreteProduct 具体产品角色
  */
 public class CarImpl1 implements Car {
-    @Override
-    public void run() {
-        System.out.println("CarImpl1 is running");
-    }
 
-    @Override
-    public void stop() {
-        System.out.println("CarImpl1 stop running");
-    }
+	@Override
+	public void run() {
+		System.out.println("CarImpl1 is running");
+	}
+
+	@Override
+	public void stop() {
+		System.out.println("CarImpl1 stop running");
+	}
+
 }

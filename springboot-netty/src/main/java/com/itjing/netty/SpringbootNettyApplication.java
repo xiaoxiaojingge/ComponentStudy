@@ -9,11 +9,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Slf4j
 public class SpringbootNettyApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(SpringbootNettyApplication.class, args);
-        //开启Netty服务
-        NettyServer nettyServer = new NettyServer();
-        nettyServer.start();
-        log.info("======服务已经启动========");
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(SpringbootNettyApplication.class, args);
+		// 开启Netty服务
+		NettyServer nettyServer = new NettyServer();
+		nettyServer.start();
+		log.info("======服务已经启动========");
+	}
+
 }

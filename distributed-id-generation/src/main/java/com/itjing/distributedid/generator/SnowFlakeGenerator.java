@@ -8,11 +8,13 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Slf4j
-public class SnowFlakeGenerator implements IdGenerator{
-    UniqueOrderGenerate uniqueOrderGenerate = new UniqueOrderGenerate(1, 0);
+public class SnowFlakeGenerator implements IdGenerator {
 
-    @Override
-    public String generateId(int bizType) {
-        return uniqueOrderGenerate.nextId()+"";
-    }
+	UniqueOrderGenerate uniqueOrderGenerate = new UniqueOrderGenerate(1, 0);
+
+	@Override
+	public String generateId(int bizType) {
+		return uniqueOrderGenerate.nextId() + "";
+	}
+
 }

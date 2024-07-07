@@ -12,10 +12,15 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Accessors(chain=true)
+@Accessors(chain = true)
 public class Order {
-    private Integer id;
-    private Integer sid;
-    private String name;
-    private Date createDate;
+
+	private Integer id;
+
+	private Integer sid;
+
+	private String name;
+
+	private Date createDate;
+
 }

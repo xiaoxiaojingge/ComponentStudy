@@ -6,6 +6,7 @@ package com.itjing.sensitive.handler;
  * @CreateTime: 2022-11-03 11:05
  */
 public interface SensitiveOperation {
-    String mask(String content, String maskChar);
+
+	String mask(String content, String maskChar);
 
 }

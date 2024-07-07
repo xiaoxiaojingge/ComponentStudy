@@ -14,8 +14,11 @@ import javax.validation.constraints.NotEmpty;
 @Getter
 @Setter
 public class UserDTO {
-    @NotEmpty(message = "用户名不能为空")
-    private String name;
-    @Min(value = 0, message = "年龄最小不能低于0")
-    private int age;
+
+	@NotEmpty(message = "用户名不能为空")
+	private String name;
+
+	@Min(value = 0, message = "年龄最小不能低于0")
+	private int age;
+
 }

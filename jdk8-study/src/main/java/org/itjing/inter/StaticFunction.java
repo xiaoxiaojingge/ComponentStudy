@@ -7,16 +7,16 @@ package org.itjing.inter;
  */
 public class StaticFunction {
 
-    public static void main(String[] args) {
-        AA.show();
-    }
+	public static void main(String[] args) {
+		AA.show();
+	}
 
+	interface AA {
 
-    interface AA {
-        static void show() {
-            System.out.println("我是接口的静态方法");
-        }
-    }
+		static void show() {
+			System.out.println("我是接口的静态方法");
+		}
+
+	}
+
 }
-
-

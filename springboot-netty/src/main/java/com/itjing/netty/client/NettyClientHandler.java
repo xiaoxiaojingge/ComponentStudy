@@ -19,25 +19,26 @@ import java.util.Map;
 @Getter
 public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 
-    private Map<String, Object> response = new HashMap<>();
+	private Map<String, Object> response = new HashMap<>();
 
-    private String logPageName = null;
+	private String logPageName = null;
 
-    @Override
-    public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        log.info("客户端Active .....");
-    }
+	@Override
+	public void channelActive(ChannelHandlerContext ctx) throws Exception {
+		log.info("客户端Active .....");
+	}
 
-    @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        log.info("客户端收到消息: {}", msg.toString());
-        this.response.put("result", msg.toString());
-        ctx.close();
-    }
+	@Override
+	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+		log.info("客户端收到消息: {}", msg.toString());
+		this.response.put("result", msg.toString());
+		ctx.close();
+	}
 
-    @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        cause.printStackTrace();
-        ctx.close();
-    }
+	@Override
+	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+		cause.printStackTrace();
+		ctx.close();
+	}
+
 }

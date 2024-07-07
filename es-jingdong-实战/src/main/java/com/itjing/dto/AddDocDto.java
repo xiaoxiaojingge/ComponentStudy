@@ -14,9 +14,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AddDocDto {
 
-    private String indexName;
+	private String indexName;
 
-    private String id;
+	private String id;
 
-    private Object data;
+	private Object data;
+
 }

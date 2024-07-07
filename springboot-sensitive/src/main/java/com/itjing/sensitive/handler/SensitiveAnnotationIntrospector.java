@@ -14,14 +14,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class SensitiveAnnotationIntrospector extends NopAnnotationIntrospector {
 
-    @Override
-    public Object findSerializer(Annotated am) {
-        Sensitive annotation = am.getAnnotation(Sensitive.class);
-        if (annotation != null) {
-            return new SensitiveSerializer(annotation.mask().operation(), annotation.maskChar());
-        }
-        return null;
-    }
+	@Override
+	public Object findSerializer(Annotated am) {
+		Sensitive annotation = am.getAnnotation(Sensitive.class);
+		if (annotation != null) {
+			return new SensitiveSerializer(annotation.mask().operation(), annotation.maskChar());
+		}
+		return null;
+	}
 
 }
-

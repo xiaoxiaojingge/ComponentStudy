@@ -14,11 +14,15 @@ import java.util.List;
 @Setter
 @ToString
 public class Teacher {
-    private int id;
-    private String name;
-    private List<Student> studentList;
 
-    public Teacher(){
-        System.out.println("调用无参构造方法----Teacher");
-    }
+	private int id;
+
+	private String name;
+
+	private List<Student> studentList;
+
+	public Teacher() {
+		System.out.println("调用无参构造方法----Teacher");
+	}
+
 }

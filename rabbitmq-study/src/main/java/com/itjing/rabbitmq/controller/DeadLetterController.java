@@ -23,35 +23,35 @@ import java.util.UUID;
 @RequestMapping("/rabbit")
 public class DeadLetterController {
 
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
+	@Autowired
+	private RabbitTemplate rabbitTemplate;
 
-    /**
-     * 正常消息队列，队列最大长度5
-     */
-    @GetMapping("/normalQueue")
-    public String normalQueue() {
+	/**
+	 * 正常消息队列，队列最大长度5
+	 */
+	@GetMapping("/normalQueue")
+	public String normalQueue() {
 
-        Map<String, Object> map = new HashMap<>();
-        map.put("messageId", String.valueOf(UUID.randomUUID()));
-        map.put("data", System.currentTimeMillis() + ", 正常队列消息，最大长度 5");
+		Map<String, Object> map = new HashMap<>();
+		map.put("messageId", String.valueOf(UUID.randomUUID()));
+		map.put("data", System.currentTimeMillis() + ", 正常队列消息，最大长度 5");
 
-        rabbitTemplate.convertAndSend("normalExchange", "normalRouting", map, new CorrelationData());
-        return JSONObject.toJSONString(map);
-    }
+		rabbitTemplate.convertAndSend("normalExchange", "normalRouting", map, new CorrelationData());
+		return JSONObject.toJSONString(map);
+	}
 
-    /**
-     * 消息 TTL, time to live
-     */
-    @GetMapping("/ttlToDead")
-    public String ttlToDead() {
+	/**
+	 * 消息 TTL, time to live
+	 */
+	@GetMapping("/ttlToDead")
+	public String ttlToDead() {
 
-        Map<String, Object> map = new HashMap<>();
-        map.put("messageId", String.valueOf(UUID.randomUUID()));
-        map.put("data", System.currentTimeMillis() + ", ttl队列消息");
+		Map<String, Object> map = new HashMap<>();
+		map.put("messageId", String.valueOf(UUID.randomUUID()));
+		map.put("data", System.currentTimeMillis() + ", ttl队列消息");
 
-        rabbitTemplate.convertAndSend("normalExchange", "ttlRouting", map, new CorrelationData());
-        return JSONObject.toJSONString(map);
-    }
+		rabbitTemplate.convertAndSend("normalExchange", "ttlRouting", map, new CorrelationData());
+		return JSONObject.toJSONString(map);
+	}
 
 }

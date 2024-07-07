@@ -12,7 +12,8 @@ import lombok.Setter;
 @Setter
 public class ResourceEntity {
 
-    private String id;
+	private String id;
 
-    private String name;
+	private String name;
+
 }

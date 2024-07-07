@@ -8,18 +8,20 @@ import java.util.function.Consumer;
  * @description
  */
 public class LambdaDemo7 {
-    public static void main(String[] args) {
-        String str = "hello world";
-        test((s) -> {
-            String lowerCase = s.toLowerCase();
-            System.out.println(lowerCase);
 
-            String upperCase = s.toUpperCase();
-            System.out.println(upperCase);
-        }, str);
-    }
+	public static void main(String[] args) {
+		String str = "hello world";
+		test((s) -> {
+			String lowerCase = s.toLowerCase();
+			System.out.println(lowerCase);
 
-    public static void test(Consumer<String> consumer, String str) {
-        consumer.accept(str);
-    }
+			String upperCase = s.toUpperCase();
+			System.out.println(upperCase);
+		}, str);
+	}
+
+	public static void test(Consumer<String> consumer, String str) {
+		consumer.accept(str);
+	}
+
 }

@@ -17,11 +17,12 @@ import java.io.IOException;
 @Component
 public class DelayMQReceiver {
 
-    @RabbitListener(queues = DelayMQConfig.LAZY_QUEUE)
-    @RabbitHandler
-    public void onLazyMessage(Message msg, Channel channel) throws IOException {
-        long deliveryTag = msg.getMessageProperties().getDeliveryTag();
-        channel.basicAck(deliveryTag, true);
-        System.out.println("lazy receive " + new String(msg.getBody()));
-    }
+	@RabbitListener(queues = DelayMQConfig.LAZY_QUEUE)
+	@RabbitHandler
+	public void onLazyMessage(Message msg, Channel channel) throws IOException {
+		long deliveryTag = msg.getMessageProperties().getDeliveryTag();
+		channel.basicAck(deliveryTag, true);
+		System.out.println("lazy receive " + new String(msg.getBody()));
+	}
+
 }

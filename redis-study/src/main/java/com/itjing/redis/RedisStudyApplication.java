@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class RedisStudyApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(RedisStudyApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(RedisStudyApplication.class, args);
+	}
 
 }

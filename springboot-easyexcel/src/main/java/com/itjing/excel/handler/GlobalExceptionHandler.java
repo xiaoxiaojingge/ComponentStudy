@@ -17,18 +17,14 @@ import javax.servlet.http.HttpServletRequest;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    // 处理自定义的业务异常
-    @ExceptionHandler(value = CustomException.class)
-    public GeneralResult<Object> restErrorHandler(HttpServletRequest request, CustomException e) {
-//        String err = "requestURI:" + request.getRequestURI()
-//                + ",errorCode:" + e.getErrorCode()
-//                + ",errorMsg:" + e.getMessage();
-//        log.error(err, e);
-        return GeneralResult.genErrorResult(
-                e.getMessage(),
-                e.getErrorCode(),
-                e.getTraceId()
-        );
-    }
+	// 处理自定义的业务异常
+	@ExceptionHandler(value = CustomException.class)
+	public GeneralResult<Object> restErrorHandler(HttpServletRequest request, CustomException e) {
+		// String err = "requestURI:" + request.getRequestURI()
+		// + ",errorCode:" + e.getErrorCode()
+		// + ",errorMsg:" + e.getMessage();
+		// log.error(err, e);
+		return GeneralResult.genErrorResult(e.getMessage(), e.getErrorCode(), e.getTraceId());
+	}
 
 }

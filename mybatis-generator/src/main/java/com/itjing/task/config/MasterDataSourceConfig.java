@@ -24,106 +24,108 @@ import javax.sql.DataSource;
 @MapperScan(basePackages = MasterDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "masterSqlSessionFactory")
 public class MasterDataSourceConfig {
 
-    static final String PACKAGE = "com.itjing.mapper";
-    static final String MAPPER_LOCATION = "classpath:mapper/**/*Mapper.xml";
+	static final String PACKAGE = "com.itjing.mapper";
+	static final String MAPPER_LOCATION = "classpath:mapper/**/*Mapper.xml";
 
-    @Value("${spring.datasource.url}")
-    private String url;
+	@Value("${spring.datasource.url}")
+	private String url;
 
-    @Value("${spring.datasource.username}")
-    private String username;
+	@Value("${spring.datasource.username}")
+	private String username;
 
-    @Value("${spring.datasource.password}")
-    private String password;
+	@Value("${spring.datasource.password}")
+	private String password;
 
-    @Value("${spring.datasource.driver-class-name}")
-    private String driverClassName;
+	@Value("${spring.datasource.driver-class-name}")
+	private String driverClassName;
 
-    @Value("${spring.datasource.name}")
-    private String name;
+	@Value("${spring.datasource.name}")
+	private String name;
 
-    @Value("${key-code}")
-    private String keyCode;
+	@Value("${key-code}")
+	private String keyCode;
 
-    @Value("${spring.datasource.druid.initialSize}")
-    private int initialSize;
+	@Value("${spring.datasource.druid.initialSize}")
+	private int initialSize;
 
-    @Value("${spring.datasource.druid.minIdle}")
-    private int minIdle;
+	@Value("${spring.datasource.druid.minIdle}")
+	private int minIdle;
 
-    @Value("${spring.datasource.druid.maxActive}")
-    private int maxActive;
+	@Value("${spring.datasource.druid.maxActive}")
+	private int maxActive;
 
-    @Value("${spring.datasource.druid.maxWait}")
-    private int maxWait;
+	@Value("${spring.datasource.druid.maxWait}")
+	private int maxWait;
 
-    @Value("${spring.datasource.druid.timeBetweenEvictionRunsMillis}")
-    private int timeBetweenEvictionRunsMillis;
+	@Value("${spring.datasource.druid.timeBetweenEvictionRunsMillis}")
+	private int timeBetweenEvictionRunsMillis;
 
-    @Value("${spring.datasource.druid.minEvictableIdleTimeMillis}")
-    private int minEvictableIdleTimeMillis;
+	@Value("${spring.datasource.druid.minEvictableIdleTimeMillis}")
+	private int minEvictableIdleTimeMillis;
 
-    @Value("${spring.datasource.druid.validationQuery}")
-    private String validationQuery;
+	@Value("${spring.datasource.druid.validationQuery}")
+	private String validationQuery;
 
-    @Value("${spring.datasource.druid.testWhileIdle}")
-    private boolean testWhileIdle;
+	@Value("${spring.datasource.druid.testWhileIdle}")
+	private boolean testWhileIdle;
 
-    @Value("${spring.datasource.druid.testOnBorrow}")
-    private boolean testOnBorrow;
+	@Value("${spring.datasource.druid.testOnBorrow}")
+	private boolean testOnBorrow;
 
-    @Value("${spring.datasource.druid.testOnReturn}")
-    private boolean testOnReturn;
+	@Value("${spring.datasource.druid.testOnReturn}")
+	private boolean testOnReturn;
 
-    @Value("${spring.datasource.druid.poolPreparedStatements}")
-    private boolean poolPreparedStatements;
+	@Value("${spring.datasource.druid.poolPreparedStatements}")
+	private boolean poolPreparedStatements;
 
-    @Value("${spring.datasource.druid.maxPoolPreparedStatementPerConnectionSize}")
-    private int maxPoolPreparedStatementPerConnectionSize;
+	@Value("${spring.datasource.druid.maxPoolPreparedStatementPerConnectionSize}")
+	private int maxPoolPreparedStatementPerConnectionSize;
 
-    @Value("{spring.datasource.druid.connectionProperties}")
-    private String connectionProperties;
+	@Value("{spring.datasource.druid.connectionProperties}")
+	private String connectionProperties;
 
-    @Bean(name = "masterDataSource")
-    @Primary
-    public DataSource masterDataSource() {
-        DruidDataSource dataSource = new DruidDataSource();
-        dataSource.setName(name);
-        dataSource.setUrl(url);
-        dataSource.setUsername(AESUtil.decrypt(username, keyCode));
-        dataSource.setPassword(AESUtil.decrypt(password, keyCode));
-        dataSource.setDriverClassName(driverClassName);
+	@Bean(name = "masterDataSource")
+	@Primary
+	public DataSource masterDataSource() {
+		DruidDataSource dataSource = new DruidDataSource();
+		dataSource.setName(name);
+		dataSource.setUrl(url);
+		dataSource.setUsername(AESUtil.decrypt(username, keyCode));
+		dataSource.setPassword(AESUtil.decrypt(password, keyCode));
+		dataSource.setDriverClassName(driverClassName);
 
-        //具体配置
-        dataSource.setInitialSize(initialSize);
-        dataSource.setMinIdle(minIdle);
-        dataSource.setMaxActive(maxActive);
-        dataSource.setMaxWait(maxWait);
-        dataSource.setTimeBetweenEvictionRunsMillis(timeBetweenEvictionRunsMillis);
-        dataSource.setMinEvictableIdleTimeMillis(minEvictableIdleTimeMillis);
-        dataSource.setValidationQuery(validationQuery);
-        dataSource.setTestWhileIdle(testWhileIdle);
-        dataSource.setTestOnBorrow(testOnBorrow);
-        dataSource.setTestOnReturn(testOnReturn);
-        dataSource.setPoolPreparedStatements(poolPreparedStatements);
-        dataSource.setMaxPoolPreparedStatementPerConnectionSize(maxPoolPreparedStatementPerConnectionSize);
-        dataSource.setConnectionProperties(connectionProperties);
-        return dataSource;
-    }
+		// 具体配置
+		dataSource.setInitialSize(initialSize);
+		dataSource.setMinIdle(minIdle);
+		dataSource.setMaxActive(maxActive);
+		dataSource.setMaxWait(maxWait);
+		dataSource.setTimeBetweenEvictionRunsMillis(timeBetweenEvictionRunsMillis);
+		dataSource.setMinEvictableIdleTimeMillis(minEvictableIdleTimeMillis);
+		dataSource.setValidationQuery(validationQuery);
+		dataSource.setTestWhileIdle(testWhileIdle);
+		dataSource.setTestOnBorrow(testOnBorrow);
+		dataSource.setTestOnReturn(testOnReturn);
+		dataSource.setPoolPreparedStatements(poolPreparedStatements);
+		dataSource.setMaxPoolPreparedStatementPerConnectionSize(maxPoolPreparedStatementPerConnectionSize);
+		dataSource.setConnectionProperties(connectionProperties);
+		return dataSource;
+	}
 
-    @Bean(name = "masterTransactionManager")
-    @Primary
-    public DataSourceTransactionManager masterTransactionManager() {
-        return new DataSourceTransactionManager(masterDataSource());
-    }
+	@Bean(name = "masterTransactionManager")
+	@Primary
+	public DataSourceTransactionManager masterTransactionManager() {
+		return new DataSourceTransactionManager(masterDataSource());
+	}
 
-    @Bean(name = "masterSqlSessionFactory")
-    @Primary
-    public SqlSessionFactory masterSqlSessionFactory(@Qualifier("masterDataSource") DataSource masterDataSource)
-            throws Exception {
-        final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-        sessionFactory.setDataSource(masterDataSource);
-        sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(MasterDataSourceConfig.MAPPER_LOCATION));
-        return sessionFactory.getObject();
-    }
+	@Bean(name = "masterSqlSessionFactory")
+	@Primary
+	public SqlSessionFactory masterSqlSessionFactory(@Qualifier("masterDataSource") DataSource masterDataSource)
+			throws Exception {
+		final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
+		sessionFactory.setDataSource(masterDataSource);
+		sessionFactory.setMapperLocations(
+				new PathMatchingResourcePatternResolver().getResources(MasterDataSourceConfig.MAPPER_LOCATION));
+		return sessionFactory.getObject();
+	}
+
 }

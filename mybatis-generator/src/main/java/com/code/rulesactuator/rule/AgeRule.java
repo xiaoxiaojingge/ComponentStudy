@@ -9,13 +9,14 @@ import com.code.rulesactuator.dto.RuleDTO;
  */
 public class AgeRule extends AbstractRule {
 
-    @Override
-    protected <T> boolean executeRule(T t) {
-        System.out.println("AgeRule invoke!");
-        RuleDTO ruleDTO = (RuleDTO) t;
-        if (ruleDTO.getAge() > 18) {
-            return true;
-        }
-        return false;
-    }
+	@Override
+	protected <T> boolean executeRule(T t) {
+		System.out.println("AgeRule invoke!");
+		RuleDTO ruleDTO = (RuleDTO) t;
+		if (ruleDTO.getAge() > 18) {
+			return true;
+		}
+		return false;
+	}
+
 }

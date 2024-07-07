@@ -20,22 +20,23 @@ import java.util.Random;
 @RequestMapping("/api/user")
 public class UserController {
 
-    @Autowired
-    private UserMapper userMapper;
+	@Autowired
+	private UserMapper userMapper;
 
-    @PostMapping("/save")
-    public String addUser() {
-        User user = new User();
-        user.setNickname("zhangsan" + new Random().nextInt());
-        user.setPassword("123456");
-        user.setSex(1);
-        user.setBirthday("1997-12-03");
-        userMapper.addUser(user);
-        return "success";
-    }
+	@PostMapping("/save")
+	public String addUser() {
+		User user = new User();
+		user.setNickname("zhangsan" + new Random().nextInt());
+		user.setPassword("123456");
+		user.setSex(1);
+		user.setBirthday("1997-12-03");
+		userMapper.addUser(user);
+		return "success";
+	}
 
-    @GetMapping("/findUsers")
-    public List<User> findUsers() {
-        return userMapper.findUsers();
-    }
+	@GetMapping("/findUsers")
+	public List<User> findUsers() {
+		return userMapper.findUsers();
+	}
+
 }

@@ -9,13 +9,14 @@ import com.code.rulesactuator.dto.RuleDTO;
  */
 public class NameRule extends AbstractRule {
 
-    @Override
-    protected <T> boolean executeRule(T t) {
-        System.out.println("NameRule invoke!");
-        RuleDTO ruleDTO = (RuleDTO) t;
-        if (ruleDTO.getName().contains("张")) {
-            return true;
-        }
-        return false;
-    }
+	@Override
+	protected <T> boolean executeRule(T t) {
+		System.out.println("NameRule invoke!");
+		RuleDTO ruleDTO = (RuleDTO) t;
+		if (ruleDTO.getName().contains("张")) {
+			return true;
+		}
+		return false;
+	}
+
 }

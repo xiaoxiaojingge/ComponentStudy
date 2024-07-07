@@ -11,58 +11,63 @@ import java.sql.Timestamp;
 @Table(name = "red_packet_record")
 public class RedPacketRecord implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
-    @Column
-    private Long redPacketId;
-    @Column
-    private Integer money;
-    @Column
-    private Integer uid;
-    @Column
-    private Timestamp createTime;//创建时间
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", nullable = false)
+	private Long id;
 
-    public long getId() {
-        return id;
-    }
+	@Column
+	private Long redPacketId;
 
-    public void setId(long id) {
-        this.id = id;
-    }
+	@Column
+	private Integer money;
 
-    public long getRedPacketId() {
-        return redPacketId;
-    }
+	@Column
+	private Integer uid;
 
-    public void setRedPacketId(long redPacketId) {
-        this.redPacketId = redPacketId;
-    }
+	@Column
+	private Timestamp createTime;// 创建时间
 
-    public int getMoney() {
-        return money;
-    }
+	public long getId() {
+		return id;
+	}
 
-    public void setMoney(int money) {
-        this.money = money;
-    }
+	public void setId(long id) {
+		this.id = id;
+	}
 
-    public int getUid() {
-        return uid;
-    }
+	public long getRedPacketId() {
+		return redPacketId;
+	}
 
-    public void setUid(int uid) {
-        this.uid = uid;
-    }
+	public void setRedPacketId(long redPacketId) {
+		this.redPacketId = redPacketId;
+	}
 
-    public Timestamp getCreateTime() {
-        return createTime;
-    }
+	public int getMoney() {
+		return money;
+	}
 
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
-    }
+	public void setMoney(int money) {
+		this.money = money;
+	}
+
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
+
+	public Timestamp getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
+	}
+
 }

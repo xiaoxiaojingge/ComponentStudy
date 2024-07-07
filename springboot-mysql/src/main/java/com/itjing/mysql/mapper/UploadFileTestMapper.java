@@ -9,35 +9,38 @@ import java.util.List;
 
 @Mapper
 public interface UploadFileTestMapper {
-    long countByExample(UploadFileTestExample example);
 
-    int deleteByExample(UploadFileTestExample example);
+	long countByExample(UploadFileTestExample example);
 
-    int deleteByPrimaryKey(Integer id);
+	int deleteByExample(UploadFileTestExample example);
 
-    int insert(UploadFileTest record);
+	int deleteByPrimaryKey(Integer id);
 
-    int insertOrUpdate(UploadFileTest record);
+	int insert(UploadFileTest record);
 
-    int insertOrUpdateSelective(UploadFileTest record);
+	int insertOrUpdate(UploadFileTest record);
 
-    int insertSelective(UploadFileTest record);
+	int insertOrUpdateSelective(UploadFileTest record);
 
-    List<UploadFileTest> selectByExample(UploadFileTestExample example);
+	int insertSelective(UploadFileTest record);
 
-    UploadFileTest selectByPrimaryKey(Integer id);
+	List<UploadFileTest> selectByExample(UploadFileTestExample example);
 
-    int updateByExampleSelective(@Param("record") UploadFileTest record, @Param("example") UploadFileTestExample example);
+	UploadFileTest selectByPrimaryKey(Integer id);
 
-    int updateByExample(@Param("record") UploadFileTest record, @Param("example") UploadFileTestExample example);
+	int updateByExampleSelective(@Param("record") UploadFileTest record,
+			@Param("example") UploadFileTestExample example);
 
-    int updateByPrimaryKeySelective(UploadFileTest record);
+	int updateByExample(@Param("record") UploadFileTest record, @Param("example") UploadFileTestExample example);
 
-    int updateByPrimaryKey(UploadFileTest record);
+	int updateByPrimaryKeySelective(UploadFileTest record);
 
-    int updateBatch(List<UploadFileTest> list);
+	int updateByPrimaryKey(UploadFileTest record);
 
-    int updateBatchSelective(List<UploadFileTest> list);
+	int updateBatch(List<UploadFileTest> list);
 
-    int batchInsert(@Param("list") List<UploadFileTest> list);
+	int updateBatchSelective(List<UploadFileTest> list);
+
+	int batchInsert(@Param("list") List<UploadFileTest> list);
+
 }

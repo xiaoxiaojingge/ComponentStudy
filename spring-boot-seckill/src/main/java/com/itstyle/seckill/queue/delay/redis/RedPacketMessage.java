@@ -13,31 +13,31 @@ import java.util.concurrent.TimeUnit;
  */
 public class RedPacketMessage implements Serializable {
 
-    /**
-     * 红包 ID
-     */
-    private  long redPacketId;
+	/**
+	 * 红包 ID
+	 */
+	private long redPacketId;
 
-    /**
-     * 创建时间戳
-     */
-    private  long timestamp;
+	/**
+	 * 创建时间戳
+	 */
+	private long timestamp;
 
-    public RedPacketMessage() {
+	public RedPacketMessage() {
 
-    }
+	}
 
-    public RedPacketMessage(long redPacketId) {
-        this.redPacketId = redPacketId;
-        this.timestamp = System.currentTimeMillis();
-    }
+	public RedPacketMessage(long redPacketId) {
+		this.redPacketId = redPacketId;
+		this.timestamp = System.currentTimeMillis();
+	}
 
-    public long getRedPacketId() {
-        return redPacketId;
-    }
+	public long getRedPacketId() {
+		return redPacketId;
+	}
 
-    public long getTimestamp() {
-        return timestamp;
-    }
+	public long getTimestamp() {
+		return timestamp;
+	}
 
 }

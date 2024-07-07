@@ -11,10 +11,10 @@ import java.util.List;
  */
 public interface NodeService {
 
-    Node save(Node node);
+	Node save(Node node);
 
-    List<Node> getAll();
+	List<Node> getAll();
 
-    void bind(String name1, String name2, String relationName);
+	void bind(String name1, String name2, String relationName);
 
 }

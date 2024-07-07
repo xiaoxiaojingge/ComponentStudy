@@ -17,21 +17,24 @@ import java.io.IOException;
  */
 @Slf4j
 public class JsonResponseHandler implements ResponseHandler<JSON> {
-    private ResponseHandler<String> basicResponse = new BasicResponseHandler();
 
-    @Override
-    public JSON handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
-        try {
-            String handleResponse = basicResponse.handleResponse(response);
-            if (StringUtils.isBlank(handleResponse)) {
-                return null;
-            }
-            Object parse = JSON.parse(handleResponse);
-            return (JSON) parse;
-        }catch (HttpResponseException e){
-            StatusLine statusLine = response.getStatusLine();
-            log.error("[{}]",statusLine,e);
-        }
-        return null;
-    }
+	private ResponseHandler<String> basicResponse = new BasicResponseHandler();
+
+	@Override
+	public JSON handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
+		try {
+			String handleResponse = basicResponse.handleResponse(response);
+			if (StringUtils.isBlank(handleResponse)) {
+				return null;
+			}
+			Object parse = JSON.parse(handleResponse);
+			return (JSON) parse;
+		}
+		catch (HttpResponseException e) {
+			StatusLine statusLine = response.getStatusLine();
+			log.error("[{}]", statusLine, e);
+		}
+		return null;
+	}
+
 }

@@ -7,11 +7,13 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class CalendarMain {
-    @Test
-    public void testAddDate(){
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(new Date());
-        cal.add(Calendar.DATE, -8);
-        System.out.println(DateFormatUtils.format(cal, "yyyy-MM-dd"));
-    }
+
+	@Test
+	public void testAddDate() {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
+		cal.add(Calendar.DATE, -8);
+		System.out.println(DateFormatUtils.format(cal, "yyyy-MM-dd"));
+	}
+
 }

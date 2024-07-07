@@ -4,6 +4,9 @@ import lombok.Data;
 
 @Data
 public class SubTarget {
-    private Boolean result;
-    private String name;
+
+	private Boolean result;
+
+	private String name;
+
 }

@@ -12,16 +12,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class KafkaProducer {
 
-    @Autowired
-    private KafkaTemplate kafkaTemplate;// 注入kafkaTemplate
+	@Autowired
+	private KafkaTemplate kafkaTemplate;// 注入kafkaTemplate
 
-    /**
-     * 发送消息
-     *
-     * @param topic   消息主题
-     * @param content 消息内容
-     */
-    public void sendMessage(String topic, String content) {
-        kafkaTemplate.send(topic, content);
-    }
+	/**
+	 * 发送消息
+	 * @param topic 消息主题
+	 * @param content 消息内容
+	 */
+	public void sendMessage(String topic, String content) {
+		kafkaTemplate.send(topic, content);
+	}
+
 }

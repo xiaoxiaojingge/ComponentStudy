@@ -17,15 +17,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/delay")
 public class DelayMQController {
 
-    @Autowired
-    private DelayMQSender mqSender;
+	@Autowired
+	private DelayMQSender mqSender;
 
-    /**
-     * 6 秒后收到了消息
-     */
-    @GetMapping("/send")
-    public void sendLazy() {
-        String msg = "hello spring boot";
-        mqSender.sendLazy(msg, 6 * 1000);
-    }
+	/**
+	 * 6 秒后收到了消息
+	 */
+	@GetMapping("/send")
+	public void sendLazy() {
+		String msg = "hello spring boot";
+		mqSender.sendLazy(msg, 6 * 1000);
+	}
+
 }

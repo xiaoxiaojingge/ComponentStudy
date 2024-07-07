@@ -24,60 +24,61 @@ import java.util.Date;
 @ToString
 public class User extends Model<User> {
 
-    /**
-     * 主键
-     */
-    @TableId(type = IdType.AUTO)
-    private Long id;
+	/**
+	 * 主键
+	 */
+	@TableId(type = IdType.AUTO)
+	private Long id;
 
-    /**
-     * 用户名
-     */
-    @TableField("user_name") // 解决字段名不一致
-    private String username;
+	/**
+	 * 用户名
+	 */
+	@TableField("user_name") // 解决字段名不一致
+	private String username;
 
-    /**
-     * 密码
-     */
-    @TableField(select = false) // 该字段不加入到查询中
-    private String password;
+	/**
+	 * 密码
+	 */
+	@TableField(select = false) // 该字段不加入到查询中
+	private String password;
 
-    /**
-     * 姓名
-     */
-    private String name;
+	/**
+	 * 姓名
+	 */
+	private String name;
 
-    /**
-     * 年龄
-     */
-    private Integer age;
+	/**
+	 * 年龄
+	 */
+	private Integer age;
 
-    /**
-     * 电子邮件
-     */
-    private String email;
+	/**
+	 * 电子邮件
+	 */
+	private String email;
 
-    @TableField(exist = false)
-    private String address; // 该字段在数据库表中不存在
+	@TableField(exist = false)
+	private String address; // 该字段在数据库表中不存在
 
-    // 性别为枚举
-    private SexEnum sex;
+	// 性别为枚举
+	private SexEnum sex;
 
-    @Version
-    private Integer version;
+	@Version
+	private Integer version;
 
-    /**
-     * 为createTime添加自动填充功能，在新增数据的时候有效
-     */
-    @TableField(value = "create_time", fill = FieldFill.INSERT)
-    private Date createTime;
+	/**
+	 * 为createTime添加自动填充功能，在新增数据的时候有效
+	 */
+	@TableField(value = "create_time", fill = FieldFill.INSERT)
+	private Date createTime;
 
-    /**
-     * 为updateTime添加自动填充功能，在更新数据的时候有效
-     */
-    @TableField(value = "update_time", fill = FieldFill.UPDATE)
-    private Date updateTime;
+	/**
+	 * 为updateTime添加自动填充功能，在更新数据的时候有效
+	 */
+	@TableField(value = "update_time", fill = FieldFill.UPDATE)
+	private Date updateTime;
 
-    @TableLogic
-    private Integer deleted;
+	@TableLogic
+	private Integer deleted;
+
 }

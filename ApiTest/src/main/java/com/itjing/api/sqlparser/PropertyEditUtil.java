@@ -13,57 +13,59 @@ import java.lang.reflect.Method;
 import java.util.*;
 import java.util.Map.Entry;
 
-
 /**
- * 
+ *
  * 作者:sanri <br/>
  * 时间:2018-8-26下午4:19:51<br/>
  * 功能:属性工具类 <br/>
  */
 public final class PropertyEditUtil {
-	
+
 	private static PrimitiveHandler DEFAULT_PRIMITIVE_HANDLER;
+
 	private static Log logger = LogFactory.getLog(PropertyEditUtil.class);
-	
-	static{
+
+	static {
 		DEFAULT_PRIMITIVE_HANDLER = new PrimitiveHandler() {
 
 			@Override
 			public Object handler(String name, Object dest, Object source) {
 				// source 一定不为空,肯定要空判断
 				Class<? extends Object> clazz = source.getClass();
-				String sourceValue_  = ObjectUtils.toString(source,"0");
-				if(clazz == int.class){
+				String sourceValue_ = ObjectUtils.toString(source, "0");
+				if (clazz == int.class) {
 					int sourceValue = NumberUtils.toInt(sourceValue_);
-					if(sourceValue == 0 ){
-						return dest;
-					}
-				}else if(clazz == long.class){
-					long sourceValue = NumberUtils.toLong(sourceValue_);
-					if(sourceValue == 0 ){
-						return dest;
-					}
-				}else if(clazz == double.class){
-					double sourceValue = NumberUtils.toDouble(sourceValue_);
-					if(sourceValue == 0 ){
-						return dest;
-					}
-				}else if(clazz == float.class){
-					float sourceValue = NumberUtils.toFloat(sourceValue_);
-					if(sourceValue == 0 ){
+					if (sourceValue == 0) {
 						return dest;
 					}
 				}
-				
+				else if (clazz == long.class) {
+					long sourceValue = NumberUtils.toLong(sourceValue_);
+					if (sourceValue == 0) {
+						return dest;
+					}
+				}
+				else if (clazz == double.class) {
+					double sourceValue = NumberUtils.toDouble(sourceValue_);
+					if (sourceValue == 0) {
+						return dest;
+					}
+				}
+				else if (clazz == float.class) {
+					float sourceValue = NumberUtils.toFloat(sourceValue_);
+					if (sourceValue == 0) {
+						return dest;
+					}
+				}
+
 				return source;
 			}
-			
+
 		};
 	}
-	
-	
+
 	/**
-	 * 
+	 *
 	 * 作者:sanri <br/>
 	 * 时间:2018-8-26下午4:22:31<br/>
 	 * 功能:获取简单属性,这里使用 apache.commons 的 <br/>
@@ -71,35 +73,37 @@ public final class PropertyEditUtil {
 	 * @param name
 	 * @return
 	 */
-	public static Object getSimpleProperty(Object source,String name){
+	public static Object getSimpleProperty(Object source, String name) {
 		try {
 			return PropertyUtils.getSimpleProperty(source, name);
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * 作者:sanri <br/>
 	 * 时间:2018-8-26下午4:47:36<br/>
-	 * 功能:获取重叠结构的属性数据 eg: 对象是由对象聚合而成,则有聚合属性 a.b ;  使用 apache.commons<br/> 
-	 * @param source 
+	 * 功能:获取重叠结构的属性数据 eg: 对象是由对象聚合而成,则有聚合属性 a.b ; 使用 apache.commons<br/>
+	 * @param source
 	 * @param name
 	 * @return
 	 */
-	public static Object getNestedProperty(Object source,String name){
+	public static Object getNestedProperty(Object source, String name) {
 		try {
 			return PropertyUtils.getNestedProperty(source, name);
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * 作者:sanri <br/>
 	 * 时间:2018-8-26下午4:22:41<br/>
 	 * 功能:获取指定类型的简单属性 <br/>
@@ -108,19 +112,20 @@ public final class PropertyEditUtil {
 	 * @param valueClass
 	 * @return
 	 */
-	public static <T> T getSimpleProperty(Object source,String name,Class<T> valueClass){
+	public static <T> T getSimpleProperty(Object source, String name, Class<T> valueClass) {
 		Object simpleProperty = getSimpleProperty(source, name);
-		if(simpleProperty == null) return null;
-		
-		//类型匹配才做转换
-		if(simpleProperty.getClass() == valueClass){
+		if (simpleProperty == null)
+			return null;
+
+		// 类型匹配才做转换
+		if (simpleProperty.getClass() == valueClass) {
 			return valueClass.cast(simpleProperty);
 		}
 		return null;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * 作者:sanri <br/>
 	 * 时间:2018-8-26下午4:23:48<br/>
 	 * 功能:获取字符串属性(常用) <br/>
@@ -128,33 +133,33 @@ public final class PropertyEditUtil {
 	 * @param name
 	 * @return
 	 */
-	public static String getStringProperty(Object source,String name){
-		return getSimpleProperty(source, name,String.class);
+	public static String getStringProperty(Object source, String name) {
+		return getSimpleProperty(source, name, String.class);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * 作者:sanri <br/>
 	 * 时间:2018-8-26下午5:10:22<br/>
 	 * 功能:获取所有属性名 <br/>
 	 * @param source
 	 * @return
 	 */
-	public static List<String> propertyNames(Object source){
+	public static List<String> propertyNames(Object source) {
 		List<String> names = new ArrayList<String>();
 		PropertyDescriptor[] propertyDescriptors = PropertyUtils.getPropertyDescriptors(source);
-		if(ArrayUtils.isNotEmpty(propertyDescriptors)){
+		if (ArrayUtils.isNotEmpty(propertyDescriptors)) {
 			for (PropertyDescriptor propertyDescriptor : propertyDescriptors) {
 				String name = propertyDescriptor.getName();
 				names.add(name);
 			}
 		}
-		
+
 		return names;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * 作者:sanri <br/>
 	 * 时间:2018-8-26下午4:27:33<br/>
 	 * 功能:描述一个bean,排除部分字段 <br/>
@@ -162,33 +167,36 @@ public final class PropertyEditUtil {
 	 * @param excludes
 	 * @return
 	 */
-	public static Map<String,Object> describeExclude(Object source,String... excludes){
+	public static Map<String, Object> describeExclude(Object source, String... excludes) {
 		PropertyDescriptor[] propertyDescriptors = PropertyUtils.getPropertyDescriptors(source);
-		Map<String,Object> describe = new HashMap<String,Object>();
-		if(ArrayUtils.isNotEmpty(propertyDescriptors)){
+		Map<String, Object> describe = new HashMap<String, Object>();
+		if (ArrayUtils.isNotEmpty(propertyDescriptors)) {
 			for (PropertyDescriptor propertyDescriptor : propertyDescriptors) {
 				String name = propertyDescriptor.getName();
-				if(ArrayUtils.contains(excludes, name)){
+				if (ArrayUtils.contains(excludes, name)) {
 					continue;
 				}
-				
+
 				Method readMethod = propertyDescriptor.getReadMethod();
-				if(readMethod == null){continue;}
-				
+				if (readMethod == null) {
+					continue;
+				}
+
 				try {
 					Object propertyValue = readMethod.invoke(source);
 					describe.put(name, propertyValue);
-				} catch (Exception e) {
+				}
+				catch (Exception e) {
 					e.printStackTrace();
 				}
-				
+
 			}
 		}
 		return describe;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * 作者:sanri <br/>
 	 * 时间:2018-8-26下午4:28:33<br/>
 	 * 功能:描述一个 bean ,指定字段 <br/>
@@ -196,66 +204,70 @@ public final class PropertyEditUtil {
 	 * @param includes
 	 * @return
 	 */
-	public static Map<String,Object> describeInclude(Object source,String... includes){
+	public static Map<String, Object> describeInclude(Object source, String... includes) {
 		List<String> propertyNames = propertyNames(source);
 		List<String> excludes = new ArrayList<String>();
 		for (String propertyName : propertyNames) {
-			if(!ArrayUtils.contains(includes, propertyName)){
+			if (!ArrayUtils.contains(includes, propertyName)) {
 				excludes.add(propertyName);
 			}
 		}
-		
-		return describeExclude(source, excludes.toArray(new String []{}));
+
+		return describeExclude(source, excludes.toArray(new String[] {}));
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * 作者:sanri <br/>
 	 * 时间:2018-8-26下午4:29:19<br/>
-	 * 功能:复制字段到目标类字段; 类型不区分,缺失字段忽略; 不管是否为空直接复制   <br/>
+	 * 功能:复制字段到目标类字段; 类型不区分,缺失字段忽略; 不管是否为空直接复制 <br/>
 	 * @param dest
 	 * @param source
 	 * @param excludes 不能复制的字段列表
 	 */
-	public static void copyExclude(Object dest,Object source,String... excludes){
+	public static void copyExclude(Object dest, Object source, String... excludes) {
 		Map<String, PropertyDescriptor> destPropertyDescriptorMap = propertyDescriptorMap(dest, excludes);
 		Map<String, PropertyDescriptor> sourcePropertyDescriptorMap = propertyDescriptorMap(source, excludes);
-		
-		if(!destPropertyDescriptorMap.isEmpty()){
+
+		if (!destPropertyDescriptorMap.isEmpty()) {
 			Iterator<Entry<String, PropertyDescriptor>> iterator = destPropertyDescriptorMap.entrySet().iterator();
 			try {
-				while(iterator.hasNext()){
+				while (iterator.hasNext()) {
 					Entry<String, PropertyDescriptor> entry = iterator.next();
 					String key = entry.getKey();
-					
+
 					PropertyDescriptor destPropertyDescriptor = entry.getValue();
 					PropertyDescriptor sourcePropertyDescriptor = sourcePropertyDescriptorMap.get(key);
 					// 源数据列中没有这个字段
-					if(sourcePropertyDescriptor == null){continue;}
-					
-					if(sourcePropertyDescriptor != null && destPropertyDescriptor != null 
-							&& sourcePropertyDescriptor.getPropertyType() == destPropertyDescriptor.getPropertyType()){
+					if (sourcePropertyDescriptor == null) {
+						continue;
+					}
+
+					if (sourcePropertyDescriptor != null && destPropertyDescriptor != null
+							&& sourcePropertyDescriptor.getPropertyType() == destPropertyDescriptor.getPropertyType()) {
 						Method readMethod = sourcePropertyDescriptor.getReadMethod();
 						Method writeMethod = destPropertyDescriptor.getWriteMethod();
-						
-						if(readMethod != null && writeMethod != null){
+
+						if (readMethod != null && writeMethod != null) {
 							Object invoke = readMethod.invoke(source);
 							writeMethod.invoke(dest, invoke);
 						}
-					}else if(sourcePropertyDescriptor.getPropertyType() != destPropertyDescriptor.getPropertyType()){
-						logger.warn("属性类型不匹配,不能复制:"+sourcePropertyDescriptor.getName());
+					}
+					else if (sourcePropertyDescriptor.getPropertyType() != destPropertyDescriptor.getPropertyType()) {
+						logger.warn("属性类型不匹配,不能复制:" + sourcePropertyDescriptor.getName());
 					}
 				}
-			} catch (Exception e) {
-				logger.error("复制属性失败dest:"+ JSONObject.toJSONString(dest));
-				logger.error("复制属性失败source:"+ JSONObject.toJSONString(source));
-				logger.error("复制属性失败:"+e.getMessage(),e);
+			}
+			catch (Exception e) {
+				logger.error("复制属性失败dest:" + JSONObject.toJSONString(dest));
+				logger.error("复制属性失败source:" + JSONObject.toJSONString(source));
+				logger.error("复制属性失败:" + e.getMessage(), e);
 			}
 		}
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * 作者:sanri <br/>
 	 * 时间:2018-8-26下午4:30:28<br/>
 	 * 功能:复制指定字段到目标<br/>
@@ -263,20 +275,20 @@ public final class PropertyEditUtil {
 	 * @param source
 	 * @param includes
 	 */
-	public static void copyInclude(Object dest,Object source,String...includes){
+	public static void copyInclude(Object dest, Object source, String... includes) {
 		List<String> propertyNames = propertyNames(source);
 		List<String> excludes = new ArrayList<String>();
 		for (String propertyName : propertyNames) {
-			if(!ArrayUtils.contains(includes, propertyName)){
+			if (!ArrayUtils.contains(includes, propertyName)) {
 				excludes.add(propertyName);
 			}
 		}
-		
-		copyExclude(dest, source, excludes.toArray(new String[]{}));
+
+		copyExclude(dest, source, excludes.toArray(new String[] {}));
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * 作者:sanri <br/>
 	 * 时间:2018-8-26下午4:38:57<br/>
 	 * 功能:复制不为空的字段到目标 <br/>
@@ -285,34 +297,34 @@ public final class PropertyEditUtil {
 	 * @param primitiveHandler
 	 * @param excludes
 	 */
-	public static void copyNotNull(Object dest,Object source,PrimitiveHandler primitiveHandler,String...excludes){
-		if(primitiveHandler == null){
+	public static void copyNotNull(Object dest, Object source, PrimitiveHandler primitiveHandler, String... excludes) {
+		if (primitiveHandler == null) {
 			logger.warn("原始类型处理没有定义,使用默认设置,int,long,float,double ,当发现源数据为 0 时,使用目标值");
 			primitiveHandler = DEFAULT_PRIMITIVE_HANDLER;
 		}
 		Map<String, PropertyDescriptor> destPropertyDescriptorMap = propertyDescriptorMap(dest, excludes);
 		Map<String, PropertyDescriptor> sourcePropertyDescriptorMap = propertyDescriptorMap(source, excludes);
-		
-		if(!destPropertyDescriptorMap.isEmpty()){
+
+		if (!destPropertyDescriptorMap.isEmpty()) {
 			Iterator<Entry<String, PropertyDescriptor>> iterator = destPropertyDescriptorMap.entrySet().iterator();
 			try {
-				while(iterator.hasNext()){
+				while (iterator.hasNext()) {
 					Entry<String, PropertyDescriptor> entry = iterator.next();
 					String key = entry.getKey();
-					
+
 					PropertyDescriptor destPropertyDescriptor = entry.getValue();
 					PropertyDescriptor sourcePropertyDescriptor = sourcePropertyDescriptorMap.get(key);
-					
-					if(sourcePropertyDescriptor != null && destPropertyDescriptor != null 
-							&& sourcePropertyDescriptor.getPropertyType() == destPropertyDescriptor.getPropertyType()){
+
+					if (sourcePropertyDescriptor != null && destPropertyDescriptor != null
+							&& sourcePropertyDescriptor.getPropertyType() == destPropertyDescriptor.getPropertyType()) {
 						Method readMethod = sourcePropertyDescriptor.getReadMethod();
 						Method writeMethod = destPropertyDescriptor.getWriteMethod();
-						
-						if(readMethod != null && writeMethod != null){
+
+						if (readMethod != null && writeMethod != null) {
 							Object invoke = readMethod.invoke(source);
-							if(invoke != null ){
+							if (invoke != null) {
 								Class<? extends Object> valueClass = invoke.getClass();
-								if(valueClass.isPrimitive()){
+								if (valueClass.isPrimitive()) {
 									invoke = primitiveHandler.handler(key, invoke, source);
 								}
 								writeMethod.invoke(dest, invoke);
@@ -320,16 +332,17 @@ public final class PropertyEditUtil {
 						}
 					}
 				}
-			} catch (Exception e) {
-				logger.error("复制属性失败dest:"+ JSONObject.toJSONString(dest));
-				logger.error("复制属性失败source:"+ JSONObject.toJSONString(source));
-				logger.error("复制属性失败:"+e.getMessage(),e);
+			}
+			catch (Exception e) {
+				logger.error("复制属性失败dest:" + JSONObject.toJSONString(dest));
+				logger.error("复制属性失败source:" + JSONObject.toJSONString(source));
+				logger.error("复制属性失败:" + e.getMessage(), e);
 			}
 		}
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * 作者:sanri <br/>
 	 * 时间:2018-8-26下午4:38:32<br/>
 	 * 功能:复制不为空的字段到目标,使用默认原始类型处理 <br/>
@@ -337,79 +350,82 @@ public final class PropertyEditUtil {
 	 * @param source
 	 * @param excludes
 	 */
-	public static void copyNotNull(Object dest,Object source,String...excludes){
+	public static void copyNotNull(Object dest, Object source, String... excludes) {
 		copyNotNull(dest, source, DEFAULT_PRIMITIVE_HANDLER, excludes);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * 作者:sanri <br/>
 	 * 时间:2018-8-26下午4:44:40<br/>
 	 * 功能:bean 填入 map 数据 <br/>
 	 */
-	public static void populateMapData(Object dest,Map data,String ...excludes){
-		Map<String, PropertyDescriptor> propertyDescriptorMap = propertyDescriptorMap(dest,excludes);
-		if(!propertyDescriptorMap.isEmpty()){
+	public static void populateMapData(Object dest, Map data, String... excludes) {
+		Map<String, PropertyDescriptor> propertyDescriptorMap = propertyDescriptorMap(dest, excludes);
+		if (!propertyDescriptorMap.isEmpty()) {
 			Iterator<Entry<String, PropertyDescriptor>> iterator = propertyDescriptorMap.entrySet().iterator();
 			try {
-				while(iterator.hasNext()){
+				while (iterator.hasNext()) {
 					Entry<String, PropertyDescriptor> entry = iterator.next();
 					String key = entry.getKey();
 					PropertyDescriptor propertyDescriptor = entry.getValue();
-					
+
 					Object object = data.get(key);
 					Method writeMethod = propertyDescriptor.getWriteMethod();
-	
-					if(object != null && writeMethod != null){
+
+					if (object != null && writeMethod != null) {
 						Class<?> propertyType = propertyDescriptor.getPropertyType();
-						if(propertyType == object.getClass()){
-							//属性类型匹配才可以写入,这个写入会抛出异常; 只要有一个属性写入失败,则整体失败
+						if (propertyType == object.getClass()) {
+							// 属性类型匹配才可以写入,这个写入会抛出异常; 只要有一个属性写入失败,则整体失败
 							writeMethod.invoke(dest, object);
-							
+
 						}
 					}
-					
+
 				}
-			} catch (Exception e) {
-				logger.error("属性值注入失败,数据为:"+ JSONObject.toJSONString(data));
-				logger.error("属性值注入失败:"+e.getMessage(),e);
+			}
+			catch (Exception e) {
+				logger.error("属性值注入失败,数据为:" + JSONObject.toJSONString(data));
+				logger.error("属性值注入失败:" + e.getMessage(), e);
 			}
 		}
 	}
-	
-	
+
 	/**
-	 * 
+	 *
 	 * 作者:sanri <br/>
 	 * 时间:2018-8-26下午5:13:33<br/>
 	 * 功能:获取 map 结构的属性描述器 <br/>
 	 * @param source
 	 * @return
 	 */
-	private static Map<String,PropertyDescriptor> propertyDescriptorMap(Object source,String ...excludes){
-		Map<String,PropertyDescriptor> descriptorMap = new HashMap<String, PropertyDescriptor>();
+	private static Map<String, PropertyDescriptor> propertyDescriptorMap(Object source, String... excludes) {
+		Map<String, PropertyDescriptor> descriptorMap = new HashMap<String, PropertyDescriptor>();
 
 		PropertyDescriptor[] propertyDescriptors = PropertyUtils.getPropertyDescriptors(source);
-		if(ArrayUtils.isNotEmpty(propertyDescriptors)){
+		if (ArrayUtils.isNotEmpty(propertyDescriptors)) {
 			for (PropertyDescriptor propertyDescriptor : propertyDescriptors) {
 				String name = propertyDescriptor.getName();
-				if(ArrayUtils.contains(excludes, name)){continue;}
-				
+				if (ArrayUtils.contains(excludes, name)) {
+					continue;
+				}
+
 				descriptorMap.put(name, propertyDescriptor);
 			}
 		}
 		return descriptorMap;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * 作者:sanri <br/>
 	 * 时间:2018-8-26下午4:34:54<br/>
 	 * 功能:用于复制非空数据时,原始型数据处理<br/>
 	 */
-	public interface PrimitiveHandler{
-		Object handler(String name, Object dest, Object source);
-	}
+	public interface PrimitiveHandler {
 
+		Object handler(String name, Object dest, Object source);
+
+	}
 
 }

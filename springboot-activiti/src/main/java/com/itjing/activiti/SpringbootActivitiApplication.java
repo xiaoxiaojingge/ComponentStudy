@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan("com.itjing.activiti.mapper")
 public class SpringbootActivitiApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(SpringbootActivitiApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(SpringbootActivitiApplication.class, args);
+	}
 
 }

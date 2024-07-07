@@ -6,36 +6,40 @@ package com.itjing.oss.response;
  * @Description: 状态码枚举类
  */
 public enum StatusCode {
-    SUCCESS("success", 200), ERROR("error", 500);
-    private String msg;
-    private Integer code;
 
-    StatusCode(String msg, Integer code) {
-        this.msg = msg;
-        this.code = code;
-    }
+	SUCCESS("success", 200), ERROR("error", 500);
 
-    StatusCode(Integer code) {
-        this.code = code;
-    }
+	private String msg;
 
-    StatusCode(String msg) {
-        this.msg = msg;
-    }
+	private Integer code;
 
-    public String getMsg() {
-        return msg;
-    }
+	StatusCode(String msg, Integer code) {
+		this.msg = msg;
+		this.code = code;
+	}
 
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
+	StatusCode(Integer code) {
+		this.code = code;
+	}
 
-    public Integer getCode() {
-        return code;
-    }
+	StatusCode(String msg) {
+		this.msg = msg;
+	}
 
-    public void setCode(Integer code) {
-        this.code = code;
-    }
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
+	public Integer getCode() {
+		return code;
+	}
+
+	public void setCode(Integer code) {
+		this.code = code;
+	}
+
 }

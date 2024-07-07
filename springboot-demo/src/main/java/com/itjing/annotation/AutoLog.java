@@ -14,19 +14,16 @@ import java.lang.annotation.*;
 @Documented
 public @interface AutoLog {
 
+	/**
+	 * 日志内容
+	 * @return
+	 */
+	String value() default "";
 
-    /**
-     * 日志内容
-     *
-     * @return
-     */
-    String value() default "";
-
-    /**
-     * 日志类型
-     *
-     * @return 0:操作日志; 1:登录日志; 2:定时任务;
-     */
-    LogType logType() default LogType.query;
+	/**
+	 * 日志类型
+	 * @return 0:操作日志; 1:登录日志; 2:定时任务;
+	 */
+	LogType logType() default LogType.query;
 
 }

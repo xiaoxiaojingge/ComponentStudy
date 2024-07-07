@@ -6,7 +6,9 @@ package com.itjing.designpatterns.factorymethod;
  * @Description: 抽象产品 Product
  */
 public interface Bus {
-    void run();
 
-    void stop();
+	void run();
+
+	void stop();
+
 }

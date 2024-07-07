@@ -15,15 +15,11 @@ import org.springframework.web.context.support.ServletRequestHandledEvent;
 @Slf4j
 public class ServletRequestHandledEventListener implements ApplicationListener<ServletRequestHandledEvent> {
 
-    @Override
-    public void onApplicationEvent(ServletRequestHandledEvent event) {
-        CurrentUser.removeAll();
-        log.debug(
-                "清除当前线程用户信息,uri = {},method = {},servletName = {},clientAddress = {}",
-                event.getRequestUrl(),
-                event.getMethod(),
-                event.getServletName(),
-                event.getClientAddress()
-        );
-    }
+	@Override
+	public void onApplicationEvent(ServletRequestHandledEvent event) {
+		CurrentUser.removeAll();
+		log.debug("清除当前线程用户信息,uri = {},method = {},servletName = {},clientAddress = {}", event.getRequestUrl(),
+				event.getMethod(), event.getServletName(), event.getClientAddress());
+	}
+
 }

@@ -4,7 +4,6 @@ import com.baidu.fsg.uid.UidGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
 /**
  * @author: lijing
  * @Date: 2021年05月30日 13:59
@@ -13,12 +12,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class BaiduUidGenerator implements IdGenerator {
 
-    @Autowired
-    UidGenerator uidGenerator;
+	@Autowired
+	UidGenerator uidGenerator;
 
-    @Override
-    public String generateId(int bizType) {
-        long uid = uidGenerator.getUID();
-        return uid + "";
-    }
+	@Override
+	public String generateId(int bizType) {
+		long uid = uidGenerator.getUID();
+		return uid + "";
+	}
+
 }

@@ -4,10 +4,13 @@ import lombok.Data;
 
 @Data
 public class Target {
-    private String id;
-    private Integer num;
-    private Integer count;
 
-    private SubTarget subTarget;
+	private String id;
+
+	private Integer num;
+
+	private Integer count;
+
+	private SubTarget subTarget;
 
 }

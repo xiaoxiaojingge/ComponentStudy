@@ -12,10 +12,15 @@ import lombok.experimental.Accessors;
 @ToString
 @Accessors(chain = true)
 public class Stock {
-    private Integer id;
-    private String name;
-    private Integer count;
-    private Integer sale;
-    private Integer version;
+
+	private Integer id;
+
+	private String name;
+
+	private Integer count;
+
+	private Integer sale;
+
+	private Integer version;
 
 }

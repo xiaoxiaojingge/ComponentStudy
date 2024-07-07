@@ -19,22 +19,23 @@ import java.util.Random;
 @RequestMapping("user")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+	@Autowired
+	private UserService userService;
 
-    @GetMapping("/save")
-    public String insert() {
-        User user = new User();
-        user.setNickname("lijing" + new Random().nextInt());
-        user.setPassword("1234567");
-        user.setSex(1);
-        user.setBirthday("1997-02-25");
-        userService.addUser(user);
-        return "success";
-    }
+	@GetMapping("/save")
+	public String insert() {
+		User user = new User();
+		user.setNickname("lijing" + new Random().nextInt());
+		user.setPassword("1234567");
+		user.setSex(1);
+		user.setBirthday("1997-02-25");
+		userService.addUser(user);
+		return "success";
+	}
 
-    @GetMapping("/listUser")
-    public List<User> listUser() {
-        return userService.findUsers();
-    }
+	@GetMapping("/listUser")
+	public List<User> listUser() {
+		return userService.findUsers();
+	}
+
 }

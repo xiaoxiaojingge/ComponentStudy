@@ -12,6 +12,6 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface UserMapper {
 
-    int getUserCount(@Param("user") User user);
+	int getUserCount(@Param("user") User user);
 
 }

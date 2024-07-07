@@ -9,16 +9,18 @@ import java.util.function.Supplier;
  * @description
  */
 public class LambdaDemo6 {
-    public static void main(String[] args) {
-        int[] arr = {22, 65, 100, -2};
-        printMax(() -> {
-            Arrays.sort(arr);
-            return arr[arr.length - 1];
-        });
-    }
 
-    public static void printMax(Supplier<Integer> supplier) {
-        Integer max = supplier.get();
-        System.out.println("max = " + max);
-    }
+	public static void main(String[] args) {
+		int[] arr = { 22, 65, 100, -2 };
+		printMax(() -> {
+			Arrays.sort(arr);
+			return arr[arr.length - 1];
+		});
+	}
+
+	public static void printMax(Supplier<Integer> supplier) {
+		Integer max = supplier.get();
+		System.out.println("max = " + max);
+	}
+
 }

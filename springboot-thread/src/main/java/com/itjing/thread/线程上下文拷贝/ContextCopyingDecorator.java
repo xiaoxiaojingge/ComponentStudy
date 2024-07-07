@@ -11,22 +11,23 @@ import org.springframework.web.context.request.RequestContextHolder;
  */
 public class ContextCopyingDecorator implements TaskDecorator {
 
-    /**
-     * 对于异常操作中线程切换，有时候需要的用户信息就没有了，所以需要处理线程上下文拷贝
-     *
-     * @param runnable the original {@code Runnable}
-     * @return
-     */
-    @Override
-    public Runnable decorate(Runnable runnable) {
-        RequestAttributes context = RequestContextHolder.currentRequestAttributes();
-        return () -> {
-            try {
-                RequestContextHolder.setRequestAttributes(context);
-                runnable.run();
-            } finally {
-                RequestContextHolder.resetRequestAttributes();
-            }
-        };
-    }
+	/**
+	 * 对于异常操作中线程切换，有时候需要的用户信息就没有了，所以需要处理线程上下文拷贝
+	 * @param runnable the original {@code Runnable}
+	 * @return
+	 */
+	@Override
+	public Runnable decorate(Runnable runnable) {
+		RequestAttributes context = RequestContextHolder.currentRequestAttributes();
+		return () -> {
+			try {
+				RequestContextHolder.setRequestAttributes(context);
+				runnable.run();
+			}
+			finally {
+				RequestContextHolder.resetRequestAttributes();
+			}
+		};
+	}
+
 }

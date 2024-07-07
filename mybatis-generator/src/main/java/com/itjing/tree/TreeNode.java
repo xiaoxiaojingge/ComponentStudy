@@ -18,75 +18,66 @@ import java.util.List;
  */
 public interface TreeNode<T, RC, LC> {
 
-    /**
-     * 获取树结点id
-     *
-     * @return
-     */
-    T getTreeNodeId();
+	/**
+	 * 获取树结点id
+	 * @return
+	 */
+	T getTreeNodeId();
 
-    /**
-     * 获取该节点的父节点id
-     *
-     * @return
-     */
-    T getParentId();
+	/**
+	 * 获取该节点的父节点id
+	 * @return
+	 */
+	T getParentId();
 
-    /**
-     * 判断该节点是否为根节点，默认判定
-     *
-     * @return
-     * @Des 可以用于简单树的组件
-     */
-    boolean isRoot();
+	/**
+	 * 判断该节点是否为根节点，默认判定
+	 * @return
+	 * @Des 可以用于简单树的组件
+	 */
+	boolean isRoot();
 
-    /**
-     * 自定义父结点的判定规则
-     *
-     * @param rootCondition
-     * @return
-     */
-    boolean isRoot(RC rootCondition);
+	/**
+	 * 自定义父结点的判定规则
+	 * @param rootCondition
+	 * @return
+	 */
+	boolean isRoot(RC rootCondition);
 
-    /**
-     * 自定义子节点(叶子结点)的判定规则
-     *
-     * @param leafCondition
-     * @return
-     */
-    boolean isChildren(LC leafCondition);
+	/**
+	 * 自定义子节点(叶子结点)的判定规则
+	 * @param leafCondition
+	 * @return
+	 */
+	boolean isChildren(LC leafCondition);
 
-    /**
-     * 判断是否有子节点
-     *
-     * @return
-     */
-    boolean hasChild();
+	/**
+	 * 判断是否有子节点
+	 * @return
+	 */
+	boolean hasChild();
 
-    /**
-     * 设置结点的子节点列表
-     *
-     * @param children
-     */
-    void setChildren(List<? extends TreeNode<T, RC, LC>> children);
+	/**
+	 * 设置结点的子节点列表
+	 * @param children
+	 */
+	void setChildren(List<? extends TreeNode<T, RC, LC>> children);
 
-    /**
-     * 获取所有子节点
-     *
-     * @return
-     */
-    List<? extends TreeNode<T, RC, LC>> getChildren();
+	/**
+	 * 获取所有子节点
+	 * @return
+	 */
+	List<? extends TreeNode<T, RC, LC>> getChildren();
 
-    /**
-     * 获取树的深度
-     *
-     * @return
-     */
-    Integer getLevel();
+	/**
+	 * 获取树的深度
+	 * @return
+	 */
+	Integer getLevel();
 
-    /**
-     * 设置树的深度
-     */
-    void setLevel(Integer level);
+	/**
+	 * 设置树的深度
+	 */
+	void setLevel(Integer level);
 
 }

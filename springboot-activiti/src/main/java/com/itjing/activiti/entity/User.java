@@ -16,40 +16,41 @@ import java.util.List;
 @Data
 public class User implements UserDetails {
 
-    private Integer id;
+	private Integer id;
 
-    private String username;
+	private String username;
 
-    private String password;
+	private String password;
 
-    private String role;
+	private String role;
 
-    // 用户所有权限
-    private List<GrantedAuthority> authorities = new ArrayList<>();
+	// 用户所有权限
+	private List<GrantedAuthority> authorities = new ArrayList<>();
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
 
-        return authorities;
-    }
+		return authorities;
+	}
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
 
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
 
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
 
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+
 }

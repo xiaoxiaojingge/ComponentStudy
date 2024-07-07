@@ -11,9 +11,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ActiveMQConsumer {
-	
+
 	@Autowired
 	private ISeckillService seckillService;
+
 	@Autowired
 	private RedisUtil redisUtil;
 
@@ -28,11 +29,13 @@ public class ActiveMQConsumer {
 		 */
 		String[] array = message.split(";");
 		Result result = seckillService.startSeckilDBPCC_TWO(Long.parseLong(array[0]), Long.parseLong(array[1]));
-		if(result.equals(Result.ok(SeckillStatEnum.SUCCESS))){
+		if (result.equals(Result.ok(SeckillStatEnum.SUCCESS))) {
 			WebSocketServer.sendInfo(array[0], "秒杀成功");
-		}else{
+		}
+		else {
 			WebSocketServer.sendInfo(array[0], "秒杀失败");
 			redisUtil.cacheValue(array[0], "ok");
 		}
 	}
+
 }

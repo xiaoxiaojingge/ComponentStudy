@@ -16,18 +16,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    @Autowired
-    private IUserService userService;
+	@Autowired
+	private IUserService userService;
 
-    @Autowired
-    private IRoleService roleService;
+	@Autowired
+	private IRoleService roleService;
 
-    @Override
-    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        UserEntity user = userService.getUserByUsername(userName);
-        if (user == null) {
-            throw new UsernameNotFoundException(userName);
-        }
-        return new JwtUserDetails(user, roleService, userService);
-    }
+	@Override
+	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+		UserEntity user = userService.getUserByUsername(userName);
+		if (user == null) {
+			throw new UsernameNotFoundException(userName);
+		}
+		return new JwtUserDetails(user, roleService, userService);
+	}
+
 }

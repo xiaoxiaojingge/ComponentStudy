@@ -6,55 +6,58 @@ package com.itjing.response;
  * @description
  */
 public class InfoMessage {
-    /**
-     * 失败代码.
-     */
-    private String returnCode;
-    /**
-     * 失败信息.
-     */
-    private String returnMsg;
-    /**
-     * 异常信息
-     */
-    private String returnDetailMsg;
 
-    public InfoMessage() {
-    }
+	/**
+	 * 失败代码.
+	 */
+	private String returnCode;
 
-    public InfoMessage(String code, String msg) {
-        this.returnCode = code;
-        this.returnMsg = msg;
-    }
+	/**
+	 * 失败信息.
+	 */
+	private String returnMsg;
 
-    public InfoMessage(String code, String msg, String detail) {
-        this.returnCode = code;
-        this.returnMsg = msg;
-        this.returnDetailMsg = msg;
-    }
+	/**
+	 * 异常信息
+	 */
+	private String returnDetailMsg;
 
-    public String getReturnCode() {
-        return returnCode;
-    }
+	public InfoMessage() {
+	}
 
-    public void setReturnCode(String returnCode) {
-        this.returnCode = returnCode;
-    }
+	public InfoMessage(String code, String msg) {
+		this.returnCode = code;
+		this.returnMsg = msg;
+	}
 
-    public String getReturnMsg() {
-        return returnMsg;
-    }
+	public InfoMessage(String code, String msg, String detail) {
+		this.returnCode = code;
+		this.returnMsg = msg;
+		this.returnDetailMsg = msg;
+	}
 
-    public void setReturnMsg(String returnMsg) {
-        this.returnMsg = returnMsg;
-    }
+	public String getReturnCode() {
+		return returnCode;
+	}
 
-    public String getReturnDetailMsg() {
-        return returnDetailMsg;
-    }
+	public void setReturnCode(String returnCode) {
+		this.returnCode = returnCode;
+	}
 
-    public void setReturnDetailMsg(String returnDetailMsg) {
-        this.returnDetailMsg = returnDetailMsg;
-    }
+	public String getReturnMsg() {
+		return returnMsg;
+	}
+
+	public void setReturnMsg(String returnMsg) {
+		this.returnMsg = returnMsg;
+	}
+
+	public String getReturnDetailMsg() {
+		return returnDetailMsg;
+	}
+
+	public void setReturnDetailMsg(String returnDetailMsg) {
+		this.returnDetailMsg = returnDetailMsg;
+	}
+
 }
-

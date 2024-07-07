@@ -8,9 +8,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Content {
-    private String title;
-    private String img;
-    private String price;
 
-    //可以自己添加属性
+	private String title;
+
+	private String img;
+
+	private String price;
+
+	// 可以自己添加属性
+
 }

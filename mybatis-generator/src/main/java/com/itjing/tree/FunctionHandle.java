@@ -18,6 +18,6 @@ import java.util.Map;
 @FunctionalInterface
 public interface FunctionHandle<N, K, V> {
 
-    void callback(N node, Map<K, V> result);
+	void callback(N node, Map<K, V> result);
 
 }

@@ -7,10 +7,10 @@ package com.itjing.error;
  */
 public interface ResultCode {
 
-    Integer getCode();
+	Integer getCode();
 
-    String getDesc();
+	String getDesc();
 
-    String getMsg();
+	String getMsg();
 
 }

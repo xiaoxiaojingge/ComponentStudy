@@ -10,6 +10,9 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 @Component
 public class User {
-    private String name;
-    private Integer age;
+
+	private String name;
+
+	private Integer age;
+
 }

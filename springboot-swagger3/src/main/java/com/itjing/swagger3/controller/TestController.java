@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "测试")
 public class TestController {
 
-    @GetMapping("/test")
-    @ApiOperation("测试")
-    public String test() {
-        return "test";
-    }
+	@GetMapping("/test")
+	@ApiOperation("测试")
+	public String test() {
+		return "test";
+	}
+
 }

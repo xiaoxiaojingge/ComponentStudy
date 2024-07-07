@@ -24,24 +24,24 @@ import java.util.List;
 @Service
 public class UserServiceImpl<T extends User> implements UserService<T> {
 
+	@Resource
+	private UserMapper userMapper;
 
-    @Resource
-    private UserMapper userMapper;
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		// 1.根据用户名称查询到user用户
+		User userDetails = userMapper.findByUsername(username);
+		if (userDetails == null) {
+			return null;
+		}
+		// 2.查询该用户对应的权限
+		List<Permission> permissionList = userMapper.findPermissionByUsername(username);
+		List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+		permissionList.forEach((a) -> grantedAuthorities.add(new SimpleGrantedAuthority(a.getName())));
+		log.info(">>permissionList:{}<<", permissionList);
+		// 设置权限
+		userDetails.setAuthorities(grantedAuthorities);
+		return userDetails;
+	}
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // 1.根据用户名称查询到user用户
-        User userDetails = userMapper.findByUsername(username);
-        if (userDetails == null) {
-            return null;
-        }
-        // 2.查询该用户对应的权限
-        List<Permission> permissionList = userMapper.findPermissionByUsername(username);
-        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        permissionList.forEach((a) -> grantedAuthorities.add(new SimpleGrantedAuthority(a.getName())));
-        log.info(">>permissionList:{}<<", permissionList);
-        // 设置权限
-        userDetails.setAuthorities(grantedAuthorities);
-        return userDetails;
-    }
 }

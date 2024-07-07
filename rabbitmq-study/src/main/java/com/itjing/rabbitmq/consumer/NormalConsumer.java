@@ -17,9 +17,11 @@ import java.util.Map;
 @Component
 @RabbitListener(queues = "normalQueue")
 public class NormalConsumer {
-    @RabbitHandler
-    public void process(Map<String, Object> message, Channel channel, Message mqMsg) throws IOException {
-        System.out.println("收到消息，并拒绝重新入队 : " + message.toString());
-        channel.basicReject(mqMsg.getMessageProperties().getDeliveryTag(), false);
-    }
+
+	@RabbitHandler
+	public void process(Map<String, Object> message, Channel channel, Message mqMsg) throws IOException {
+		System.out.println("收到消息，并拒绝重新入队 : " + message.toString());
+		channel.basicReject(mqMsg.getMessageProperties().getDeliveryTag(), false);
+	}
+
 }

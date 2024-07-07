@@ -17,13 +17,14 @@ import java.net.URLEncoder;
 @RestController
 public class ExcelTestController {
 
-    @GetMapping(value = "/excel/importTemplate", produces = {"application/json;charset=UTF-8"})
-    public void importTemplate(HttpServletResponse response) throws IOException {
-        response.setContentType("application/octet-stream;charset=ISO8859-1");
-        response.addHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode("用户数据.xlsx", "utf-8"));
-        response.addHeader("Pargam", "no-cache");
-        response.addHeader("Cache-Control", "no-cache");
-        ExcelUtil<UserVO> util = new ExcelUtil<>(UserVO.class);
-        util.importTemplateExcel("用户数据", response);
-    }
+	@GetMapping(value = "/excel/importTemplate", produces = { "application/json;charset=UTF-8" })
+	public void importTemplate(HttpServletResponse response) throws IOException {
+		response.setContentType("application/octet-stream;charset=ISO8859-1");
+		response.addHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode("用户数据.xlsx", "utf-8"));
+		response.addHeader("Pargam", "no-cache");
+		response.addHeader("Cache-Control", "no-cache");
+		ExcelUtil<UserVO> util = new ExcelUtil<>(UserVO.class);
+		util.importTemplateExcel("用户数据", response);
+	}
+
 }

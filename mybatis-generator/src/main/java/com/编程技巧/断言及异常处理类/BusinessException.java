@@ -9,40 +9,41 @@ import java.util.logging.Level;
  */
 public class BusinessException extends RuntimeException {
 
-    private static final long serialVersionUID = 1;
+	private static final long serialVersionUID = 1;
 
-    private int code = 1;
+	private int code = 1;
 
-    private Level level;
+	private Level level;
 
-    public BusinessException(int code, String message, Throwable cause) {
-        super(message, cause);
-        this.code = code;
-    }
+	public BusinessException(int code, String message, Throwable cause) {
+		super(message, cause);
+		this.code = code;
+	}
 
-    public BusinessException(String message) {
-        super(message);
-    }
+	public BusinessException(String message) {
+		super(message);
+	}
 
-    public BusinessException(Level level, String message) {
-        super(message);
-        this.level = level;
-    }
+	public BusinessException(Level level, String message) {
+		super(message);
+		this.level = level;
+	}
 
-    public BusinessException(Throwable cause) {
-        super(cause);
-    }
+	public BusinessException(Throwable cause) {
+		super(cause);
+	}
 
-    public BusinessException(int code, String message) {
-        super(message);
-        this.code = code;
-    }
+	public BusinessException(int code, String message) {
+		super(message);
+		this.code = code;
+	}
 
-    public int getCode() {
-        return this.code;
-    }
+	public int getCode() {
+		return this.code;
+	}
 
-    public final Level getLevel() {
-        return this.level;
-    }
+	public final Level getLevel() {
+		return this.level;
+	}
+
 }

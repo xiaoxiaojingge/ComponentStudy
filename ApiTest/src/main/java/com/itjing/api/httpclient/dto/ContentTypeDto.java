@@ -6,7 +6,11 @@ import java.util.Date;
 
 @Data
 public class ContentTypeDto {
-    private String name;
-    private Date beginTime;
-    private Integer status;
+
+	private String name;
+
+	private Date beginTime;
+
+	private Integer status;
+
 }

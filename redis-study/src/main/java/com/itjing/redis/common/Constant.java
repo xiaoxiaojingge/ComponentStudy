@@ -7,9 +7,12 @@ package com.itjing.redis.common;
  */
 public class Constant {
 
-    public static final String TOKEN_NAME = "Authorization";
+	public static final String TOKEN_NAME = "Authorization";
 
-    public interface Redis {
-        String TOKEN_PREFIX = "token:";
-    }
+	public interface Redis {
+
+		String TOKEN_PREFIX = "token:";
+
+	}
+
 }

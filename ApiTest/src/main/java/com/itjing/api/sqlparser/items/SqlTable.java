@@ -5,25 +5,28 @@ import net.sf.jsqlparser.expression.Alias;
 import net.sf.jsqlparser.schema.Table;
 
 public class SqlTable implements ParserItem {
-    private Table table;
 
-    private Alias alias;
-    private String tableName;
+	private Table table;
 
-    public SqlTable(Table table) {
-        this.table = table;
-    }
+	private Alias alias;
 
-    public void parser() {
-        this.alias = table.getAlias();
-        this.tableName = table.getFullyQualifiedName();
-    }
+	private String tableName;
 
-    public Alias getAlias() {
-        return alias;
-    }
+	public SqlTable(Table table) {
+		this.table = table;
+	}
 
-    public String getTableName() {
-        return tableName;
-    }
+	public void parser() {
+		this.alias = table.getAlias();
+		this.tableName = table.getFullyQualifiedName();
+	}
+
+	public Alias getAlias() {
+		return alias;
+	}
+
+	public String getTableName() {
+		return tableName;
+	}
+
 }

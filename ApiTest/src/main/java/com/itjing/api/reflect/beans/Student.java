@@ -7,9 +7,15 @@ import java.util.List;
 
 @Data
 public class Student extends People {
+
 	private String sno;
+
 	private List<Course> courses;
+
 	private Primitive[] singles;
-	private Integer [] integers;
+
+	private Integer[] integers;
+
 	private Course mainCourse;
+
 }

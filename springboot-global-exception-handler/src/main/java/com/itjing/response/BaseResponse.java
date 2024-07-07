@@ -20,65 +20,62 @@ import java.util.Map;
 @Getter
 public class BaseResponse<T> {
 
+	private Integer code;
 
-    private Integer code;
+	private String desc;
 
-    private String desc;
+	private String message;
 
-    private String message;
+	private T data;
 
-    private T data;
+	private Map<String, Object> extra;
 
-    private Map<String, Object> extra;
+	public Boolean isSuccess() {
+		return CommonResultCode.SUCCESS.getCode().equals(code);
+	}
 
+	public static <T> BaseResponse<T> success(T data) {
+		return code().data(data).build();
+	}
 
-    public Boolean isSuccess() {
-        return CommonResultCode.SUCCESS.getCode().equals(code);
-    }
+	public static <T> BaseResponse<T> error(T data) {
+		return code(CommonResultCode.SERVER_ERROR).data(data).build();
+	}
 
-    public static <T> BaseResponse<T> success(T data) {
-        return code().data(data).build();
-    }
+	public static BaseResponseBuilder code() {
+		return code(CommonResultCode.SUCCESS);
+	}
 
-    public static <T> BaseResponse<T> error(T data) {
-        return code(CommonResultCode.SERVER_ERROR).data(data).build();
-    }
+	public static BaseResponseBuilder code(ResultCode resultCode) {
+		return new BaseResponseBuilder(resultCode);
+	}
 
+	public static class BaseResponseBuilder<T> {
 
-    public static BaseResponseBuilder code() {
-        return code(CommonResultCode.SUCCESS);
-    }
+		private ResultCode resultCode;
 
-    public static BaseResponseBuilder code(ResultCode resultCode) {
-        return new BaseResponseBuilder(resultCode);
-    }
+		private T data;
 
-    public static class BaseResponseBuilder<T> {
+		private Map<String, Object> extra;
 
-        private ResultCode resultCode;
+		public BaseResponseBuilder(ResultCode resultCode) {
+			this.resultCode = resultCode;
+		}
 
-        private T data;
+		public BaseResponseBuilder data(T data) {
+			this.data = data;
+			return this;
+		}
 
-        private Map<String, Object> extra;
+		public BaseResponseBuilder extra(Map<String, Object> extra) {
+			this.extra = extra;
+			return this;
+		}
 
-        public BaseResponseBuilder(ResultCode resultCode) {
-            this.resultCode = resultCode;
-        }
+		public BaseResponse<T> build() {
+			return new BaseResponse(resultCode.getCode(), resultCode.getDesc(), resultCode.getMsg(), data, extra);
+		}
 
-        public BaseResponseBuilder data(T data) {
-            this.data = data;
-            return this;
-        }
-
-
-        public BaseResponseBuilder extra(Map<String, Object> extra) {
-            this.extra = extra;
-            return this;
-        }
-
-        public BaseResponse<T> build() {
-            return new BaseResponse(resultCode.getCode(), resultCode.getDesc(), resultCode.getMsg(), data, extra);
-        }
-    }
+	}
 
 }

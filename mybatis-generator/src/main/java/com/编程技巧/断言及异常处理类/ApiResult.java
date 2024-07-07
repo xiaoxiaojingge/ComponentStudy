@@ -20,68 +20,51 @@ import java.io.Serializable;
 @Accessors(chain = true)
 public class ApiResult<T> implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    private int responseCode;
+	private int responseCode;
 
-    private String responseMsg;
+	private String responseMsg;
 
-    private boolean isSuccess;
+	private boolean isSuccess;
 
-    private T data;
+	private T data;
 
-    public String toString() {
-        return "ApiResult(responseCode=" + this.getResponseCode() +
-                ", responseMsg=" + this.getResponseMsg() +
-                ", isSuccess=" + this.isSuccess() +
-                ", data=" + this.getData() + ")";
-    }
+	public String toString() {
+		return "ApiResult(responseCode=" + this.getResponseCode() + ", responseMsg=" + this.getResponseMsg()
+				+ ", isSuccess=" + this.isSuccess() + ", data=" + this.getData() + ")";
+	}
 
-    public static ApiResult<String> success() {
-        return success("success");
-    }
+	public static ApiResult<String> success() {
+		return success("success");
+	}
 
-    public static <T> ApiResult<T> success(T data) {
-        return (new ApiResult())
-                .setResponseCode(0)
-                .setResponseMsg("操作成功")
-                .setSuccess(true)
-                .setData(data);
-    }
+	public static <T> ApiResult<T> success(T data) {
+		return (new ApiResult()).setResponseCode(0).setResponseMsg("操作成功").setSuccess(true).setData(data);
+	}
 
-    public static ApiResult<String> fail() {
-        return fail(-1);
-    }
+	public static ApiResult<String> fail() {
+		return fail(-1);
+	}
 
-    public static ApiResult<String> fail(int code) {
-        return fail(code, "fail");
-    }
+	public static ApiResult<String> fail(int code) {
+		return fail(code, "fail");
+	}
 
-    public static <T> ApiResult<T> fail(T data) {
-        return fail(-1, data);
-    }
+	public static <T> ApiResult<T> fail(T data) {
+		return fail(-1, data);
+	}
 
-    public static <T> ApiResult<T> fail(int code, T data) {
-        return (new ApiResult())
-                .setResponseCode(code)
-                .setResponseMsg("操作失败")
-                .setSuccess(false)
-                .setData(data);
-    }
+	public static <T> ApiResult<T> fail(int code, T data) {
+		return (new ApiResult()).setResponseCode(code).setResponseMsg("操作失败").setSuccess(false).setData(data);
+	}
 
-    public static <T> ApiResult<T> success(int code, String message, T data) {
-        return (new ApiResult())
-                .setResponseCode(code)
-                .setResponseMsg(message)
-                .setSuccess(true)
-                .setData(data);
-    }
+	public static <T> ApiResult<T> success(int code, String message, T data) {
+		return (new ApiResult()).setResponseCode(code).setResponseMsg(message).setSuccess(true).setData(data);
+	}
 
-    public static <T> ApiResult<T> fail(int code, String message, T data) {
-        return (new ApiResult())
-                .setResponseCode(code)
-                .setResponseMsg(message)
-                .setSuccess(false)
-                .setData(data);
-    }
+	public static <T> ApiResult<T> fail(int code, String message, T data) {
+		return (new ApiResult()).setResponseCode(code).setResponseMsg(message).setSuccess(false).setData(data);
+	}
+
 }

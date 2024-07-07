@@ -3,11 +3,13 @@ package com.itjing.util;
 import java.util.List;
 
 public interface TreeEntity<E> {
-    public Object getId();
 
-    public Object getParentId();
+	public Object getId();
 
-    public void setChildList(List<E> childList);
+	public Object getParentId();
 
-    public List<E> getChildList();
+	public void setChildList(List<E> childList);
+
+	public List<E> getChildList();
+
 }

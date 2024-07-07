@@ -20,26 +20,29 @@ import java.util.UUID;
  */
 @Component
 public class ZhihuPipeline implements Pipeline {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ZhihuPipeline.class);
 
-    @Autowired
-    private CrawlerMapper crawlerMapper;
+	private static final Logger LOGGER = LoggerFactory.getLogger(ZhihuPipeline.class);
 
-    public void process(ResultItems resultItems, Task task) {
-        String title = resultItems.get("title");
-        String answer = resultItems.get("answer");
+	@Autowired
+	private CrawlerMapper crawlerMapper;
 
-        CmsContentPO contentPO = new CmsContentPO();
-        contentPO.setContentId(UUID.randomUUID().toString());
-        contentPO.setTitle(title);
-        contentPO.setReleaseDate(new Date());
-        contentPO.setContent(answer);
+	public void process(ResultItems resultItems, Task task) {
+		String title = resultItems.get("title");
+		String answer = resultItems.get("answer");
 
-        try {
-            boolean success = crawlerMapper.addCmsContent(contentPO) > 0;
-            LOGGER.info("保存知乎文章成功：{}", title);
-        } catch (Exception ex) {
-            LOGGER.error("保存知乎文章失败", ex);
-        }
-    }
+		CmsContentPO contentPO = new CmsContentPO();
+		contentPO.setContentId(UUID.randomUUID().toString());
+		contentPO.setTitle(title);
+		contentPO.setReleaseDate(new Date());
+		contentPO.setContent(answer);
+
+		try {
+			boolean success = crawlerMapper.addCmsContent(contentPO) > 0;
+			LOGGER.info("保存知乎文章成功：{}", title);
+		}
+		catch (Exception ex) {
+			LOGGER.error("保存知乎文章失败", ex);
+		}
+	}
+
 }

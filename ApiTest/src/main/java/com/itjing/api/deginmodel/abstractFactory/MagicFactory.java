@@ -16,5 +16,5 @@ public class MagicFactory extends AbstractFactory {
 	public Weapon createWeapon() {
 		return new MagicStick();
 	}
-	
+
 }

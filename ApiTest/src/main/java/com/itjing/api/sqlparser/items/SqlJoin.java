@@ -1,6 +1,5 @@
 package com.itjing.api.sqlparser.items;
 
-
 import com.itjing.api.sqlparser.ParserItem;
 import com.itjing.api.sqlparser.PropertyEditUtil;
 import net.sf.jsqlparser.expression.Expression;
@@ -8,67 +7,78 @@ import net.sf.jsqlparser.statement.select.FromItem;
 import net.sf.jsqlparser.statement.select.Join;
 
 public class SqlJoin implements ParserItem {
-    private Join join;
 
-    private boolean outer ;
-    private boolean right ;
-    private boolean left ;
-    private boolean natural;
-    private boolean full ;
-    private boolean inner ;
-    private boolean simple;;
-    private boolean cross ;
+	private Join join;
 
-    private SqlFromItem sqlFromItem;
+	private boolean outer;
 
-    public SqlJoin(Join join) {
-        this.join = join;
-    }
+	private boolean right;
 
-    public void parser() {
-        //复制所有 bool 值选项
-        PropertyEditUtil.copyInclude(this,join,"outer","right","left","natural","full","inner","simple","cross");
-        Expression onExpression = join.getOnExpression();
+	private boolean left;
 
-        FromItem rightItem = join.getRightItem();
-        sqlFromItem = new SqlFromItem(rightItem);
-        sqlFromItem.parser();
+	private boolean natural;
 
-    }
+	private boolean full;
 
-    public boolean isOuter() {
-        return outer;
-    }
+	private boolean inner;
 
-    public boolean isRight() {
-        return right;
-    }
+	private boolean simple;
 
-    public boolean isLeft() {
-        return left;
-    }
+	;
+	private boolean cross;
 
-    public boolean isNatural() {
-        return natural;
-    }
+	private SqlFromItem sqlFromItem;
 
-    public boolean isFull() {
-        return full;
-    }
+	public SqlJoin(Join join) {
+		this.join = join;
+	}
 
-    public boolean isInner() {
-        return inner;
-    }
+	public void parser() {
+		// 复制所有 bool 值选项
+		PropertyEditUtil.copyInclude(this, join, "outer", "right", "left", "natural", "full", "inner", "simple",
+				"cross");
+		Expression onExpression = join.getOnExpression();
 
-    public boolean isSimple() {
-        return simple;
-    }
+		FromItem rightItem = join.getRightItem();
+		sqlFromItem = new SqlFromItem(rightItem);
+		sqlFromItem.parser();
 
-    public boolean isCross() {
-        return cross;
-    }
+	}
 
-    public SqlFromItem getSqlFromItem() {
-        return sqlFromItem;
-    }
+	public boolean isOuter() {
+		return outer;
+	}
+
+	public boolean isRight() {
+		return right;
+	}
+
+	public boolean isLeft() {
+		return left;
+	}
+
+	public boolean isNatural() {
+		return natural;
+	}
+
+	public boolean isFull() {
+		return full;
+	}
+
+	public boolean isInner() {
+		return inner;
+	}
+
+	public boolean isSimple() {
+		return simple;
+	}
+
+	public boolean isCross() {
+		return cross;
+	}
+
+	public SqlFromItem getSqlFromItem() {
+		return sqlFromItem;
+	}
+
 }

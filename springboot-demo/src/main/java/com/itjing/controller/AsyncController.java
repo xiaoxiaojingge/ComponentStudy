@@ -15,11 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/async")
 public class AsyncController {
 
-    @Autowired
-    private AsyncService asyncService;
+	@Autowired
+	private AsyncService asyncService;
 
-    @GetMapping("/async")
-    public void async() {
-        asyncService.executeAsync();
-    }
+	@GetMapping("/async")
+	public void async() {
+		asyncService.executeAsync();
+	}
+
 }

@@ -2,10 +2,9 @@ package com.itstyle.seckill.common.entity;
 
 import java.util.HashMap;
 import java.util.Map;
+
 /**
- * 页面响应entity
- * 创建者 张志朋
- * 创建时间	2018年3月8日
+ * 页面响应entity 创建者 张志朋 创建时间 2018年3月8日
  */
 public class Result extends HashMap<String, Object> {
 
@@ -29,17 +28,18 @@ public class Result extends HashMap<String, Object> {
 		r.put("msg", msg);
 		return r;
 	}
+
 	public static Result error(Object msg) {
 		Result r = new Result();
 		r.put("msg", msg);
 		return r;
 	}
+
 	public static Result ok(Object msg) {
 		Result r = new Result();
 		r.put("msg", msg);
 		return r;
 	}
-
 
 	public static Result ok(Map<String, Object> map) {
 		Result r = new Result();
@@ -56,4 +56,5 @@ public class Result extends HashMap<String, Object> {
 		super.put(key, value);
 		return this;
 	}
+
 }

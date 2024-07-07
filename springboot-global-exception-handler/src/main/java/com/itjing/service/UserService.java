@@ -10,9 +10,10 @@ import com.itjing.entity.User;
  */
 public interface UserService {
 
-    User add(UserDTO userDTO);
+	User add(UserDTO userDTO);
 
-    User getById(String id);
+	User getById(String id);
 
-    void marry(String age);
+	void marry(String age);
+
 }

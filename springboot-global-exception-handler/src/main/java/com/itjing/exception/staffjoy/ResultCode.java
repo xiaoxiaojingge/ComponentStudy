@@ -13,33 +13,35 @@ import javax.servlet.http.HttpServletResponse;
 @Getter
 @AllArgsConstructor
 public enum ResultCode {
-    SUCCESS(HttpServletResponse.SC_OK, "Operation is Successful"),
 
-    FAILURE(HttpServletResponse.SC_BAD_REQUEST, "Biz Exception"),
+	SUCCESS(HttpServletResponse.SC_OK, "Operation is Successful"),
 
-    UN_AUTHORIZED(HttpServletResponse.SC_UNAUTHORIZED, "Request Unauthorized"),
+	FAILURE(HttpServletResponse.SC_BAD_REQUEST, "Biz Exception"),
 
-    NOT_FOUND(HttpServletResponse.SC_NOT_FOUND, "404 Not Found"),
+	UN_AUTHORIZED(HttpServletResponse.SC_UNAUTHORIZED, "Request Unauthorized"),
 
-    MSG_NOT_READABLE(HttpServletResponse.SC_BAD_REQUEST, "Message Can't be Read"),
+	NOT_FOUND(HttpServletResponse.SC_NOT_FOUND, "404 Not Found"),
 
-    METHOD_NOT_SUPPORTED(HttpServletResponse.SC_METHOD_NOT_ALLOWED, "Method Not Supported"),
+	MSG_NOT_READABLE(HttpServletResponse.SC_BAD_REQUEST, "Message Can't be Read"),
 
-    MEDIA_TYPE_NOT_SUPPORTED(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE, "Media Type Not Supported"),
+	METHOD_NOT_SUPPORTED(HttpServletResponse.SC_METHOD_NOT_ALLOWED, "Method Not Supported"),
 
-    REQ_REJECT(HttpServletResponse.SC_FORBIDDEN, "Request Rejected"),
+	MEDIA_TYPE_NOT_SUPPORTED(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE, "Media Type Not Supported"),
 
-    INTERNAL_SERVER_ERROR(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal Server Error"),
+	REQ_REJECT(HttpServletResponse.SC_FORBIDDEN, "Request Rejected"),
 
-    PARAM_MISS(HttpServletResponse.SC_BAD_REQUEST, "Missing Required Parameter"),
+	INTERNAL_SERVER_ERROR(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal Server Error"),
 
-    PARAM_TYPE_ERROR(HttpServletResponse.SC_BAD_REQUEST, "Parameter Type Mismatch"),
+	PARAM_MISS(HttpServletResponse.SC_BAD_REQUEST, "Missing Required Parameter"),
 
-    PARAM_BIND_ERROR(HttpServletResponse.SC_BAD_REQUEST, "Parameter Binding Error"),
+	PARAM_TYPE_ERROR(HttpServletResponse.SC_BAD_REQUEST, "Parameter Type Mismatch"),
 
-    PARAM_VALID_ERROR(HttpServletResponse.SC_BAD_REQUEST, "Parameter Validation Error");
+	PARAM_BIND_ERROR(HttpServletResponse.SC_BAD_REQUEST, "Parameter Binding Error"),
 
-    final int code;
+	PARAM_VALID_ERROR(HttpServletResponse.SC_BAD_REQUEST, "Parameter Validation Error");
 
-    final String msg;
+	final int code;
+
+	final String msg;
+
 }

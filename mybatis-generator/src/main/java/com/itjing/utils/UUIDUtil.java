@@ -9,12 +9,12 @@ import java.util.UUID;
  */
 public class UUIDUtil {
 
-    private UUIDUtil() {
+	private UUIDUtil() {
 
-    }
+	}
 
-    public static String get() {
-        return UUID.randomUUID().toString().replace("-", "").toUpperCase();
-    }
+	public static String get() {
+		return UUID.randomUUID().toString().replace("-", "").toUpperCase();
+	}
+
 }
-

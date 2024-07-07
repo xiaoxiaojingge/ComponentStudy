@@ -14,7 +14,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author jinggege
@@ -25,49 +25,48 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * 主键ID
-     */
-    @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
+	/**
+	 * 主键ID
+	 */
+	@TableId(value = "id", type = IdType.AUTO)
+	private Long id;
 
-    /**
-     * 姓名
-     */
-    private String name;
+	/**
+	 * 姓名
+	 */
+	private String name;
 
-    /**
-     * 年龄
-     */
-    private Integer age;
+	/**
+	 * 年龄
+	 */
+	private Integer age;
 
-    /**
-     * 邮箱
-     */
-    private String email;
+	/**
+	 * 邮箱
+	 */
+	private String email;
 
-    @Version
-    private Integer version;
+	@Version
+	private Integer version;
 
-    /**
-     * 逻辑删除
-     */
-    @TableLogic
-    private Integer deleted;
+	/**
+	 * 逻辑删除
+	 */
+	@TableLogic
+	private Integer deleted;
 
-    /**
-     * 创建时间
-     */
-    @TableField(fill = FieldFill.INSERT)
-    private Date createTime;
+	/**
+	 * 创建时间
+	 */
+	@TableField(fill = FieldFill.INSERT)
+	private Date createTime;
 
-    /**
-     * 修改时间
-     */
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private Date updateTime;
-
+	/**
+	 * 修改时间
+	 */
+	@TableField(fill = FieldFill.INSERT_UPDATE)
+	private Date updateTime;
 
 }

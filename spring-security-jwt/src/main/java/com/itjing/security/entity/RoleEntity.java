@@ -12,10 +12,10 @@ import lombok.Setter;
 @Setter
 public class RoleEntity {
 
-    private String id;
+	private String id;
 
-    private String roleName;
+	private String roleName;
 
-    private String description;
+	private String description;
 
 }

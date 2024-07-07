@@ -12,15 +12,16 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class BaiduBeansConfig {
 
-    @Bean
-    public DisposableWorkerIdAssigner disposableWorkerIdAssigner() {
-        return new DisposableWorkerIdAssigner();
-    }
+	@Bean
+	public DisposableWorkerIdAssigner disposableWorkerIdAssigner() {
+		return new DisposableWorkerIdAssigner();
+	}
 
-    @Bean("cachedUidGenerator")
-    public UidGenerator uidGenerator() {
-        CachedUidGenerator uidGenerator = new CachedUidGenerator();
-        uidGenerator.setWorkerIdAssigner(disposableWorkerIdAssigner());
-        return uidGenerator;
-    }
+	@Bean("cachedUidGenerator")
+	public UidGenerator uidGenerator() {
+		CachedUidGenerator uidGenerator = new CachedUidGenerator();
+		uidGenerator.setWorkerIdAssigner(disposableWorkerIdAssigner());
+		return uidGenerator;
+	}
+
 }

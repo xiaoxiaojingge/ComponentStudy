@@ -17,10 +17,15 @@ import java.util.Date;
 @ToString
 @Accessors(chain = true)
 public class Student {
-    private Integer id;
-    private String name;
-    private Integer gender;
-    private Date birthday;
-    private String home;
+
+	private Integer id;
+
+	private String name;
+
+	private Integer gender;
+
+	private Date birthday;
+
+	private String home;
 
 }

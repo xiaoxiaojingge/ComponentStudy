@@ -9,12 +9,14 @@ import com.code.rulesactuator.dto.RuleDTO;
  * @description 具体规则-实例一
  */
 public class AddressRule extends AbstractRule {
-    @Override
-    public boolean execute(RuleDTO dto) {
-        System.out.println("AddressRule invoke!");
-        if (dto.getAddress().startsWith(RuleConstant.MATCH_ADDRESS_START)) {
-            return true;
-        }
-        return false;
-    }
+
+	@Override
+	public boolean execute(RuleDTO dto) {
+		System.out.println("AddressRule invoke!");
+		if (dto.getAddress().startsWith(RuleConstant.MATCH_ADDRESS_START)) {
+			return true;
+		}
+		return false;
+	}
+
 }

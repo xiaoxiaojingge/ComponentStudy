@@ -1,4 +1,5 @@
 package com.itstyle.seckill.common.dynamicquery;
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -10,10 +11,9 @@ import org.hibernate.transform.Transformers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+
 /**
- * 动态jpql/nativesql查询的实现类
- * 创建者 张志朋
- * 创建时间	2018年3月8日
+ * 动态jpql/nativesql查询的实现类 创建者 张志朋 创建时间 2018年3月8日
  */
 @Repository
 public class DynamicQueryImpl implements DynamicQuery {
@@ -48,6 +48,7 @@ public class DynamicQueryImpl implements DynamicQuery {
 			em.remove(em.getReference(entityClass, id));
 		}
 	}
+
 	private Query createNativeQuery(String sql, Object... params) {
 		Query q = em.createNativeQuery(sql);
 		if (params != null && params.length > 0) {
@@ -58,7 +59,7 @@ public class DynamicQueryImpl implements DynamicQuery {
 		}
 		return q;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> List<T> nativeQueryList(String nativeSql, Object... params) {
@@ -66,12 +67,12 @@ public class DynamicQueryImpl implements DynamicQuery {
 		q.unwrap(SQLQuery.class).setResultTransformer(Transformers.TO_LIST);
 		return q.getResultList();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T> List<T> nativeQueryListModel(Class<T> resultClass,
-			String nativeSql, Object... params) {
-		Query q = createNativeQuery(nativeSql, params);;
+	public <T> List<T> nativeQueryListModel(Class<T> resultClass, String nativeSql, Object... params) {
+		Query q = createNativeQuery(nativeSql, params);
+		;
 		q.unwrap(SQLQuery.class).setResultTransformer(Transformers.aliasToBean(resultClass));
 		return q.getResultList();
 	}
@@ -83,11 +84,12 @@ public class DynamicQueryImpl implements DynamicQuery {
 		q.unwrap(SQLQuery.class).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
 		return q.getResultList();
 	}
-	
+
 	@Override
 	public Object nativeQueryObject(String nativeSql, Object... params) {
 		return createNativeQuery(nativeSql, params).getSingleResult();
 	}
+
 	@Override
 	public int nativeExecuteUpdate(String nativeSql, Object... params) {
 		return createNativeQuery(nativeSql, params).executeUpdate();

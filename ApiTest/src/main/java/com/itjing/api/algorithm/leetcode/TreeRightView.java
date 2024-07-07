@@ -25,92 +25,96 @@ import java.util.List;
 import java.util.Vector;
 
 public class TreeRightView {
-  
-    public static class TreeNode {
 
-        TreeNode left;
-        TreeNode right;
-        int val;
+	public static class TreeNode {
 
-        public TreeNode(int val) {
-            this.val = val;
-        }
-    }
+		TreeNode left;
 
-    List<Integer> nodes = new Vector<>();
-    {
-        nodes.add(1);
-        nodes.add(2);
-        nodes.add(3);
-        nodes.add(null);
-        nodes.add(5);
-        nodes.add(null);
-        nodes.add(4);
-    }
-    /**
-     * 根据中序遍历的数组构建树结构
-     * @param nodes
-     * @return
-     */
-    public TreeNode buildTree(TreeNode root,List<Integer> nodes,int index){
-        if (index > nodes.size() / 2){
-            return root;
-        }
-        if (index == 1){
-            if (nodes.get(0) != null)
-            root.val = nodes.get(0);
-        }
-        if (nodes.get(index * 2 -1) != null) {
-            root.left = new TreeNode(nodes.get(index * 2 - 1));
-            buildTree(root.left,nodes,index + 1);
-        }
-        if (nodes.get(index * 2) != null) {
-            root.right = new TreeNode(nodes.get(index * 2));
-            buildTree(root.right, nodes, index + 2);
-        }
+		TreeNode right;
 
-        return root;
-    }
+		int val;
 
-    public List<Integer> rightView(TreeNode root) {
-        List<Integer> nodes = new ArrayList<>();
+		public TreeNode(int val) {
+			this.val = val;
+		}
 
-        List<TreeNode> floor = new ArrayList<>();
-        floor.add(root);
+	}
 
-        while (!floor.isEmpty()){
-            // 记录每层的最后一个节点
-            nodes.add(floor.get(floor.size() - 1).val);
+	List<Integer> nodes = new Vector<>();
 
-            // 记录下一层
-            List<TreeNode> nextFloor = new ArrayList<>();
-            for (int i = 0; i < floor.size(); i++) {
-                TreeNode treeNode = floor.get(i);
-                if (treeNode.left != null){
-                    nextFloor.add(treeNode.left);
-                }
-                if (treeNode.right != null){
-                    nextFloor.add(treeNode.right);
-                }
-            }
-            floor = nextFloor;
-        }
+	{
+		nodes.add(1);
+		nodes.add(2);
+		nodes.add(3);
+		nodes.add(null);
+		nodes.add(5);
+		nodes.add(null);
+		nodes.add(4);
+	}
 
+	/**
+	 * 根据中序遍历的数组构建树结构
+	 * @param nodes
+	 * @return
+	 */
+	public TreeNode buildTree(TreeNode root, List<Integer> nodes, int index) {
+		if (index > nodes.size() / 2) {
+			return root;
+		}
+		if (index == 1) {
+			if (nodes.get(0) != null)
+				root.val = nodes.get(0);
+		}
+		if (nodes.get(index * 2 - 1) != null) {
+			root.left = new TreeNode(nodes.get(index * 2 - 1));
+			buildTree(root.left, nodes, index + 1);
+		}
+		if (nodes.get(index * 2) != null) {
+			root.right = new TreeNode(nodes.get(index * 2));
+			buildTree(root.right, nodes, index + 2);
+		}
 
-        return nodes;
-    }
+		return root;
+	}
 
-    @Test
-    public void testRightView(){
-        TreeNode treeNode = buildTree(new TreeNode(-1), nodes, 1);
-        List<Integer> integers = rightView(treeNode);
-        System.out.println(integers);
-    }
+	public List<Integer> rightView(TreeNode root) {
+		List<Integer> nodes = new ArrayList<>();
 
-    @Test
-    public void testBuild(){
-        TreeNode treeNode = buildTree(new TreeNode(-1), nodes, 1);
-        System.out.println(treeNode);
-    }
+		List<TreeNode> floor = new ArrayList<>();
+		floor.add(root);
+
+		while (!floor.isEmpty()) {
+			// 记录每层的最后一个节点
+			nodes.add(floor.get(floor.size() - 1).val);
+
+			// 记录下一层
+			List<TreeNode> nextFloor = new ArrayList<>();
+			for (int i = 0; i < floor.size(); i++) {
+				TreeNode treeNode = floor.get(i);
+				if (treeNode.left != null) {
+					nextFloor.add(treeNode.left);
+				}
+				if (treeNode.right != null) {
+					nextFloor.add(treeNode.right);
+				}
+			}
+			floor = nextFloor;
+		}
+
+		return nodes;
+	}
+
+	@Test
+	public void testRightView() {
+		TreeNode treeNode = buildTree(new TreeNode(-1), nodes, 1);
+		List<Integer> integers = rightView(treeNode);
+		System.out.println(integers);
+	}
+
+	@Test
+	public void testBuild() {
+		TreeNode treeNode = buildTree(new TreeNode(-1), nodes, 1);
+		System.out.println(treeNode);
+	}
 
 }

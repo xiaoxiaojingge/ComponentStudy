@@ -12,7 +12,8 @@ import java.util.List;
  */
 public interface IUserService {
 
-    List<ResourceEntity> getResourceList(String userName);
+	List<ResourceEntity> getResourceList(String userName);
 
-    UserEntity getUserByUsername(String userName);
+	UserEntity getUserByUsername(String userName);
+
 }

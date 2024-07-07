@@ -6,16 +6,18 @@ package com.itjing.springboot.test.代码执行顺序;
  * @description
  */
 public class Parent {
-    static {
-        System.out.println("Parent static initial block");
-    }
 
-    {
-        System.out.println("Parent initial block");
-    }
+	static {
+		System.out.println("Parent static initial block");
+	}
 
-    public Parent() {
-        System.out.println("Parent constructor block");
+	{
+		System.out.println("Parent initial block");
+	}
 
-    }
+	public Parent() {
+		System.out.println("Parent constructor block");
+
+	}
+
 }

@@ -9,13 +9,13 @@ import com.itjing.leetcode.ListNode;
  */
 public class NC66两个链表的第一个公共结点 {
 
+	public ListNode FindFirstCommonNode(ListNode pHead1, ListNode pHead2) {
+		ListNode pA = pHead1, pB = pHead2;
+		while (pA != pB) {
+			pA = pA != null ? pA.next : pHead2;
+			pB = pB != null ? pB.next : pHead1;
+		}
+		return pA;
+	}
 
-    public ListNode FindFirstCommonNode(ListNode pHead1, ListNode pHead2) {
-        ListNode pA = pHead1, pB = pHead2;
-        while (pA != pB) {
-            pA = pA != null ? pA.next : pHead2;
-            pB = pB != null ? pB.next : pHead1;
-        }
-        return pA;
-    }
 }

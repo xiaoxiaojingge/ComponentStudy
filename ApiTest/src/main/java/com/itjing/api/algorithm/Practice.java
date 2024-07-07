@@ -1,6 +1,7 @@
 package com.itjing.api.algorithm;
 
 public class Practice {
+
 	public static int[][] magicOdd(int n) {
 		int[][] square = new int[n + 1][n + 1];
 		int i = 0;
@@ -36,4 +37,5 @@ public class Practice {
 			System.out.println();
 		}
 	}
+
 }

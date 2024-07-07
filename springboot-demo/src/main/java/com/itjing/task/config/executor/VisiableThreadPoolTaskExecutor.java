@@ -17,57 +17,54 @@ import java.util.concurrent.ThreadPoolExecutor;
 @Slf4j
 public class VisiableThreadPoolTaskExecutor extends ThreadPoolTaskExecutor {
 
-    private void showThreadPoolInfo(String prefix) {
+	private void showThreadPoolInfo(String prefix) {
 
-        ThreadPoolExecutor threadPoolExecutor = getThreadPoolExecutor();
+		ThreadPoolExecutor threadPoolExecutor = getThreadPoolExecutor();
 
-        if (Objects.isNull(threadPoolExecutor)) {
-            return;
-        }
+		if (Objects.isNull(threadPoolExecutor)) {
+			return;
+		}
 
-        log.info("{}, {},taskCount [{}], completedTaskCount [{}], activeCount [{}], queueSize [{}]",
-                getThreadNamePrefix() + System.currentTimeMillis(),
-                prefix,
-                threadPoolExecutor.getTaskCount(),
-                threadPoolExecutor.getCompletedTaskCount(),
-                threadPoolExecutor.getActiveCount(),
-                threadPoolExecutor.getQueue().size()
-        );
-    }
+		log.info("{}, {},taskCount [{}], completedTaskCount [{}], activeCount [{}], queueSize [{}]",
+				getThreadNamePrefix() + System.currentTimeMillis(), prefix, threadPoolExecutor.getTaskCount(),
+				threadPoolExecutor.getCompletedTaskCount(), threadPoolExecutor.getActiveCount(),
+				threadPoolExecutor.getQueue().size());
+	}
 
-    @Override
-    public void execute(Runnable task) {
-        showThreadPoolInfo("do execute Runnable");
-        super.execute(task);
-    }
+	@Override
+	public void execute(Runnable task) {
+		showThreadPoolInfo("do execute Runnable");
+		super.execute(task);
+	}
 
-    @Override
-    public void execute(Runnable task, long startTimeout) {
-        showThreadPoolInfo("do execute Runnable and StartTimeout");
-        super.execute(task, startTimeout);
-    }
+	@Override
+	public void execute(Runnable task, long startTimeout) {
+		showThreadPoolInfo("do execute Runnable and StartTimeout");
+		super.execute(task, startTimeout);
+	}
 
-    @Override
-    public Future<?> submit(Runnable task) {
-        showThreadPoolInfo("do submit Runnable");
-        return super.submit(task);
-    }
+	@Override
+	public Future<?> submit(Runnable task) {
+		showThreadPoolInfo("do submit Runnable");
+		return super.submit(task);
+	}
 
-    @Override
-    public <T> Future<T> submit(Callable<T> task) {
-        showThreadPoolInfo("do submit Callable");
-        return super.submit(task);
-    }
+	@Override
+	public <T> Future<T> submit(Callable<T> task) {
+		showThreadPoolInfo("do submit Callable");
+		return super.submit(task);
+	}
 
-    @Override
-    public ListenableFuture<?> submitListenable(Runnable task) {
-        showThreadPoolInfo("do submitListenable Runnable");
-        return super.submitListenable(task);
-    }
+	@Override
+	public ListenableFuture<?> submitListenable(Runnable task) {
+		showThreadPoolInfo("do submitListenable Runnable");
+		return super.submitListenable(task);
+	}
 
-    @Override
-    public <T> ListenableFuture<T> submitListenable(Callable<T> task) {
-        showThreadPoolInfo("do submitListenable Callable");
-        return super.submitListenable(task);
-    }
+	@Override
+	public <T> ListenableFuture<T> submitListenable(Callable<T> task) {
+		showThreadPoolInfo("do submitListenable Callable");
+		return super.submitListenable(task);
+	}
+
 }

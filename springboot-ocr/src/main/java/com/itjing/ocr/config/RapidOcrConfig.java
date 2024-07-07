@@ -12,8 +12,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RapidOcrConfig {
 
-    @Bean
-    public InferenceEngine inferenceEngine() {
-        return InferenceEngine.getInstance(Model.ONNX_PPOCR_V3);
-    }
+	@Bean
+	public InferenceEngine inferenceEngine() {
+		return InferenceEngine.getInstance(Model.ONNX_PPOCR_V3);
+	}
+
 }

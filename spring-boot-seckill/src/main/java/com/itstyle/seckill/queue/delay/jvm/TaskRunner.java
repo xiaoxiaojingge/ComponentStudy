@@ -17,46 +17,48 @@ import java.util.concurrent.Executors;
 @Component("redPacket")
 public class TaskRunner implements ApplicationRunner {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(TaskRunner.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(TaskRunner.class);
 
-    @Autowired
-    private RedisUtil redisUtil;
+	@Autowired
+	private RedisUtil redisUtil;
 
-    ExecutorService executorService = Executors.newSingleThreadExecutor(r -> {
-        Thread thread = new Thread(r);
-        thread.setName("RedPacketDelayWorker");
-        thread.setDaemon(true);
-        return thread;
-    });
+	ExecutorService executorService = Executors.newSingleThreadExecutor(r -> {
+		Thread thread = new Thread(r);
+		thread.setName("RedPacketDelayWorker");
+		thread.setDaemon(true);
+		return thread;
+	});
 
-    @Override
-    public void run(ApplicationArguments var){
-        executorService.execute(() -> {
-            while (true) {
-                try {
-                    RedPacketMessage message = RedPacketQueue.getQueue().consume();
-                    if(message!=null){
-                        long redPacketId = message.getRedPacketId();
-                        LOGGER.info("红包{}过期了",redPacketId);
-                        /**
-                         * 获取剩余红包个数以及金额
-                         */
-                        int num = (int) redisUtil.getValue(redPacketId+"-num");
-                        int restMoney = (int) redisUtil.getValue(redPacketId+"-money");
-                        LOGGER.info("剩余红包个数{}，剩余红包金额{}",num,restMoney);
-                        /**
-                         * 清空红包数据
-                         */
-                        redisUtil.removeValue(redPacketId+"-num");
-                        redisUtil.removeValue(redPacketId+"-money");
-                        /**
-                         * 异步更新数据库、异步退回红包金额
-                         */
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
+	@Override
+	public void run(ApplicationArguments var) {
+		executorService.execute(() -> {
+			while (true) {
+				try {
+					RedPacketMessage message = RedPacketQueue.getQueue().consume();
+					if (message != null) {
+						long redPacketId = message.getRedPacketId();
+						LOGGER.info("红包{}过期了", redPacketId);
+						/**
+						 * 获取剩余红包个数以及金额
+						 */
+						int num = (int) redisUtil.getValue(redPacketId + "-num");
+						int restMoney = (int) redisUtil.getValue(redPacketId + "-money");
+						LOGGER.info("剩余红包个数{}，剩余红包金额{}", num, restMoney);
+						/**
+						 * 清空红包数据
+						 */
+						redisUtil.removeValue(redPacketId + "-num");
+						redisUtil.removeValue(redPacketId + "-money");
+						/**
+						 * 异步更新数据库、异步退回红包金额
+						 */
+					}
+				}
+				catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
 }

@@ -12,5 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class NationalityRuleDTO extends RuleDTO {
-    private String nationality;
+
+	private String nationality;
+
 }

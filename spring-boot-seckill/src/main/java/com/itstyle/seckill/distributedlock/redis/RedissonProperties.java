@@ -5,93 +5,94 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "redisson")
 public class RedissonProperties {
 
-    private int timeout = 3000;
+	private int timeout = 3000;
 
-    private String address;
+	private String address;
 
-    private String password;
+	private String password;
 
-    private int connectionPoolSize = 64;
-    
-    private int connectionMinimumIdleSize=10;
+	private int connectionPoolSize = 64;
 
-    private int slaveConnectionPoolSize = 250;
+	private int connectionMinimumIdleSize = 10;
 
-    private int masterConnectionPoolSize = 250;
+	private int slaveConnectionPoolSize = 250;
 
-    private String[] sentinelAddresses;
+	private int masterConnectionPoolSize = 250;
 
-    private String masterName;
+	private String[] sentinelAddresses;
 
-    public int getTimeout() {
-        return timeout;
-    }
+	private String masterName;
 
-    public void setTimeout(int timeout) {
-        this.timeout = timeout;
-    }
+	public int getTimeout() {
+		return timeout;
+	}
 
-    public int getSlaveConnectionPoolSize() {
-        return slaveConnectionPoolSize;
-    }
+	public void setTimeout(int timeout) {
+		this.timeout = timeout;
+	}
 
-    public void setSlaveConnectionPoolSize(int slaveConnectionPoolSize) {
-        this.slaveConnectionPoolSize = slaveConnectionPoolSize;
-    }
+	public int getSlaveConnectionPoolSize() {
+		return slaveConnectionPoolSize;
+	}
 
-    public int getMasterConnectionPoolSize() {
-        return masterConnectionPoolSize;
-    }
+	public void setSlaveConnectionPoolSize(int slaveConnectionPoolSize) {
+		this.slaveConnectionPoolSize = slaveConnectionPoolSize;
+	}
 
-    public void setMasterConnectionPoolSize(int masterConnectionPoolSize) {
-        this.masterConnectionPoolSize = masterConnectionPoolSize;
-    }
+	public int getMasterConnectionPoolSize() {
+		return masterConnectionPoolSize;
+	}
 
-    public String[] getSentinelAddresses() {
-        return sentinelAddresses;
-    }
+	public void setMasterConnectionPoolSize(int masterConnectionPoolSize) {
+		this.masterConnectionPoolSize = masterConnectionPoolSize;
+	}
 
-    public void setSentinelAddresses(String sentinelAddresses) {
-        this.sentinelAddresses = sentinelAddresses.split(",");
-    }
+	public String[] getSentinelAddresses() {
+		return sentinelAddresses;
+	}
 
-    public String getMasterName() {
-        return masterName;
-    }
+	public void setSentinelAddresses(String sentinelAddresses) {
+		this.sentinelAddresses = sentinelAddresses.split(",");
+	}
 
-    public void setMasterName(String masterName) {
-        this.masterName = masterName;
-    }
+	public String getMasterName() {
+		return masterName;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public void setMasterName(String masterName) {
+		this.masterName = masterName;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public String getAddress() {
-        return address;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+	public String getAddress() {
+		return address;
+	}
 
-    public int getConnectionPoolSize() {
-        return connectionPoolSize;
-    }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-    public void setConnectionPoolSize(int connectionPoolSize) {
-        this.connectionPoolSize = connectionPoolSize;
-    }
+	public int getConnectionPoolSize() {
+		return connectionPoolSize;
+	}
 
-    public int getConnectionMinimumIdleSize() {
-        return connectionMinimumIdleSize;
-    }
+	public void setConnectionPoolSize(int connectionPoolSize) {
+		this.connectionPoolSize = connectionPoolSize;
+	}
 
-    public void setConnectionMinimumIdleSize(int connectionMinimumIdleSize) {
-        this.connectionMinimumIdleSize = connectionMinimumIdleSize;
-    }
+	public int getConnectionMinimumIdleSize() {
+		return connectionMinimumIdleSize;
+	}
+
+	public void setConnectionMinimumIdleSize(int connectionMinimumIdleSize) {
+		this.connectionMinimumIdleSize = connectionMinimumIdleSize;
+	}
+
 }

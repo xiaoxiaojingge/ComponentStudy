@@ -7,6 +7,6 @@ package com.itjing.enu;
  */
 public enum LogType {
 
-    login, loginout, query, add, edit, update, delete, export, imported;
+	login, loginout, query, add, edit, update, delete, export, imported;
 
 }

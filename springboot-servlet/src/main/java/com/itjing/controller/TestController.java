@@ -14,15 +14,16 @@ import javax.servlet.http.HttpSession;
 @RestController
 public class TestController {
 
-    @GetMapping("/login")
-    public String login(HttpSession session) {
-        // 设置session，从而触发监听器的sessionCreated
-        session.setAttribute("name", "aa");
-        return "login";
-    }
+	@GetMapping("/login")
+	public String login(HttpSession session) {
+		// 设置session，从而触发监听器的sessionCreated
+		session.setAttribute("name", "aa");
+		return "login";
+	}
 
-    @GetMapping("/online")
-    public String online() {
-        return "当前在线人数" + MyListener.online + "人";
-    }
+	@GetMapping("/online")
+	public String online() {
+		return "当前在线人数" + MyListener.online + "人";
+	}
+
 }

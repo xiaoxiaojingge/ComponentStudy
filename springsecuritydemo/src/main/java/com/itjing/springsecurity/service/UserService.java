@@ -11,15 +11,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService implements UserDetailsService {
 
-    @Autowired
-    private UserMapper userMapper;
+	@Autowired
+	private UserMapper userMapper;
 
-    public User findUserByName(String username) {
-        return userMapper.selectByName(username);
-    }
+	public User findUserByName(String username) {
+		return userMapper.selectByName(username);
+	}
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return this.findUserByName(username);
-    }
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		return this.findUserByName(username);
+	}
+
 }

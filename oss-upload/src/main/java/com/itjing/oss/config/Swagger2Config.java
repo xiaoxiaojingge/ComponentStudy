@@ -20,23 +20,22 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2 // 开启swagger2
 public class Swagger2Config {
 
-    @Bean
-    public Docket webApiConfig() {
+	@Bean
+	public Docket webApiConfig() {
 
-        return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("webApi")
-                .apiInfo(webApiInfo())
-                .select()
-                .paths(Predicates.not(PathSelectors.regex("/error.*")))
-                .build();
-    }
+		return new Docket(DocumentationType.SWAGGER_2).groupName("webApi")
+			.apiInfo(webApiInfo())
+			.select()
+			.paths(Predicates.not(PathSelectors.regex("/error.*")))
+			.build();
+	}
 
-    private ApiInfo webApiInfo() {
-        return new ApiInfoBuilder()
-                .title("SpringBoot整合OSS-API文档")
-                .description("阿里云OSS-文件上传下载测试")
-                .version("1.0")
-                .contact(new Contact("lijing", "https://www.xiaojingge.com", "2427259171@qq.com"))
-                .build();
-    }
+	private ApiInfo webApiInfo() {
+		return new ApiInfoBuilder().title("SpringBoot整合OSS-API文档")
+			.description("阿里云OSS-文件上传下载测试")
+			.version("1.0")
+			.contact(new Contact("lijing", "https://www.xiaojingge.com", "2427259171@qq.com"))
+			.build();
+	}
+
 }

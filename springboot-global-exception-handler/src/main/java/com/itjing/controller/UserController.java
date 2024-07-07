@@ -20,26 +20,27 @@ import javax.validation.Valid;
 @RequestMapping("/user")
 public class UserController {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    @Autowired
-    private UserService userService;
+	@Autowired
+	private UserService userService;
 
-    @PostMapping("/add")
-    public GeneralResult<User> add(@RequestBody @Valid UserDTO userDTO) {
-        User user = userService.add(userDTO);
-        return GeneralResult.genSuccessResult(user);
-    }
+	@PostMapping("/add")
+	public GeneralResult<User> add(@RequestBody @Valid UserDTO userDTO) {
+		User user = userService.add(userDTO);
+		return GeneralResult.genSuccessResult(user);
+	}
 
-    @GetMapping("/find/{userId}")
-    public GeneralResult<User> find(@PathVariable String userId) {
-        User user = userService.getById(userId);
-        return GeneralResult.genSuccessResult(user);
-    }
+	@GetMapping("/find/{userId}")
+	public GeneralResult<User> find(@PathVariable String userId) {
+		User user = userService.getById(userId);
+		return GeneralResult.genSuccessResult(user);
+	}
 
-    @GetMapping("/marry/{age}")
-    public GeneralResult<User> marry(@PathVariable String age) {
-        userService.marry(age);
-        return GeneralResult.genSuccessResult();
-    }
+	@GetMapping("/marry/{age}")
+	public GeneralResult<User> marry(@PathVariable String age) {
+		userService.marry(age);
+		return GeneralResult.genSuccessResult();
+	}
+
 }

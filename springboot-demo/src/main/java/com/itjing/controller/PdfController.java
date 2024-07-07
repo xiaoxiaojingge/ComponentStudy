@@ -19,9 +19,11 @@ import java.io.IOException;
 @RequestMapping("/pdf")
 public class PdfController {
 
-    @GetMapping("/exportPdf")
-    public void exportPdf(HttpServletRequest request, HttpServletResponse response) throws DocumentException, IOException {
-        CreatePdfAndTable pdfAndTable = new CreatePdfAndTable();
-        pdfAndTable.createPdfFile(response);
-    }
+	@GetMapping("/exportPdf")
+	public void exportPdf(HttpServletRequest request, HttpServletResponse response)
+			throws DocumentException, IOException {
+		CreatePdfAndTable pdfAndTable = new CreatePdfAndTable();
+		pdfAndTable.createPdfFile(response);
+	}
+
 }

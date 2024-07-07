@@ -4,5 +4,7 @@ import lombok.Data;
 
 @Data
 public class CycleRefC {
-    private CycleRefA cycleRefA;
+
+	private CycleRefA cycleRefA;
+
 }

@@ -8,10 +8,9 @@ import java.lang.annotation.Target;
 /**
  * @author lijing
  * @date 2022年05月26日 10:16
- * @description 幂等注解
- * 定义此注解的主要目的是把它添加在需要实现幂等的方法上
+ * @description 幂等注解 定义此注解的主要目的是把它添加在需要实现幂等的方法上
  */
-@Target({ElementType.METHOD})
+@Target({ ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AutoIdempotent {
 

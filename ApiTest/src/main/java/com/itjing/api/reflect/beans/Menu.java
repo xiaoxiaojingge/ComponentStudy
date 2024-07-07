@@ -9,7 +9,11 @@ import java.util.List;
  */
 @Data
 public class Menu {
-    private String id;
-    private String name;
-    private List<Menu> childs;
+
+	private String id;
+
+	private String name;
+
+	private List<Menu> childs;
+
 }

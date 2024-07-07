@@ -10,8 +10,10 @@ import java.lang.annotation.Target;
  * @Author: lijing
  * @CreateTime: 2022-09-07 14:23
  */
-@Target({ElementType.FIELD, ElementType.TYPE})
+@Target({ ElementType.FIELD, ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ExcelValid {
-    String message() default "";
+
+	String message() default "";
+
 }

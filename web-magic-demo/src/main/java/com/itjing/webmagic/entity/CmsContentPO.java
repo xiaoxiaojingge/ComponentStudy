@@ -8,43 +8,45 @@ import java.util.Date;
  * @description
  */
 public class CmsContentPO {
-    private String contentId;
 
-    private String title;
+	private String contentId;
 
-    private String content;
+	private String title;
 
-    private Date releaseDate;
+	private String content;
 
-    public String getContentId() {
-        return contentId;
-    }
+	private Date releaseDate;
 
-    public void setContentId(String contentId) {
-        this.contentId = contentId;
-    }
+	public String getContentId() {
+		return contentId;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public void setContentId(String contentId) {
+		this.contentId = contentId;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public String getContent() {
-        return content;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+	public String getContent() {
+		return content;
+	}
 
-    public Date getReleaseDate() {
-        return releaseDate;
-    }
+	public void setContent(String content) {
+		this.content = content;
+	}
 
-    public void setReleaseDate(Date releaseDate) {
-        this.releaseDate = releaseDate;
-    }
+	public Date getReleaseDate() {
+		return releaseDate;
+	}
+
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+
 }

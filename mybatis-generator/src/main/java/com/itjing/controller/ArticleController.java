@@ -26,85 +26,85 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/article")
 public class ArticleController {
 
-    @Autowired
-    private ArticleService articleService;
+	@Autowired
+	private ArticleService articleService;
 
-    @Resource
-    private ThreadPoolTaskExecutor taskExector;
+	@Resource
+	private ThreadPoolTaskExecutor taskExector;
 
-    /**
-     * 异步提交
-     */
-    @GetMapping("/testTaskExecutor")
-    public void testTaskExecutor() {
-        taskExector.submit(new ArticleRunnable());
-    }
+	/**
+	 * 异步提交
+	 */
+	@GetMapping("/testTaskExecutor")
+	public void testTaskExecutor() {
+		taskExector.submit(new ArticleRunnable());
+	}
 
-    @GetMapping("/testCompletableFuture")
-    public void testCompletableFuture() throws ExecutionException, InterruptedException {
+	@GetMapping("/testCompletableFuture")
+	public void testCompletableFuture() throws ExecutionException, InterruptedException {
 
-        // 异步编排
-        CompletableFuture<Void> future1 = CompletableFuture.runAsync(() -> {
-            try {
-                TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println("future1...");
-        }, taskExector.getThreadPoolExecutor());
+		// 异步编排
+		CompletableFuture<Void> future1 = CompletableFuture.runAsync(() -> {
+			try {
+				TimeUnit.SECONDS.sleep(1);
+			}
+			catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			System.out.println("future1...");
+		}, taskExector.getThreadPoolExecutor());
 
-        TimeUnit.SECONDS.sleep(1);
-        System.out.println("main process....");
+		TimeUnit.SECONDS.sleep(1);
+		System.out.println("main process....");
 
-        CompletableFuture<Void> future2 = CompletableFuture.runAsync(() -> {
-            try {
-                TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println("future2...");
-        }, taskExector.getThreadPoolExecutor());
+		CompletableFuture<Void> future2 = CompletableFuture.runAsync(() -> {
+			try {
+				TimeUnit.SECONDS.sleep(1);
+			}
+			catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			System.out.println("future2...");
+		}, taskExector.getThreadPoolExecutor());
 
-        CompletableFuture<Void> future3 = CompletableFuture.runAsync(() -> {
-            try {
-                TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println("future3...");
-        }, taskExector.getThreadPoolExecutor());
+		CompletableFuture<Void> future3 = CompletableFuture.runAsync(() -> {
+			try {
+				TimeUnit.SECONDS.sleep(1);
+			}
+			catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			System.out.println("future3...");
+		}, taskExector.getThreadPoolExecutor());
 
-        CompletableFuture<String> future4 = CompletableFuture
-                .supplyAsync(() -> "返回值", taskExector.getThreadPoolExecutor())
-                .whenComplete((str, throwable) -> {
-                    System.out.println("结果：" + str);
-                });
-        String s = future4.get();
-        System.out.println(s);
-        // 等待执行完成
-        CompletableFuture.allOf(
-                future1,
-                future2,
-                future3,
-                future4).get();
-    }
+		CompletableFuture<String> future4 = CompletableFuture
+			.supplyAsync(() -> "返回值", taskExector.getThreadPoolExecutor())
+			.whenComplete((str, throwable) -> {
+				System.out.println("结果：" + str);
+			});
+		String s = future4.get();
+		System.out.println(s);
+		// 等待执行完成
+		CompletableFuture.allOf(future1, future2, future3, future4).get();
+	}
 
-    public class ArticleRunnable implements Runnable {
+	public class ArticleRunnable implements Runnable {
 
-        @Override
-        public void run() {
-            System.out.println("running.....");
-        }
-    }
+		@Override
+		public void run() {
+			System.out.println("running.....");
+		}
 
+	}
 
-    /**
-     * 测试 MapStruct
-     */
-    @GetMapping("/testMapStruct")
-    public RestResult<?> testMapStruct() {
-        Article article = articleService.selectByPrimaryKey(11);
-        ArticleVO articleVO = ArticleConverter.INSTANCE.domain2VO(article);
-        return RestResultUtils.success(articleVO);
-    }
+	/**
+	 * 测试 MapStruct
+	 */
+	@GetMapping("/testMapStruct")
+	public RestResult<?> testMapStruct() {
+		Article article = articleService.selectByPrimaryKey(11);
+		ArticleVO articleVO = ArticleConverter.INSTANCE.domain2VO(article);
+		return RestResultUtils.success(articleVO);
+	}
+
 }

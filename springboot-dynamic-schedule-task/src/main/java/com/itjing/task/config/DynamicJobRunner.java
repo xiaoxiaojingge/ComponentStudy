@@ -22,23 +22,24 @@ import java.util.List;
 @Component
 public class DynamicJobRunner implements CommandLineRunner {
 
-    @Resource
-    private DynamicJobMapper dynamicJobMapper;
+	@Resource
+	private DynamicJobMapper dynamicJobMapper;
 
-    @Resource
-    private CronTaskRegistrar cronTaskRegistrar;
+	@Resource
+	private CronTaskRegistrar cronTaskRegistrar;
 
-    @Override
-    public void run(String... args) {
-        // 初始加载数据库里状态为正常的定时任务
-        List<DynamicJob> jobList = dynamicJobMapper.listJobsByStatus(JobStatusConstant.NORMAL);
-        if (CollectionUtils.isNotEmpty(jobList)) {
-            for (DynamicJob job : jobList) {
-                LinkedHashMap methodParams = JSONObject.parseObject(job.getMethodParams(), LinkedHashMap.class);
-                SchedulingRunnable task = new SchedulingRunnable(job.getBeanName(), job.getMethodName(), methodParams);
-                cronTaskRegistrar.addCronTask(task, job.getCronExpression());
-            }
-            log.info("定时任务已加载完毕...");
-        }
-    }
+	@Override
+	public void run(String... args) {
+		// 初始加载数据库里状态为正常的定时任务
+		List<DynamicJob> jobList = dynamicJobMapper.listJobsByStatus(JobStatusConstant.NORMAL);
+		if (CollectionUtils.isNotEmpty(jobList)) {
+			for (DynamicJob job : jobList) {
+				LinkedHashMap methodParams = JSONObject.parseObject(job.getMethodParams(), LinkedHashMap.class);
+				SchedulingRunnable task = new SchedulingRunnable(job.getBeanName(), job.getMethodName(), methodParams);
+				cronTaskRegistrar.addCronTask(task, job.getCronExpression());
+			}
+			log.info("定时任务已加载完毕...");
+		}
+	}
+
 }

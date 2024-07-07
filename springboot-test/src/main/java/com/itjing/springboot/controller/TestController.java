@@ -19,18 +19,19 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class TestController {
 
-    @Autowired
-    private UserMapper userMapper;
+	@Autowired
+	private UserMapper userMapper;
 
-    @GetMapping("/getUser")
-    public User get(@ModelAttribute User user) {
-        System.out.println(user);
-        System.out.println(userMapper.getUserCount(user));
-        return user;
-    }
+	@GetMapping("/getUser")
+	public User get(@ModelAttribute User user) {
+		System.out.println(user);
+		System.out.println(userMapper.getUserCount(user));
+		return user;
+	}
 
-    @GetMapping("/testIdeaShortcuts")
-    public String testIdeaShortcuts() {
-        return "success";
-    }
+	@GetMapping("/testIdeaShortcuts")
+	public String testIdeaShortcuts() {
+		return "success";
+	}
+
 }

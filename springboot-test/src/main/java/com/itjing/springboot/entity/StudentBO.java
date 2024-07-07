@@ -11,14 +11,14 @@ import java.time.LocalDateTime;
 @Data
 public class StudentBO {
 
-    /**
-     * 学生姓名
-     */
-    private String studentName;
+	/**
+	 * 学生姓名
+	 */
+	private String studentName;
 
-    /**
-     * 创建时间
-     */
-    private LocalDateTime createTime;
+	/**
+	 * 创建时间
+	 */
+	private LocalDateTime createTime;
 
 }

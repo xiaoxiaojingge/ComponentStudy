@@ -11,10 +11,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 @Slf4j
 class RedisStudyApplicationTests {
 
-    @Test
-    void contextLoads() {
-        User user = new User(1, "lijing");
-        RedisUtil.StringOps.set("user", JSONObject.toJSONString(user));
-    }
+	@Test
+	void contextLoads() {
+		User user = new User(1, "lijing");
+		RedisUtil.StringOps.set("user", JSONObject.toJSONString(user));
+	}
 
 }

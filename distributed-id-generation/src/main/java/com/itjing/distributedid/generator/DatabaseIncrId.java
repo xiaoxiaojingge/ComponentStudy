@@ -16,17 +16,22 @@ import java.util.Objects;
  */
 @Component
 public class DatabaseIncrId implements IdGenerator {
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-    String sql = "insert into SEQUENCE_ID(value) values ('1')";
-    PreparedStatementCreatorFactory preparedStatementCreatorFactory = new PreparedStatementCreatorFactory(sql);
 
-    @Override
-    public String generateId(int bizType) {
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-        preparedStatementCreatorFactory.setReturnGeneratedKeys(true);
-        PreparedStatementCreator preparedStatementCreator = preparedStatementCreatorFactory.newPreparedStatementCreator(new ArrayList<>());
-        jdbcTemplate.update(preparedStatementCreator, keyHolder);
-        return Objects.toString(keyHolder.getKey());
-    }
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+
+	String sql = "insert into SEQUENCE_ID(value) values ('1')";
+
+	PreparedStatementCreatorFactory preparedStatementCreatorFactory = new PreparedStatementCreatorFactory(sql);
+
+	@Override
+	public String generateId(int bizType) {
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		preparedStatementCreatorFactory.setReturnGeneratedKeys(true);
+		PreparedStatementCreator preparedStatementCreator = preparedStatementCreatorFactory
+			.newPreparedStatementCreator(new ArrayList<>());
+		jdbcTemplate.update(preparedStatementCreator, keyHolder);
+		return Objects.toString(keyHolder.getKey());
+	}
+
 }

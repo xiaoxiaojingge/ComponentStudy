@@ -1,13 +1,12 @@
 package com.itjing.security.controller;
 
-
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author lijing
@@ -18,4 +17,3 @@ import org.springframework.web.bind.annotation.RestController;
 public class RolesController {
 
 }
-

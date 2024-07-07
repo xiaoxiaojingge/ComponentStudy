@@ -30,44 +30,50 @@ import java.util.List;
 @Component
 public class RateLimiterAspect {
 
-    private static final Logger log = LoggerFactory.getLogger(RateLimiterAspect.class);
+	private static final Logger log = LoggerFactory.getLogger(RateLimiterAspect.class);
 
-    @Autowired
-    private RedisTemplate<Object, Object> redisTemplate;
+	@Autowired
+	private RedisTemplate<Object, Object> redisTemplate;
 
-    @Autowired
-    private RedisScript<Long> limitScript;
+	@Autowired
+	private RedisScript<Long> limitScript;
 
-    @Before("@annotation(rateLimiter)")
-    public void doBefore(JoinPoint point, RateLimiter rateLimiter) throws Throwable {
-        String key = rateLimiter.key();
-        int time = rateLimiter.time();
-        int count = rateLimiter.count();
+	@Before("@annotation(rateLimiter)")
+	public void doBefore(JoinPoint point, RateLimiter rateLimiter) throws Throwable {
+		String key = rateLimiter.key();
+		int time = rateLimiter.time();
+		int count = rateLimiter.count();
 
-        String combineKey = getCombineKey(rateLimiter, point);
-        List<Object> keys = Collections.singletonList(combineKey);
-        try {
-            Long number = redisTemplate.execute(limitScript, keys, count, time);
-            if (number==null || number.intValue() > count) {
-                throw new ServiceException("访问过于频繁，请稍候再试");
-            }
-            log.info("限制请求'{}',当前请求'{}',缓存key'{}'", count, number.intValue(), key);
-        } catch (ServiceException e) {
-            throw e;
-        } catch (Exception e) {
-            throw new RuntimeException("服务器限流异常，请稍候再试");
-        }
-    }
+		String combineKey = getCombineKey(rateLimiter, point);
+		List<Object> keys = Collections.singletonList(combineKey);
+		try {
+			Long number = redisTemplate.execute(limitScript, keys, count, time);
+			if (number == null || number.intValue() > count) {
+				throw new ServiceException("访问过于频繁，请稍候再试");
+			}
+			log.info("限制请求'{}',当前请求'{}',缓存key'{}'", count, number.intValue(), key);
+		}
+		catch (ServiceException e) {
+			throw e;
+		}
+		catch (Exception e) {
+			throw new RuntimeException("服务器限流异常，请稍候再试");
+		}
+	}
 
-    public String getCombineKey(RateLimiter rateLimiter, JoinPoint point) {
-        StringBuffer stringBuffer = new StringBuffer(rateLimiter.key());
-        if (rateLimiter.limitType() == LimitType.IP) {
-            stringBuffer.append(IpUtils.getIpAddr(((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest())).append("-");
-        }
-        MethodSignature signature = (MethodSignature) point.getSignature();
-        Method method = signature.getMethod();
-        Class<?> targetClass = method.getDeclaringClass();
-        stringBuffer.append(targetClass.getName()).append("-").append(method.getName());
-        return stringBuffer.toString();
-    }
+	public String getCombineKey(RateLimiter rateLimiter, JoinPoint point) {
+		StringBuffer stringBuffer = new StringBuffer(rateLimiter.key());
+		if (rateLimiter.limitType() == LimitType.IP) {
+			stringBuffer
+				.append(IpUtils.getIpAddr(
+						((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest()))
+				.append("-");
+		}
+		MethodSignature signature = (MethodSignature) point.getSignature();
+		Method method = signature.getMethod();
+		Class<?> targetClass = method.getDeclaringClass();
+		stringBuffer.append(targetClass.getName()).append("-").append(method.getName());
+		return stringBuffer.toString();
+	}
+
 }

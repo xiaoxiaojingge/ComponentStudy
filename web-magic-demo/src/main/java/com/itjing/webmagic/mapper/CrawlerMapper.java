@@ -8,5 +8,7 @@ import com.itjing.webmagic.entity.CmsContentPO;
  * @description
  */
 public interface CrawlerMapper {
-    int addCmsContent(CmsContentPO record);
+
+	int addCmsContent(CmsContentPO record);
+
 }

@@ -17,14 +17,14 @@ import java.util.Date;
 @RequestMapping("/limit")
 public class TestLimitController {
 
-    /**
-     * 每一个 IP 地址，在 5 秒内只能访问 3 次
-     * @return
-     */
-    @GetMapping("/hello")
-    @RateLimiter(time = 5, count = 3, limitType = LimitType.IP)
-    public String hello() {
-        return "hello>>>" + new Date();
-    }
+	/**
+	 * 每一个 IP 地址，在 5 秒内只能访问 3 次
+	 * @return
+	 */
+	@GetMapping("/hello")
+	@RateLimiter(time = 5, count = 3, limitType = LimitType.IP)
+	public String hello() {
+		return "hello>>>" + new Date();
+	}
 
 }

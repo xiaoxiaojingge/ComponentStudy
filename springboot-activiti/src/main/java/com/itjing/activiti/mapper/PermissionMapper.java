@@ -13,13 +13,11 @@ import java.util.List;
 
 public interface PermissionMapper {
 
-
-    /**
-     * 查询用户的权限根据用户查询权限
-     *
-     * @return
-     */
-    @Select("select * from permission")
-    List<Permission> findAllPermission();
+	/**
+	 * 查询用户的权限根据用户查询权限
+	 * @return
+	 */
+	@Select("select * from permission")
+	List<Permission> findAllPermission();
 
 }

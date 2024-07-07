@@ -7,5 +7,7 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface UserDAO {
-    User findById(Integer id);
+
+	User findById(Integer id);
+
 }

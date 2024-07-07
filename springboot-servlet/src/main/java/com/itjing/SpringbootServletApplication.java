@@ -15,36 +15,36 @@ import org.springframework.context.annotation.Bean;
 @ServletComponentScan // 2、扫描Servlet
 public class SpringbootServletApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(SpringbootServletApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(SpringbootServletApplication.class, args);
+	}
 
-    // 3、注册Servlet
-    @Bean
-    public ServletRegistrationBean<HelloServlet> servlet() {
-        // 当配置了uelMappings，那么Servlet自己的配置就不会生效
-        ServletRegistrationBean<HelloServlet> bean = new ServletRegistrationBean<>(new HelloServlet(), "/hi");
-        // 对servlet进行设置
-        bean.setLoadOnStartup(1);
-        return bean;
-    }
-    // 4、启动访问
+	// 3、注册Servlet
+	@Bean
+	public ServletRegistrationBean<HelloServlet> servlet() {
+		// 当配置了uelMappings，那么Servlet自己的配置就不会生效
+		ServletRegistrationBean<HelloServlet> bean = new ServletRegistrationBean<>(new HelloServlet(), "/hi");
+		// 对servlet进行设置
+		bean.setLoadOnStartup(1);
+		return bean;
+	}
+	// 4、启动访问
 
-    // 注册过滤器
-    @Bean
-    public FilterRegistrationBean<HelloFilter> filter() {
-        FilterRegistrationBean<HelloFilter> bean = new FilterRegistrationBean<>(new HelloFilter());
-        // 对过滤器进行设置...
+	// 注册过滤器
+	@Bean
+	public FilterRegistrationBean<HelloFilter> filter() {
+		FilterRegistrationBean<HelloFilter> bean = new FilterRegistrationBean<>(new HelloFilter());
+		// 对过滤器进行设置...
 
-        return bean;
-    }
+		return bean;
+	}
 
-    // 注册监听器
-    @Bean
-    public ServletListenerRegistrationBean<MyListener> listener() {
-        ServletListenerRegistrationBean<MyListener> bean = new ServletListenerRegistrationBean<>(new MyListener());
-        System.out.println("listening.......");
-        return bean;
-    }
+	// 注册监听器
+	@Bean
+	public ServletListenerRegistrationBean<MyListener> listener() {
+		ServletListenerRegistrationBean<MyListener> bean = new ServletListenerRegistrationBean<>(new MyListener());
+		System.out.println("listening.......");
+		return bean;
+	}
 
 }

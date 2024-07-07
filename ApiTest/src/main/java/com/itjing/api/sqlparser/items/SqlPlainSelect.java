@@ -1,6 +1,5 @@
 package com.itjing.api.sqlparser.items;
 
-
 import com.itjing.api.sqlparser.ParserItem;
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.statement.select.FromItem;
@@ -13,61 +12,66 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SqlPlainSelect implements ParserItem {
-    private PlainSelect plainSelect;
 
-    private List<SqlSelectItem> sqlSelectItems = new ArrayList<>();
-    private SqlFromItem sqlFromItem ;
-    private SqlWhere sqlWhere;
-    private List<SqlJoin> sqlJoins = new ArrayList<>();
+	private PlainSelect plainSelect;
 
-    public SqlPlainSelect(PlainSelect plainSelect) {
-        this.plainSelect = plainSelect;
-    }
+	private List<SqlSelectItem> sqlSelectItems = new ArrayList<>();
 
-    public void parser() {
-        // select 元素解析
-        List<SelectItem> selectItems = plainSelect.getSelectItems();
-        for (SelectItem selectItem : selectItems) {
-            SqlSelectItem sqlSelectItem = new SqlSelectItem(selectItem);
-            this.sqlSelectItems.add(sqlSelectItem);
-            sqlSelectItem.parser();
-        }
+	private SqlFromItem sqlFromItem;
 
-        // from 信息解析
-        FromItem fromItem = plainSelect.getFromItem();
-        this.sqlFromItem = new SqlFromItem(fromItem);
-        sqlFromItem.parser();
+	private SqlWhere sqlWhere;
 
-        // 解析表达式解析
-        Expression where = plainSelect.getWhere();
-        if(where != null) {
-            this.sqlWhere = new SqlWhere(where);
-            sqlWhere.parser();
-        }
+	private List<SqlJoin> sqlJoins = new ArrayList<>();
 
-        List<Join> joins = plainSelect.getJoins();
-        if(CollectionUtils.isNotEmpty(joins)) {
-            for (Join join : joins) {
-                SqlJoin sqlJoin = new SqlJoin(join);
-                this.sqlJoins.add(sqlJoin);
-                sqlJoin.parser();
-            }
-        }
-    }
+	public SqlPlainSelect(PlainSelect plainSelect) {
+		this.plainSelect = plainSelect;
+	}
 
-    public List<SqlSelectItem> getSqlSelectItems() {
-        return sqlSelectItems;
-    }
+	public void parser() {
+		// select 元素解析
+		List<SelectItem> selectItems = plainSelect.getSelectItems();
+		for (SelectItem selectItem : selectItems) {
+			SqlSelectItem sqlSelectItem = new SqlSelectItem(selectItem);
+			this.sqlSelectItems.add(sqlSelectItem);
+			sqlSelectItem.parser();
+		}
 
-    public SqlFromItem getSqlFromItem() {
-        return sqlFromItem;
-    }
+		// from 信息解析
+		FromItem fromItem = plainSelect.getFromItem();
+		this.sqlFromItem = new SqlFromItem(fromItem);
+		sqlFromItem.parser();
 
-    public SqlWhere getSqlWhere() {
-        return sqlWhere;
-    }
+		// 解析表达式解析
+		Expression where = plainSelect.getWhere();
+		if (where != null) {
+			this.sqlWhere = new SqlWhere(where);
+			sqlWhere.parser();
+		}
 
-    public List<SqlJoin> getSqlJoins() {
-        return sqlJoins;
-    }
+		List<Join> joins = plainSelect.getJoins();
+		if (CollectionUtils.isNotEmpty(joins)) {
+			for (Join join : joins) {
+				SqlJoin sqlJoin = new SqlJoin(join);
+				this.sqlJoins.add(sqlJoin);
+				sqlJoin.parser();
+			}
+		}
+	}
+
+	public List<SqlSelectItem> getSqlSelectItems() {
+		return sqlSelectItems;
+	}
+
+	public SqlFromItem getSqlFromItem() {
+		return sqlFromItem;
+	}
+
+	public SqlWhere getSqlWhere() {
+		return sqlWhere;
+	}
+
+	public List<SqlJoin> getSqlJoins() {
+		return sqlJoins;
+	}
+
 }

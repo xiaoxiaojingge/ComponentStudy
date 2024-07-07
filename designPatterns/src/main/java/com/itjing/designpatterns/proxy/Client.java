@@ -6,9 +6,11 @@ package com.itjing.designpatterns.proxy;
  * @Description: 客户端
  */
 public class Client {
-    public static void main(String[] args) {
-        // 注意，我们要用代理来实例化接口
-        FoodService foodService = new FoodServiceProxy();
-        foodService.makeChicken();
-    }
+
+	public static void main(String[] args) {
+		// 注意，我们要用代理来实例化接口
+		FoodService foodService = new FoodServiceProxy();
+		foodService.makeChicken();
+	}
+
 }

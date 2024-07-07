@@ -11,13 +11,14 @@ import java.util.Date;
 @Component
 public class MPMetaObjectHandler implements MetaObjectHandler {
 
-    @Override
-    public void insertFill(MetaObject metaObject) {
-        this.strictInsertFill(metaObject, "createTime", () -> new Date(), Date.class);
-    }
+	@Override
+	public void insertFill(MetaObject metaObject) {
+		this.strictInsertFill(metaObject, "createTime", () -> new Date(), Date.class);
+	}
 
-    @Override
-    public void updateFill(MetaObject metaObject) {
-        this.strictUpdateFill(metaObject, "updateTime", () -> new Date(), Date.class);
-    }
+	@Override
+	public void updateFill(MetaObject metaObject) {
+		this.strictUpdateFill(metaObject, "updateTime", () -> new Date(), Date.class);
+	}
+
 }

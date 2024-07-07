@@ -8,9 +8,10 @@ import java.lang.reflect.Method;
 
 public class ThirdInterceptorImpl implements MethodInterceptor {
 
-    @Override
-    public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-        System.out.println("第三个拦截方法");
-        return null;
-    }
+	@Override
+	public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
+		System.out.println("第三个拦截方法");
+		return null;
+	}
+
 }

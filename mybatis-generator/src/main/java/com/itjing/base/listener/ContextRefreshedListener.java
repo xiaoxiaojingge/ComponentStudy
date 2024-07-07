@@ -15,22 +15,26 @@ import java.util.Map;
  * @description
  */
 public class ContextRefreshedListener implements ApplicationListener<ContextRefreshedEvent> {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ContextRefreshedListener.class);
 
-    @Override
-    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        LOGGER.debug(">>>>> spring初始化完毕 <<<<<");
-        // spring初始化完毕后，通过反射调用所有使用BaseService注解的initMapper方法
-        Map<String, Object> baseServices = contextRefreshedEvent.getApplicationContext().getBeansWithAnnotation(BaseService.class);
-        for (Object service : baseServices.values()) {
-            LOGGER.debug(">>>>> {}.initMapper()", service.getClass().getName());
-            try {
-                Method initMapper = service.getClass().getMethod("initMapper");
-                initMapper.invoke(service);
-            } catch (Exception e) {
-                LOGGER.error("初始化BaseService的initMapper方法异常", e);
-                e.printStackTrace();
-            }
-        }
-    }
+	private static final Logger LOGGER = LoggerFactory.getLogger(ContextRefreshedListener.class);
+
+	@Override
+	public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
+		LOGGER.debug(">>>>> spring初始化完毕 <<<<<");
+		// spring初始化完毕后，通过反射调用所有使用BaseService注解的initMapper方法
+		Map<String, Object> baseServices = contextRefreshedEvent.getApplicationContext()
+			.getBeansWithAnnotation(BaseService.class);
+		for (Object service : baseServices.values()) {
+			LOGGER.debug(">>>>> {}.initMapper()", service.getClass().getName());
+			try {
+				Method initMapper = service.getClass().getMethod("initMapper");
+				initMapper.invoke(service);
+			}
+			catch (Exception e) {
+				LOGGER.error("初始化BaseService的initMapper方法异常", e);
+				e.printStackTrace();
+			}
+		}
+	}
+
 }

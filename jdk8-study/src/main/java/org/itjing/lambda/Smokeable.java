@@ -7,10 +7,12 @@ package org.itjing.lambda;
  */
 @FunctionalInterface
 public interface Smokeable {
-    /**
-     * 抽烟
-     * @param name
-     * @return
-     */
-    int smoking(String name);
+
+	/**
+	 * 抽烟
+	 * @param name
+	 * @return
+	 */
+	int smoking(String name);
+
 }

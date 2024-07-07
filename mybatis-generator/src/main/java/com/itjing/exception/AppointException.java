@@ -13,33 +13,34 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class AppointException extends RuntimeException {
-    private Integer code;
 
-    public AppointException(Integer code, String message) {
-        super(message);
-        this.setCode(code);
-    }
+	private Integer code;
 
-    public AppointException(String message) {
-        super(message);
-    }
+	public AppointException(Integer code, String message) {
+		super(message);
+		this.setCode(code);
+	}
 
-    /**
-     * 指定 code和 message
-     *
-     * @param code
-     * @param message
-     * @return
-     */
-    public static AppointException errorMessage(Integer code, String message) {
-        return new AppointException(code, message);
-    }
+	public AppointException(String message) {
+		super(message);
+	}
 
-    /**
-     * @param message 错误信息
-     * @return
-     */
-    public static AppointException errorMessage(String message) {
-        return new AppointException(message);
-    }
+	/**
+	 * 指定 code和 message
+	 * @param code
+	 * @param message
+	 * @return
+	 */
+	public static AppointException errorMessage(Integer code, String message) {
+		return new AppointException(code, message);
+	}
+
+	/**
+	 * @param message 错误信息
+	 * @return
+	 */
+	public static AppointException errorMessage(String message) {
+		return new AppointException(message);
+	}
+
 }

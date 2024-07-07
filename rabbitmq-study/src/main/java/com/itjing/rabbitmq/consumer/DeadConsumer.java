@@ -17,9 +17,11 @@ import java.util.Map;
 @Component
 @RabbitListener(queues = "deadQueue")
 public class DeadConsumer {
-    @RabbitHandler
-    public void process(Map<String, Object> message, Channel channel, Message mqMsg) throws IOException {
-        System.out.println("死信队列收到消息 : " + message.toString());
-        channel.basicAck(mqMsg.getMessageProperties().getDeliveryTag(), false);
-    }
+
+	@RabbitHandler
+	public void process(Map<String, Object> message, Channel channel, Message mqMsg) throws IOException {
+		System.out.println("死信队列收到消息 : " + message.toString());
+		channel.basicAck(mqMsg.getMessageProperties().getDeliveryTag(), false);
+	}
+
 }

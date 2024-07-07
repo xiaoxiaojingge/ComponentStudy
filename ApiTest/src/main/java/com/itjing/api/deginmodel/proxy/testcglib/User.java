@@ -1,35 +1,38 @@
 package com.itjing.api.deginmodel.proxy.testcglib;
 
 public class User {
-    private String name;
-    private int age;
 
-    public User() {
-    }
+	private String name;
 
-    public User(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
+	private int age;
 
-    public String getName() {
-        return name;
-    }
+	public User() {
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public User(String name, int age) {
+		this.name = name;
+		this.age = age;
+	}
 
-    public int getAge() {
-        return age;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    @Override
-    public String toString() {
-        return this.name+"|"+this.age;
-    }
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	@Override
+	public String toString() {
+		return this.name + "|" + this.age;
+	}
+
 }

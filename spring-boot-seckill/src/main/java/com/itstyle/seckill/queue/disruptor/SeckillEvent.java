@@ -3,16 +3,18 @@ package com.itstyle.seckill.queue.disruptor;
 import java.io.Serializable;
 
 /**
- * 事件对象（秒杀事件）
- * 创建者 科帮网
+ * 事件对象（秒杀事件） 创建者 科帮网
  */
 public class SeckillEvent implements Serializable {
+
 	private static final long serialVersionUID = 1L;
+
 	private long seckillId;
+
 	private long userId;
-	
-	public SeckillEvent(){
-		
+
+	public SeckillEvent() {
+
 	}
 
 	public long getSeckillId() {
@@ -30,5 +32,5 @@ public class SeckillEvent implements Serializable {
 	public void setUserId(long userId) {
 		this.userId = userId;
 	}
-	
+
 }

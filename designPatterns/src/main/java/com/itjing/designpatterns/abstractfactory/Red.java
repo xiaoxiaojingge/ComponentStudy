@@ -6,8 +6,10 @@ package com.itjing.designpatterns.abstractfactory;
  * @Description:
  */
 public class Red implements Color {
-    @Override
-    public void fill() {
-        System.out.println("The color is red");
-    }
+
+	@Override
+	public void fill() {
+		System.out.println("The color is red");
+	}
+
 }

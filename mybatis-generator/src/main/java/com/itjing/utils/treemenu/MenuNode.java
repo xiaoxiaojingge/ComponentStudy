@@ -16,24 +16,30 @@ import java.util.List;
 @ToString
 public class MenuNode implements Comparable<MenuNode> {
 
-    private String id;
-    private String menuCode;
-    private String menuName;
-    private String pid;
-    private List<MenuNode> children;
+	private String id;
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof MenuNode) {
-            MenuNode node = (MenuNode) obj;
-            return this.id.equals(node.getId());
-        } else {
-            return super.equals(obj);
-        }
-    }
+	private String menuCode;
 
-    @Override
-    public int compareTo(MenuNode o) {
-        return this.getMenuCode().compareTo(o.getMenuCode());
-    }
+	private String menuName;
+
+	private String pid;
+
+	private List<MenuNode> children;
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof MenuNode) {
+			MenuNode node = (MenuNode) obj;
+			return this.id.equals(node.getId());
+		}
+		else {
+			return super.equals(obj);
+		}
+	}
+
+	@Override
+	public int compareTo(MenuNode o) {
+		return this.getMenuCode().compareTo(o.getMenuCode());
+	}
+
 }

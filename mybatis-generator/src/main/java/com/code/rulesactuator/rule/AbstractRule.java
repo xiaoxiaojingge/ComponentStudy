@@ -9,16 +9,17 @@ import com.code.rulesactuator.dto.RuleDTO;
  */
 public abstract class AbstractRule implements BaseRule {
 
-    protected <T> T convert(RuleDTO dto) {
-        return (T) dto;
-    }
+	protected <T> T convert(RuleDTO dto) {
+		return (T) dto;
+	}
 
-    @Override
-    public boolean execute(RuleDTO dto) {
-        return executeRule(convert(dto));
-    }
+	@Override
+	public boolean execute(RuleDTO dto) {
+		return executeRule(convert(dto));
+	}
 
-    protected <T> boolean executeRule(T t) {
-        return true;
-    }
+	protected <T> boolean executeRule(T t) {
+		return true;
+	}
+
 }

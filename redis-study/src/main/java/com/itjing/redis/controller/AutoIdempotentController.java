@@ -17,19 +17,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/autoIdempotent")
 public class AutoIdempotentController {
 
-    @Autowired
-    private TokenService tokenService;
+	@Autowired
+	private TokenService tokenService;
 
-    @GetMapping("/token")
-    public String token() {
-        return tokenService.createToken();
-    }
+	@GetMapping("/token")
+	public String token() {
+		return tokenService.createToken();
+	}
 
-    @AutoIdempotent
-    @PostMapping("/dealSomething")
-    public String dealSomething() {
-        return "success";
-    }
-
+	@AutoIdempotent
+	@PostMapping("/dealSomething")
+	public String dealSomething() {
+		return "success";
+	}
 
 }

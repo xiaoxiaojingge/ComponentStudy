@@ -10,16 +10,18 @@ import lombok.Getter;
 @Getter
 public enum UserErrorEnum implements BaseErrorInfo {
 
-    /**
-     * 用户不存在
-     */
-    USER_NOT_FOUND(1001, "用户不存在!");
+	/**
+	 * 用户不存在
+	 */
+	USER_NOT_FOUND(1001, "用户不存在!");
 
-    private Integer errorCode;
-    private String errorMsg;
+	private Integer errorCode;
 
-    UserErrorEnum(Integer errorCode, String errorMsg) {
-        this.errorCode = errorCode;
-        this.errorMsg = errorMsg;
-    }
+	private String errorMsg;
+
+	UserErrorEnum(Integer errorCode, String errorMsg) {
+		this.errorCode = errorCode;
+		this.errorMsg = errorMsg;
+	}
+
 }

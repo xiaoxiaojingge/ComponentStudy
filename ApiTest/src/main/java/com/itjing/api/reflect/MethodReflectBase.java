@@ -5,20 +5,26 @@ package com.itjing.api.reflect;
  */
 public abstract class MethodReflectBase {
 
-    public void name(String name){};
+	public void name(String name) {
+	};
 
-    class Inner{
-        public void normalMethod(String name){}
-    }
+	class Inner {
 
-    private class InnerPrivate{
+		public void normalMethod(String name) {
+		}
 
-    }
-    protected class InnerProvide{
+	}
 
-    }
+	private class InnerPrivate {
 
-    public class InnerPublic{
+	}
 
-    }
+	protected class InnerProvide {
+
+	}
+
+	public class InnerPublic {
+
+	}
+
 }

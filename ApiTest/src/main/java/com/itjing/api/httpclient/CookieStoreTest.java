@@ -20,39 +20,40 @@ import java.util.List;
 
 public class CookieStoreTest {
 
-    @Test
-    public void testCookieStore() throws IOException {
-        BasicCookieStore basicCookieStore = new BasicCookieStore();
-        HttpClient  httpClient = HttpClients.custom().setDefaultCookieStore(basicCookieStore).build();
-        HttpPost httpPost = new HttpPost("http://192.168.0.63:12345/driver/driverLogin");
+	@Test
+	public void testCookieStore() throws IOException {
+		BasicCookieStore basicCookieStore = new BasicCookieStore();
+		HttpClient httpClient = HttpClients.custom().setDefaultCookieStore(basicCookieStore).build();
+		HttpPost httpPost = new HttpPost("http://192.168.0.63:12345/driver/driverLogin");
 
-        NameValuePair nameValuePair = new BasicNameValuePair("phone", "17620411498");
-        NameValuePair code = new BasicNameValuePair("code", "942634");
+		NameValuePair nameValuePair = new BasicNameValuePair("phone", "17620411498");
+		NameValuePair code = new BasicNameValuePair("code", "942634");
 
-        HttpEntity httpEntity = new UrlEncodedFormEntity(Arrays.asList(nameValuePair, code));
-        httpPost.setEntity(httpEntity);
+		HttpEntity httpEntity = new UrlEncodedFormEntity(Arrays.asList(nameValuePair, code));
+		httpPost.setEntity(httpEntity);
 
-        System.out.println("headers:");
-        CloseableHttpResponse response = (CloseableHttpResponse) httpClient.execute(httpPost);
-        Header[] allHeaders = response.getAllHeaders();
-        for (Header allHeader : allHeaders) {
-            System.out.println(allHeader);
-        }
+		System.out.println("headers:");
+		CloseableHttpResponse response = (CloseableHttpResponse) httpClient.execute(httpPost);
+		Header[] allHeaders = response.getAllHeaders();
+		for (Header allHeader : allHeaders) {
+			System.out.println(allHeader);
+		}
 
-        System.out.println("cookies:");
-        List<Cookie> cookies = basicCookieStore.getCookies();
-        for (Cookie cookie : cookies) {
-            System.out.println(cookie);
-            String name = cookie.getName();
-            if("SESSION".equals(name)){
-                String value = cookie.getValue();
-                // 保存此值 TODO
-                System.out.println(value);
-            }
-        }
+		System.out.println("cookies:");
+		List<Cookie> cookies = basicCookieStore.getCookies();
+		for (Cookie cookie : cookies) {
+			System.out.println(cookie);
+			String name = cookie.getName();
+			if ("SESSION".equals(name)) {
+				String value = cookie.getValue();
+				// 保存此值 TODO
+				System.out.println(value);
+			}
+		}
 
-        System.out.println("entity");
-        HttpEntity entity = response.getEntity();
-        System.out.println(EntityUtils.toString(entity));
-    }
+		System.out.println("entity");
+		HttpEntity entity = response.getEntity();
+		System.out.println(EntityUtils.toString(entity));
+	}
+
 }

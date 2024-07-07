@@ -15,65 +15,67 @@ import lombok.ToString;
 @Getter
 @ToString
 public class Result {
-    /**
-     * 请求响应状态码
-     */
-    private int code;
-    /**
-     * 请求结果描述信息
-     */
-    private String msg;
-    /**
-     * 请求结果数据
-     */
-    private Object data;
 
-    protected Result(int code, String msg, Object data) {
-        this.code = code;
-        this.msg = msg;
-        this.data = data;
-    }
+	/**
+	 * 请求响应状态码
+	 */
+	private int code;
 
-    public Result setCode(int code) {
-        this.code = code;
-        return this;
-    }
+	/**
+	 * 请求结果描述信息
+	 */
+	private String msg;
 
-    public Result setMsg(String msg) {
-        this.msg = msg;
-        return this;
-    }
+	/**
+	 * 请求结果数据
+	 */
+	private Object data;
 
-    public Result setData(Object data) {
-        this.data = data;
-        return this;
-    }
+	protected Result(int code, String msg, Object data) {
+		this.code = code;
+		this.msg = msg;
+		this.data = data;
+	}
 
-    /**
-     * 将key-value形式的成对出现的参数转换为JSON
-     *
-     * @param objs
-     * @return
-     */
-    public Result setData(Object... objs) {
-        if (objs.length % 2 != 0) {
-            throw new RuntimeException("参数个数不对");
-        }
-        for (int i = 0; i < objs.length; i += 2) {
-            if (!(objs[i] instanceof String)) {
-                throw new RuntimeException("奇数参数必须为字符串");
-            }
-        }
-        ObjectMapper objectMapper = new ObjectMapper();
-        // 下面两行解决Java8新日期API序列化问题
-        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        objectMapper.registerModule(new JavaTimeModule());
-        ObjectNode objectNode = objectMapper.createObjectNode();
-        for (int i = 0; i < objs.length; i += 2) {
-            objectNode.putPOJO((String) objs[i], objs[i + 1]);
-        }
-        this.data = objectNode;
-        return this;
-    }
+	public Result setCode(int code) {
+		this.code = code;
+		return this;
+	}
+
+	public Result setMsg(String msg) {
+		this.msg = msg;
+		return this;
+	}
+
+	public Result setData(Object data) {
+		this.data = data;
+		return this;
+	}
+
+	/**
+	 * 将key-value形式的成对出现的参数转换为JSON
+	 * @param objs
+	 * @return
+	 */
+	public Result setData(Object... objs) {
+		if (objs.length % 2 != 0) {
+			throw new RuntimeException("参数个数不对");
+		}
+		for (int i = 0; i < objs.length; i += 2) {
+			if (!(objs[i] instanceof String)) {
+				throw new RuntimeException("奇数参数必须为字符串");
+			}
+		}
+		ObjectMapper objectMapper = new ObjectMapper();
+		// 下面两行解决Java8新日期API序列化问题
+		objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+		objectMapper.registerModule(new JavaTimeModule());
+		ObjectNode objectNode = objectMapper.createObjectNode();
+		for (int i = 0; i < objs.length; i += 2) {
+			objectNode.putPOJO((String) objs[i], objs[i + 1]);
+		}
+		this.data = objectNode;
+		return this;
+	}
 
 }

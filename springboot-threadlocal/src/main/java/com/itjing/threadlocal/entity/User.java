@@ -7,23 +7,21 @@ package com.itjing.threadlocal.entity;
  */
 public class User {
 
-    private Long id;
-    private String name;
+	private Long id;
 
-    public User() {
-    }
+	private String name;
 
-    public User(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+	public User() {
+	}
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
+	public User(Long id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "User{" + "id=" + id + ", name='" + name + '\'' + '}';
+	}
 
 }

@@ -25,44 +25,43 @@ import java.io.IOException;
 @Slf4j
 public class OperateService {
 
-    @Autowired
-    private RestHighLevelClient restHighLevelClient;
+	@Autowired
+	private RestHighLevelClient restHighLevelClient;
 
-    /**
-     * 添加文档
-     *
-     * @param addDocDto
-     * @throws IOException
-     */
-    public void addDoc(AddDocDto addDocDto) throws IOException {
+	/**
+	 * 添加文档
+	 * @param addDocDto
+	 * @throws IOException
+	 */
+	public void addDoc(AddDocDto addDocDto) throws IOException {
 
-        IndexRequest indexRequest = new IndexRequest(addDocDto.getIndexName());
+		IndexRequest indexRequest = new IndexRequest(addDocDto.getIndexName());
 
-        indexRequest.source(JSONObject.toJSONString(addDocDto.getData()), XContentType.JSON);
-        indexRequest.id(addDocDto.getId());
+		indexRequest.source(JSONObject.toJSONString(addDocDto.getData()), XContentType.JSON);
+		indexRequest.id(addDocDto.getId());
 
-        // 创建索引
-        IndexResponse index = restHighLevelClient.index(indexRequest, RequestOptions.DEFAULT);
+		// 创建索引
+		IndexResponse index = restHighLevelClient.index(indexRequest, RequestOptions.DEFAULT);
 
-        log.info("执行结果:" + JSONObject.toJSONString(index));
-    }
+		log.info("执行结果:" + JSONObject.toJSONString(index));
+	}
 
-    /**
-     * 更新文档(仅仅根据id更新，是增量字段)
-     *
-     * @param updateDocDto
-     * @throws IOException
-     */
-    public void updateDoc3(UpdateDocDto updateDocDto) throws IOException {
+	/**
+	 * 更新文档(仅仅根据id更新，是增量字段)
+	 * @param updateDocDto
+	 * @throws IOException
+	 */
+	public void updateDoc3(UpdateDocDto updateDocDto) throws IOException {
 
-        UpdateRequest indexRequest = new UpdateRequest(updateDocDto.getIndexName(), updateDocDto.getId());
+		UpdateRequest indexRequest = new UpdateRequest(updateDocDto.getIndexName(), updateDocDto.getId());
 
-        // 设置数据
-        indexRequest.doc(updateDocDto.getData());
+		// 设置数据
+		indexRequest.doc(updateDocDto.getData());
 
-        // 更新文档
-        UpdateResponse update = restHighLevelClient.update(indexRequest, RequestOptions.DEFAULT);
+		// 更新文档
+		UpdateResponse update = restHighLevelClient.update(indexRequest, RequestOptions.DEFAULT);
 
-        log.info("执行结果:" + JSONObject.toJSONString(update));
-    }
+		log.info("执行结果:" + JSONObject.toJSONString(update));
+	}
+
 }

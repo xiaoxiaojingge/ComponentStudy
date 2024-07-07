@@ -13,11 +13,12 @@ import lombok.*;
 @ToString
 public class RuleDTO {
 
-    private String address;
+	private String address;
 
-    private Integer age;
+	private Integer age;
 
-    private String name;
+	private String name;
 
-    private String subject;
+	private String subject;
+
 }

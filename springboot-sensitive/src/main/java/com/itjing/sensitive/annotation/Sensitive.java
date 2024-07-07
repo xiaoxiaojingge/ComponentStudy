@@ -9,13 +9,13 @@ import java.lang.annotation.*;
  * @Author: lijing
  * @CreateTime: 2022-11-03 11:00
  */
-@Target({ElementType.FIELD, ElementType.TYPE})
+@Target({ ElementType.FIELD, ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface Sensitive {
 
-    SensitiveEnum mask() default SensitiveEnum.NO_MASK;
+	SensitiveEnum mask() default SensitiveEnum.NO_MASK;
 
-    String maskChar() default "*";
+	String maskChar() default "*";
 
 }

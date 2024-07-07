@@ -6,8 +6,10 @@ package com.itjing.designpatterns.factorymethod;
  * @Description:
  */
 public class BusImpl2Factory extends AbstractFactory {
-    @Override
-    public Bus create() {
-        return new BusImpl2();
-    }
+
+	@Override
+	public Bus create() {
+		return new BusImpl2();
+	}
+
 }

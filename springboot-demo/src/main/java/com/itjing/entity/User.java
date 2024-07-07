@@ -14,12 +14,12 @@ import lombok.*;
 @ToString
 public class User {
 
-    private Integer id;
+	private Integer id;
 
-    private String userName;
+	private String userName;
 
-    private String telphone;
+	private String telphone;
 
-    private String email;
+	private String email;
 
 }

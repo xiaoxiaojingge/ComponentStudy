@@ -20,49 +20,51 @@ import java.util.Objects;
  * @CreateTime: 2022-11-03 11:06
  */
 public class SensitiveSerializer extends StdScalarSerializer<Object> {
-    private SensitiveOperation operation;
 
-    private String maskChar;
+	private SensitiveOperation operation;
 
-    public SensitiveSerializer() {
-        super(String.class, false);
-        this.operation = null;
-        this.maskChar = null;
-    }
+	private String maskChar;
 
-    public SensitiveSerializer(SensitiveOperation operation, String maskChar) {
-        super(String.class, false);
-        this.operation = operation;
-        this.maskChar = maskChar;
-    }
+	public SensitiveSerializer() {
+		super(String.class, false);
+		this.operation = null;
+		this.maskChar = null;
+	}
 
+	public SensitiveSerializer(SensitiveOperation operation, String maskChar) {
+		super(String.class, false);
+		this.operation = operation;
+		this.maskChar = maskChar;
+	}
 
-    public boolean isEmpty(SerializerProvider prov, Object value) {
-        String str = (String) value;
-        return str.isEmpty();
-    }
+	public boolean isEmpty(SerializerProvider prov, Object value) {
+		String str = (String) value;
+		return str.isEmpty();
+	}
 
-    public void serialize(Object value, JsonGenerator gen, SerializerProvider provider) throws IOException {
-        if (Objects.isNull(operation)) {
-            String content = SensitiveEnum.ALL_MASK.operation().mask((String) value, maskChar);
-            gen.writeString(content);
-        } else {
-            String content = operation.mask((String) value, maskChar);
-            gen.writeString(content);
-        }
-    }
+	public void serialize(Object value, JsonGenerator gen, SerializerProvider provider) throws IOException {
+		if (Objects.isNull(operation)) {
+			String content = SensitiveEnum.ALL_MASK.operation().mask((String) value, maskChar);
+			gen.writeString(content);
+		}
+		else {
+			String content = operation.mask((String) value, maskChar);
+			gen.writeString(content);
+		}
+	}
 
-    public final void serializeWithType(Object value, JsonGenerator gen, SerializerProvider provider, TypeSerializer typeSer) throws IOException {
-        this.serialize(value, gen, provider);
-    }
+	public final void serializeWithType(Object value, JsonGenerator gen, SerializerProvider provider,
+			TypeSerializer typeSer) throws IOException {
+		this.serialize(value, gen, provider);
+	}
 
-    public JsonNode getSchema(SerializerProvider provider, Type typeHint) {
-        return this.createSchemaNode("string", true);
-    }
+	public JsonNode getSchema(SerializerProvider provider, Type typeHint) {
+		return this.createSchemaNode("string", true);
+	}
 
-    public void acceptJsonFormatVisitor(JsonFormatVisitorWrapper visitor, JavaType typeHint) throws JsonMappingException {
-        this.visitStringFormat(visitor, typeHint);
-    }
+	public void acceptJsonFormatVisitor(JsonFormatVisitorWrapper visitor, JavaType typeHint)
+			throws JsonMappingException {
+		this.visitStringFormat(visitor, typeHint);
+	}
 
 }
-

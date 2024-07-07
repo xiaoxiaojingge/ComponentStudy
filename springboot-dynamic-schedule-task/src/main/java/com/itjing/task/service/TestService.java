@@ -19,38 +19,38 @@ import java.util.Objects;
 @Slf4j
 public class TestService {
 
-    @Resource
-    private DynamicJobMapper dynamicJobMapper;
+	@Resource
+	private DynamicJobMapper dynamicJobMapper;
 
-    @Resource
-    private CronTaskRegistrar cronTaskRegistrar;
+	@Resource
+	private CronTaskRegistrar cronTaskRegistrar;
 
-    public void printInfo(Integer businessId) {
+	public void printInfo(Integer businessId) {
 
-        // 执行具体业务
-        log.info("businessId:{}", businessId);
+		// 执行具体业务
+		log.info("businessId:{}", businessId);
 
-        // 移除动态定时任务信息
-        // 可不清除，留作记录
-        // 任务执行完成可以修改状态为暂停
-        /*DynamicJob dynamicJob = dynamicJobMapper.selectByBusinessId(businessId);
-        if (Objects.nonNull(dynamicJob)) {
-            int deleteCount = dynamicJobMapper.deleteByPrimaryKey(dynamicJob.getJobId());
-            if (deleteCount == 0) {
-
-            } else {
-                if (dynamicJob.getJobStatus().equals(JobStatusConstant.NORMAL)) {
-                    LinkedHashMap existedMethodParams = JSONObject.parseObject(dynamicJob.getMethodParams(), LinkedHashMap.class);
-                    SchedulingRunnable task = new SchedulingRunnable(dynamicJob.getBeanName(), dynamicJob.getMethodName(), existedMethodParams);
-                    cronTaskRegistrar.removeCronTask(task);
-                }
-            }
-        }*/
-        DynamicJob dynamicJob = dynamicJobMapper.selectByBusinessId(businessId);
-        if (Objects.nonNull(dynamicJob)) {
-            dynamicJob.setJobStatus(JobStatusConstant.PAUSE);
-            dynamicJobMapper.updateByPrimaryKeySelective(dynamicJob);
-        }
-    }
+		// 移除动态定时任务信息
+		// 可不清除，留作记录
+		// 任务执行完成可以修改状态为暂停
+		/*
+		 * DynamicJob dynamicJob = dynamicJobMapper.selectByBusinessId(businessId); if
+		 * (Objects.nonNull(dynamicJob)) { int deleteCount =
+		 * dynamicJobMapper.deleteByPrimaryKey(dynamicJob.getJobId()); if (deleteCount ==
+		 * 0) {
+		 *
+		 * } else { if (dynamicJob.getJobStatus().equals(JobStatusConstant.NORMAL)) {
+		 * LinkedHashMap existedMethodParams =
+		 * JSONObject.parseObject(dynamicJob.getMethodParams(), LinkedHashMap.class);
+		 * SchedulingRunnable task = new SchedulingRunnable(dynamicJob.getBeanName(),
+		 * dynamicJob.getMethodName(), existedMethodParams);
+		 * cronTaskRegistrar.removeCronTask(task); } } }
+		 */
+		DynamicJob dynamicJob = dynamicJobMapper.selectByBusinessId(businessId);
+		if (Objects.nonNull(dynamicJob)) {
+			dynamicJob.setJobStatus(JobStatusConstant.PAUSE);
+			dynamicJobMapper.updateByPrimaryKeySelective(dynamicJob);
+		}
+	}
 
 }

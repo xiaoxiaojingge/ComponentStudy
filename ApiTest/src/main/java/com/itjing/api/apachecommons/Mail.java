@@ -16,7 +16,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-
 /**
  *
  * 作者:sanri <br/>
@@ -24,14 +23,19 @@ import java.util.Properties;
  * 功能:用于简单的邮件发送 ,固定发送人的<br/>
  */
 public class Mail {
+
 	private static String HOST = "smtp.163.com";
+
 	private static String SENDER_NAME = "ningxiangsanri";
+
 	private static String SENDER_EMAIL = "ningxiangsanri@163.com";
+
 	private static String SENDER_PASSWORD;
 
 	private final static String charset = "utf-8";
 
 	private final static Log logger = LogFactory.getLog(Mail.class);
+
 	public final static Map<String, String> MIME_MAP = new HashMap<String, String>();
 
 	/**
@@ -39,13 +43,9 @@ public class Mail {
 	 * 作者:sanri <br/>
 	 * 时间:2017-9-3上午10:11:22<br/>
 	 * 功能:普通无附件邮件发送 <br/>
-	 *
-	 * @param to
-	 *            发送给谁
-	 * @param subject
-	 *            主题
-	 * @param content
-	 *            内容
+	 * @param to 发送给谁
+	 * @param subject 主题
+	 * @param content 内容
 	 */
 	public static void sendMail(String to, String subject, String content) {
 		SimpleEmail email = new SimpleEmail();
@@ -60,7 +60,8 @@ public class Mail {
 			email.setSubject(subject);
 			email.setMsg(content);
 			email.send();
-		} catch (EmailException e) {
+		}
+		catch (EmailException e) {
 			e.printStackTrace();
 		}
 	}
@@ -70,18 +71,13 @@ public class Mail {
 	 * 作者:sanri <br/>
 	 * 时间:2017-9-3下午1:41:06<br/>
 	 * 功能:发送带附件的邮件 <br/>
-	 *
-	 * @param to
-	 *            发送给谁
-	 * @param subject
-	 *            主题
-	 * @param content
-	 *            内容
-	 * @param in
-	 *            文件输入流,内部关流
+	 * @param to 发送给谁
+	 * @param subject 主题
+	 * @param content 内容
+	 * @param in 文件输入流,内部关流
 	 * @param filename
 	 */
-	public static void sendMail(String to, String subject, String content, InputStream in, String filename)  {
+	public static void sendMail(String to, String subject, String content, InputStream in, String filename) {
 		MultiPartEmail email = new MultiPartEmail();
 		try {
 			// 设置主机,发送者信息
@@ -92,7 +88,8 @@ public class Mail {
 				String mime = parseMIME(filename);
 				DataSource ds = new ByteArrayDataSource(in, mime);
 				email.attach(ds, filename, null, EmailAttachment.ATTACHMENT);
-			} catch (IOException e) {
+			}
+			catch (IOException e) {
 				logger.error("添加附件时出错,附件有可能找不到或丢失:" + filename);
 				e.printStackTrace();
 			}
@@ -104,9 +101,11 @@ public class Mail {
 			email.setMsg(content);
 			email.send();
 
-		} catch (EmailException e) {
+		}
+		catch (EmailException e) {
 			e.printStackTrace();
-		} finally {
+		}
+		finally {
 			IOUtils.closeQuietly(in);
 		}
 	}
@@ -117,7 +116,6 @@ public class Mail {
 	 * 时间:2017-9-4下午12:46:09<br/>
 	 * 功能:根据文件名自动解析出 mime <br/>
 	 * 解析不出时使用 txt 类型
-	 *
 	 * @param filename
 	 * @return
 	 */
@@ -136,7 +134,6 @@ public class Mail {
 	 * 作者:sanri <br/>
 	 * 时间:2017-9-3下午3:23:08<br/>
 	 * 功能:发送 html 内容的邮件 <br/>
-	 *
 	 * @param to
 	 * @param subject
 	 * @param htmlContent
@@ -154,7 +151,8 @@ public class Mail {
 			email.setSubject(subject);
 			email.setMsg(htmlContent);
 			email.send();
-		} catch (EmailException e) {
+		}
+		catch (EmailException e) {
 			e.printStackTrace();
 		}
 	}
@@ -164,7 +162,6 @@ public class Mail {
 	 * 作者:sanri <br/>
 	 * 时间:2017-9-3下午3:23:08<br/>
 	 * 功能:发送 html 内容的邮件 <br/>
-	 *
 	 * @param to
 	 * @param subject
 	 * @param htmlContent
@@ -188,12 +185,14 @@ public class Mail {
 				String mime = parseMIME(filename);
 				DataSource ds = new ByteArrayDataSource(in, mime);
 				email.attach(ds, filename, null, EmailAttachment.ATTACHMENT);
-			} catch (IOException e) {
+			}
+			catch (IOException e) {
 				logger.error("添加附件时出错,附件有可能找不到或丢失:" + filename);
 				e.printStackTrace();
 			}
 			email.send();
-		} catch (EmailException e) {
+		}
+		catch (EmailException e) {
 			e.printStackTrace();
 		}
 	}
@@ -210,7 +209,8 @@ public class Mail {
 	 * @param in 输入流
 	 * @param filename 文件 名
 	 */
-	public static void sendHtmlMail(String to,String cc,String subject,String htmlContent, InputStream in, String filename){
+	public static void sendHtmlMail(String to, String cc, String subject, String htmlContent, InputStream in,
+			String filename) {
 	}
 
 	/**
@@ -218,7 +218,6 @@ public class Mail {
 	 * 作者:sanri <br/>
 	 * 时间:2017-9-3下午3:27:32<br/>
 	 * 功能:发送带图片的 html 邮件 <br/>
-	 *
 	 * @param to
 	 * @param subject
 	 * @param htmlContent
@@ -236,7 +235,8 @@ public class Mail {
 			email.setSubject(subject);
 			email.setMsg(htmlContent);
 			email.send();
-		} catch (EmailException e) {
+		}
+		catch (EmailException e) {
 			e.printStackTrace();
 		}
 	}
@@ -246,13 +246,13 @@ public class Mail {
 	 * 作者:sanri <br/>
 	 * 时间:2017-9-3下午3:31:36<br/>
 	 * 功能:发送带图片和附件的邮件 <br/>
-	 *
 	 * @param to
 	 * @param subject
 	 * @param htmlContent
 	 * @param in
 	 */
-	public static void sendImageHtmlMail(String to, String subject, String htmlContent, InputStream in, String filename) {
+	public static void sendImageHtmlMail(String to, String subject, String htmlContent, InputStream in,
+			String filename) {
 		ImageHtmlEmail email = new ImageHtmlEmail();
 		email.setHostName(HOST);
 		email.setAuthentication(SENDER_NAME, SENDER_PASSWORD);
@@ -268,12 +268,14 @@ public class Mail {
 				String mime = parseMIME(filename);
 				DataSource ds = new ByteArrayDataSource(in, mime);
 				email.attach(ds, filename, null, EmailAttachment.ATTACHMENT);
-			} catch (IOException e) {
+			}
+			catch (IOException e) {
 				logger.error("添加附件时出错,附件有可能找不到或丢失:" + filename);
 				e.printStackTrace();
 			}
 			email.send();
-		} catch (EmailException e) {
+		}
+		catch (EmailException e) {
 			e.printStackTrace();
 		}
 	}
@@ -294,19 +296,20 @@ public class Mail {
 	public static void loadEmails() throws IOException {
 		// 创建一个有具体连接信息的Properties对象
 		Properties props = new Properties();
-//		InputStream in = Mail.class.getResourceAsStream("/com/sanri/config/mail.properties");
-//		props.load(in);
+		// InputStream in =
+		// Mail.class.getResourceAsStream("/com/sanri/config/mail.properties");
+		// props.load(in);
 
-//		mail.pop3.host=pop3.163.com
-//		mail.pop3.port=110
-//		mail.username=ningxiangsanri@163.com
-//		mail.password=ningxiangsanri
-//		mail.auth = true
-//		mail.store.protocol=pop3
+		// mail.pop3.host=pop3.163.com
+		// mail.pop3.port=110
+		// mail.username=ningxiangsanri@163.com
+		// mail.password=ningxiangsanri
+		// mail.auth = true
+		// mail.store.protocol=pop3
 
-//		Properties props = new Properties();
-//		props.setProperty("mail.store.protocol", "pop3");
-//		props.setProperty("mail.pop3.host", HOST);
+		// Properties props = new Properties();
+		// props.setProperty("mail.store.protocol", "pop3");
+		// props.setProperty("mail.pop3.host", HOST);
 
 		Session session = Session.getInstance(props);
 		session.setDebug(true);
@@ -324,22 +327,24 @@ public class Mail {
 			Message[] messages = folder.getMessages();
 
 			int mailCounts = messages.length;
-	        for(int i = 0; i < mailCounts; i++) {
+			for (int i = 0; i < mailCounts; i++) {
 
-	            String subject = messages[i].getSubject();
-	            String from = (messages[i].getFrom()[0]).toString();
+				String subject = messages[i].getSubject();
+				String from = (messages[i].getFrom()[0]).toString();
 
-	            System.out.println("第 " + (i+1) + "封邮件的主题：" + subject);
-	            System.out.println("第 " + (i+1) + "封邮件的发件人地址：" + from);
+				System.out.println("第 " + (i + 1) + "封邮件的主题：" + subject);
+				System.out.println("第 " + (i + 1) + "封邮件的发件人地址：" + from);
 
-
-	        }
-	        folder.close(false);
-	        store.close();
-		} catch (NoSuchProviderException e) {
+			}
+			folder.close(false);
+			store.close();
+		}
+		catch (NoSuchProviderException e) {
 			e.printStackTrace();
-		} catch (MessagingException e) {
+		}
+		catch (MessagingException e) {
 			e.printStackTrace();
 		}
 	}
+
 }

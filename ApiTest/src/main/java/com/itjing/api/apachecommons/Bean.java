@@ -2,7 +2,6 @@ package com.itjing.api.apachecommons;
 
 import java.lang.reflect.Method;
 
-
 /**
  *
  * 作者:sanri</br>
@@ -12,23 +11,32 @@ import java.lang.reflect.Method;
  */
 public class Bean {
 
-	static class GetMethodFilter implements MethodFilter{
+	static class GetMethodFilter implements MethodFilter {
+
 		@Override
 		public boolean accept(Method method, String methodName) {
 			return methodName.indexOf("get") != -1;
 		}
+
 	}
-	static class SetMethodFilter implements MethodFilter{
+
+	static class SetMethodFilter implements MethodFilter {
+
 		@Override
 		public boolean accept(Method method, String methodName) {
 			return methodName.indexOf("set") != -1;
 		}
+
 	}
+
 	public final static GetMethodFilter GET_METHOD_FILTER = new GetMethodFilter();
+
 	public final static SetMethodFilter SET_METHOD_FILTER = new SetMethodFilter();
 
-	public interface MethodFilter{
-		boolean accept(Method method,String methodName);
+	public interface MethodFilter {
+
+		boolean accept(Method method, String methodName);
+
 	}
-	
+
 }

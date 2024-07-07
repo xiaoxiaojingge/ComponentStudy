@@ -10,92 +10,92 @@ import java.util.List;
  */
 public class PageModel<T> implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    /**
-     * 当前页
-     */
-    private Integer pageNo = 1;
-    /**
-     * 当前页条数
-     */
-    private Integer pagesize = 10;
-    /**
-     * 总共的条数
-     */
-    private Long total;
-    /**
-     * 总共的页数
-     */
-    private Integer pages;
-    /**
-     * 实体类集合
-     */
-    private List<T> list;
+	private static final long serialVersionUID = 1L;
 
-    public Integer getPageNo() {
-        return pageNo;
-    }
+	/**
+	 * 当前页
+	 */
+	private Integer pageNo = 1;
 
-    public void setPageNo(Integer pageNo) {
-        this.pageNo = pageNo;
-    }
+	/**
+	 * 当前页条数
+	 */
+	private Integer pagesize = 10;
 
-    public Integer getPagesize() {
-        return pagesize;
-    }
+	/**
+	 * 总共的条数
+	 */
+	private Long total;
 
-    public void setPagesize(Integer pagesize) {
-        this.pagesize = pagesize;
-    }
+	/**
+	 * 总共的页数
+	 */
+	private Integer pages;
 
-    public Long getTotal() {
-        return total;
-    }
+	/**
+	 * 实体类集合
+	 */
+	private List<T> list;
 
-    /**
-     * 总数由0开始计数
-     *
-     * @param total
-     */
-    public void setTotal(Long total) {
-        this.total = total + 1;
-    }
+	public Integer getPageNo() {
+		return pageNo;
+	}
 
-    public Integer getPages() {
-        return pages;
-    }
+	public void setPageNo(Integer pageNo) {
+		this.pageNo = pageNo;
+	}
 
-    public void setPages(Integer pages) {
-        this.pages = pages;
-    }
+	public Integer getPagesize() {
+		return pagesize;
+	}
 
-    public List<T> getList() {
-        return list;
-    }
+	public void setPagesize(Integer pagesize) {
+		this.pagesize = pagesize;
+	}
 
-    public void setList(List<T> list) {
-        this.list = list;
-    }
+	public Long getTotal() {
+		return total;
+	}
 
-    public PageModel(Integer pageNo, Integer pagesize, Long total, Integer pages, List<T> list) {
-        this.pageNo = pageNo;
-        this.pagesize = pagesize;
-        this.total = total;
-        this.pages = pages;
-        this.list = list;
-    }
+	/**
+	 * 总数由0开始计数
+	 * @param total
+	 */
+	public void setTotal(Long total) {
+		this.total = total + 1;
+	}
 
-    public PageModel() {
-    }
+	public Integer getPages() {
+		return pages;
+	}
 
-    @Override
-    public String toString() {
-        return "PageModel{" +
-                "pageNo=" + pageNo +
-                ", pagesize=" + pagesize +
-                ", total=" + total +
-                ", pages=" + pages +
-                ", list=" + list +
-                '}';
-    }
+	public void setPages(Integer pages) {
+		this.pages = pages;
+	}
+
+	public List<T> getList() {
+		return list;
+	}
+
+	public void setList(List<T> list) {
+		this.list = list;
+	}
+
+	public PageModel(Integer pageNo, Integer pagesize, Long total, Integer pages, List<T> list) {
+		this.pageNo = pageNo;
+		this.pagesize = pagesize;
+		this.total = total;
+		this.pages = pages;
+		this.list = list;
+	}
+
+	public PageModel() {
+	}
+
+	@Override
+	public String toString() {
+		return "PageModel{" + "pageNo=" + pageNo + ", pagesize=" + pagesize + ", total=" + total + ", pages=" + pages
+				+ ", list=" + list + '}';
+	}
+
 }

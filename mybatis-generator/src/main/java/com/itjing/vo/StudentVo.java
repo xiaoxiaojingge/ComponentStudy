@@ -15,10 +15,16 @@ import lombok.experimental.Accessors;
 @ToString
 @Accessors(chain = true)
 public class StudentVo {
-    private Integer studentId;
-    private String name;
-    private String gender;
-    // 在Mapper之中进行了转换
-    private String birthday;
-    private String homeLocation;
+
+	private Integer studentId;
+
+	private String name;
+
+	private String gender;
+
+	// 在Mapper之中进行了转换
+	private String birthday;
+
+	private String homeLocation;
+
 }

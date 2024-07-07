@@ -6,9 +6,9 @@ package com.itjing.task.constants;
  * @Date 2023-10-21 14:39
  */
 public class JobStatusConstant {
-    
-    public static final Byte NORMAL = 0;
-    
-    public static final Byte PAUSE = 1;
-    
+
+	public static final Byte NORMAL = 0;
+
+	public static final Byte PAUSE = 1;
+
 }

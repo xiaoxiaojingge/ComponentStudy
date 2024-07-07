@@ -6,110 +6,127 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ConditionABC {
-    static Lock lock = new ReentrantLock();
-    static Condition conditionA  = lock.newCondition();
-    static Condition conditionB  = lock.newCondition();
-    static Condition conditionC  = lock.newCondition();
 
-    static char lastChar = 'C';
+	static Lock lock = new ReentrantLock();
+	static Condition conditionA = lock.newCondition();
+	static Condition conditionB = lock.newCondition();
+	static Condition conditionC = lock.newCondition();
 
-   static CyclicBarrier cyclicBarrier = new CyclicBarrier(3);
+	static char lastChar = 'C';
 
-    static class ThreadA extends Thread{
-        @Override
-        public void run() {
-            try {
-                cyclicBarrier.await();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            for (int i = 0; i < 10; i++) {
-                lock.lock();
-                try {
-                    if(lastChar != 'C'){
-                        try {
-                            conditionA.await();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
+	static CyclicBarrier cyclicBarrier = new CyclicBarrier(3);
 
-                    System.out.print("A");
+	static class ThreadA extends Thread {
 
-                    lastChar = 'A';
-                    conditionB.signal();
-                }finally {
-                    lock.unlock();
-                }
-            }
-        }
-    }
+		@Override
+		public void run() {
+			try {
+				cyclicBarrier.await();
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+			for (int i = 0; i < 10; i++) {
+				lock.lock();
+				try {
+					if (lastChar != 'C') {
+						try {
+							conditionA.await();
+						}
+						catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
 
-    static class ThreadB extends Thread{
-        @Override
-        public void run() {
-            try {
-                cyclicBarrier.await();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            for (int i = 0; i < 10; i++) {
-                lock.lock();
-                try {
+					System.out.print("A");
 
-                    if(lastChar != 'A'){
-                        try {
-                            conditionB.await();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
+					lastChar = 'A';
+					conditionB.signal();
+				}
+				finally {
+					lock.unlock();
+				}
+			}
+		}
 
-                    System.out.print("B");
+	}
 
-                    lastChar = 'B';
-                    conditionC.signal();
+	static class ThreadB extends Thread {
 
-                }finally {
-                    lock.unlock();
-                }
-            }
-        }
-    }
+		@Override
+		public void run() {
+			try {
+				cyclicBarrier.await();
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+			for (int i = 0; i < 10; i++) {
+				lock.lock();
+				try {
 
-    static class ThreadC extends Thread{
-        @Override
-        public void run() {
-            try {
-                cyclicBarrier.await();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            for (int i = 0; i < 10; i++) {
-                lock.lock();
-                try {
-                    if(lastChar != 'B'){
-                        try {
-                            conditionC.await();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
+					if (lastChar != 'A') {
+						try {
+							conditionB.await();
+						}
+						catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
 
-                    System.out.print("C");
+					System.out.print("B");
 
-                    lastChar = 'C';
-                    conditionA.signal();
-                }finally {
-                    lock.unlock();
-                }
-            }
-        }
-    }
+					lastChar = 'B';
+					conditionC.signal();
 
-    public static void main(String[] args) {
-        new ThreadA().start();
-        new ThreadB().start();
-        new ThreadC().start();
-    }
+				}
+				finally {
+					lock.unlock();
+				}
+			}
+		}
+
+	}
+
+	static class ThreadC extends Thread {
+
+		@Override
+		public void run() {
+			try {
+				cyclicBarrier.await();
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+			for (int i = 0; i < 10; i++) {
+				lock.lock();
+				try {
+					if (lastChar != 'B') {
+						try {
+							conditionC.await();
+						}
+						catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+
+					System.out.print("C");
+
+					lastChar = 'C';
+					conditionA.signal();
+				}
+				finally {
+					lock.unlock();
+				}
+			}
+		}
+
+	}
+
+	public static void main(String[] args) {
+		new ThreadA().start();
+		new ThreadB().start();
+		new ThreadC().start();
+	}
+
 }

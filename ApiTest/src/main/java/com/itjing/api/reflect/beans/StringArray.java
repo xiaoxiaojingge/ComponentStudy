@@ -4,6 +4,9 @@ import lombok.Data;
 
 @Data
 public class StringArray {
-    private String [] arr;
-    private Object object;
+
+	private String[] arr;
+
+	private Object object;
+
 }
